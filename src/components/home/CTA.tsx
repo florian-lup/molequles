@@ -3,6 +3,8 @@
 import { useRef, useEffect } from 'react';
 import { FiArrowUpRight, FiStar } from 'react-icons/fi';
 import Button from '@/components/ui/Button';
+import Section from '@/components/ui/Section';
+import Container from '@/components/ui/Container';
 
 export default function CTA() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -37,14 +39,17 @@ export default function CTA() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gray-950">
+    <Section 
+      background="bg-gray-950 relative overflow-hidden"
+      spacing="large"
+    >
       {/* Gradient borders */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32">
+      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="relative z-10">
@@ -180,7 +185,7 @@ export default function CTA() {
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-600/20 to-indigo-600/20 opacity-50 blur-xl -z-10"></div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 } 

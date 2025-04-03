@@ -5,6 +5,7 @@ import { FiCode, FiUser, FiDroplet, FiTrendingUp } from 'react-icons/fi';
 import { motion, useInView } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
+import Container from '@/components/ui/Container';
 
 // Feature card with hover effects
 const FeatureIcon = ({ icon, title, description }: any) => {
@@ -96,80 +97,82 @@ export default function Solution() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
       </div>
       
-      <div ref={ref} className="relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <SectionHeader 
-            title="Our AI-Driven Solution"
-            titleAccent="AI-Driven Solution"
-            description="We've reimagined perfumery by combining cutting-edge AI with personalized skin chemistry analysis."
-            badge="The Molequles Approach"
-            textColor="text-white"
-            accentColor="text-indigo-400"
-            badgeColor="text-indigo-400"
-            badgeBg="bg-indigo-900/50"
-          />
-        </motion.div>
-        
-        <div className="flex flex-col lg:flex-row gap-16 items-center mt-12">
-          <motion.div 
-            className="flex-1 relative"
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+      <Container>
+        <div ref={ref} className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5 }}
           >
-            {/* Solution visualization */}
-            <div className="relative mx-auto max-w-md">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/20 to-pink-600/20 rounded-2xl blur-xl"></div>
-              
-              <div className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 shadow-2xl">
-                <div className="grid grid-cols-2 gap-4">
-                  {solutionFeatures.map((feature, index) => (
-                    <FeatureIcon 
-                      key={index}
-                      icon={feature.icon}
-                      title={feature.title}
-                      description={feature.description}
-                    />
-                  ))}
-                </div>
-                
-                {/* Connecting lines between elements */}
-                <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full border-2 border-indigo-500/30 flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-indigo-900/80 flex items-center justify-center">
-                      <span className="text-indigo-300 text-xl">AI</span>
-                    </div>
-                  </div>
-                  
-                  <svg width="100%" height="100%" viewBox="0 0 300 300" className="absolute inset-0 stroke-indigo-500/30">
-                    <line x1="50" y1="80" x2="150" y2="150" strokeWidth="2" />
-                    <line x1="250" y1="80" x2="150" y2="150" strokeWidth="2" />
-                    <line x1="50" y1="220" x2="150" y2="150" strokeWidth="2" />
-                    <line x1="250" y1="220" x2="150" y2="150" strokeWidth="2" />
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <SectionHeader 
+              title="Our AI-Driven Solution"
+              titleAccent="AI-Driven Solution"
+              description="We've reimagined perfumery by combining cutting-edge AI with personalized skin chemistry analysis."
+              badge="The Molequles Approach"
+              textColor="text-white"
+              accentColor="text-indigo-400"
+              badgeColor="text-indigo-400"
+              badgeBg="bg-indigo-900/50"
+            />
           </motion.div>
           
-          <div className="flex-1 text-center lg:text-left">
-            <div className="space-y-6">
-              {keyBenefits.map((benefit, index) => (
-                <BenefitCard
-                  key={index}
-                  title={benefit.title}
-                  description={benefit.description}
-                  index={index}
-                />
-              ))}
+          <div className="flex flex-col lg:flex-row gap-16 items-center mt-12">
+            <motion.div 
+              className="flex-1 relative"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {/* Solution visualization */}
+              <div className="relative mx-auto max-w-md">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-600/20 to-pink-600/20 rounded-2xl blur-xl"></div>
+                
+                <div className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 shadow-2xl">
+                  <div className="grid grid-cols-2 gap-4">
+                    {solutionFeatures.map((feature, index) => (
+                      <FeatureIcon 
+                        key={index}
+                        icon={feature.icon}
+                        title={feature.title}
+                        description={feature.description}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Connecting lines between elements */}
+                  <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full border-2 border-indigo-500/30 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-indigo-900/80 flex items-center justify-center">
+                        <span className="text-indigo-300 text-xl">AI</span>
+                      </div>
+                    </div>
+                    
+                    <svg width="100%" height="100%" viewBox="0 0 300 300" className="absolute inset-0 stroke-indigo-500/30">
+                      <line x1="50" y1="80" x2="150" y2="150" strokeWidth="2" />
+                      <line x1="250" y1="80" x2="150" y2="150" strokeWidth="2" />
+                      <line x1="50" y1="220" x2="150" y2="150" strokeWidth="2" />
+                      <line x1="250" y1="220" x2="150" y2="150" strokeWidth="2" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            <div className="flex-1 text-center lg:text-left">
+              <div className="space-y-6">
+                {keyBenefits.map((benefit, index) => (
+                  <BenefitCard
+                    key={index}
+                    title={benefit.title}
+                    description={benefit.description}
+                    index={index}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 } 

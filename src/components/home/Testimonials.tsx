@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { FiMessageCircle, FiStar } from 'react-icons/fi';
 import { TestimonialProps } from '@/types/components';
+import Section from '@/components/ui/Section';
+import Container from '@/components/ui/Container';
 
 function Testimonial({ quote, name, title, avatar, index }: TestimonialProps & { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -90,38 +92,40 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gray-950">
+    <Section background="bg-gray-950 relative overflow-hidden" spacing="large">
       {/* Gradient borders */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
       </div>
       
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center bg-indigo-900/30 border border-indigo-500/30 rounded-full px-4 py-1.5 text-indigo-300 text-sm font-medium mb-6 backdrop-blur-sm">
-            <FiStar className="mr-2 h-4 w-4" />
-            <span>Customer Stories</span>
+      <Container>
+        <div ref={ref} className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center bg-indigo-900/30 border border-indigo-500/30 rounded-full px-4 py-1.5 text-indigo-300 text-sm font-medium mb-6 backdrop-blur-sm">
+              <FiStar className="mr-2 h-4 w-4" />
+              <span>Customer Stories</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+              What Our Customers Say
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Discover how Molequles has transformed the fragrance experience for people just like you.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Testimonial key={index} {...testimonial} index={index} />
+            ))}
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-            What Our Customers Say
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Discover how Molequles has transformed the fragrance experience for people just like you.
-          </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Testimonial key={index} {...testimonial} index={index} />
-          ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 } 

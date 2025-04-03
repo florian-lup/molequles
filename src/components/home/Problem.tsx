@@ -6,6 +6,7 @@ import { motion, useInView } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ContentGrid from '@/components/ui/ContentGrid';
+import Container from '@/components/ui/Container';
 
 // Frustration card component with hover effects
 const FrustrationCard = ({ icon, title, description, index }: any) => {
@@ -113,64 +114,66 @@ export default function Problem() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
       </div>
       
-      <div ref={ref} className="relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <SectionHeader 
-            title="The Problem with Traditional Perfumes"
-            titleAccent="Traditional Perfumes"
-            description="Generic, one-size-fits-all formulas ignore your individual skin chemistry, leading to unpredictable results."
-            badge="The Challenge"
-            textColor="text-white"
-            accentColor="text-indigo-400"
-            badgeColor="text-indigo-400"
-            badgeBg="bg-indigo-900/50"
-          />
-        </motion.div>
+      <Container>
+        <div ref={ref} className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <SectionHeader 
+              title="The Problem with Traditional Perfumes"
+              titleAccent="Traditional Perfumes"
+              description="Generic, one-size-fits-all formulas ignore your individual skin chemistry, leading to unpredictable results."
+              badge="The Challenge"
+              textColor="text-white"
+              accentColor="text-indigo-400"
+              badgeColor="text-indigo-400"
+              badgeBg="bg-indigo-900/50"
+            />
+          </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
-          <div className="flex-1 w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative p-1 rounded-2xl overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/10 rounded-2xl"></div>
-              <div className="bg-gray-950/80 backdrop-blur-sm rounded-2xl p-6 border border-indigo-800/30 relative">
-                <h3 className="text-xl font-semibold text-indigo-300 mb-6">Common Frustrations</h3>
-                <ContentGrid columns={2} gap="medium">
-                  {frustrations.map((item, index) => (
-                    <FrustrationCard
-                      key={index}
-                      icon={item.icon}
-                      title={item.title}
-                      description={item.description}
-                      index={index}
-                    />
-                  ))}
-                </ContentGrid>
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            <div className="flex-1 w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative p-1 rounded-2xl overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/10 rounded-2xl"></div>
+                <div className="bg-gray-950/80 backdrop-blur-sm rounded-2xl p-6 border border-indigo-800/30 relative">
+                  <h3 className="text-xl font-semibold text-indigo-300 mb-6">Common Frustrations</h3>
+                  <ContentGrid columns={2} gap="medium">
+                    {frustrations.map((item, index) => (
+                      <FrustrationCard
+                        key={index}
+                        icon={item.icon}
+                        title={item.title}
+                        description={item.description}
+                        index={index}
+                      />
+                    ))}
+                  </ContentGrid>
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="flex-1 w-full">
+              <div className="space-y-6">
+                {challenges.map((item, index) => (
+                  <ChallengeCard
+                    key={index}
+                    title={item.title}
+                    description={item.description}
+                    index={index}
+                  />
+                ))}
               </div>
-            </motion.div>
-          </div>
-
-          <div className="flex-1 w-full">
-            <div className="space-y-6">
-              {challenges.map((item, index) => (
-                <ChallengeCard
-                  key={index}
-                  title={item.title}
-                  description={item.description}
-                  index={index}
-                />
-              ))}
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 } 

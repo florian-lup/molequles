@@ -4,10 +4,12 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
+import Container from '@/components/ui/Container';
+import Section from '@/components/ui/Section';
 import { FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const floatingImageRef = useRef<HTMLDivElement>(null);
   
   // Animation variants
@@ -32,9 +34,10 @@ export default function Hero() {
   };
 
   return (
-    <section 
-      ref={heroRef}
-      className="relative w-full overflow-hidden bg-gray-950 text-white py-12 md:py-0"
+    <Section 
+      id="hero"
+      background="bg-gray-950 relative w-full overflow-hidden text-white"
+      className="py-12 md:py-0"
       aria-label="Hero section"
     >
       {/* Gradient borders */}
@@ -43,8 +46,8 @@ export default function Hero() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row lg:items-center min-h-[calc(100vh-5rem)] md:min-h-screen gap-8 lg:gap-16">
+      <Container>
+        <div ref={heroRef} className="flex flex-col lg:flex-row lg:items-center min-h-[calc(100vh-5rem)] md:min-h-screen gap-8 lg:gap-16">
           {/* Left content panel */}
           <motion.div 
             className="flex-1 pt-16 md:pt-24 lg:pt-32 pb-8 lg:pb-16 flex flex-col justify-center z-10"
@@ -174,7 +177,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 } 

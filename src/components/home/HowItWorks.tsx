@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { FiZap, FiTarget, FiDroplet, FiCode, FiRefreshCw } from 'react-icons/fi';
 import { StepProps } from '@/types/components';
+import Section from '@/components/ui/Section';
+import Container from '@/components/ui/Container';
 
 // Interface for particle data
 interface Particle {
@@ -152,7 +154,11 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="relative py-24 bg-gray-950 overflow-hidden">
+    <Section 
+      id="how-it-works" 
+      background="bg-gray-950 relative overflow-hidden"
+      spacing="large"
+    >
       {/* Gradient borders */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent"></div>
@@ -161,33 +167,35 @@ export default function HowItWorks() {
         <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
       </div>
       
-      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <div className="inline-flex rounded-full bg-indigo-900/30 border border-indigo-800/50 backdrop-blur-sm px-3 py-1 text-sm font-medium text-indigo-400 mb-4">
-            The Process
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">How It Works</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Our scientific approach combines AI technology with perfumery expertise to create your perfect signature scent.
-          </p>
-        </motion.div>
-        
-        <div className="relative">
-          {/* Connected line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-indigo-800/50 hidden lg:block"></div>
+      <Container>
+        <div ref={ref} className="relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+          >
+            <div className="inline-flex rounded-full bg-indigo-900/30 border border-indigo-800/50 backdrop-blur-sm px-3 py-1 text-sm font-medium text-indigo-400 mb-4">
+              The Process
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">How It Works</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Our scientific approach combines AI technology with perfumery expertise to create your perfect signature scent.
+            </p>
+          </motion.div>
           
-          <div className="mt-16">
-            {steps.map((step) => (
-              <Step key={step.number} {...step} />
-            ))}
+          <div className="relative">
+            {/* Connected line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-indigo-800/50 hidden lg:block"></div>
+            
+            <div className="mt-16">
+              {steps.map((step) => (
+                <Step key={step.number} {...step} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 } 
