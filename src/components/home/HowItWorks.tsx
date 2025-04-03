@@ -1,11 +1,5 @@
 import Image from 'next/image';
-
-interface StepProps {
-  number: number;
-  title: string;
-  description: string;
-  image: string;
-}
+import { StepProps } from '@/types/components';
 
 function Step({ number, title, description, image }: StepProps) {
   return (

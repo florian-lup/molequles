@@ -2,7 +2,6 @@ import { FaFlask, FaChartLine, FaFingerprint, FaRobot } from 'react-icons/fa';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ContentGrid from '@/components/ui/ContentGrid';
-import FeatureCard from '@/components/ui/FeatureCard';
 
 export default function Solution() {
   const solutionFeatures = [

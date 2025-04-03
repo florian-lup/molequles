@@ -1,12 +1,6 @@
 import React from 'react';
 import Container from './Container';
-
-interface SectionProps {
-  children: React.ReactNode;
-  className?: string;
-  background?: string;
-  id?: string;
-}
+import { SectionProps } from '@/types/ui';
 
 export default function Section({ 
   children, 

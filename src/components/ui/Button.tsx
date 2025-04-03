@@ -1,15 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
-interface ButtonProps {
-  children: React.ReactNode;
-  href?: string;
-  onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'small' | 'medium' | 'large';
-  className?: string;
-  fullWidth?: boolean;
-}
+import { ButtonProps } from '@/types/ui';
 
 export default function Button({
   children,

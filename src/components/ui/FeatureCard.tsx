@@ -1,16 +1,5 @@
 import React from 'react';
-
-interface FeatureCardProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  variant?: 'light' | 'dark';
-  iconBg?: string;
-  iconColor?: string;
-  titleColor?: string;
-  descriptionColor?: string;
-  className?: string;
-}
+import { FeatureCardProps } from '@/types/ui';
 
 export default function FeatureCard({
   icon,

@@ -1,12 +1,6 @@
 import Image from 'next/image';
 import { ImQuotesLeft } from 'react-icons/im';
-
-interface TestimonialProps {
-  quote: string;
-  name: string;
-  title: string;
-  avatar: string;
-}
+import { TestimonialProps } from '@/types/components';
 
 function Testimonial({ quote, name, title, avatar }: TestimonialProps) {
   return (

@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface ContentGridProps {
-  children: React.ReactNode;
-  columns?: 1 | 2 | 3 | 4;
-  gap?: 'small' | 'medium' | 'large';
-  className?: string;
-}
+import { ContentGridProps } from '@/types/ui';
 
 export default function ContentGrid({ 
   children, 

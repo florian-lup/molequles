@@ -1,14 +1,4 @@
-interface SectionHeaderProps {
-  title: string;
-  description?: string;
-  badge?: string;
-  titleAccent?: string;
-  align?: 'left' | 'center' | 'right';
-  textColor?: string;
-  accentColor?: string;
-  badgeColor?: string;
-  badgeBg?: string;
-}
+import { SectionHeaderProps } from '@/types/ui';
 
 export default function SectionHeader({
   title,
