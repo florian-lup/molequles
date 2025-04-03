@@ -1,15 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { useMenu } from '@/hooks/useMenu';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const { isOpen: isMenuOpen, toggle: toggleMenu } = useMenu();
 
   return (
     <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -76,28 +72,28 @@ export default function Header() {
             <Link 
               href="#benefits" 
               className="block py-2 text-gray-700"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => toggleMenu()}
             >
               Benefits
             </Link>
             <Link 
               href="#how-it-works" 
               className="block py-2 text-gray-700"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => toggleMenu()}
             >
               How It Works
             </Link>
             <Link 
               href="#start-journey" 
               className="block py-2 text-gray-700"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => toggleMenu()}
             >
               Get Started
             </Link>
             <Link 
               href="/about" 
               className="block py-2 text-gray-700"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => toggleMenu()}
             >
               About
             </Link>
@@ -105,14 +101,14 @@ export default function Header() {
               <Link 
                 href="/login" 
                 className="block py-2 text-gray-700"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => toggleMenu()}
               >
                 Log in
               </Link>
               <Link 
                 href="/signup" 
                 className="block py-2 px-4 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-center"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => toggleMenu()}
               >
                 Sign up
               </Link>
