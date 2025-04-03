@@ -19,6 +19,10 @@ export interface SectionProps {
   className?: string;
   background?: string;
   id?: string;
+  containerSize?: 'small' | 'default' | 'large' | 'full';
+  spacing?: 'small' | 'medium' | 'large';
+  divider?: boolean;
+  containerClassName?: string;
 }
 
 export interface FeatureCardProps {
@@ -30,25 +34,34 @@ export interface FeatureCardProps {
   titleColor?: string;
   descriptionColor?: string;
   className?: string;
+  variant?: 'default' | 'elevated' | 'outline' | 'filled';
+  clickable?: boolean;
 }
 
 export interface ContentGridProps {
   children: ReactNode;
   columns?: 1 | 2 | 3 | 4;
-  gap?: 'small' | 'medium' | 'large';
+  gap?: 'small' | 'medium' | 'large' | 'xlarge';
   className?: string;
+  equalHeight?: boolean;
+  center?: boolean;
+  responsive?: boolean;
 }
 
 export interface ContainerProps {
   children: ReactNode;
   className?: string;
+  size?: 'small' | 'default' | 'large' | 'full';
+  padding?: boolean;
 }
 
 export interface ButtonProps {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'gradient';
   size?: 'small' | 'medium' | 'large';
   className?: string;
   fullWidth?: boolean;
+  icon?: ReactNode;
 } 
