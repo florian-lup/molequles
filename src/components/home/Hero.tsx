@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
-import { FiArrowRight, FiPlay } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
   const floatingImageRef = useRef<HTMLDivElement>(null);
@@ -80,9 +80,9 @@ export default function Hero() {
               variants={itemVariants}
               className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
             >
-              Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">Perfect</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">Scientifically</span>
               <br />
-              Scent Awaits
+              Crafted Scents
             </motion.h1>
             
             <motion.p 
@@ -94,47 +94,23 @@ export default function Hero() {
             
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-12">
               <Button
-                variant="neon"
+                variant="glass"
                 size="lg"
                 shape="pill"
                 icon={<FiArrowRight />}
                 iconPosition="right"
                 href="#start-journey"
+                className="border border-indigo-500/30 hover:border-indigo-500/50 bg-indigo-950/40"
               >
                 Start Your Journey
               </Button>
-              
-              <Button 
-                variant="glass"
-                size="lg"
-                shape="pill"
-                icon={<FiPlay />}
-                iconPosition="left"
-                onClick={() => alert('Video will play')}
-              >
-                Watch How It Works
-              </Button>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 border-t border-gray-800 pt-6">
-              {[
-                { value: '3.2M+', label: 'Unique Formulas' },
-                { value: '99.4%', label: 'Match Rate' },
-                { value: '24h', label: 'Creation Time' }
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">{stat.value}</p>
-                  <p className="text-gray-400 text-sm">{stat.label}</p>
-                </div>
-              ))}
             </motion.div>
           </motion.div>
           
           {/* Right visual panel */}
-          <div className="flex-1 relative lg:border-l border-gray-800">
+          <div className="flex-1 relative">
             <div className="absolute inset-0 overflow-hidden">
-              {/* Diagonal gradient slash */}
-              <div className="absolute top-0 -right-1/4 bottom-0 w-[150%] bg-gradient-to-r from-transparent via-indigo-900/30 to-indigo-800/50 transform -rotate-[15deg] origin-top-right"></div>
+              {/* Background stays empty now */}
             </div>
             
             {/* Main perfume bottle visualization */}
@@ -167,7 +143,7 @@ export default function Hero() {
                 
                 {/* Floating elements */}
                 <motion.div 
-                  className="absolute -top-12 right-0 p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-white/10 shadow-xl"
+                  className="absolute top-16 left-8 p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
                 >
@@ -183,7 +159,7 @@ export default function Hero() {
                 </motion.div>
                 
                 <motion.div 
-                  className="absolute -bottom-6 left-0 p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-white/10 shadow-xl"
+                  className="absolute bottom-4 right-8 p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
                   animate={{ y: [0, 10, 0] }}
                   transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
                 >

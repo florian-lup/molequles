@@ -1,29 +1,103 @@
 <svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="800" fill="white" fill-opacity="0" />
+  <defs>
+    <linearGradient id="bottleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.7" />
+    </linearGradient>
+    <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.2" />
+    </linearGradient>
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
   
-  <!-- Perfume bottle base -->
-  <rect x="300" y="350" width="200" height="300" rx="20" fill="#6d28d9" fill-opacity="0.8" />
+  <!-- Background glow -->
+  <circle cx="400" cy="400" r="200" fill="url(#glowGradient)" filter="url(#glow)" />
   
-  <!-- Bottle neck -->
-  <rect x="350" y="250" width="100" height="100" rx="10" fill="#6d28d9" fill-opacity="0.9" />
+  <!-- Laboratory flask base -->
+  <path d="M450 500 L500 650 Q500 680 470 680 L330 680 Q300 680 300 650 L350 500 Z" fill="url(#bottleGradient)" />
+  
+  <!-- Glass reflection -->
+  <path d="M450 500 L500 650 Q500 680 470 680 L330 680 Q300 680 300 650 L350 500 Z" fill="url(#glassGradient)" stroke="#c4b5fd" stroke-width="1" />
+  
+  <!-- Flask neck -->
+  <rect x="375" y="400" width="50" height="100" rx="10" fill="url(#bottleGradient)" />
+  
+  <!-- Flask top -->
+  <rect x="360" y="360" width="80" height="40" rx="10" fill="#4338ca" />
   
   <!-- Cap -->
-  <rect x="365" y="180" width="70" height="70" rx="10" fill="#4f46e5" />
+  <rect x="370" y="320" width="60" height="40" rx="8" fill="#6366f1" />
+  <rect x="382" y="300" width="36" height="20" rx="4" fill="#4338ca" />
   
-  <!-- Sparkles representing AI analysis -->
-  <circle cx="200" cy="300" r="15" fill="#c4b5fd" />
-  <circle cx="600" cy="300" r="15" fill="#c4b5fd" />
-  <circle cx="250" cy="200" r="10" fill="#a78bfa" />
-  <circle cx="550" cy="200" r="10" fill="#a78bfa" />
-  <circle cx="180" cy="400" r="12" fill="#8b5cf6" />
-  <circle cx="620" cy="400" r="12" fill="#8b5cf6" />
+  <!-- Liquid inside -->
+  <path d="M380 510 L410 510 L445 650 Q445 655 440 655 L355 655 Q350 655 350 650 L380 510 Z" fill="#c026d3" fill-opacity="0.4" />
   
-  <!-- Molecule representations -->
-  <circle cx="400" cy="500" r="20" fill="#4f46e5" />
-  <circle cx="450" cy="450" r="15" fill="#6d28d9" />
-  <circle cx="350" cy="450" r="15" fill="#6d28d9" />
+  <!-- Molecules and connections -->
+  <g filter="url(#glow)">
+    <!-- Main molecule structure -->
+    <circle cx="400" cy="450" r="15" fill="#f472b6" />
+    <circle cx="460" cy="490" r="12" fill="#60a5fa" />
+    <circle cx="340" cy="490" r="12" fill="#60a5fa" />
+    <circle cx="370" cy="550" r="10" fill="#a78bfa" />
+    <circle cx="430" cy="550" r="10" fill="#a78bfa" />
+    <circle cx="400" cy="600" r="8" fill="#34d399" />
+    
+    <!-- Connections -->
+    <line x1="400" y1="450" x2="460" y2="490" stroke="#e879f9" stroke-width="2" />
+    <line x1="400" y1="450" x2="340" y2="490" stroke="#e879f9" stroke-width="2" />
+    <line x1="460" y1="490" x2="430" y2="550" stroke="#c4b5fd" stroke-width="2" />
+    <line x1="340" y1="490" x2="370" y2="550" stroke="#c4b5fd" stroke-width="2" />
+    <line x1="370" y1="550" x2="400" y2="600" stroke="#a5b4fc" stroke-width="2" />
+    <line x1="430" y1="550" x2="400" y2="600" stroke="#a5b4fc" stroke-width="2" />
+  </g>
   
-  <!-- Lines connecting molecules -->
-  <line x1="400" y1="500" x2="450" y2="450" stroke="#a78bfa" stroke-width="4" />
-  <line x1="400" y1="500" x2="350" y2="450" stroke="#a78bfa" stroke-width="4" />
+  <!-- Floating particles -->
+  <g opacity="0.8">
+    <circle cx="260" cy="350" r="6" fill="#e879f9" />
+    <circle cx="540" cy="350" r="6" fill="#e879f9" />
+    <circle cx="300" cy="280" r="4" fill="#a78bfa" />
+    <circle cx="500" cy="280" r="4" fill="#a78bfa" />
+    <circle cx="220" cy="450" r="5" fill="#60a5fa" />
+    <circle cx="580" cy="450" r="5" fill="#60a5fa" />
+    <circle cx="270" cy="520" r="3" fill="#34d399" />
+    <circle cx="530" cy="520" r="3" fill="#34d399" />
+  </g>
+  
+  <!-- DNA-like structure in background -->
+  <g opacity="0.5">
+    <path d="M200 200 Q300 250 200 300 Q100 350 200 400 Q300 450 200 500" stroke="#a78bfa" stroke-width="2" fill="none" />
+    <path d="M250 200 Q350 250 250 300 Q150 350 250 400 Q350 450 250 500" stroke="#8b5cf6" stroke-width="2" fill="none" />
+    
+    <path d="M550 200 Q450 250 550 300 Q650 350 550 400 Q450 450 550 500" stroke="#a78bfa" stroke-width="2" fill="none" />
+    <path d="M600 200 Q500 250 600 300 Q700 350 600 400 Q500 450 600 500" stroke="#8b5cf6" stroke-width="2" fill="none" />
+    
+    <!-- Connecting lines in DNA -->
+    <line x1="200" y1="220" x2="250" y2="220" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="200" y1="260" x2="250" y2="260" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="200" y1="340" x2="250" y2="340" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="200" y1="380" x2="250" y2="380" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="200" y1="460" x2="250" y2="460" stroke="#c4b5fd" stroke-width="1" />
+    
+    <line x1="550" y1="220" x2="600" y2="220" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="550" y1="260" x2="600" y2="260" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="550" y1="340" x2="600" y2="340" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="550" y1="380" x2="600" y2="380" stroke="#c4b5fd" stroke-width="1" />
+    <line x1="550" y1="460" x2="600" y2="460" stroke="#c4b5fd" stroke-width="1" />
+  </g>
+  
+  <!-- Scientific formulas and notations -->
+  <g opacity="0.3" fill="#f9fafb">
+    <text x="280" y="240" font-family="monospace" font-size="10">C₁₂H₂₂O₁₁</text>
+    <text x="480" y="240" font-family="monospace" font-size="10">H₂O</text>
+    <text x="250" y="570" font-family="monospace" font-size="10">C₆H₁₂O₆</text>
+    <text x="500" y="570" font-family="monospace" font-size="10">C₈H₈O₃</text>
+  </g>
 </svg> 
