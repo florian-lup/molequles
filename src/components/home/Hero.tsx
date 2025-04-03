@@ -1,83 +1,218 @@
+'use client';
+
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import Container from '@/components/ui/Container';
+import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiPlay } from 'react-icons/fi';
 
 export default function Hero() {
-  return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-indigo-50/70 to-white pb-16 pt-20 sm:pb-24 sm:pt-32">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-indigo-100/60 blur-3xl"></div>
-        <div className="absolute top-40 -left-40 w-80 h-80 rounded-full bg-purple-100/50 blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-b from-transparent to-white/80"></div>
-      </div>
+  const floatingImageRef = useRef<HTMLDivElement>(null);
+  
+  // Parallax effect for floating elements
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!floatingImageRef.current) return;
+      
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      // Move in opposite direction of mouse with limited range
+      floatingImageRef.current.style.transform = `translate(${-x * 20}px, ${-y * 20}px)`;
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
-      <Container>
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-          <div className="flex-1 text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
-            <div className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10 mb-6">
-              <span className="inline-block relative">
-                <span className="absolute inset-0 animate-ping rounded-full bg-indigo-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600 mr-2"></span>
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
+  return (
+    <section className="relative w-full overflow-hidden bg-gray-950 text-white">
+      {/* Gradient borders */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row min-h-screen">
+          {/* Left content panel */}
+          <motion.div 
+            className="flex-1 p-8 lg:p-16 flex flex-col justify-center z-10"
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
+            <motion.div variants={itemVariants} className="mb-6">
+              <span className="inline-flex items-center rounded-full border border-indigo-400/30 bg-indigo-900/30 backdrop-blur-sm px-3 py-1 text-sm font-medium text-indigo-300">
+                <span className="mr-2 relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                Redefining Fragrance
               </span>
-              Launching Soon
-            </div>
+            </motion.div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 mb-6 leading-tight">
-              Your Perfect Scent, Scientifically Crafted
-            </h1>
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            >
+              Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">Perfect</span>
+              <br />
+              Scent Awaits
+            </motion.h1>
             
-            <p className="text-lg sm:text-xl text-gray-700 mb-8 leading-relaxed">
-              Molequles leverages AI to create personalized perfumes based on your unique skin chemistry. Experience a fragrance that's truly yours.
-            </p>
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl text-gray-300 max-w-xl mb-8 leading-relaxed"
+            >
+              Discover fragrances tailored to your unique body chemistry through our innovative AI technology. Experience scents that evolve with you.
+            </motion.p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                href="#start-journey" 
-                size="large"
-                variant="gradient"
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-12">
+              <Button
+                variant="neon"
+                size="lg"
+                shape="pill"
                 icon={<FiArrowRight />}
+                iconPosition="right"
+                href="#start-journey"
               >
                 Start Your Journey
               </Button>
+              
               <Button 
-                href="#how-it-works" 
-                size="large"
-                variant="outline"
+                variant="glass"
+                size="lg"
+                shape="pill"
+                icon={<FiPlay />}
+                iconPosition="left"
+                onClick={() => alert('Video will play')}
               >
-                Learn How It Works
+                Watch How It Works
               </Button>
-            </div>
+            </motion.div>
             
-            <div className="mt-8 pt-6 border-t border-gray-100 grid grid-cols-3 gap-4">
+            <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 border-t border-gray-800 pt-6">
               {[
-                { number: '10k+', label: 'Happy Customers' },
-                { number: '99%', label: 'Satisfaction Rate' },
-                { number: '100%', label: 'Unique Formulas' }
+                { value: '3.2M+', label: 'Unique Formulas' },
+                { value: '99.4%', label: 'Match Rate' },
+                { value: '24h', label: 'Creation Time' }
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <p className="text-2xl font-bold text-indigo-600">{stat.number}</p>
-                  <p className="text-sm text-gray-600">{stat.label}</p>
+                  <p className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">{stat.value}</p>
+                  <p className="text-gray-400 text-sm">{stat.label}</p>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
-          <div className="flex-1 relative">
-            <div className="relative h-[400px] sm:h-[500px] w-full max-w-[500px] mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-300/30 to-purple-300/30 rounded-full blur-3xl"></div>
-              <Image
-                src="/perfume-illustration.svg"
-                alt="Personalized Perfume Illustration"
-                fill
-                priority
-                className="object-contain z-10 drop-shadow-xl animate-float"
-              />
+          {/* Right visual panel */}
+          <div className="flex-1 relative lg:border-l border-gray-800">
+            <div className="absolute inset-0 overflow-hidden">
+              {/* Diagonal gradient slash */}
+              <div className="absolute top-0 -right-1/4 bottom-0 w-[150%] bg-gradient-to-r from-transparent via-indigo-900/30 to-indigo-800/50 transform -rotate-[15deg] origin-top-right"></div>
+            </div>
+            
+            {/* Main perfume bottle visualization */}
+            <div 
+              ref={floatingImageRef} 
+              className="relative w-full h-full flex items-center justify-center p-8"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, rotateY: 45 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+                className="relative w-[80%] max-w-md h-auto aspect-[3/4]"
+                style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+              >
+                {/* 3D perfume bottle image */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 opacity-30 blur-2xl"></div>
+                    
+                    {/* Product image */}
+                    <Image
+                      src="/perfume-illustration.svg"
+                      alt="Molequles Perfume"
+                      fill
+                      className="object-contain drop-shadow-2xl"
+                    />
+                  </div>
+                </div>
+                
+                {/* Floating elements */}
+                <motion.div 
+                  className="absolute -top-12 right-0 p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-white/10 shadow-xl"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+                      <span className="text-lg">🧪</span>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-400">AI Analysis</p>
+                      <p className="text-sm font-medium">Skin Chemistry Match</p>
+                    </div>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute -bottom-6 left-0 p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-white/10 shadow-xl"
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <div className="w-40">
+                    <p className="text-xs text-gray-400 mb-1">Scent Profile</p>
+                    <div className="flex flex-col gap-1.5">
+                      {[
+                        { name: 'Citrus', value: 75, color: 'bg-yellow-400' },
+                        { name: 'Floral', value: 40, color: 'bg-pink-400' },
+                        { name: 'Musk', value: 30, color: 'bg-purple-400' },
+                      ].map((note, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <p className="text-xs w-12">{note.name}</p>
+                          <div className="flex-1 h-1.5 bg-gray-700/50 rounded-full overflow-hidden">
+                            <div 
+                              className={`h-full ${note.color} rounded-full`} 
+                              style={{ width: `${note.value}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
-      </Container>
-    </div>
+      </div>
+    </section>
   );
 } 

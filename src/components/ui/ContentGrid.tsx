@@ -15,7 +15,8 @@ export default function ContentGrid({
     1: 'grid-cols-1',
     2: responsive ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-2',
     3: responsive ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-3',
-    4: responsive ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' : 'grid-cols-4'
+    4: responsive ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4' : 'grid-cols-4',
+    5: responsive ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5' : 'grid-cols-5'
   }[columns];
 
   // Gap sizes
@@ -33,7 +34,7 @@ export default function ContentGrid({
   return (
     <div className={`grid ${columnClass} ${gapClass} ${centerClass} ${className}`}>
       {React.Children.map(children, child => 
-        equalHeight ? <div className="h-full">{child}</div> : child
+        equalHeight && child ? <div className="h-full">{child}</div> : child
       )}
     </div>
   );

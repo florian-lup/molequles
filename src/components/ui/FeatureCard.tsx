@@ -18,7 +18,8 @@ export default function FeatureCard({
     default: 'bg-white border border-gray-100',
     elevated: 'bg-white shadow-lg border-none',
     outline: 'bg-white border border-gray-200',
-    filled: 'bg-gray-50 border border-gray-100'
+    filled: 'bg-gray-50 border border-gray-100',
+    glass: 'bg-white/80 backdrop-blur-sm border border-gray-100/50'
   };
 
   // Default colors
@@ -29,12 +30,12 @@ export default function FeatureCard({
   
   // Interactive classes for clickable cards
   const interactiveClasses = clickable 
-    ? 'cursor-pointer transform transition-all duration-200 hover:-translate-y-1 hover:shadow-lg' 
-    : 'transition-shadow hover:shadow-md';
+    ? 'cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-md' 
+    : 'transition-all duration-200 hover:shadow-md';
 
   return (
     <div className={`p-6 rounded-xl ${variants[variant]} ${interactiveClasses} ${className}`}>
-      <div className={`inline-flex items-center justify-center p-3 mb-4 ${defaultIconBg} rounded-lg`}>
+      <div className={`inline-flex items-center justify-center p-3 mb-5 ${defaultIconBg} rounded-lg`}>
         <div className={`${defaultIconColor} text-xl`}>{icon}</div>
       </div>
       

@@ -10,12 +10,15 @@ export default function Section({
   containerSize = 'default',
   spacing = 'large',
   divider = false,
-  containerClassName = ''
+  containerClassName = '',
+  fullWidth = false
 }: SectionProps) {
   const spacingClasses = {
-    small: 'py-8 sm:py-12',
-    medium: 'py-12 sm:py-16',
-    large: 'py-16 sm:py-24'
+    none: '',
+    small: 'py-8 md:py-12',
+    medium: 'py-12 md:py-16',
+    large: 'py-16 md:py-24',
+    xlarge: 'py-20 md:py-32'
   };
 
   const dividerClass = divider ? 'border-b border-gray-200' : '';
@@ -25,9 +28,13 @@ export default function Section({
       id={id} 
       className={`${spacingClasses[spacing]} ${background} ${dividerClass} ${className}`}
     >
-      <Container size={containerSize} className={containerClassName}>
-        {children}
-      </Container>
+      {fullWidth ? (
+        children
+      ) : (
+        <Container size={containerSize} className={containerClassName}>
+          {children}
+        </Container>
+      )}
     </section>
   );
 } 

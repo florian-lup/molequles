@@ -1,35 +1,123 @@
+'use client';
+
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
+import { FiZap, FiTarget, FiDroplet, FiCode, FiRefreshCw } from 'react-icons/fi';
 import { StepProps } from '@/types/components';
 
+// Interface for particle data
+interface Particle {
+  top: string;
+  left: string;
+  animationDuration: string;
+  animationDelay: string;
+}
+
 function Step({ number, title, description, image }: StepProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // Store particles in state with initial empty array
+  const [particles, setParticles] = useState<Particle[]>([]);
+  
+  // Generate particles on client-side only
+  useEffect(() => {
+    const newParticles = Array(8).fill(null).map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      animationDuration: `${3 + Math.random() * 5}s`,
+      animationDelay: `${Math.random() * 5}s`
+    }));
+    setParticles(newParticles);
+  }, []);
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.2 
+      } 
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  // Icons for each step
+  const icons = [
+    <FiZap key="1" />,
+    <FiDroplet key="2" />,
+    <FiTarget key="3" />,
+    <FiCode key="4" />,
+    <FiRefreshCw key="5" />
+  ];
+
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 mb-20">
-      <div className={`flex-1 order-2 ${number % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
-        <div className="relative h-72 w-full">
+    <motion.div 
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className={`mb-24 last:mb-0 flex flex-col ${number % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}
+    >
+      <motion.div variants={itemVariants} className="flex-1 w-full">
+        <div className="relative h-[350px] w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-800 bg-black/20 backdrop-blur-sm">
+          {/* Glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-transparent"></div>
+          
           <Image
             src={image}
             alt={title}
             fill
-            className="object-contain rounded-lg"
+            className="object-contain p-6 z-10"
           />
-        </div>
-      </div>
-      <div className={`flex-1 order-1 ${number % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
-        <div className="flex items-center mb-4">
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600 font-bold text-xl mr-4">
-            {number}
+          
+          {/* Floating particles - now using client-side generated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {particles.map((particle, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-indigo-500/30 w-4 h-4"
+                style={{
+                  top: particle.top,
+                  left: particle.left,
+                  animation: `float ${particle.animationDuration} ease-in-out infinite`,
+                  animationDelay: particle.animationDelay
+                }}
+              ></div>
+            ))}
           </div>
-          <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
         </div>
-        <p className="text-gray-600 text-lg">
-          {description}
-        </p>
-      </div>
-    </div>
+      </motion.div>
+      
+      <motion.div variants={itemVariants} className="flex-1">
+        <div className="flex items-start gap-5">
+          <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-indigo-900/70 backdrop-blur-sm border border-indigo-700 flex items-center justify-center text-indigo-400 text-xl relative">
+            <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-indigo-600 text-white text-xs flex items-center justify-center font-bold">{number}</span>
+            {icons[number-1]}
+          </div>
+          
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
+            <p className="text-gray-400 text-lg leading-relaxed">{description}</p>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
 export default function HowItWorks() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
   const steps = [
     {
       number: 1,
@@ -64,19 +152,40 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">How It Works</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+    <section id="how-it-works" className="relative py-24 bg-gray-950 overflow-hidden">
+      {/* Gradient borders */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-y-0 left-0 w-[1px] bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent"></div>
+        <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent"></div>
+        <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
+      </div>
+      
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <div className="inline-flex rounded-full bg-indigo-900/30 border border-indigo-800/50 backdrop-blur-sm px-3 py-1 text-sm font-medium text-indigo-400 mb-4">
+            The Process
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">How It Works</h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Our scientific approach combines AI technology with perfumery expertise to create your perfect signature scent.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="mt-12">
-          {steps.map((step) => (
-            <Step key={step.number} {...step} />
-          ))}
+        <div className="relative">
+          {/* Connected line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-indigo-800/50 hidden lg:block"></div>
+          
+          <div className="mt-16">
+            {steps.map((step) => (
+              <Step key={step.number} {...step} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

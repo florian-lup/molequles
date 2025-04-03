@@ -20,9 +20,10 @@ export interface SectionProps {
   background?: string;
   id?: string;
   containerSize?: 'small' | 'default' | 'large' | 'full';
-  spacing?: 'small' | 'medium' | 'large';
+  spacing?: 'none' | 'small' | 'medium' | 'large' | 'xlarge';
   divider?: boolean;
   containerClassName?: string;
+  fullWidth?: boolean;
 }
 
 export interface FeatureCardProps {
@@ -59,9 +60,14 @@ export interface ButtonProps {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'gradient';
-  size?: 'small' | 'medium' | 'large';
-  className?: string;
-  fullWidth?: boolean;
+  variant?: 'primary' | 'secondary' | 'glass' | 'minimal' | 'neon' | 'outline';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'rounded' | 'pill' | 'square';
   icon?: ReactNode;
+  iconPosition?: 'left' | 'right';
+  fullWidth?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  className?: string;
+  ariaLabel?: string;
 } 

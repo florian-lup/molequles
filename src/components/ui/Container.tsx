@@ -14,7 +14,7 @@ export default function Container({
     full: 'max-w-full'
   };
 
-  const paddingClasses = padding ? 'px-4 sm:px-6 lg:px-8' : '';
+  const paddingClasses = padding ? 'px-4 md:px-6 xl:px-8' : '';
   
   return (
     <div className={`mx-auto ${sizes[size]} ${paddingClasses} ${className}`}>

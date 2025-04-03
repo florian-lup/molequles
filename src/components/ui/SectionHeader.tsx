@@ -21,7 +21,7 @@ export default function SectionHeader({
             {part}
             <span className={`${accentColor} relative`}>
               {titleAccent}
-              <span className="absolute bottom-1 left-0 w-full h-2 bg-indigo-100 -z-10 opacity-70"></span>
+              <span className="absolute bottom-1 left-0 w-full h-2 bg-indigo-100/80 -z-10 rounded-sm"></span>
             </span>
           </span>
         ) : (
@@ -39,9 +39,9 @@ export default function SectionHeader({
   const marginClass = centered ? 'mx-auto' : '';
 
   return (
-    <div className={`mb-12 ${alignClass}`}>
+    <div className={`mb-12 md:mb-16 ${alignClass}`}>
       {badge && (
-        <span className={`inline-block px-3 py-1 ${badgeBg} rounded-md ${badgeColor} text-xs font-semibold tracking-wider uppercase mb-4`}>
+        <span className={`inline-block px-3 py-1 ${badgeBg} rounded-full ${badgeColor} text-xs font-semibold tracking-wider uppercase mb-4`}>
           {badge}
         </span>
       )}
@@ -52,12 +52,12 @@ export default function SectionHeader({
         </p>
       )}
       
-      <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight ${textColor}`}>
+      <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight ${textColor}`}>
         {titleParts}
       </h2>
       
       {description && (
-        <p className={`text-lg text-gray-600 max-w-2xl ${marginClass} leading-relaxed`}>
+        <p className={`text-lg text-gray-600 max-w-2xl ${marginClass} leading-relaxed md:text-xl`}>
           {description}
         </p>
       )}
