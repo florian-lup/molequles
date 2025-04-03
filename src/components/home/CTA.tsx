@@ -16,20 +16,13 @@ export default function CTA() {
           badgeColor="text-purple-100"
         />
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <div className="flex justify-center mt-8">
           <Button
             href="/signup"
             size="medium"
             className="bg-white text-purple-600 hover:shadow-lg hover:scale-105"
           >
             Get Started
-          </Button>
-          <Button
-            href="/contact"
-            className="border-white text-white hover:bg-white/10 border"
-            size="medium"
-          >
-            Contact Us
           </Button>
         </div>
       </div>

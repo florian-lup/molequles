@@ -14,12 +14,9 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl">
               Molequles leverages AI to create personalized perfumes based on your unique skin chemistry. Experience a fragrance that's truly yours.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex justify-center md:justify-start">
               <Button href="#start-journey" size="medium">
                 Start Your Journey
-              </Button>
-              <Button href="#how-it-works" size="medium" className="border border-purple-600 bg-transparent text-purple-600 hover:bg-purple-50">
-                How It Works
               </Button>
             </div>
           </div>
