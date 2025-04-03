@@ -105,10 +105,9 @@ export default function Solution() {
             transition={{ duration: 0.5 }}
           >
             <SectionHeader 
-              title="Our AI-Driven Solution"
-              titleAccent="AI-Driven Solution"
+              title=""
               description="We've reimagined perfumery by combining cutting-edge AI with personalized skin chemistry analysis."
-              badge="The Molequles Approach"
+              badge="Our Approach"
               textColor="text-white"
               accentColor="text-indigo-400"
               badgeColor="text-indigo-400"

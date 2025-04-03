@@ -122,8 +122,7 @@ export default function Problem() {
             transition={{ duration: 0.5 }}
           >
             <SectionHeader 
-              title="The Problem with Traditional Perfumes"
-              titleAccent="Traditional Perfumes"
+              title=""
               description="Generic, one-size-fits-all formulas ignore your individual skin chemistry, leading to unpredictable results."
               badge="The Challenge"
               textColor="text-white"

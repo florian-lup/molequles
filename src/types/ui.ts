@@ -1,5 +1,18 @@
 import { ReactNode } from 'react';
 
+export interface BadgeProps {
+  children: ReactNode;
+  icon?: ReactNode;
+  color?: 'default' | 'primary' | 'secondary' | 'custom';
+  customColors?: {
+    text?: string;
+    bg?: string;
+    border?: string;
+  };
+  withPulse?: boolean;
+  className?: string;
+}
+
 export interface SectionHeaderProps {
   title: string;
   description?: string;

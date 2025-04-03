@@ -45,7 +45,7 @@ export default function Benefits() {
       
       <div className="relative z-10">
         <SectionHeader 
-          title="Benefits that Make a Difference"
+          title=""
           description="Experience the advantages of AI-driven perfume creation tailored to your unique body chemistry."
           badge="Why Molequles"
           textColor="text-white"

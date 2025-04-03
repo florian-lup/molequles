@@ -1,4 +1,5 @@
 import { SectionHeaderProps } from '@/types/ui';
+import Badge from '@/components/ui/Badge';
 
 export default function SectionHeader({
   title,
@@ -13,8 +14,8 @@ export default function SectionHeader({
   badgeBg = 'bg-indigo-50',
   centered = align === 'center'
 }: SectionHeaderProps) {
-  // Process title to highlight accent text if provided
-  const titleParts = titleAccent 
+  // Process title to highlight accent text if provided (only if title exists)
+  const titleParts = title && titleAccent 
     ? title.split(titleAccent).map((part, i, arr) => 
         i < arr.length - 1 ? (
           <span key={`part-${i}`}>
@@ -37,13 +38,28 @@ export default function SectionHeader({
   }[align];
 
   const marginClass = centered ? 'mx-auto' : '';
+  const marginBottom = title ? 'mb-12 md:mb-16' : 'mb-10';
+
+  // Enhanced description styling when there's no title
+  const descriptionClasses = !title 
+    ? 'text-xl md:text-2xl font-light tracking-wide leading-relaxed text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300 drop-shadow-sm' 
+    : 'text-gray-600';
 
   return (
-    <div className={`mb-12 md:mb-16 ${alignClass}`}>
+    <div className={`${marginBottom} ${alignClass}`}>
       {badge && (
-        <span className={`inline-block px-3 py-1 ${badgeBg} rounded-full ${badgeColor} text-xs font-semibold tracking-wider uppercase mb-4`}>
+        <Badge 
+          color="custom"
+          customColors={{
+            text: badgeColor,
+            bg: badgeBg,
+            border: 'border-transparent'
+          }}
+          withPulse
+          className="mb-4 uppercase text-xs font-semibold tracking-wider"
+        >
           {badge}
-        </span>
+        </Badge>
       )}
       
       {subtitle && (
@@ -52,12 +68,14 @@ export default function SectionHeader({
         </p>
       )}
       
-      <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight ${textColor}`}>
-        {titleParts}
-      </h2>
+      {title && (
+        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight ${textColor}`}>
+          {titleParts}
+        </h2>
+      )}
       
       {description && (
-        <p className={`text-lg text-gray-600 max-w-2xl ${marginClass} leading-relaxed md:text-xl`}>
+        <p className={`text-lg max-w-2xl ${marginClass} md:text-xl ${descriptionClasses} transition-all duration-300`}>
           {description}
         </p>
       )}

@@ -5,6 +5,7 @@ import { FiArrowUpRight, FiStar } from 'react-icons/fi';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import Badge from '@/components/ui/Badge';
 
 export default function CTA() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -53,10 +54,13 @@ export default function CTA() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="relative z-10">
-            <div className="inline-flex items-center mb-6 bg-indigo-900/30 border border-indigo-800/50 backdrop-blur-sm px-3 py-1.5 rounded-full">
-              <FiStar className="mr-2 text-indigo-400" />
-              <span className="text-indigo-300 text-sm font-medium">Exclusive Launch Access</span>
-            </div>
+            <Badge 
+              icon={<FiStar className="text-indigo-400" />} 
+              withPulse
+              className="mb-6"
+            >
+              Exclusive Launch Access
+            </Badge>
             
             <h2 className="text-5xl md:text-6xl font-extrabold mb-8">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-indigo-400 to-indigo-500">

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
+import Badge from '@/components/ui/Badge';
 import { FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
@@ -57,13 +58,7 @@ export default function Hero() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="mb-4 md:mb-6">
-              <span className="inline-flex items-center rounded-full border border-indigo-400/30 bg-indigo-900/30 backdrop-blur-sm px-3 py-1 text-sm font-medium text-indigo-300">
-                <span className="mr-2 relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                </span>
-                Redefining Fragrance
-              </span>
+              <Badge withPulse color="primary">Redefining Fragrance</Badge>
             </motion.div>
             
             <motion.h1 

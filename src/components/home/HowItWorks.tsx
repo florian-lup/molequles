@@ -7,6 +7,7 @@ import { FiZap, FiTarget, FiDroplet, FiCode, FiRefreshCw } from 'react-icons/fi'
 import { StepProps } from '@/types/components';
 import Section from '@/components/ui/Section';
 import Container from '@/components/ui/Container';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 // Interface for particle data
 interface Particle {
@@ -169,20 +170,14 @@ export default function HowItWorks() {
       
       <Container>
         <div ref={ref} className="relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-20"
-          >
-            <div className="inline-flex rounded-full bg-indigo-900/30 border border-indigo-800/50 backdrop-blur-sm px-3 py-1 text-sm font-medium text-indigo-400 mb-4">
-              The Process
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">How It Works</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Our scientific approach combines AI technology with perfumery expertise to create your perfect signature scent.
-            </p>
-          </motion.div>
+          <SectionHeader
+            title=""
+            description="Our scientific approach combines AI technology with perfumery expertise to create your perfect signature scent."
+            badge="The Process"
+            textColor="text-white"
+            badgeColor="text-indigo-400"
+            badgeBg="bg-indigo-900/30"
+          />
           
           <div className="relative">
             {/* Connected line */}
