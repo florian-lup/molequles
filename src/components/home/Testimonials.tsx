@@ -4,11 +4,11 @@ import { TestimonialProps } from '@/types/components';
 
 function Testimonial({ quote, name, title, avatar }: TestimonialProps) {
   return (
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col h-full">
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full">
       <div className="mb-4">
         <ImQuotesLeft className="h-8 w-8 text-purple-400" />
       </div>
-      <p className="text-gray-700 dark:text-gray-300 mb-6 flex-grow">{quote}</p>
+      <p className="text-gray-700 mb-6 flex-grow">{quote}</p>
       <div className="flex items-center">
         <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
           <Image
@@ -19,8 +19,8 @@ function Testimonial({ quote, name, title, avatar }: TestimonialProps) {
           />
         </div>
         <div>
-          <h4 className="font-semibold text-gray-900 dark:text-white">{name}</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-400">{title}</p>
+          <h4 className="font-semibold text-gray-900">{name}</h4>
+          <p className="text-sm text-gray-600">{title}</p>
         </div>
       </div>
     </div>
@@ -50,11 +50,11 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
+    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">What Our Customers Say</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What Our Customers Say</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover how Molequles has transformed the fragrance experience for our customers.
           </p>
         </div>

@@ -25,7 +25,6 @@ export interface FeatureCardProps {
   icon: ReactNode;
   title: string;
   description: string;
-  variant?: 'light' | 'dark';
   iconBg?: string;
   iconColor?: string;
   titleColor?: string;
@@ -49,7 +48,6 @@ export interface ButtonProps {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
   size?: 'small' | 'medium' | 'large';
   className?: string;
   fullWidth?: boolean;

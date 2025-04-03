@@ -29,7 +29,7 @@ export default function Benefits() {
   ];
 
   return (
-    <Section id="benefits" background="bg-gray-50 dark:bg-gray-950">
+    <Section id="benefits" background="bg-gray-50">
       <SectionHeader 
         title="Benefits that Make a Difference"
         description="Experience the advantages of AI-driven perfume creation tailored to your unique body chemistry."

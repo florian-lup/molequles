@@ -67,7 +67,10 @@ export default function Problem() {
                   icon={item.icon}
                   title={item.title}
                   description={item.description}
-                  variant="dark"
+                  iconBg="bg-purple-900/60"
+                  iconColor="text-purple-400"
+                  titleColor="text-white"
+                  descriptionColor="text-gray-300"
                 />
               ))}
             </ContentGrid>

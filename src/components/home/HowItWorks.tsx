@@ -16,12 +16,12 @@ function Step({ number, title, description, image }: StepProps) {
       </div>
       <div className={`flex-1 order-1 ${number % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
         <div className="flex items-center mb-4">
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-400 font-bold text-xl mr-4">
+          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600 font-bold text-xl mr-4">
             {number}
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{title}</h3>
+          <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
         </div>
-        <p className="text-gray-600 dark:text-gray-400 text-lg">
+        <p className="text-gray-600 text-lg">
           {description}
         </p>
       </div>
@@ -67,8 +67,8 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">How It Works</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">How It Works</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our scientific approach combines AI technology with perfumery expertise to create your perfect signature scent.
           </p>
         </div>

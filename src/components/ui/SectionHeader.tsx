@@ -6,7 +6,7 @@ export default function SectionHeader({
   badge,
   titleAccent,
   align = 'center',
-  textColor = 'text-gray-900 dark:text-white',
+  textColor = 'text-gray-900',
   accentColor = 'text-purple-600', 
   badgeColor = 'text-purple-300',
   badgeBg = 'bg-indigo-900'
@@ -43,7 +43,7 @@ export default function SectionHeader({
         {titleParts}
       </h2>
       {description && (
-        <p className={`text-lg text-gray-600 dark:text-gray-400 max-w-2xl ${marginClass}`}>
+        <p className={`text-lg text-gray-600 max-w-2xl ${marginClass}`}>
           {description}
         </p>
       )}
