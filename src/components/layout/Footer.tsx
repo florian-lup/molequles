@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { getCurrentYear } from '@/utils/dateUtils';
 
 export default function Footer() {
   return (
@@ -61,7 +62,7 @@ export default function Footer() {
         
         <div className="mt-8 pt-8 border-t border-gray-100">
           <p className="text-sm text-gray-500 text-center">
-            &copy; {new Date().getFullYear()} Molequles. All rights reserved.
+            &copy; {getCurrentYear()} Molequles. All rights reserved.
           </p>
         </div>
       </div>
