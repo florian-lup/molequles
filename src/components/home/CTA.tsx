@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { FiArrowUpRight, FiStar } from 'react-icons/fi';
+import Button from '@/components/ui/Button';
 
 export default function CTA() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -98,15 +98,16 @@ export default function CTA() {
               </div>
             </div>
             
-            <button 
-              className="group relative overflow-hidden rounded-full bg-indigo-600 px-8 py-4 text-white font-medium text-lg transition-all duration-300 hover:bg-indigo-700"
-              onClick={() => window.location.href = '/signup'}
+            <Button 
+              variant="primary"
+              size="lg"
+              icon={<FiArrowUpRight />}
+              iconPosition="right"
+              href="/signup"
+              className="group"
             >
-              <span className="relative z-10 flex items-center">
-                Join Waitlist
-                <FiArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </span>
-            </button>
+              Join Waitlist
+            </Button>
           </div>
           
           {/* 3D interactive card */}
@@ -163,9 +164,13 @@ export default function CTA() {
                   
                   {/* Card footer/CTA */}
                   <div className="mt-6 text-center">
-                    <button className="w-full py-3 px-4 bg-indigo-600/50 hover:bg-indigo-600/70 backdrop-blur-sm rounded-lg text-white transition-colors">
+                    <Button 
+                      variant="glass" 
+                      size="md" 
+                      fullWidth
+                    >
                       Generate Your Formula
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

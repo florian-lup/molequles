@@ -39,7 +39,7 @@ export default function Button({
 }: ButtonProps) {
   // Button styling variants
   const variants = {
-    primary: `bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:shadow-indigo-500/25 ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-lg hover:translate-y-[-2px]'}`,
+    primary: `bg-indigo-600 text-white hover:bg-indigo-700 ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-md'}`,
     
     secondary: `bg-white text-indigo-600 border border-gray-200 hover:border-indigo-300 hover:bg-indigo-50 ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`,
     
@@ -48,9 +48,8 @@ export default function Button({
     minimal: `bg-transparent text-gray-700 hover:bg-gray-100 ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`,
     
     neon: `relative text-white font-medium overflow-hidden isolate 
-      before:absolute before:inset-0 before:bg-gradient-to-r before:from-cyan-400 before:to-purple-500 before:opacity-100 before:z-[-1]
-      after:absolute after:inset-0 after:bg-gradient-to-r after:from-indigo-600 after:to-pink-600 after:opacity-0 after:z-[-1] after:transition-opacity
-      ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:after:opacity-100 hover:shadow-lg hover:shadow-indigo-500/25'}`,
+      before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-700 before:to-indigo-800 before:opacity-100 before:z-[-1]
+      ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:brightness-110 hover:shadow-md'}`,
     
     outline: `bg-transparent border border-gray-300 text-gray-700 ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:border-indigo-400 hover:text-indigo-600'}`,
   };
@@ -103,7 +102,7 @@ export default function Button({
 
   const renderButton = () => {
     const motionProps = {
-      whileHover: disabled ? {} : { scale: 1.02 },
+      whileHover: disabled ? {} : {},
       whileTap: disabled ? {} : { scale: 0.98 },
       transition: { type: 'spring', stiffness: 500, damping: 30 }
     };
