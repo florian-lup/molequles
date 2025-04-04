@@ -50,16 +50,16 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div 
           ref={heroRef} 
-          className="flex flex-col lg:flex-row min-h-[calc(100vh-5rem)] md:min-h-screen"
+          className="flex flex-col lg:flex-row min-h-[calc(100vh-5rem)] md:min-h-screen items-center"
         >
           {/* Left content panel */}
-          <div className="w-full lg:flex-1 relative z-10 flex items-center justify-center lg:justify-end">
+          <div className="w-full lg:flex-1 relative z-10 flex items-center justify-center">
             <div 
               ref={contentRef}
-              className="py-16 md:py-24 lg:py-0 w-full lg:max-w-xl lg:pr-8"
+              className="py-8 md:py-12 lg:py-0 w-full max-w-xl text-center lg:text-left lg:pl-12"
             >
               <motion.div 
-                className="flex flex-col"
+                className="flex flex-col items-center lg:items-start"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
@@ -80,12 +80,12 @@ export default function Hero() {
                 
                 <motion.p 
                   variants={itemVariants}
-                  className="text-lg md:text-xl text-gray-300 max-w-md mb-6 md:mb-8 leading-relaxed"
+                  className="text-lg md:text-xl text-gray-300 max-w-md mb-6 md:mb-8 leading-relaxed mx-auto lg:mx-0"
                 >
                   Discover fragrances tailored to your unique body chemistry through our innovative AI technology.
                 </motion.p>
                 
-                <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8 md:mb-10">
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8 md:mb-10 justify-center lg:justify-start">
                   <Button
                     variant="neon"
                     size="lg"
@@ -101,18 +101,18 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Right visual panel - hidden on small and medium screens (mobile & tablets) */}
-          <div className="hidden lg:flex flex-1 relative order-first lg:order-last items-center justify-end">
+          {/* Right visual panel - now visible on all screen sizes */}
+          <div className="flex flex-1 relative lg:order-last items-center justify-center mt-4 lg:mt-0">
             {/* SVG visualization panel */}
             <div 
               ref={floatingImageRef} 
-              className="py-16 md:py-24 lg:py-0 w-full lg:max-w-xl lg:pl-8"
+              className="py-8 w-full max-w-xl lg:pr-12"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                className="relative w-full max-w-sm md:max-w-md lg:max-w-lg ml-auto h-[300px] md:h-[400px] lg:h-[500px] flex items-center justify-end"
+                className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:ml-auto h-[250px] md:h-[350px] lg:h-[500px] flex items-center justify-center"
               >
                 <motion.div 
                   className="p-6 md:p-8 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
@@ -125,7 +125,7 @@ export default function Hero() {
                     width={270}
                     height={210}
                     priority
-                    className="w-full h-auto"
+                    className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[270px] h-auto mx-auto"
                   />
                 </motion.div>
               </motion.div>
