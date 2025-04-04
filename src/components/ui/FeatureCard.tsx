@@ -34,14 +34,14 @@ export default function FeatureCard({
     : 'transition-all duration-200 hover:shadow-md';
 
   return (
-    <div className={`p-6 rounded-xl ${variants[variant]} ${interactiveClasses} ${className}`}>
-      <div className={`inline-flex items-center justify-center p-3 mb-5 ${defaultIconBg} rounded-lg`}>
-        <div className={`${defaultIconColor} text-xl`}>{icon}</div>
+    <div className={`p-4 sm:p-5 md:p-6 rounded-xl ${variants[variant]} ${interactiveClasses} ${className}`}>
+      <div className={`inline-flex items-center justify-center p-2 sm:p-3 mb-4 sm:mb-5 ${defaultIconBg} rounded-lg`}>
+        <div className={`${defaultIconColor} text-lg sm:text-xl`}>{icon}</div>
       </div>
       
-      <h3 className={`text-xl font-semibold mb-3 ${defaultTitleColor}`}>{title}</h3>
+      <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 ${defaultTitleColor}`}>{title}</h3>
       
-      <p className={`${defaultDescriptionColor} leading-relaxed`}>{description}</p>
+      <p className={`${defaultDescriptionColor} text-sm sm:text-base leading-relaxed`}>{description}</p>
     </div>
   );
 } 

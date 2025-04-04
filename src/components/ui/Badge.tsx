@@ -38,15 +38,15 @@ export default function Badge({
     : colorSchemes[color as Exclude<typeof color, 'custom'>];
 
   return (
-    <div className={`inline-flex items-center rounded-full ${border} ${bg} backdrop-blur-sm px-3 py-1.5 text-sm font-medium ${text} ${className}`}>
+    <div className={`inline-flex items-center rounded-full ${border} ${bg} backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-medium ${text} ${className}`}>
       {withPulse && (
-        <span className="mr-2 relative flex h-2 w-2">
+        <span className="mr-1.5 sm:mr-2 relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-indigo-500"></span>
         </span>
       )}
       
-      {icon && <span className="mr-2">{icon}</span>}
+      {icon && <span className="mr-1.5 sm:mr-2">{icon}</span>}
       
       {typeof children === 'string' ? <span>{children}</span> : children}
     </div>

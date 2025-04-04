@@ -38,11 +38,11 @@ export default function SectionHeader({
   }[align];
 
   const marginClass = centered ? 'mx-auto' : '';
-  const marginBottom = title ? 'mb-12 md:mb-16' : 'mb-10';
+  const marginBottom = title ? 'mb-8 sm:mb-10 md:mb-12 lg:mb-16' : 'mb-6 sm:mb-8 md:mb-10';
 
   // Enhanced description styling when there's no title
   const descriptionClasses = !title 
-    ? 'text-xl md:text-2xl font-light tracking-wide leading-relaxed text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300 drop-shadow-sm' 
+    ? 'text-lg sm:text-xl md:text-2xl font-light tracking-wide leading-relaxed text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-300 drop-shadow-sm' 
     : 'text-gray-600';
 
   return (
@@ -56,26 +56,26 @@ export default function SectionHeader({
             border: 'border-transparent'
           }}
           withPulse
-          className="mb-4 uppercase text-xs font-semibold tracking-wider"
+          className="mb-3 sm:mb-4 uppercase text-xs font-semibold tracking-wider"
         >
           {badge}
         </Badge>
       )}
       
       {subtitle && (
-        <p className="text-sm font-medium text-indigo-600 uppercase tracking-wider mb-2">
+        <p className="text-xs sm:text-sm font-medium text-indigo-600 uppercase tracking-wider mb-1 sm:mb-2">
           {subtitle}
         </p>
       )}
       
       {title && (
-        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight ${textColor}`}>
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight ${textColor}`}>
           {titleParts}
         </h2>
       )}
       
       {description && (
-        <p className={`text-lg max-w-2xl ${marginClass} md:text-xl ${descriptionClasses} transition-all duration-300`}>
+        <p className={`text-base sm:text-lg md:text-xl max-w-2xl ${marginClass} ${descriptionClasses} transition-all duration-300`}>
           {description}
         </p>
       )}
