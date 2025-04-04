@@ -1,0 +1,52 @@
+<svg width="270" height="230" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .label { font-size: 12px; fill: #9ca3af; font-family: sans-serif; }
+    .note-name { font-size: 12px; fill: white; font-family: sans-serif; }
+    .bar-bg { fill: rgba(55, 65, 81, 0.5); }
+    .bar-citrus { fill: #facc15; }
+    .bar-floral { fill: #f472b6; }
+    .bar-musk { fill: #c084fc; }
+    .bar-hydration { fill: #60a5fa; }
+    .bar-ph { fill: #34d399; }
+    .bar-sebum { fill: #ff7f50; }
+  </style>
+
+  <!-- Biomarkers Title -->
+  <text x="0" y="15" class="label">Skin Chemistry</text>
+
+  <!-- Hydration -->
+  <text x="0" y="40" class="note-name">Hydration</text>
+  <rect x="80" y="32" width="170" height="8" class="bar-bg" rx="4" />
+  <rect x="80" y="32" width="145" height="8" class="bar-hydration" rx="4" /> <!-- 85% -->
+
+  <!-- pH Level -->
+  <text x="0" y="70" class="note-name">pH Level</text>
+  <rect x="80" y="62" width="170" height="8" class="bar-bg" rx="4" />
+  <rect x="80" y="62" width="93.5" height="8" class="bar-ph" rx="4" /> <!-- 55% -->
+
+  <!-- Sebum -->
+  <text x="0" y="100" class="note-name">Sebum</text>
+  <rect x="80" y="92" width="170" height="8" class="bar-bg" rx="4" />
+  <rect x="80" y="92" width="68" height="8" class="bar-sebum" rx="4" /> <!-- 40% -->
+
+  <!-- Divider -->
+  <line x1="0" y1="120" x2="258" y2="120" stroke="#4b5563" stroke-dasharray="2,2" />
+
+  <!-- Scent Profile Title -->
+  <text x="0" y="140" class="label">Scent Profile</text>
+
+  <!-- Citrus (from Hydration) -->
+  <text x="0" y="165" class="note-name">Citrus</text>
+  <rect x="80" y="157" width="170" height="8" class="bar-bg" rx="4" />
+  <rect x="80" y="157" width="145" height="8" class="bar-citrus" rx="4" /> <!-- 85% -->
+
+  <!-- Floral (from pH) -->
+  <text x="0" y="195" class="note-name">Floral</text>
+  <rect x="80" y="187" width="170" height="8" class="bar-bg" rx="4" />
+  <rect x="80" y="187" width="93.5" height="8" class="bar-floral" rx="4" /> <!-- 55% -->
+
+  <!-- Musk (from Sebum) -->
+  <text x="0" y="225" class="note-name">Musk</text>
+  <rect x="80" y="217" width="170" height="8" class="bar-bg" rx="4" />
+  <rect x="80" y="217" width="68" height="8" class="bar-musk" rx="4" /> <!-- 40% -->
+</svg>

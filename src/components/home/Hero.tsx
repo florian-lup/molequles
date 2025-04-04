@@ -58,7 +58,7 @@ export default function Hero() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="mb-4 md:mb-6">
-              <Badge withPulse color="primary">Redefining Fragrance</Badge>
+              <Badge withPulse color="primary">UNIQUE FORMULATION</Badge>
             </motion.div>
             
             <motion.h1 
@@ -74,7 +74,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-lg md:text-xl text-gray-300 max-w-md lg:max-w-xl mb-6 md:mb-8 leading-relaxed"
             >
-              Discover fragrances tailored to your unique body chemistry through our innovative AI technology. Experience scents that evolve with you.
+              Discover fragrances tailored to your unique body chemistry through our innovative AI technology.
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8 md:mb-12">
@@ -86,88 +86,37 @@ export default function Hero() {
                 iconPosition="right"
                 href="#start-journey"
               >
-                Start Your Journey
+                Get Free Samples
               </Button>
             </motion.div>
           </motion.div>
           
           {/* Right visual panel */}
           <div className="flex-1 relative order-first lg:order-last">
-            {/* Main perfume bottle visualization */}
+            {/* SVG visualization panel */}
             <div 
               ref={floatingImageRef} 
               className="relative w-full h-full flex items-center justify-center p-4 md:p-8 lg:p-12"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.9, rotateY: 45 }}
-                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                className="relative w-full max-w-sm md:max-w-md mx-auto h-[300px] md:h-[400px] lg:h-[500px]"
-                style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                className="relative w-full max-w-sm md:max-w-md mx-auto h-[300px] md:h-[400px] lg:h-[500px] flex items-center justify-center"
               >
-                {/* 3D perfume bottle image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-60 h-60 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]">
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 opacity-30 blur-2xl"></div>
-                    
-                    {/* Product image */}
-                    <Image
-                      src="/perfume-illustration.svg"
-                      alt="Molequles Perfume"
-                      fill
-                      priority
-                      sizes="(max-width: 640px) 15rem, (max-width: 768px) 20rem, (max-width: 1024px) 24rem, 28rem"
-                      className="object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                </div>
-                
-                {/* Floating elements - hidden on mobile, visible on tablets and up */}
-                <div className="hidden sm:block">
-                  <motion.div 
-                    className="absolute bottom-4 -right-4 md:right-8 p-3 md:p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                  >
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
-                        <span className="text-lg">🧪</span>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-400">AI Analysis</p>
-                        <p className="text-xs md:text-sm font-medium">Skin Chemistry Match</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="absolute top-12 -left-4 md:left-8 p-3 md:p-4 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
-                  >
-                    <div className="w-32 md:w-40">
-                      <p className="text-xs text-gray-400 mb-1">Scent Profile</p>
-                      <div className="flex flex-col gap-1.5">
-                        {[
-                          { name: 'Citrus', value: 75, color: 'bg-yellow-400' },
-                          { name: 'Floral', value: 40, color: 'bg-pink-400' },
-                          { name: 'Musk', value: 30, color: 'bg-purple-400' },
-                        ].map((note, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <p className="text-xs w-12">{note.name}</p>
-                            <div className="flex-1 h-1.5 bg-gray-700/50 rounded-full overflow-hidden">
-                              <div 
-                                className={`h-full ${note.color} rounded-full`} 
-                                style={{ width: `${note.value}%` }}
-                              ></div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+                <motion.div 
+                  className="p-6 md:p-8 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <Image
+                    src="/images/skin-analysis.svg"
+                    alt="Skin analysis and scent profile"
+                    width={270}
+                    height={210}
+                    priority
+                  />
+                </motion.div>
               </motion.div>
             </div>
           </div>
