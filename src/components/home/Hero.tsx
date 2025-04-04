@@ -50,16 +50,16 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div 
           ref={heroRef} 
-          className="flex flex-col lg:flex-row min-h-[calc(100vh-5rem)] md:min-h-screen items-center"
+          className="flex flex-col lg:flex-row min-h-[calc(100vh-5rem)] md:min-h-screen"
         >
           {/* Left content panel */}
-          <div className="w-full lg:flex-1 relative z-10 flex items-center justify-center">
+          <div className="w-full lg:flex-1 relative z-10 flex items-center justify-center lg:justify-center">
             <div 
               ref={contentRef}
-              className="py-8 md:py-12 lg:py-0 w-full max-w-xl text-center lg:text-left lg:pl-12"
+              className="py-16 md:py-24 lg:py-0 w-full lg:max-w-xl lg:pr-0 lg:pl-12"
             >
               <motion.div 
-                className="flex flex-col items-center lg:items-start"
+                className="flex flex-col"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
@@ -80,12 +80,12 @@ export default function Hero() {
                 
                 <motion.p 
                   variants={itemVariants}
-                  className="text-lg md:text-xl text-gray-300 max-w-md mb-6 md:mb-8 leading-relaxed mx-auto lg:mx-0"
+                  className="text-lg md:text-xl text-gray-300 max-w-md mb-6 md:mb-8 leading-relaxed"
                 >
                   Discover fragrances tailored to your unique body chemistry through our innovative AI technology.
                 </motion.p>
                 
-                <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8 md:mb-10 justify-center lg:justify-start">
+                <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-8 md:mb-10">
                   <Button
                     variant="neon"
                     size="lg"
@@ -101,18 +101,18 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Right visual panel - now visible on all screen sizes */}
-          <div className="flex flex-1 relative lg:order-last items-center justify-center mt-4 lg:mt-0">
+          {/* Right visual panel - hidden on small and medium screens (mobile & tablets) */}
+          <div className="hidden lg:flex flex-1 relative order-first lg:order-last items-center justify-center">
             {/* SVG visualization panel */}
             <div 
               ref={floatingImageRef} 
-              className="py-8 w-full max-w-xl lg:pr-12"
+              className="py-16 md:py-24 lg:py-0 w-full lg:max-w-xl lg:pl-0 lg:pr-12"
             >
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-                className="relative w-full max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:ml-auto h-[250px] md:h-[350px] lg:h-[500px] flex items-center justify-center"
+                className="relative w-full max-w-sm md:max-w-md lg:max-w-lg ml-auto h-[300px] md:h-[400px] lg:h-[500px] flex items-center justify-end"
               >
                 <motion.div 
                   className="p-6 md:p-8 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
@@ -125,11 +125,45 @@ export default function Hero() {
                     width={270}
                     height={210}
                     priority
-                    className="w-full max-w-[200px] sm:max-w-[250px] md:max-w-[270px] h-auto mx-auto"
+                    className="w-full h-auto"
                   />
                 </motion.div>
               </motion.div>
             </div>
+          </div>
+
+          {/* Mobile-friendly visualization for small and medium screens */}
+          <div className="lg:hidden flex flex-col items-center justify-center py-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative w-full max-w-xs mx-auto"
+            >
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                {[1, 2, 3].map((item) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 * item }}
+                    className="aspect-square bg-indigo-900/30 backdrop-blur-sm rounded-lg border border-indigo-800/30 p-4 flex items-center justify-center"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-indigo-400 animate-pulse" />
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-center"
+              >
+                <p className="text-sm text-gray-300 mb-2">AI-Powered Scent</p>
+                <div className="h-1 w-24 mx-auto bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400 rounded-full" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
