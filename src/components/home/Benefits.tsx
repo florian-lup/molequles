@@ -4,8 +4,6 @@ import { FiUser, FiClock, FiShield, FiFeather } from 'react-icons/fi';
 import { motion, useInView } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
-import ContentGrid from '@/components/ui/ContentGrid';
-import FeatureCard from '@/components/ui/FeatureCard';
 
 export default function Benefits() {
   const benefits = [
@@ -54,7 +52,7 @@ export default function Benefits() {
           badgeBg="bg-indigo-900/50"
         />
         
-        <ContentGrid columns={2} gap="large" equalHeight>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 h-full">
           {benefits.map((benefit, index) => {
             const ref = useRef<HTMLDivElement>(null);
             const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -66,24 +64,21 @@ export default function Benefits() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
+                className="group h-full"
               >
-                <FeatureCard
-                  title={benefit.title}
-                  description={benefit.description}
-                  icon={benefit.icon}
-                  className="border border-gray-800 bg-gray-900/40 backdrop-blur-sm group-hover:bg-gray-800/40"
-                  iconBg="bg-indigo-900/50 backdrop-blur-sm border border-indigo-800/50 group-hover:bg-indigo-600/50"
-                  iconColor="text-indigo-400 group-hover:text-white"
-                  titleColor="text-white group-hover:text-indigo-300"
-                  descriptionColor="text-gray-400 group-hover:text-gray-300"
-                  variant="outline"
-                  clickable
-                />
+                <div className="p-4 sm:p-5 md:p-6 rounded-xl border border-gray-800 bg-gray-900/40 backdrop-blur-sm group-hover:bg-gray-800/40 cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-md h-full">
+                  <div className="inline-flex items-center justify-center p-2 sm:p-3 mb-4 sm:mb-5 bg-indigo-900/50 backdrop-blur-sm border border-indigo-800/50 group-hover:bg-indigo-600/50 rounded-lg">
+                    <div className="text-indigo-400 group-hover:text-white text-lg sm:text-xl">{benefit.icon}</div>
+                  </div>
+                  
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white group-hover:text-indigo-300">{benefit.title}</h3>
+                  
+                  <p className="text-gray-400 group-hover:text-gray-300 text-sm sm:text-base leading-relaxed">{benefit.description}</p>
+                </div>
               </motion.div>
             );
           })}
-        </ContentGrid>
+        </div>
       </div>
     </Section>
   );

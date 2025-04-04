@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 
@@ -58,15 +57,11 @@ export default function Header() {
             href="/" 
             className="relative z-10"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center"
-            >
+            <div className="flex items-center">
               <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
                 Molequles
               </span>
-            </motion.div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -111,10 +106,7 @@ export default function Header() {
                 >
                   {item.name}
                   {(activePath === item.href || (activePath === '/' && item.href === '/')) && (
-                    <motion.span 
-                      layoutId="activeIndicator"
-                      className="absolute inset-x-3 -bottom-px h-px bg-gradient-to-r from-indigo-400 to-pink-400"
-                    />
+                    <span className="absolute inset-x-3 -bottom-px h-px bg-gradient-to-r from-indigo-400 to-pink-400" />
                   )}
                 </Link>
               );
@@ -152,74 +144,66 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden"
-          >
-            <div className="pt-2 pb-4 bg-gray-900/95 backdrop-blur-md border-t border-gray-800">
-              <div className="px-4 space-y-1 max-h-[70vh] overflow-y-auto">
-                {navigation.map((item) => {
-                  // Mobile submenu items
-                  if (item.submenu) {
-                    return (
-                      <div key={item.name} className="py-2">
-                        <div className="px-3 py-2 text-gray-300 font-medium">
-                          {item.name}
-                        </div>
-                        <div className="pl-5 space-y-1 border-l border-gray-700">
-                          {item.submenu.map((subitem) => (
-                            <Link
-                              key={subitem.name}
-                              href={subitem.href}
-                              onClick={() => setIsMenuOpen(false)}
-                              className="block px-3 py-2 text-sm text-gray-400 hover:text-white"
-                            >
-                              {subitem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  }
-                  
-                  // Regular mobile nav item
+      {isMenuOpen && (
+        <div className="lg:hidden">
+          <div className="pt-2 pb-4 bg-gray-900/95 backdrop-blur-md border-t border-gray-800">
+            <div className="px-4 space-y-1 max-h-[70vh] overflow-y-auto">
+              {navigation.map((item) => {
+                // Mobile submenu items
+                if (item.submenu) {
                   return (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`block px-3 py-2 text-base font-medium ${
-                        (activePath === item.href || (activePath === '/' && item.href === '/')) 
-                          ? 'text-white bg-gray-800/50 rounded-md' 
-                          : 'text-gray-300 hover:text-white hover:bg-gray-800/30 rounded-md'
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
+                    <div key={item.name} className="py-2">
+                      <div className="px-3 py-2 text-gray-300 font-medium">
+                        {item.name}
+                      </div>
+                      <div className="pl-5 space-y-1 border-l border-gray-700">
+                        {item.submenu.map((subitem) => (
+                          <Link
+                            key={subitem.name}
+                            href={subitem.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="block px-3 py-2 text-sm text-gray-400 hover:text-white"
+                          >
+                            {subitem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   );
-                })}
+                }
                 
-                <div className="pt-4">
-                  <Button
-                    variant="neon"
-                    shape="pill"
-                    fullWidth
-                    href="/get-started"
+                // Regular mobile nav item
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
                     onClick={() => setIsMenuOpen(false)}
+                    className={`block px-3 py-2 text-base font-medium ${
+                      (activePath === item.href || (activePath === '/' && item.href === '/')) 
+                        ? 'text-white bg-gray-800/50 rounded-md' 
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800/30 rounded-md'
+                    }`}
                   >
-                    Get Started
-                  </Button>
-                </div>
+                    {item.name}
+                  </Link>
+                );
+              })}
+              
+              <div className="pt-4">
+                <Button
+                  variant="neon"
+                  shape="pill"
+                  fullWidth
+                  href="/get-started"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Get Started
+                </Button>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </header>
   );
 } 

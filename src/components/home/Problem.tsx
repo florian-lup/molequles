@@ -5,8 +5,6 @@ import { FiRefreshCw, FiClock, FiAlertTriangle, FiSearch } from 'react-icons/fi'
 import { motion, useInView } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
-import ContentGrid from '@/components/ui/ContentGrid';
-import Container from '@/components/ui/Container';
 
 // Frustration card component with hover effects
 const FrustrationCard = ({ icon, title, description, index }: any) => {
@@ -114,7 +112,7 @@ export default function Problem() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
       </div>
       
-      <Container>
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div ref={ref} className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -143,7 +141,7 @@ export default function Problem() {
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/10 rounded-2xl"></div>
                 <div className="bg-gray-950/80 backdrop-blur-sm rounded-2xl p-6 border border-indigo-800/30 relative">
                   <h3 className="text-xl font-semibold text-indigo-300 mb-6">Common Frustrations</h3>
-                  <ContentGrid columns={2} gap="medium">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                     {frustrations.map((item, index) => (
                       <FrustrationCard
                         key={index}
@@ -153,7 +151,7 @@ export default function Problem() {
                         index={index}
                       />
                     ))}
-                  </ContentGrid>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -172,7 +170,7 @@ export default function Problem() {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </Section>
   );
 } 

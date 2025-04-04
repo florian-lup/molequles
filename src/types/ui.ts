@@ -39,36 +39,6 @@ export interface SectionProps {
   fullWidth?: boolean;
 }
 
-export interface FeatureCardProps {
-  icon: ReactNode;
-  title: string;
-  description: string;
-  iconBg?: string;
-  iconColor?: string;
-  titleColor?: string;
-  descriptionColor?: string;
-  className?: string;
-  variant?: 'default' | 'elevated' | 'outline' | 'filled';
-  clickable?: boolean;
-}
-
-export interface ContentGridProps {
-  children: ReactNode;
-  columns?: 1 | 2 | 3 | 4;
-  gap?: 'small' | 'medium' | 'large' | 'xlarge';
-  className?: string;
-  equalHeight?: boolean;
-  center?: boolean;
-  responsive?: boolean;
-}
-
-export interface ContainerProps {
-  children: ReactNode;
-  className?: string;
-  size?: 'small' | 'default' | 'large' | 'full';
-  padding?: boolean;
-}
-
 export interface ButtonProps {
   children: ReactNode;
   href?: string;

@@ -6,7 +6,6 @@ import { motion, useInView } from 'framer-motion';
 import { FiZap, FiTarget, FiDroplet, FiCode, FiRefreshCw } from 'react-icons/fi';
 import { StepProps } from '@/types/components';
 import Section from '@/components/ui/Section';
-import Container from '@/components/ui/Container';
 import SectionHeader from '@/components/ui/SectionHeader';
 
 // Interface for particle data
@@ -168,7 +167,7 @@ export default function HowItWorks() {
         <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
       </div>
       
-      <Container>
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div ref={ref} className="relative">
           <SectionHeader
             title=""
@@ -190,7 +189,7 @@ export default function HowItWorks() {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </Section>
   );
 } 

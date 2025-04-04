@@ -5,7 +5,6 @@ import { FiCode, FiUser, FiDroplet, FiTrendingUp } from 'react-icons/fi';
 import { motion, useInView } from 'framer-motion';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
-import Container from '@/components/ui/Container';
 
 // Feature card with hover effects
 const FeatureIcon = ({ icon, title, description }: any) => {
@@ -97,7 +96,7 @@ export default function Solution() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
       </div>
       
-      <Container>
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div ref={ref} className="relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -171,7 +170,7 @@ export default function Solution() {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </Section>
   );
 } 

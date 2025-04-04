@@ -6,7 +6,6 @@ import { motion, useInView } from 'framer-motion';
 import { FiMessageCircle, FiStar } from 'react-icons/fi';
 import { TestimonialProps } from '@/types/components';
 import Section from '@/components/ui/Section';
-import Container from '@/components/ui/Container';
 import SectionHeader from '@/components/ui/SectionHeader';
 
 function Testimonial({ quote, name, title, avatar, index }: TestimonialProps & { index: number }) {
@@ -100,7 +99,7 @@ export default function Testimonials() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
       </div>
       
-      <Container>
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div ref={ref} className="relative z-10">
           <SectionHeader
             title=""
@@ -117,7 +116,7 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
-      </Container>
+      </div>
     </Section>
   );
 } 
