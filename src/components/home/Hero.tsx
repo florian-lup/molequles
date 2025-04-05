@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import GradientBorder from '@/components/ui/GradientBorder';
 import { FiArrowRight } from 'react-icons/fi';
+import { div } from 'framer-motion/client';
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -16,7 +17,24 @@ export default function Hero() {
       aria-label="Hero section"
     >
       {/* Gradient borders */}
-      <GradientBorder showTop={false} width="80%" />
+      <GradientBorder showTop={false} />
+      
+      {/* Decorative elements for all screens */}
+      <div className="absolute top-24 right-12 w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/10 blur-2xl"></div>
+      <div className="absolute bottom-24 left-12 w-40 h-40 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/10 blur-2xl"></div>
+      <div className="absolute bottom-24 right-12 w-40 h-40 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/10 blur-2xl"></div>
+      <div className="absolute top-32 left-1/4 w-36 h-36 rounded-full bg-gradient-to-r from-pink-500/10 to-purple-500/10 blur-xl"></div>
+      
+      {/* Animated dots for all screens */}
+      <div className="absolute top-1/3 left-1/4 w-4 h-4 rounded-full bg-pink-400/50 animate-pulse"></div>
+      <div className="absolute top-2/3 right-1/4 w-3 h-3 rounded-full bg-indigo-400/50 animate-pulse"></div>
+      <div className="absolute top-1/2 left-1/2 w-5 h-5 rounded-full bg-cyan-400/50 animate-pulse"></div>
+      <div className="absolute top-1/4 right-1/3 w-2 h-2 rounded-full bg-purple-400/50 animate-pulse-slow"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-3 h-3 rounded-full bg-indigo-300/50 animate-pulse-slow"></div>
+      <div className="absolute top-2/5 left-16 w-2 h-2 rounded-full bg-pink-300/50 animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-16 w-4 h-4 rounded-full bg-cyan-300/50 animate-pulse-slow"></div>
+      <div className="absolute top-3/4 left-10 w-2 h-2 rounded-full bg-indigo-400/50 animate-pulse"></div>
+      <div className="absolute top-16 right-1/4 w-3 h-3 rounded-full bg-pink-400/50 animate-pulse-slow"></div>
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div 
