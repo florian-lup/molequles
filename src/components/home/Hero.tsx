@@ -1,11 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import GradientBorder from '@/components/ui/GradientBorder';
+import SkinAnalysis from '@/components/ui/SkinAnalysis';
 import { FiArrowRight } from 'react-icons/fi';
-import { div } from 'framer-motion/client';
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -43,7 +42,7 @@ export default function Hero() {
         >
           {/* Content panel */}
           <div 
-            className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start mt-12 sm:mt-16 md:mt-20 lg:mt-0 pt-8 pb-12 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 lg:py-0 lg:px-8"
+            className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start mt-12 sm:mt-16 md:mt-20 lg:mt-0 pt-8 pb-12 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 lg:py-0 lg:px-8 lg:pl-16"
           >
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               <h1 
@@ -78,20 +77,16 @@ export default function Hero() {
           {/* Visual panel - visible only on large screens */}
           <div className="hidden lg:flex w-full lg:w-1/2 items-center justify-center py-8 lg:py-0 order-first lg:order-last">
             <div
-              className="relative w-full max-w-md xl:max-w-lg ml-auto mr-4 xl:mr-8 h-[400px] xl:h-[450px] flex items-center justify-end"
+              className="relative w-full max-w-md xl:max-w-lg ml-0 -ml-8 mr-4 xl:mr-4 h-[400px] xl:h-[450px] flex items-center justify-end"
             >
-              <div 
-                className="p-6 xl:p-8 bg-black/30 backdrop-blur-xl rounded-xl border border-indigo-800/30 shadow-xl"
-              >
-                <Image
-                  src="/images/skin-analysis.svg"
-                  alt="Skin analysis and scent profile"
-                  width={270}
-                  height={210}
-                  priority
-                  className="w-full h-auto"
+                <SkinAnalysis
+                  hydration={44}
+                  pH={55}
+                  sebum={40}
+                  citrus={68}
+                  floral={55}
+                  musk={66}
                 />
-              </div>
             </div>
           </div>
         </div>
