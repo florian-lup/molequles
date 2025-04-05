@@ -2,29 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activePath, setActivePath] = useState('');
 
   // Update active path based on current URL
   useEffect(() => {
     setActivePath(window.location.pathname);
-    
-    // Track scroll position to change header style
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -45,20 +34,24 @@ export default function Header() {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'py-2 bg-black/80 backdrop-blur-lg shadow-lg' 
-        : 'py-4 bg-transparent'
-    }`}>
+    <header className="fixed top-0 w-full z-50 py-4 bg-gray-950 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link 
             href="/" 
-            className="relative z-10"
+            className="relative z-10 flex items-center gap-0"
           >
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
+              <Image
+                src="/images/logo.svg"
+                alt="Molequles Logo"
+                width={35}
+                height={35}
+                priority
+                className="-mr-1" /* Negative margin to pull text closer */
+              />
+              <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Molequles
               </span>
             </div>

@@ -49,7 +49,7 @@ export default function Button({
     
     neon: `relative text-white font-medium overflow-hidden isolate 
       before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-700 before:to-indigo-800 before:opacity-100 before:z-[-1]
-      ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:brightness-110 hover:shadow-md'}`,
+      ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:brightness-135'}`,
     
     outline: `bg-transparent border border-gray-300 text-gray-700 ${disabled ? 'opacity-60 cursor-not-allowed' : 'hover:border-indigo-400 hover:text-indigo-600'}`,
   };

@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import { FiArrowRight } from 'react-icons/fi';
 
@@ -29,10 +28,6 @@ export default function Hero() {
             className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start mt-12 sm:mt-16 md:mt-20 lg:mt-0 pt-8 pb-12 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 lg:py-0 lg:px-8"
           >
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-              <div className="mb-4 sm:mb-5 md:mb-6 flex justify-center lg:justify-start">
-                <Badge withPulse color="primary">AI-Powered</Badge>
-              </div>
-              
               <h1 
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 leading-tight"
               >
