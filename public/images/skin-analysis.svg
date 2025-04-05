@@ -17,7 +17,7 @@
   <!-- Hydration -->
   <text x="0" y="50" class="note-name">Hydration</text>
   <rect x="95" y="40" width="205" height="10" class="bar-bg" rx="5" />
-  <rect x="95" y="40" width="174" height="10" class="bar-hydration" rx="5" /> <!-- 85% -->
+  <rect x="95" y="40" width="90" height="10" class="bar-hydration" rx="5" /> <!-- 85% -->
 
   <!-- pH Level -->
   <text x="0" y="85" class="note-name">pH Level</text>
@@ -38,7 +38,7 @@
   <!-- Citrus (from Hydration) -->
   <text x="0" y="205" class="note-name">Citrus</text>
   <rect x="95" y="195" width="205" height="10" class="bar-bg" rx="5" />
-  <rect x="95" y="195" width="174" height="10" class="bar-citrus" rx="5" /> <!-- 85% -->
+  <rect x="95" y="195" width="140" height="10" class="bar-citrus" rx="5" /> <!-- 85% -->
 
   <!-- Floral (from pH) -->
   <text x="0" y="240" class="note-name">Floral</text>
@@ -48,5 +48,5 @@
   <!-- Musk (from Sebum) -->
   <text x="0" y="275" class="note-name">Musk</text>
   <rect x="95" y="265" width="205" height="10" class="bar-bg" rx="5" />
-  <rect x="95" y="265" width="82" height="10" class="bar-musk" rx="5" /> <!-- 40% -->
+  <rect x="95" y="265" width="135" height="10" class="bar-musk" rx="5" /> <!-- 40% -->
 </svg>

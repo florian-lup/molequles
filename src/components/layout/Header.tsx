@@ -58,7 +58,7 @@ export default function Header() {
             className="relative z-10"
           >
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Molequles
               </span>
             </div>
