@@ -40,16 +40,14 @@ export default function Header() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="relative z-10 flex items-center gap-0"
+            className="relative z-10 flex items-center"
           >
             <div className="flex items-center">
-              <Image
-                src="/images/logo.svg"
-                alt="Molequles Logo"
-                width={35}
-                height={35}
-                priority
-                className="-mr-1" /* Negative margin to pull text closer */
+              <Image 
+                src="/icons/molequles-logo.svg" 
+                alt="Molequles Logo" 
+                width={25} 
+                height={25} 
               />
               <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Molequles
