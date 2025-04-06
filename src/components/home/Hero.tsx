@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Button from '@/components/ui/Button';
 import GradientBorder from '@/components/ui/GradientBorder';
-import SkinAnalysis from '@/components/ui/SkinAnalysis';
+import SkinAnalysis from '@/components/ui/decorations/HeroCard';
 import { FiArrowRight } from 'react-icons/fi';
 
 export default function Hero() {
@@ -12,19 +12,18 @@ export default function Hero() {
   return (
     <div 
       id="hero"
-      className="bg-gray-950 relative w-full overflow-hidden text-white py-6 sm:py-8 md:py-10 lg:py-0"
+      className="bg-gray-950 relative w-full h-screen overflow-hidden text-white"
       aria-label="Hero section"
     >
       {/* Gradient borders */}
-      <GradientBorder showTop={false} />
+      <GradientBorder />
       
-      {/* Decorative elements for all screens */}
-      <div className="absolute top-24 right-12 w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/10 blur-2xl"></div>
-      <div className="absolute bottom-24 left-12 w-40 h-40 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/10 blur-2xl"></div>
-      <div className="absolute bottom-24 right-12 w-40 h-40 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/10 blur-2xl"></div>
-      <div className="absolute top-32 left-1/4 w-36 h-36 rounded-full bg-gradient-to-r from-pink-500/10 to-purple-500/10 blur-xl"></div>
+      {/* Decorative elements */}
+      <div className="absolute top-[15%] right-[8%] w-40 h-40 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/10 blur-2xl"></div>
+      <div className="absolute bottom-[40%] left-[5%] w-48 h-48 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/10 blur-2xl"></div>
+      <div className="absolute top-[60%] left-[45%] w-44 h-44 rounded-full bg-gradient-to-r from-pink-500/10 to-purple-500/10 blur-xl"></div>
       
-      {/* Animated dots for all screens */}
+      {/* Animated dots */}
       <div className="absolute top-1/3 left-1/4 w-4 h-4 rounded-full bg-pink-400/50 animate-pulse"></div>
       <div className="absolute top-2/3 right-1/4 w-3 h-3 rounded-full bg-indigo-400/50 animate-pulse"></div>
       <div className="absolute top-1/2 left-1/2 w-5 h-5 rounded-full bg-cyan-400/50 animate-pulse"></div>
@@ -35,14 +34,14 @@ export default function Hero() {
       <div className="absolute top-3/4 left-10 w-2 h-2 rounded-full bg-indigo-400/50 animate-pulse"></div>
       <div className="absolute top-16 right-1/4 w-3 h-3 rounded-full bg-pink-400/50 animate-pulse-slow"></div>
       
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div 
           ref={heroRef} 
-          className="flex flex-col lg:flex-row min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-screen items-center justify-center py-8 sm:py-12 md:py-16 lg:py-0"
+          className="flex flex-col lg:flex-row h-full items-center justify-center"
         >
           {/* Content panel */}
           <div 
-            className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start mt-12 sm:mt-16 md:mt-20 lg:mt-0 pt-8 pb-12 sm:pt-10 sm:pb-16 md:pt-12 md:pb-20 lg:py-0 lg:px-8 lg:pl-16"
+            className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start lg:px-8 lg:pl-16"
           >
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               <h1 
@@ -75,7 +74,7 @@ export default function Hero() {
           </div>
           
           {/* Visual panel - visible only on large screens */}
-          <div className="hidden lg:flex w-full lg:w-1/2 items-center justify-center py-8 lg:py-0 order-first lg:order-last">
+          <div className="hidden lg:flex w-full lg:w-1/2 items-center justify-center order-first lg:order-last">
             <div
               className="relative w-full max-w-md xl:max-w-lg ml-0 -ml-8 mr-4 xl:mr-4 h-[400px] xl:h-[450px] flex items-center justify-end"
             >

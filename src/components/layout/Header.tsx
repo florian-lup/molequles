@@ -114,7 +114,7 @@ export default function Header() {
               shape="pill"
               href="/get-started"
             >
-              Get Started
+              Join Waitlist
             </Button>
           </div>
 

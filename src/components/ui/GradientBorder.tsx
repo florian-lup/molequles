@@ -10,7 +10,7 @@ interface GradientBorderProps {
 }
 
 const GradientBorder: React.FC<GradientBorderProps> = ({
-  showTop = true,
+  showTop = false,
   showBottom = true,
   gradient = 'from-pink-400 via-indigo-400 to-cyan-400',
   className = '',

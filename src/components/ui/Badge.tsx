@@ -6,7 +6,7 @@ export default function Badge({
   icon,
   color = 'default',
   customColors,
-  withPulse = false,
+  withPulse = true,
   className = '',
 }: BadgeProps) {
   // Color schemes
