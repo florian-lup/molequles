@@ -68,7 +68,7 @@ export default function Problem() {
   return (
     <div 
       id="problem" 
-      className="bg-gray-950 relative w-full overflow-hidden text-white py-10 sm:py-14 md:py-20"
+      className="bg-gray-950 relative w-full h-screen flex items-center justify-center overflow-hidden text-white py-10 sm:py-14 md:py-20"
       aria-label="Problem section"
     >
       <GradientBorder />
@@ -86,18 +86,18 @@ export default function Problem() {
         <div className="flex flex-col items-center">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
             <div className="mb-3 sm:mb-4">
-              <Badge color="primary">The Challenge</Badge>
+              <Badge>The Challenge</Badge>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-                Why Traditional
+                Why Generic
               </span>
               <br className="hidden xs:block" />
               <span className="inline xs:hidden"> </span>
               Fragrances Fail
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-              Generic, one-size-fits-all perfumes are mass-produced with standardized formulas, leading to unpredictable results.
+              Traditional perfumes are mass-produced using standardized formulas that overlook individual skin chemistry, leading to inconsistent scents.
             </p>
           </div>
 

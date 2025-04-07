@@ -4,7 +4,7 @@ import { BadgeProps } from '@/types/ui';
 export default function Badge({
   children,
   icon,
-  color = 'default',
+  color = 'primary',
   customColors,
   withPulse = true,
   className = '',
