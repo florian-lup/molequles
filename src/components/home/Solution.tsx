@@ -45,7 +45,7 @@ export default function Solution() {
   return (
     <div 
       id="solution" 
-      className="bg-gray-950 relative w-full min-h-[600px] py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden"
+      className="bg-gray-950 relative w-full min-h-screen py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden flex items-center justify-center"
       aria-label="Solution section"
     >
       <GradientBorder />
