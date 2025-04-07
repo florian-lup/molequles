@@ -68,7 +68,7 @@ export default function Problem() {
   return (
     <div 
       id="problem" 
-      className="bg-gray-950 relative w-full h-screen flex items-center justify-center overflow-hidden text-white py-10 sm:py-14 md:py-20"
+      className="bg-gray-950 relative w-full min-h-screen flex items-center justify-center overflow-hidden text-white py-8 sm:py-12 md:py-16"
       aria-label="Problem section"
     >
       <GradientBorder />
