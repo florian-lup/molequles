@@ -11,7 +11,7 @@ export interface StepProps {
   number: number;
   title: string;
   description: string;
-  image: string;
+  image?: string;
   icon?: ReactNode;
 }
 
