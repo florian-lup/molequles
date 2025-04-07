@@ -5,6 +5,7 @@ import { FiArrowUpRight, FiStar } from 'react-icons/fi';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/Section';
 import Badge from '@/components/ui/Badge';
+import Image from 'next/image';
 
 export default function CTA() {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -72,38 +73,6 @@ export default function CTA() {
               <p className="text-xl text-gray-400 font-light leading-relaxed">
                 Experience a perfume as unique as your DNA. Our AI-powered fragrance technology creates custom scents that evolve with your body chemistry.
               </p>
-              
-              <div className="flex items-center space-x-6">
-                <div className="flex -space-x-2">
-                  {[
-                    '/avatars/user-1.jpg',
-                    '/avatars/user-2.jpg',
-                    '/avatars/user-3.jpg',
-                    '/avatars/user-4.jpg',
-                  ].map((src, i) => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-gray-800 overflow-hidden bg-gray-900">
-                      {/* Placeholder for avatar images */}
-                      <div className={`w-full h-full bg-gradient-to-br ${
-                        i % 4 === 0 ? 'from-indigo-600 to-indigo-700' :
-                        i % 4 === 1 ? 'from-blue-600 to-indigo-700' :
-                        i % 4 === 2 ? 'from-gray-600 to-gray-700' :
-                        'from-indigo-700 to-blue-800'
-                      }`}></div>
-                    </div>
-                  ))}
-                  <div className="w-10 h-10 rounded-full border-2 border-gray-800 bg-indigo-900 flex items-center justify-center text-xs font-medium text-white">
-                    +2K
-                  </div>
-                </div>
-                <div className="text-gray-400">
-                  <div className="flex items-center mb-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <FiStar key={i} className="w-4 h-4 fill-current text-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-sm">From over 2,000 happy customers</p>
-                </div>
-              </div>
             </div>
             
             <Button 
@@ -132,7 +101,14 @@ export default function CTA() {
                 {/* Card header with branding */}
                 <div className="px-6 py-4 border-b border-gray-800/50 flex justify-between items-center">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-700"></div>
+                    <div className="w-8 h-8 rounded-full overflow-hidden">
+                      <Image 
+                        src="/images/logo.svg" 
+                        alt="Molequles Logo" 
+                        width={32} 
+                        height={32}
+                      />
+                    </div>
                     <span className="font-medium text-white">Molequles</span>
                   </div>
                   <div className="text-xs text-gray-300 bg-gray-800/50 backdrop-blur-sm px-2 py-1 rounded">
@@ -144,7 +120,7 @@ export default function CTA() {
                 <div className="flex-1 p-6 flex flex-col">
                   <div className="mb-6">
                     <h3 className="text-white text-xl font-medium mb-2">Your Custom Scent Formula</h3>
-                    <p className="text-gray-400 text-sm">Personalized just for you based on your unique profile</p>
+                    <p className="text-gray-400 text-sm">Personalized just for you based on your profile</p>
                   </div>
                   
                   <div className="flex-1 grid grid-cols-2 gap-3">
@@ -153,7 +129,6 @@ export default function CTA() {
                       { name: 'Floral', percent: 25, color: 'from-indigo-600 to-indigo-700' },
                       { name: 'Woody', percent: 20, color: 'from-gray-600 to-gray-700' },
                       { name: 'Spice', percent: 15, color: 'from-orange-700 to-orange-800' },
-                      { name: 'Musk', percent: 5, color: 'from-indigo-700 to-indigo-800' },
                     ].map((note, i) => (
                       <div key={i} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/30">
                         <div className="mb-2 flex justify-between">
@@ -172,13 +147,11 @@ export default function CTA() {
                   
                   {/* Card footer/CTA */}
                   <div className="mt-6 text-center">
-                    <Button 
-                      variant="glass" 
-                      size="md" 
-                      fullWidth
+                    <div 
+                      className="inline-flex justify-center items-center w-full px-6 py-3 text-white bg-gray-800/50 backdrop-blur-sm rounded-md border border-gray-700/30"
                     >
                       Generate Your Formula
-                    </Button>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -4,7 +4,6 @@ import Problem from "@/components/home/Problem";
 import Solution from "@/components/home/Solution";
 import Benefits from "@/components/home/Benefits";
 import HowItWorks from "@/components/home/HowItWorks";
-import Testimonials from "@/components/home/Testimonials";
 import CTA from "@/components/home/CTA";
 import Footer from "@/components/layout/Footer";
 import { Metadata } from "next";
@@ -24,7 +23,6 @@ export default function Home() {
         <Solution />
         <Benefits />
         <HowItWorks />
-        <Testimonials />
         <CTA />
       </main>
       <Footer />
