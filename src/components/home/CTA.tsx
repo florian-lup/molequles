@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { FiArrowUpRight, FiStar } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/Section';
 import Badge from '@/components/ui/Badge';
@@ -44,21 +44,11 @@ export default function CTA() {
       background="bg-gray-950 relative overflow-hidden"
       spacing="large"
     >
-      {/* Gradient borders */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-800/50 to-transparent"></div>
-      </div>
-      
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="relative z-10">
-            <Badge 
-              icon={<FiStar className="text-indigo-400" />} 
-              withPulse
-              className="mb-6"
-            >
+            <Badge >
               Exclusive Launch Access
             </Badge>
             
@@ -75,16 +65,16 @@ export default function CTA() {
               </p>
             </div>
             
-            <Button 
-              variant="primary"
-              size="lg"
-              icon={<FiArrowUpRight />}
-              iconPosition="right"
-              href="/signup"
-              className="group"
-            >
-              Join Waitlist
-            </Button>
+            <Button
+              variant="neon"
+                size="lg"
+                shape="pill"
+                icon={<FiArrowRight />}
+                iconPosition="right"
+                href="#start-journey"
+                >
+                Join Waitlist
+             </Button>
           </div>
           
           {/* 3D interactive card */}
@@ -103,7 +93,7 @@ export default function CTA() {
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-full overflow-hidden">
                       <Image 
-                        src="/images/logo.svg" 
+                        src="/icons/molequles-logo.svg" 
                         alt="Molequles Logo" 
                         width={32} 
                         height={32}
