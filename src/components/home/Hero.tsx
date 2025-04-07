@@ -3,8 +3,55 @@
 import { useRef } from 'react';
 import Button from '@/components/ui/Button';
 import GradientBorder from '@/components/ui/GradientBorder';
-import SkinAnalysis from '@/components/ui/decorations/HeroCard';
 import { FiArrowRight } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+
+interface BarProps {
+  label: string;
+  value: number;
+  color: string;
+  className?: string;
+  isLast?: boolean;
+}
+
+const ProgressBar: React.FC<BarProps> = ({ label, value, color, className, isLast = false }) => {
+  // Clamp value between 0 and 100
+  const clampedValue = Math.max(0, Math.min(100, value));
+  
+  return (
+    <div className={`flex items-center w-full ${isLast ? 'mb-0' : 'mb-4'} ${className || ''}`}>
+      <div className="flex items-center w-full">
+        <span className="font-sans text-sm text-white/90 w-[70px] flex-shrink-0 font-medium">{label}</span>
+        <div className="relative w-full h-2 flex-grow ml-3 overflow-hidden rounded-md">
+          {/* Background bar with gradient */}
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+          
+          {/* Main continuously animating bar */}
+          <motion.div 
+            className={`absolute inset-y-0 left-0 h-full ${color} rounded-md`}
+            animate={{ 
+              width: [
+                `${clampedValue * 0.2}%`, 
+                `${clampedValue}%`, 
+                `${clampedValue * 0.5}%`,
+                `${clampedValue * 0.8}%`,
+                `${clampedValue * 0.4}%`,
+                `${clampedValue * 0.6}%`
+              ]
+            }}
+            transition={{ 
+              duration: 8,
+              times: [0, 0.3, 0.5, 0.7, 0.85, 1],
+              repeat: Infinity, 
+              ease: "easeInOut",
+              repeatType: "loop"
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -41,7 +88,7 @@ export default function Hero() {
         >
           {/* Content panel */}
           <div 
-            className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start lg:px-8 lg:pl-16 mb-6 sm:mb-8 lg:mb-0"
+            className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start lg:px-8 lg:pl-16 mb-4 xs:mb-6 sm:mb-8 lg:mb-0"
           >
             <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               <h1 
@@ -58,7 +105,7 @@ export default function Hero() {
                 Personalized fragrances engineered with AI technology for your skin chemistry.
               </p>
               
-              <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start mb-6 xs:mb-8 sm:mb-10 lg:mb-0">
                 <Button
                   variant="neon"
                   size="lg"
@@ -74,18 +121,67 @@ export default function Hero() {
           </div>
           
           {/* Visual panel */}
-          <div className="flex w-full lg:w-1/2 items-center justify-center lg:order-last">
-            <div
-              className="relative w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg mx-auto lg:-ml-8 lg:mr-4 xl:mr-4 h-[220px] xs:h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px] xl:h-[450px] flex items-center justify-center lg:justify-end"
-            >
-                <SkinAnalysis
-                  hydration={44}
-                  pH={55}
-                  sebum={40}
-                  citrus={68}
-                  floral={55}
-                  musk={66}
-                />
+          <div className="flex w-full lg:w-1/2 items-center justify-center lg:order-last pt-2 xs:pt-4 sm:pt-6 lg:pt-0">
+            {/* Mobile/Tablet View - Compact Version */}
+            <div className="lg:hidden w-full max-w-[280px] xs:max-w-xs sm:max-w-sm mx-auto">
+              <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-gray-800/50">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center">
+                    <span className="mr-2 text-base">🧪</span>
+                    <h3 className="text-xs font-semibold text-gray-300 uppercase tracking-wide">Your Profile</h3>
+                  </div>
+                  <div className="text-xs text-gray-400">AI Analyzed</div>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-blue-900/30 rounded-lg p-2 text-center">
+                    <div className="text-2xl font-bold text-blue-400">44%</div>
+                    <div className="text-xs text-gray-400">Hydration</div>
+                  </div>
+                  <div className="bg-emerald-900/30 rounded-lg p-2 text-center">
+                    <div className="text-2xl font-bold text-emerald-400">55%</div>
+                    <div className="text-xs text-gray-400">pH Level</div>
+                  </div>
+                  <div className="bg-yellow-900/30 rounded-lg p-2 text-center">
+                    <div className="text-2xl font-bold text-yellow-400">68%</div>
+                    <div className="text-xs text-gray-400">Citrus</div>
+                  </div>
+                  <div className="bg-purple-900/30 rounded-lg p-2 text-center">
+                    <div className="text-2xl font-bold text-purple-400">66%</div>
+                    <div className="text-xs text-gray-400">Musk</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop View - Detailed Analysis */}
+            <div className="hidden lg:flex relative w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg mx-auto lg:-ml-8 lg:mr-4 xl:mr-4 h-[220px] xs:h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px] xl:h-[450px] items-center justify-center lg:justify-end">
+              <div className="w-full max-w-md bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-gray-800/50">
+                {/* Skin Chemistry Section */}
+                <div>
+                  <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
+                    <span className="mr-2 text-base">🧪</span>
+                    <h3 className="text-xs font-semibold text-gray-300 uppercase tracking-wide">Skin Chemistry</h3>
+                  </div>
+                  <div className="space-y-0.5">
+                    <ProgressBar label="Hydration" value={44} color="bg-blue-400" />
+                    <ProgressBar label="pH Level" value={55} color="bg-emerald-400" />
+                    <ProgressBar label="Sebum" value={40} color="bg-orange-400" isLast />
+                  </div>
+                </div>
+
+                {/* Scent Profile Section */}
+                <div className="mt-5">
+                  <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
+                    <span className="mr-2 text-base">🌸</span>
+                    <h3 className="text-xs font-semibold text-gray-300 uppercase tracking-wide">Scent Profile</h3>
+                  </div>
+                  <div className="space-y-0.5">
+                    <ProgressBar label="Citrus" value={68} color="bg-yellow-400" />
+                    <ProgressBar label="Floral" value={55} color="bg-pink-400" />
+                    <ProgressBar label="Musk" value={66} color="bg-purple-400" isLast />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
