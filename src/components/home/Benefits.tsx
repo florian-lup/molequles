@@ -8,11 +8,12 @@ interface BenefitCardProps {
   icon: string;
   title: string;
   description: string;
+  tags: string[];
   className?: string;
   index: number;
 }
 
-const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, className, index }) => {
+const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, tags, className, index }) => {
   return (
     <div className={`bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col ${className || ''}`}>
       <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 flex items-center border-b border-gray-700/50 pb-1.5">
@@ -20,7 +21,23 @@ const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, className
         <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white truncate">{title}</h3>
       </div>
       
-      <p className="text-xs xs:text-sm sm:text-base text-gray-400 leading-relaxed flex-grow">{description}</p>
+      <p className="text-xs xs:text-sm sm:text-base text-gray-400 leading-relaxed mb-3 xs:mb-4 flex-grow">{description}</p>
+      
+      {/* Tags */}
+      <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 mt-auto">
+        {tags.map((tag, i) => (
+          <span 
+            key={i} 
+            className={`inline-flex items-center px-1.5 xs:px-2 py-0.5 rounded-full text-xs font-medium ${
+              i % 3 === 0 ? 'bg-pink-400/10 text-pink-300' : 
+              i % 3 === 1 ? 'bg-indigo-400/10 text-indigo-300' :
+              'bg-cyan-400/10 text-cyan-300'
+            }`}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
@@ -30,22 +47,26 @@ export default function Benefits() {
     {
       icon: "🔬",
       title: "Personalized Signature Scent",
-      description: "Enjoy a fragrance that is uniquely tailored to your skin's chemistry, creating a scent that feels inherently yours."
+      description: "Enjoy a fragrance that is uniquely tailored to your skin's chemistry, creating a scent that feels inherently yours.",
+      tags: ["Custom formula", "Unique profile", "Signature scent"]
     },
     {
       icon: "⏱️",
       title: "Enhanced Longevity",
-      description: "Benefit from a perfume that performs reliably throughout the day, maintaining its intended balance and evolution on your skin."
+      description: "Benefit from a perfume that performs reliably throughout the day, maintaining its intended balance on your skin.",
+      tags: ["All-day wear", "Stable scent", "Slow release"]
     },
     {
       icon: "🛡️",
       title: "Reduced Allergy Risks",
-      description: "Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing experience."
+      description: "Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing experience.",
+      tags: ["Hypoallergenic", "Skin-safe", "Low irritation"]
     },
     {
       icon: "♻️",
       title: "Sustainability",
-      description: "Save time and money by avoiding endless experimentation through precise formulations tailored exactly to you."
+      description: "Save time and money by avoiding endless experimentation through precise formulations tailored exactly to you.",
+      tags: ["Cost-effective", "Time-saving", "Eco-friendly"]
     }
   ];
 
@@ -99,6 +120,7 @@ export default function Benefits() {
                   icon={benefit.icon}
                   title={benefit.title}
                   description={benefit.description}
+                  tags={benefit.tags}
                 />
               ))}
             </div>
