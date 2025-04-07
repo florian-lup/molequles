@@ -3,6 +3,7 @@
 import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
+import Tag from '@/components/ui/Tag';
 
 interface BenefitCardProps {
   icon: string;
@@ -26,16 +27,7 @@ const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, tags, cla
       {/* Tags */}
       <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 mt-auto">
         {tags.map((tag, i) => (
-          <span 
-            key={i} 
-            className={`inline-flex items-center px-1.5 xs:px-2 py-0.5 rounded-full text-xs font-medium ${
-              i % 3 === 0 ? 'bg-pink-400/10 text-pink-300' : 
-              i % 3 === 1 ? 'bg-indigo-400/10 text-indigo-300' :
-              'bg-cyan-400/10 text-cyan-300'
-            }`}
-          >
-            {tag}
-          </span>
+          <Tag key={i} text={tag} index={i} />
         ))}
       </div>
     </div>
@@ -99,14 +91,14 @@ export default function Benefits() {
             </div>
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 xs:mb-4 sm:mb-5 md:mb-6 leading-tight text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-                AI-Driven
+                Smarter Scents
               </span>
               <br className="hidden xs:block" />
               <span className="inline xs:hidden"> </span>
-              Advantages
+              With Technology
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
-              Experience the advantages of AI-driven perfume creation tailored to your unique body chemistry.
+              Unlock smarter formulations, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
             </p>
           </div>
 

@@ -3,6 +3,7 @@
 import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
+import Tag from '@/components/ui/Tag';
 
 interface SolutionCardProps {
   icon: string;
@@ -25,16 +26,7 @@ const SolutionCard: FC<SolutionCardProps> = ({ icon, title, description, tags, c
       {/* Tags */}
       <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 mt-auto">
         {tags.map((tag, i) => (
-          <span 
-            key={i} 
-            className={`inline-flex items-center px-1.5 xs:px-2 py-0.5 rounded-full text-xs font-medium ${
-              i % 3 === 0 ? 'bg-pink-400/10 text-pink-300' : 
-              i % 3 === 1 ? 'bg-indigo-400/10 text-indigo-300' :
-              'bg-cyan-400/10 text-cyan-300'
-            }`}
-          >
-            {tag}
-          </span>
+          <Tag key={i} text={tag} index={i} />
         ))}
       </div>
     </div>
@@ -76,7 +68,7 @@ export default function Solution() {
               Perfumery
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
-              We've reinvented perfumery using AI and skin analysis to create scents tailored to your unique chemistry.
+              We use AI to analyze skin traits and find perfume ingredients that complement your natural chemistry.
             </p>
           </div>
 

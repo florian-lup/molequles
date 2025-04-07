@@ -3,6 +3,7 @@
 import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
+import Tag from '@/components/ui/Tag';
 
 interface FrustrationCardProps {
   icon: string;
@@ -27,16 +28,7 @@ const FrustrationCard: FC<FrustrationCardProps> = ({ icon, title, description, t
       {/* Tags */}
       <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
         {tags.map((tag, i) => (
-          <span 
-            key={i} 
-            className={`inline-flex items-center px-1.5 xs:px-2 py-0.5 rounded-full text-xs font-medium ${
-              i % 3 === 0 ? 'bg-pink-400/10 text-pink-300' : 
-              i % 3 === 1 ? 'bg-indigo-400/10 text-indigo-300' :
-              'bg-cyan-400/10 text-cyan-300'
-            }`}
-          >
-            {tag}
-          </span>
+          <Tag key={i} text={tag} index={i} />
         ))}
       </div>
     </div>
