@@ -93,8 +93,7 @@ export default function Benefits() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Smarter Scents
               </span>
-              <br className="hidden xs:block" />
-              <span className="inline xs:hidden"> </span>
+              <br/>
               With Technology
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
