@@ -23,9 +23,9 @@ export default function CTA() {
       <div className="absolute top-1/2 right-1/4 w-2 xs:w-3 sm:w-4 md:w-5 h-2 xs:h-3 sm:h-4 md:h-5 rounded-full bg-cyan-400/50"></div>
       
       <div className="mx-auto max-w-7xl w-full px-5 sm:px-8 lg:px-10 relative">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center gap-10 lg:gap-16">
           {/* Left panel - Content with improved spacing */}
-          <div className="w-full max-w-xl lg:w-1/2 text-center lg:text-left">
+          <div className="w-full max-w-xl lg:w-1/2 text-center lg:text-left flex flex-col h-full justify-center py-8 lg:py-16">
             <div className="mb-4 sm:mb-5">
               <Badge>Exclusive Launch Access</Badge>
             </div>
@@ -54,9 +54,9 @@ export default function CTA() {
           </div>
 
           {/* Right panel - Visual card with improved styling */}
-          <div className="w-full lg:w-1/2 flex justify-center mt-12 lg:mt-0">
-            <div className="w-full max-w-md bg-gray-900/50 backdrop-blur-md rounded-xl p-5 xs:p-6 sm:p-7 md:p-8 shadow-2xl border border-gray-800/60">
-              <div className="flex items-center justify-between mb-5">
+          <div className="w-full lg:w-1/2 flex justify-center mt-6 lg:mt-0">
+            <div className="w-full max-w-md bg-gray-900/50 backdrop-blur-md rounded-xl p-4 xs:p-5 sm:p-6 md:p-7 shadow-2xl border border-gray-800/60">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                     Molequles
@@ -65,14 +65,14 @@ export default function CTA() {
                 <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">BETA</span>
               </div>
               
-              <hr className="border-gray-700/50 mb-6" />
+              <hr className="border-gray-700/50 mb-5" />
 
-              <div className="mb-8">
-                <h4 className="text-xl font-semibold text-white mb-3">Your Custom Scent Formula</h4>
-                <p className="text-sm text-gray-300 mb-8">Personalized just for you based on your profile</p>
+              <div className="mb-6">
+                <h4 className="text-xl font-semibold text-white mb-2">Your Custom Scent Formula</h4>
+                <p className="text-sm text-gray-300 mb-6">Personalized just for you based on your profile</p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-gray-800/50 rounded-lg p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="bg-gray-800/50 rounded-lg p-3">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-white/90">Citrus</span>
                       <span className="text-xs font-medium text-gray-400">35%</span>
@@ -81,7 +81,7 @@ export default function CTA() {
                       <div className="h-full bg-blue-400 rounded-full" style={{ width: '35%' }}></div>
                     </div>
                   </div>
-                  <div className="bg-gray-800/50 rounded-lg p-4">
+                  <div className="bg-gray-800/50 rounded-lg p-3">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-white/90">Floral</span>
                       <span className="text-xs font-medium text-gray-400">25%</span>
@@ -90,7 +90,7 @@ export default function CTA() {
                       <div className="h-full bg-pink-400 rounded-full" style={{ width: '25%' }}></div>
                     </div>
                   </div>
-                  <div className="bg-gray-800/50 rounded-lg p-4">
+                  <div className="bg-gray-800/50 rounded-lg p-3">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-white/90">Woody</span>
                       <span className="text-xs font-medium text-gray-400">20%</span>
@@ -99,7 +99,7 @@ export default function CTA() {
                       <div className="h-full bg-amber-400 rounded-full" style={{ width: '20%' }}></div>
                     </div>
                   </div>
-                  <div className="bg-gray-800/50 rounded-lg p-4">
+                  <div className="bg-gray-800/50 rounded-lg p-3">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm font-medium text-white/90">Spice</span>
                       <span className="text-xs font-medium text-gray-400">15%</span>

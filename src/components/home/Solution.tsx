@@ -70,7 +70,7 @@ export default function Solution() {
               Perfumery
             </h2>
             <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
-              We use AI to analyze skin traits and find perfume ingredients that complement your natural chemistry.
+              We use advanced AI to analyze your skin traits and identify perfume ingredients that complement your natural chemistry.
             </p>
           </div>
 
