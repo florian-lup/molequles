@@ -4,7 +4,6 @@ import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
-import { motion } from 'framer-motion';
 import { SolutionDecorations } from '@/components/ui/DecorativeElements';
 
 interface SolutionCardProps {
@@ -34,45 +33,58 @@ const SolutionCard: FC<SolutionCardProps> = ({ icon, title, description, tags, c
   );
 };
 
-// Separate AI Visualization component for better organization
-const AIVisualization = () => (
-  <div className="relative w-40 xs:w-48 sm:w-56 md:w-64 lg:w-72 h-40 xs:h-48 sm:h-56 md:h-64 lg:h-72 rounded-full bg-gradient-to-r from-indigo-500/30 to-pink-500/30 flex items-center justify-center animate-pulse-very-slow">
-    <motion.div 
-      className="absolute w-32 xs:w-40 sm:w-48 md:w-56 lg:w-64 h-32 xs:h-40 sm:h-48 md:h-56 lg:h-64 rounded-full border border-indigo-400/40 flex items-center justify-center"
-      animate={{ rotate: 360 }}
-      transition={{ 
-        duration: 20, 
-        repeat: Infinity, 
-        ease: "linear" 
-      }}
-    >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
-    </motion.div>
-    
-    <motion.div 
-      className="absolute w-24 xs:w-32 sm:w-40 md:w-48 lg:w-56 h-24 xs:h-32 sm:h-40 md:h-48 lg:h-56 rounded-full border border-pink-400/30 flex items-center justify-center"
-      animate={{ rotate: -360 }}
-      transition={{ 
-        duration: 15, 
-        repeat: Infinity, 
-        ease: "linear" 
-      }}
-    >
-      <div className="absolute top-1/4 right-0 w-2 h-2 rounded-full bg-pink-400"></div>
-      <div className="absolute bottom-1/4 left-0 w-2 h-2 rounded-full bg-pink-400"></div>
-      <div className="absolute top-0 left-1/4 w-2 h-2 rounded-full bg-pink-400"></div>
-      <div className="absolute bottom-0 right-1/4 w-2 h-2 rounded-full bg-pink-400"></div>
-    </motion.div>
-    
-    {/* Center icon */}
-    <div className="z-10 w-14 xs:w-16 sm:w-20 md:w-24 h-14 xs:h-16 sm:h-20 md:h-24 rounded-full bg-gray-900/80 backdrop-blur-sm flex items-center justify-center border border-gray-700/50">
-      <span className="text-xl xs:text-2xl sm:text-3xl">🧪</span>
+// New Skin Analysis Card component
+const SkinAnalysisCard = () => {
+  const skinParameters = [
+    { name: 'pH Level', value: 58, color: 'bg-emerald-400', icon: '⚖️' },
+    { name: 'Sebum', value: 42, color: 'bg-purple-400', icon: '🫧' }
+  ];
+
+  const ingredientCompatibility = [
+    { name: 'Floral', compatibility: 76, color: 'bg-pink-400' },
+    { name: 'Woody', compatibility: 68, color: 'bg-amber-400' },
+  ];
+
+  return (
+    <div className="w-full max-w-md bg-gray-900/50 backdrop-blur-md rounded-xl p-4 xs:p-5 sm:p-6 md:p-7 shadow-2xl border border-gray-800/60">
+      {/* Removed header as requested */}
+      
+      {/* Skin Parameters Section */}
+      <div className="mb-6">
+        <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wide mb-3">Skin Parameters</h4>
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          {skinParameters.map((param, index) => (
+            <div key={index} className="bg-gray-800/50 rounded-lg p-3 flex items-center">
+              <div className="w-8 h-8 rounded-full bg-gray-700/50 flex items-center justify-center mr-3">
+                <span>{param.icon}</span>
+              </div>
+              <div>
+                <div className="text-xs text-gray-400">{param.name}</div>
+                <div className="text-base font-medium text-white">{param.value}%</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Ingredient Compatibility Section */}
+        <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wide mb-3">Ingredient Compatibility</h4>
+        <div className="space-y-3">
+          {ingredientCompatibility.map((item, index) => (
+            <div key={index} className="bg-gray-800/50 rounded-lg p-3">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-white/90">{item.name}</span>
+                <span className="text-xs font-medium text-gray-400">{item.compatibility}%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-700/50 rounded-full overflow-hidden">
+                <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.compatibility}%` }}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Solution data
 const solutionCards = [
@@ -122,11 +134,9 @@ export default function Solution() {
 
           {/* Main content */}
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-            {/* Left side - Visual representation */}
-            <div className="relative flex items-center justify-center order-last lg:order-first mt-8 sm:mt-10 lg:mt-0">
-              <div className="relative w-full max-w-[260px] xs:max-w-xs sm:max-w-sm md:max-w-md h-[220px] xs:h-[260px] sm:h-[300px] md:h-[350px] flex items-center justify-center">
-                <AIVisualization />
-              </div>
+            {/* Left side - Skin Analysis Card */}
+            <div className="relative flex items-center justify-center lg:justify-start order-last lg:order-first mt-8 sm:mt-10 lg:mt-0">
+              <SkinAnalysisCard />
             </div>
             
             {/* Right side - Solution cards */}
