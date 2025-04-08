@@ -5,7 +5,7 @@ import GradientBorder from '@/components/ui/GradientBorder';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import { DecorativeElements } from '@/components/ui/DecorativeElements';
+import { HeroDecorations } from '@/components/ui/DecorativeElements';
 
 interface BarProps {
   label: string;
@@ -67,7 +67,7 @@ export default function Hero() {
       <GradientBorder />
       
       {/* Decorative elements */}
-      <DecorativeElements />
+      <HeroDecorations />
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex flex-col lg:flex-row h-full items-center justify-center lg:justify-between py-8 sm:py-10 md:py-12 lg:py-0">
