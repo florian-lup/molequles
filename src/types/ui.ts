@@ -53,4 +53,5 @@ export interface ButtonProps {
   loading?: boolean;
   className?: string;
   ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
 } 

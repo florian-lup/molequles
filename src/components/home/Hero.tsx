@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button';
 import GradientBorder from '@/components/ui/GradientBorder';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useWaitlist } from '@/contexts/WaitlistContext';
 
 interface BarProps {
   label: string;
@@ -55,6 +56,7 @@ const ProgressBar: React.FC<BarProps> = ({ label, value, color, className, isLas
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const { openWaitlist } = useWaitlist();
   
   return (
     <div 
@@ -112,7 +114,7 @@ export default function Hero() {
                   shape="pill"
                   icon={<FiArrowRight />}
                   iconPosition="right"
-                  href="#start-journey"
+                  onClick={openWaitlist}
                 >
                   Join Waitlist
                 </Button>

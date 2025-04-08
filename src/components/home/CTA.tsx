@@ -3,8 +3,11 @@
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { FiArrowRight } from 'react-icons/fi';
+import { useWaitlist } from '@/contexts/WaitlistContext';
 
 export default function CTA() {
+  const { openWaitlist } = useWaitlist();
+  
   return (
     <div 
       id="cta" 
@@ -46,7 +49,7 @@ export default function CTA() {
                 shape="pill"
                 icon={<FiArrowRight />}
                 iconPosition="right"
-                href="#start-journey"
+                onClick={openWaitlist}
               >
                 Join Waitlist
               </Button>

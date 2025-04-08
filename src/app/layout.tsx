@@ -1,41 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { WaitlistProvider } from "@/contexts/WaitlistContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    template: "%s | Molequles",
-    default: "Molequles | AI-Powered Personalized Perfumes",
-  },
-  description: "Molequles leverages AI to create personalized perfumes based on your unique skin chemistry.",
-  keywords: ["AI perfume", "personalized fragrance", "custom scent", "skin chemistry", "AI-driven perfumery"],
+  title: "Molequles | AI-Powered Personalized Perfumes",
+  description: "Discover personalized fragrances tailored to your unique skin chemistry, powered by AI.",
   authors: [{ name: "Molequles Team" }],
-  creator: "Molequles",
+  keywords: ["personalized perfume", "AI perfumery", "custom fragrance", "skin chemistry"],
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://molequles.com",
     title: "Molequles | AI-Powered Personalized Perfumes",
-    description: "AI-generated personalized perfumes based on your unique skin chemistry",
-    siteName: "Molequles",
+    description: "Discover personalized fragrances tailored to your unique skin chemistry, powered by AI.",
+    images: ["/images/og-image.jpg"],
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Molequles | AI-Powered Personalized Perfumes",
-    description: "AI-generated personalized perfumes based on your unique skin chemistry",
-    creator: "@molequles",
+    description: "Discover personalized fragrances tailored to your unique skin chemistry, powered by AI.",
+    images: ["/images/og-image.jpg"],
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  themeColor: "#0f111a",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -45,11 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <Analytics />
+      <body className={`${inter.className} antialiased bg-gray-950 text-white overflow-x-hidden`}>
+        <WaitlistProvider>
+          {children}
+        </WaitlistProvider>
       </body>
     </html>
   );

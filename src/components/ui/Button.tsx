@@ -20,6 +20,7 @@ interface ButtonProps {
   loading?: boolean;
   className?: string;
   ariaLabel?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function Button({
@@ -36,6 +37,7 @@ export default function Button({
   loading = false,
   className = '',
   ariaLabel,
+  type = 'button',
 }: ButtonProps) {
   // Button styling variants
   const variants = {
@@ -71,7 +73,7 @@ export default function Button({
   };
 
   // Base classes and icon positioning
-  const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-60';
+  const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer';
   const widthClass = fullWidth ? 'w-full' : '';
   const iconClasses = 'flex items-center';
   const iconSpacing = icon ? (iconPosition === 'left' ? 'mr-1 sm:mr-2' : 'ml-1 sm:ml-2') : '';
@@ -123,6 +125,7 @@ export default function Button({
         disabled={disabled || loading} 
         className={buttonClasses}
         aria-label={ariaLabel}
+        type={type}
       >
         <MotionComponent {...motionProps} className="flex items-center">
           {content}

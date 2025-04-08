@@ -5,10 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
+import { useWaitlist } from '@/contexts/WaitlistContext';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activePath, setActivePath] = useState('');
+  const { openWaitlist } = useWaitlist();
 
   // Update active path based on current URL
   useEffect(() => {
@@ -110,7 +112,7 @@ export default function Header() {
               variant="neon"
               size="sm"
               shape="pill"
-              href="/get-started"
+              onClick={openWaitlist}
             >
               Join Waitlist
             </Button>
@@ -185,10 +187,12 @@ export default function Header() {
                   variant="neon"
                   shape="pill"
                   fullWidth
-                  href="/get-started"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    openWaitlist();
+                  }}
                 >
-                  Get Started
+                  Join Waitlist
                 </Button>
               </div>
             </div>

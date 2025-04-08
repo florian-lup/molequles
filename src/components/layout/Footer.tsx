@@ -188,21 +188,6 @@ export default function Footer() {
               </div>
             ))}
           </div>
-          
-          {/* App download links */}
-          <div className="col-span-2 md:col-span-6 lg:col-span-1 flex flex-col justify-start">
-            <h3 className="text-gray-300 font-semibold mb-4 text-sm tracking-wider uppercase">
-              Download App
-            </h3>
-            <div className="space-y-2">
-              <a href="#" className="inline-block">
-                <img src="/apple-app-store.svg" alt="Download on the App Store" className="h-10" />
-              </a>
-              <a href="#" className="inline-block">
-                <img src="/google-play.svg" alt="Get it on Google Play" className="h-10" />
-              </a>
-            </div>
-          </div>
         </div>
         
         {/* Bottom copyright section */}
