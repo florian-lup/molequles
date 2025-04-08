@@ -72,8 +72,8 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex flex-col lg:flex-row h-full items-center justify-center lg:justify-between py-8 sm:py-10 md:py-12 lg:py-0">
           {/* Content panel */}
-          <div className="w-full lg:w-1/2 relative z-10 flex items-center justify-center lg:justify-start mb-4 xs:mb-6 sm:mb-8 lg:mb-0">
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+          <div className="w-full lg:w-1/2 relative z-10 flex items-center justify-center mb-4 xs:mb-6 sm:mb-8 lg:mb-0">
+            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto text-center lg:text-left">
               <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">Scientifically</span>
                 <br />
@@ -87,7 +87,7 @@ export default function Hero() {
               <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start mb-6 xs:mb-8 sm:mb-10 lg:mb-0">
                 <Button
                   variant="neon"
-                  size="lg"
+                  size="md"
                   shape="pill"
                   icon={<FiArrowRight />}
                   iconPosition="right"
@@ -100,7 +100,7 @@ export default function Hero() {
           </div>
           
           {/* Visual panel */}
-          <div className="flex w-full lg:w-1/2 items-center justify-center lg:justify-end pt-2 xs:pt-4 sm:pt-6 lg:pt-0">
+          <div className="flex w-full lg:w-1/2 items-center justify-center pt-2 xs:pt-4 sm:pt-6 lg:pt-0">
             <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-gray-800/50">
               {/* Skin Chemistry Section - Grid layout */}
               <div className="mb-5">
