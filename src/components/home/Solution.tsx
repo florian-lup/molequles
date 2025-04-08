@@ -81,7 +81,7 @@ const SkinAnalysisCard = () => {
 
 export default function Solution() {
   return (
-    <div 
+    <section 
       id="solution" 
       className="bg-gray-950 relative w-full min-h-[90vh] sm:min-h-screen py-12 xs:py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 overflow-hidden flex items-center justify-center"
       aria-label="Solution section"
@@ -107,6 +107,6 @@ export default function Solution() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
