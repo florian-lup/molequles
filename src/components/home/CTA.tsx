@@ -49,7 +49,7 @@ const FormulaBreakdown = () => {
       
       <div className="w-full bg-gray-800/40 rounded-lg p-3 text-center pointer-events-none">
         <span className="text-sm font-medium text-white">
-          Generate Your Formula
+          Your Personalized Scent
         </span>
       </div>
     </div>
@@ -87,7 +87,7 @@ export default function CTA() {
             <div className="flex justify-center lg:justify-start">
               <Button
                 variant="neon"
-                size="lg"
+                size="md"
                 shape="pill"
                 icon={<FiArrowRight />}
                 iconPosition="right"

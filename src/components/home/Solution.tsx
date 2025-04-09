@@ -101,7 +101,7 @@ export default function Solution() {
             </h3>
           </div>
 
-          {/* Main content - Single full-width panel */}
+          {/* Main content */}
           <div className="w-full flex justify-center">
             <SkinAnalysisCard />
           </div>
