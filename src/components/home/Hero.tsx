@@ -63,7 +63,7 @@ export default function Hero() {
       <GradientBorder />
       <HeroDecorations />
       
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between py-8 sm:py-10 md:py-12 lg:py-0">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:flex-row items-center justify-center lg:gap-x-12 py-8 sm:py-10 md:py-12 lg:py-0">
         {/* Left panel */}
         <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg relative z-10 mb-4 xs:mb-6 sm:mb-8 lg:mb-0 text-left">
           <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
@@ -91,7 +91,7 @@ export default function Hero() {
         </div>
         
         {/* Right panel */}
-        <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 xs:p-5 sm:p-6 shadow-xl border border-gray-800/50">
+        <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-md bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 xs:p-5 sm:p-6 shadow-xl border border-gray-800/50">
           {/* Skin Chemistry Section */}
           <div className="mb-5">
             <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
@@ -100,15 +100,15 @@ export default function Hero() {
             </div>
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-blue-900/30 rounded-lg p-2 text-center">
-                <div className="text-2xl font-bold text-blue-400">44%</div>
+                <div className="text-xl font-bold text-blue-400">44%</div>
                 <div className="text-xs text-gray-400">Hydration</div>
               </div>
               <div className="bg-emerald-900/30 rounded-lg p-2 text-center">
-                <div className="text-2xl font-bold text-emerald-400">55%</div>
+                <div className="text-xl font-bold text-emerald-400">55%</div>
                 <div className="text-xs text-gray-400">pH Level</div>
               </div>
               <div className="bg-purple-900/30 rounded-lg p-2 text-center">
-                <div className="text-2xl font-bold text-purple-400">40%</div>
+                <div className="text-xl font-bold text-purple-400">40%</div>
                 <div className="text-xs text-gray-400">Sebum</div>
               </div>
             </div>
