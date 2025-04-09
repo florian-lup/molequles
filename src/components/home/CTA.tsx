@@ -62,7 +62,7 @@ export default function CTA() {
   return (
     <div 
       id="cta" 
-      className="bg-gray-950 relative w-full min-h-screen py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden flex items-center justify-center"
+      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
       aria-label="Call to action section"
     >
       <CTADecorations />

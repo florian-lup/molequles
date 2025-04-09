@@ -57,7 +57,7 @@ export default function Hero() {
   return (
     <section 
       id="hero"
-      className="bg-gray-950 relative w-full min-h-[600px] h-[100svh] overflow-hidden text-white"
+      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
       aria-label="Hero section"
     >
       <GradientBorder />
@@ -66,7 +66,7 @@ export default function Hero() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex flex-col lg:flex-row items-center justify-center lg:gap-x-12 py-8 sm:py-10 md:py-12 lg:py-0">
         {/* Left panel */}
         <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg relative z-10 mb-4 xs:mb-6 sm:mb-8 lg:mb-0 text-left">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-white">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">Scientifically</span>
             <br />
             <span className="whitespace-nowrap">Crafted Scents</span>

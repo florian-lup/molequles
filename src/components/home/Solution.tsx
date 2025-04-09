@@ -8,7 +8,7 @@ import { SolutionDecorations } from '@/components/ui/DecorativeElements';
 const SkinAnalysisCard = () => {
   const skinParameters = [
     { name: 'pH Level', value: 58, color: 'bg-emerald-900/30', icon: '⚖️' },
-    { name: 'Sebum', value: 42, color: 'bg-purple-900/30', icon: '🫧' },
+    { name: 'Sebum', value: 42, color: 'bg-purple-900/30', icon: '💫' },
     { name: 'Temperature', value: 65, color: 'bg-red-900/30', icon: '🔥' },
     { name: 'Moisture', value: 37, color: 'bg-blue-900/30', icon: '💧' }
   ];
@@ -83,7 +83,7 @@ export default function Solution() {
   return (
     <section 
       id="solution" 
-      className="bg-gray-950 relative w-full min-h-[90vh] sm:min-h-screen py-12 xs:py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 overflow-hidden flex items-center justify-center"
+      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
       aria-label="Solution section"
     >
       <GradientBorder />

@@ -59,7 +59,7 @@ export default function Problem() {
   return (
     <section
       id="problem" 
-      className="bg-gray-950 relative w-full min-h-[550px] h-[100svh] flex items-center justify-center overflow-hidden text-white py-6 xs:py-8 sm:py-12 md:py-16"
+      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
       aria-label="Problem section"
     >
       <GradientBorder />

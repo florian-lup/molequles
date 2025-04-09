@@ -66,7 +66,7 @@ export default function Benefits() {
   return (
     <section
       id="benefits" 
-      className="bg-gray-950 relative w-full min-h-[550px] h-[100svh] flex items-center justify-center overflow-hidden py-6 xs:py-8 sm:py-12 md:py-16"
+      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
       aria-label="Benefits section"
     >
       <GradientBorder />
