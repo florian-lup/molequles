@@ -17,7 +17,7 @@ const Container = ({
   children,
   fullHeight = true,
   maxWidth = '7xl',
-  padding = 'px-4 lg:px-8',
+  padding = 'p-4 md:p-6 lg:p-8',
   margin = 'mx-auto',
 }: ContainerProps) => {
   // Map maxWidth to tailwind class

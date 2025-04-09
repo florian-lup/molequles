@@ -25,8 +25,7 @@ const Section = ({
       id={id}
       className={`
         w-full
-        ${fullScreen ? 'h-screen' : ''} 
-        overflow-hidden
+        ${fullScreen ? 'min-h-screen' : ''} 
         ${background} 
         ${className}`}
       aria-label={ariaLabel}
