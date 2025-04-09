@@ -22,17 +22,17 @@ export default function Hero() {
       <HeroDecorations />
 
       <Container>
-        <div className="flex flex-col justify-center items-center md:flex-row lg:justify-between min-h-screen">
+        <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between min-h-screen">
           {/* Left panel - Marketing copy and CTA */}
-          <div className="w-full md:max-w-md lg:max-w-lg text-left mb-10 md:mb-0">
+          <div className="w-full md:max-w-xl lg:max-w-lg text-left mb-10 lg:mb-0">
             <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Scientifically
               </span>{' '}
-              <br className="hidden md:block" />
+              <br className="hidden lg:block" />
               Crafted Scents
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-2 md:mb-3 lg:mb-4 leading-relaxed">
+            <p className="text-lg md:text-2xl lg:text-2xl text-gray-300 mb-2 md:mb-3 lg:mb-4 leading-relaxed">
               Personalized fragrances engineered with AI technology for your skin chemistry.
             </p>
 
@@ -52,7 +52,7 @@ export default function Hero() {
           </div>
 
           {/* Right panel - Interactive visualization of product features */}
-          <div className="w-full md:max-w-md lg:max-w-lg bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 md:p-4 lg:p-5 border border-gray-800/50">
+          <div className="w-full md:max-w-xl lg:max-w-sm bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 md:p-4 lg:p-5 border border-gray-800/50">
             {/* Skin Chemistry metrics display */}
             <div className="mb-3 md:mb-4 lg:mb-5">
               <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
