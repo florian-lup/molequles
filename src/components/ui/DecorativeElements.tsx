@@ -31,10 +31,8 @@ export const ProblemDecorations = () => (
     {/* Animated dots */}
     <div className="absolute top-1/4 right-1/4 w-2 xs:w-3 sm:w-4 h-2 xs:h-3 sm:h-4 rounded-full bg-indigo-400/50 animate-pulse"></div>
     <div className="absolute bottom-1/4 left-1/3 w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 rounded-full bg-pink-400/50 animate-pulse-slow"></div>
-    <div className="absolute top-1/3 right-1/2 w-2 xs:w-3 sm:w-4 md:w-5 h-2 xs:h-3 sm:h-4 md:h-5 rounded-full bg-purple-400/50 animate-pulse"></div>
     <div className="absolute top-1/3 left-1/4 w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 rounded-full bg-cyan-400/50 animate-pulse-slow"></div>
     <div className="absolute bottom-1/4 right-1/3 w-2 xs:w-3 sm:w-4 h-2 xs:h-3 sm:h-4 rounded-full bg-indigo-300/50 animate-pulse"></div>
-    <div className="absolute top-2/3 left-2/3 w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 rounded-full bg-pink-300/50 animate-pulse-slow"></div>
   </>
 );
 
@@ -50,6 +48,8 @@ export const SolutionDecorations = () => (
     <div className="absolute top-1/3 right-1/4 w-2 xs:w-3 sm:w-4 h-2 xs:h-3 sm:h-4 rounded-full bg-pink-400/50 animate-pulse"></div>
     <div className="absolute top-1/2 left-1/2 w-2 xs:w-3 sm:w-4 md:w-5 h-2 xs:h-3 sm:h-4 md:h-5 rounded-full bg-indigo-400/50 animate-pulse"></div>
     <div className="absolute top-1/4 left-1/3 w-1.5 xs:w-2 h-1.5 xs:h-2 rounded-full bg-purple-400/50 animate-pulse-slow"></div>
+    <div className="absolute top-2/3 left-1/4 w-1.5 xs:w-2 sm:w-3 h-1.5 xs:h-2 sm:h-3 rounded-full bg-pink-300/50 animate-pulse-slow"></div>
+    <div className="absolute bottom-1/4 left-2/3 w-2 xs:w-3 sm:w-4 h-2 xs:h-3 sm:h-4 rounded-full bg-indigo-300/50 animate-pulse"></div>
   </>
 );
 

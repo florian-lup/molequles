@@ -64,36 +64,29 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <div 
+    <section
       id="benefits" 
-      className="bg-gray-950 relative w-full min-h-screen py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden flex items-center justify-center"
+      className="bg-gray-950 relative w-full min-h-[550px] h-[100svh] flex items-center justify-center overflow-hidden py-6 xs:py-8 sm:py-12 md:py-16"
       aria-label="Benefits section"
     >
       <GradientBorder />
       <BenefitsDecorations />
       
-      <div className="mx-auto max-w-7xl w-full px-4 xs:px-5 sm:px-6 lg:px-8 relative">
-        <div className="flex flex-col items-center">
-          {/* Header section with improved spacing */}
-          <div className="text-center max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-14 lg:mb-16">
-            <div className="mb-3 sm:mb-4">
+      <div className="mx-auto max-w-7xl w-full px-3 xs:px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center w-full">
+          {/* Header section */}
+          <div className="text-left w-full mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+            <div className="mb-2 xs:mb-3 sm:mb-4">
               <Badge>Why Molequles</Badge>
             </div>
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 xs:mb-4 sm:mb-5 md:mb-6 leading-tight text-white">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-                Smarter Scents
-              </span>
-              <br/>
-              <span className="whitespace-nowrap">With Technology</span>
-            </h2>
-            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl mx-auto">
-              Unlock smarter formulations, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
-            </p>
+            <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl text-white mb-2 xs:mb-3 leading-relaxed">
+              Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
+            </h3>
           </div>
 
-          {/* Benefits grid with responsive columns and improved spacing */}
-          <div className="w-full max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
+          {/* Benefits Section */}
+          <div className="w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8">
               {benefits.map((benefit, index) => (
                 <BenefitCard
                   key={index}
@@ -107,6 +100,6 @@ export default function Benefits() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
