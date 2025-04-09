@@ -1,7 +1,9 @@
 'use client';
 
 import Button from '@/components/ui/Button';
+import Container from '@/components/ui/Container';
 import GradientBorder from '@/components/ui/GradientBorder';
+import Section from '@/components/ui/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useWaitlist } from '@/contexts/WaitlistContext';
@@ -57,31 +59,29 @@ export default function Hero() {
   const { openWaitlist } = useWaitlist();
 
   return (
-    <section
+    <Section
       id="hero"
-      className="bg-gray-950 w-full h-screen overflow-hidden"
-      aria-label="Hero section"
+      ariaLabel="Hero section"
     >
       <GradientBorder />
       <HeroDecorations />
 
-      <div className="h-full mx-auto max-w-7xl px-4 lg:px-8">
+      <Container>
         <div className="flex flex-col lg:flex-row justify-center lg:justify-between h-full items-center">
           {/* Left panel */}
-          <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg relative z-10 mb-4 xs:mb-6 sm:mb-8 lg:mb-0 text-left">
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-white">
+          <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg text-left mb-10 lg:mb-0">
+            <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold mb-3 lg:mb-5 leading-tight text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Scientifically
-              </span>
-              <br />
-              <span className="whitespace-nowrap">Crafted Scents</span>
+              </span>{' '}
+              <br className="hidden md:block" />
+              Crafted Scents
             </h1>
-
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 mb-5 sm:mb-6 md:mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-3 lg:mb-5 leading-relaxed">
               Personalized fragrances engineered with AI technology for your skin chemistry.
             </p>
 
-            <div className="flex flex-wrap gap-3 sm:gap-4 justify-start mb-6 xs:mb-8 sm:mb-10 lg:mb-0">
+            <div>
               <Button
                 variant="neon"
                 size="md"
@@ -96,7 +96,7 @@ export default function Hero() {
           </div>
 
           {/* Right panel */}
-          <div className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-md bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 xs:p-5 sm:p-6 shadow-xl border border-gray-800/50">
+          <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg bg-gray-900/40 backdrop-blur-sm rounded-xl p-4 border border-gray-800/50">
             {/* Skin Chemistry Section */}
             <div className="mb-5">
               <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
@@ -137,7 +137,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
