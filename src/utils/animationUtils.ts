@@ -3,7 +3,7 @@
  */
 
 import { useMotionValue, useTransform } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 /**
  * Creates animation configuration for progress bars
@@ -97,5 +97,74 @@ export const createPercentageAnimation = (
     animation,
     count,
     rounded
+  };
+};
+
+/**
+ * Creates an animation configuration for highlighting items in a list sequentially
+ * @param isClient - Whether client-side rendering is active
+ * @param itemCount - The total number of items to cycle through
+ * @param accentColor - The background color class for the highlighted item (default is indigo)
+ * @returns Animation configuration with current highlighted index and animation props
+ */
+export const createSequentialHighlight = (
+  isClient: boolean,
+  itemCount: number,
+  accentColor: string = 'bg-indigo-900/30'
+) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  // Function to pick a random item index
+  const selectRandomIndex = useCallback(() => {
+    if (itemCount <= 0) return null;
+    
+    // Pick a random index - we'll handle avoiding duplicates in the effect
+    return Math.floor(Math.random() * itemCount);
+  }, [itemCount]);
+
+  // Animation interval effect
+  useEffect(() => {
+    if (!isClient) return;
+
+    // Set initial random item
+    let initialIndex = selectRandomIndex();
+    setActiveIndex(initialIndex);
+
+    // Set up interval to change highlighted item
+    const intervalId = setInterval(() => {
+      setActiveIndex(prevIndex => {
+        // Avoid selecting the same index twice in a row
+        let newIndex: number;
+        do {
+          newIndex = selectRandomIndex() as number;
+        } while (newIndex === prevIndex && itemCount > 1);
+        
+        return newIndex;
+      });
+    }, 2000); // Change every 2 seconds
+
+    return () => clearInterval(intervalId);
+  }, [isClient, selectRandomIndex, itemCount]);
+
+  // Animation configuration for highlighted item
+  const highlightAnimation = {
+    initial: { opacity: 0.5 },
+    animate: { 
+      opacity: 1,
+      scale: [1, 1.05, 1],
+    },
+    transition: {
+      duration: 1.8,
+      ease: "easeInOut",
+    }
+  };
+
+  return {
+    activeIndex,
+    highlightAnimation,
+    getItemProps: (index: number) => ({
+      className: `${index === activeIndex ? accentColor : 'bg-gray-800/30'} rounded-lg p-2 md:p-3 lg:p-4 flex flex-col justify-between transition-all duration-300`,
+      ...(index === activeIndex ? highlightAnimation : {})
+    })
   };
 };

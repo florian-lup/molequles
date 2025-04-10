@@ -16,8 +16,6 @@ interface WaitlistCtaProps {
   openWaitlist: () => void;
 }
 
-interface ProductFeaturesPanelProps {}
-
 // Marketing message component with CTA button
 const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => (
   <div className="w-full md:max-w-xl lg:max-w-lg text-left mb-10 lg:mb-0">
@@ -149,7 +147,7 @@ const ScentProfileDisplay = () => {
 };
 
 // Container for skin chemistry and scent profile displays
-const ProductFeaturesPanel = ({}: ProductFeaturesPanelProps) => (
+const ProductFeaturesPanel = () => (
   <div className="w-full md:max-w-xl lg:max-w-sm bg-gray-900/40 backdrop-blur-sm rounded-xl p-5 border border-gray-800/50">
     <SkinChemistryDisplay />
     <ScentProfileDisplay />
@@ -166,8 +164,12 @@ export default function Hero() {
 
       <Container>
         <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between min-h-screen">
-          <MarketingMessagePanel openWaitlist={openWaitlist} />
-          <ProductFeaturesPanel />
+          <div className="flex justify-center items-center w-full">
+            <MarketingMessagePanel openWaitlist={openWaitlist} />
+          </div>
+          <div className="flex justify-center items-center w-full">
+            <ProductFeaturesPanel />
+          </div>
         </div>
       </Container>
     </Section>
