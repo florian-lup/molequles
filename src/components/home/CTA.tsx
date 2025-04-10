@@ -4,7 +4,7 @@ import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import { CTADecorations } from '@/components/ui/DecorativeElements';
+import { CTADecorations } from '@/components/ui/decorations/BackgroundCircles';
 
 // Component for the formula breakdown card
 const FormulaBreakdown = () => {

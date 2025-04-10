@@ -2,7 +2,7 @@
 
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
-import { SolutionDecorations } from '@/components/ui/DecorativeElements';
+import { SolutionDecorations } from '@/components/ui/decorations/BackgroundCircles';
 
 // Skin Analysis Card component with enhanced responsiveness
 const SkinAnalysisCard = () => {

@@ -2,13 +2,13 @@
 
 // Import UI components and icons
 import Button from '@/components/ui/Button';
-import Container from '@/components/ui/Container';
+import Container from '@/components/ui/layout/Container';
 import GradientBorder from '@/components/ui/GradientBorder';
-import Section from '@/components/ui/Section';
-import ProgressBar from '@/components/ui/ProgressBar';
+import Section from '@/components/ui/layout/Section';
+import ProgressBar from '@/components/ui/decorations/ProgressBar';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import { HeroDecorations } from '@/components/ui/DecorativeElements';
+import { HeroDecorations } from '@/components/ui/decorations/BackgroundCircles';
 
 // Hero component - Main landing section showcasing the product
 export default function Hero() {

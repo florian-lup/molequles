@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
-import { HowItWorksDecorations } from '@/components/ui/DecorativeElements';
+import { HowItWorksDecorations } from '@/components/ui/decorations/BackgroundCircles';
 
 interface TimelineStepProps {
   step: number;

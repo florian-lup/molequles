@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
-import { ProblemDecorations } from '@/components/ui/DecorativeElements';
+import { ProblemDecorations } from '@/components/ui/decorations/BackgroundCircles';
 
 interface FrustrationCardProps {
   icon: string;
