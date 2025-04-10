@@ -1,86 +1,48 @@
 'use client';
 
+// Import UI components and utilities
 import Button from '@/components/ui/Button';
+import Container from '@/components/ui/layout/Container';
+import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
 import { CTADecorations } from '@/components/ui/decorations/BackgroundCircles';
+import { motion } from 'framer-motion';
+import { useProgressBarAnimation } from '@/utils/animationUtils';
 
-// Component for the formula breakdown card
-const FormulaBreakdown = () => {
-  const formulaElements = [
-    { name: 'Citrus', percentage: 35, color: 'bg-blue-400' },
-    { name: 'Floral', percentage: 25, color: 'bg-pink-400' },
-    { name: 'Woody', percentage: 20, color: 'bg-amber-400' },
-    { name: 'Spice', percentage: 15, color: 'bg-red-400' }
-  ];
-
-  return (
-    <div className="w-full max-w-md bg-gray-900/50 backdrop-blur-md rounded-xl p-4 xs:p-5 sm:p-6 md:p-7 shadow-2xl border border-gray-800/60">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center">
-          <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-            Molequles
-          </h3>
-        </div>
-        <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">BETA</span>
-      </div>
-      
-      <hr className="border-gray-700/50 mb-5" />
-
-      <div className="mb-6">
-        <h4 className="text-xl font-semibold text-white mb-2">Your Custom Scent Formula</h4>
-        <p className="text-sm text-gray-300 mb-6">Personalized based on your profile</p>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {formulaElements.map((element, index) => (
-            <div key={index} className="bg-gray-800/50 rounded-lg p-3">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-white/90">{element.name}</span>
-                <span className="text-xs font-medium text-gray-400">{element.percentage}%</span>
-              </div>
-              <div className="w-full h-2 bg-gray-700/50 rounded-full overflow-hidden">
-                <div className={`h-full ${element.color} rounded-full`} style={{ width: `${element.percentage}%` }}></div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-      <div className="w-full bg-gray-800/40 rounded-lg p-3 text-center pointer-events-none">
-        <span className="text-sm font-medium text-white">
-          Your Perfume
-        </span>
-      </div>
-    </div>
-  );
-};
-
+/**
+ * Call-to-Action section component featuring a waitlist signup
+ */
 export default function CTA() {
   const { openWaitlist } = useWaitlist();
-  
+
+  // Initialize animation properties for each scent component
+  const citrusAnimation = useProgressBarAnimation({ value: 75, color: 'bg-blue-400' });
+  const floralAnimation = useProgressBarAnimation({ value: 55, color: 'bg-pink-400' });
+  const woodyAnimation = useProgressBarAnimation({ value: 65, color: 'bg-amber-400' });
+  const spiceAnimation = useProgressBarAnimation({ value: 50, color: 'bg-red-400' });
+
   return (
-    <div 
-      id="cta" 
-      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
-      aria-label="Call to action section"
-    >
+    <Section id="cta" ariaLabel="Call to action section">
+      {/* Background decorative elements */}
       <CTADecorations />
-      
-      <div className="mx-auto max-w-7xl w-full px-5 sm:px-8 lg:px-10 relative">
-        <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between gap-10 lg:gap-0">
-          {/* Left panel - Content */}
-          <div className="w-full max-w-xl lg:w-1/2 text-center lg:text-left flex flex-col h-full justify-center py-8 lg:py-16 lg:pr-8">
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-4 xs:mb-5 sm:mb-6 md:mb-7 leading-tight text-white">
+
+      <Container>
+        <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between min-h-screen">
+          {/* Left panel - Marketing content */}
+          <div className="w-full md:max-w-xl lg:max-w-lg text-left mb-10 lg:mb-0">
+            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Discover Your
-              </span>
-              <br />
+              </span>{' '}
+              <br className="hidden lg:block" />
               <span className="whitespace-nowrap">Signature Scent</span>
             </h2>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 mb-8 xs:mb-9 sm:mb-10 md:mb-12 max-w-lg mx-auto lg:mx-0">
-              Experience a one-of-a-kind fragrance, expertly personalized with AI technology to match the unique chemistry of your skin.
+            <p className="text-lg md:text-2xl lg:text-2xl text-gray-300 mb-2 md:mb-3 lg:mb-4 leading-relaxed">
+              Join the waitlist for early access to our personalized perfume technology.
             </p>
-            <div className="flex justify-center lg:justify-start">
+            {/* Waitlist signup button */}
+            <div>
               <Button
                 variant="neon"
                 size="md"
@@ -94,12 +56,103 @@ export default function CTA() {
             </div>
           </div>
 
-          {/* Right panel - Visual card */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-6 lg:mt-0">
-            <FormulaBreakdown />
+          {/* Right panel - Interactive formula card */}
+          <div className="w-full md:max-w-xl lg:max-w-sm">
+            {/* Formula breakdown */}
+            <div className="w-full bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 md:p-4 lg:p-5 border border-gray-800/50">
+              {/* Card header */}
+              <div className="flex items-center justify-between mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
+                <div className="flex items-center">
+                  <h3 className="text-xs md:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
+                    Molequles
+                  </h3>
+                </div>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800/50 text-gray-300 border border-gray-700/50">
+                  BETA
+                </span>
+              </div>
+
+              {/* Formula content */}
+              <div className="mb-3 md:mb-4">
+                <h4 className="text-sm md:text-base font-semibold text-white mb-1 md:mb-2">
+                  Custom Scent Formula
+                </h4>
+                <p className="text-xs md:text-sm text-gray-300 mb-3 md:mb-4">
+                  Personalized based on your profile
+                </p>
+
+                {/* Scent components grid */}
+                <div className="grid grid-cols-2 gap-2 md:gap-3">
+                  {/* Citrus component */}
+                  <div className="bg-gray-800/50 rounded-lg p-1.5 md:p-2">
+                    <div className="flex justify-between items-center mb-1 md:mb-1.5">
+                      <span className="text-xs md:text-sm font-medium text-white/90">Citrus</span>
+                    </div>
+                    <div className="relative w-full h-1.5 md:h-2 bg-gray-700/50 rounded-md overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                      <motion.div
+                        className={citrusAnimation.className}
+                        animate={citrusAnimation.animate}
+                        transition={citrusAnimation.transition}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Floral component */}
+                  <div className="bg-gray-800/50 rounded-lg p-1.5 md:p-2">
+                    <div className="flex justify-between items-center mb-1 md:mb-1.5">
+                      <span className="text-xs md:text-sm font-medium text-white/90">Floral</span>
+                    </div>
+                    <div className="relative w-full h-1.5 md:h-2 bg-gray-700/50 rounded-md overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                      <motion.div
+                        className={floralAnimation.className}
+                        animate={floralAnimation.animate}
+                        transition={floralAnimation.transition}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Woody component */}
+                  <div className="bg-gray-800/50 rounded-lg p-1.5 md:p-2">
+                    <div className="flex justify-between items-center mb-1 md:mb-1.5">
+                      <span className="text-xs md:text-sm font-medium text-white/90">Woody</span>
+                    </div>
+                    <div className="relative w-full h-1.5 md:h-2 bg-gray-700/50 rounded-md overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                      <motion.div
+                        className={woodyAnimation.className}
+                        animate={woodyAnimation.animate}
+                        transition={woodyAnimation.transition}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Spice component */}
+                  <div className="bg-gray-800/50 rounded-lg p-1.5 md:p-2">
+                    <div className="flex justify-between items-center mb-1 md:mb-1.5">
+                      <span className="text-xs md:text-sm font-medium text-white/90">Spice</span>
+                    </div>
+                    <div className="relative w-full h-1.5 md:h-2 bg-gray-700/50 rounded-md overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                      <motion.div
+                        className={spiceAnimation.className}
+                        animate={spiceAnimation.animate}
+                        transition={spiceAnimation.transition}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card footer */}
+              <div className="w-full bg-gray-800/40 rounded-lg p-1.5 md:p-2 text-center pointer-events-none">
+                <span className="text-xs md:text-sm font-medium text-white">Get Your Perfume</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Section>
   );
 }

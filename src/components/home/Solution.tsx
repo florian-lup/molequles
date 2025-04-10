@@ -3,6 +3,8 @@
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import { SolutionDecorations } from '@/components/ui/decorations/BackgroundCircles';
+import { motion } from 'framer-motion';
+import { useProgressBarAnimation } from '@/utils/animationUtils';
 
 // Skin Analysis Card component with enhanced responsiveness
 const SkinAnalysisCard = () => {
@@ -13,10 +15,10 @@ const SkinAnalysisCard = () => {
     { name: 'Moisture', value: 37, color: 'bg-blue-900/30', icon: '💧' }
   ];
 
-  const ingredientCompatibility = [
-    { name: 'Floral', compatibility: 76, color: 'bg-pink-400' },
-    { name: 'Woody', compatibility: 68, color: 'bg-amber-400' },
-  ];
+
+  // Get animation props for progress bars
+  const floralAnimation = useProgressBarAnimation({ value: 76, color: 'bg-pink-400' });
+  const woodyAnimation = useProgressBarAnimation({ value: 68, color: 'bg-amber-400' });
 
   return (
     <div className="w-full max-w-full md:max-w-5xl bg-gray-900/50 backdrop-blur-md rounded-xl p-4 xs:p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 shadow-2xl border border-gray-800/60">
@@ -53,22 +55,47 @@ const SkinAnalysisCard = () => {
         <div>
           <h4 className="text-xs xs:text-sm font-medium text-gray-400 mb-3 xs:mb-4">Ingredient Compatibility</h4>
           <div className="space-y-3 xs:space-y-4 mb-4 xs:mb-5 sm:mb-6">
-            {ingredientCompatibility.map((item, index) => (
-              <div key={index} className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
-                <div className="flex justify-between items-center mb-1.5 xs:mb-2">
-                  <div className="flex items-center">
-                    <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-700/50 flex items-center justify-center mr-1.5 xs:mr-2">
-                      <span>{item.name === 'Floral' ? '🌸' : '🌲'}</span>
-                    </div>
-                    <span className="text-xs xs:text-sm font-medium text-white/90">{item.name}</span>
+            {/* Floral compatibility */}
+            <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
+              <div className="flex justify-between items-center mb-1.5 xs:mb-2">
+                <div className="flex items-center">
+                  <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-700/50 flex items-center justify-center mr-1.5 xs:mr-2">
+                    <span>🌸</span>
                   </div>
-                  <span className="text-xs xs:text-sm font-medium text-gray-400">{item.compatibility}%</span>
+                  <span className="text-xs xs:text-sm font-medium text-white/90">Floral</span>
                 </div>
-                <div className="w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-full overflow-hidden">
-                  <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.compatibility}%` }}></div>
-                </div>
+                <span className="text-xs xs:text-sm font-medium text-gray-400">76%</span>
               </div>
-            ))}
+              <div className="relative w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-md overflow-hidden">
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                <motion.div 
+                  className={floralAnimation.className}
+                  animate={floralAnimation.animate}
+                  transition={floralAnimation.transition}
+                />
+              </div>
+            </div>
+
+            {/* Woody compatibility */}
+            <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
+              <div className="flex justify-between items-center mb-1.5 xs:mb-2">
+                <div className="flex items-center">
+                  <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-700/50 flex items-center justify-center mr-1.5 xs:mr-2">
+                    <span>🌲</span>
+                  </div>
+                  <span className="text-xs xs:text-sm font-medium text-white/90">Woody</span>
+                </div>
+                <span className="text-xs xs:text-sm font-medium text-gray-400">68%</span>
+              </div>
+              <div className="relative w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-md overflow-hidden">
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                <motion.div 
+                  className={woodyAnimation.className}
+                  animate={woodyAnimation.animate}
+                  transition={woodyAnimation.transition}
+                />
+              </div>
+            </div>
           </div>
           <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
             Based on your profile, our AI determines which fragrance families will work with your natural chemistry.

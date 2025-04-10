@@ -5,15 +5,21 @@ import Button from '@/components/ui/Button';
 import Container from '@/components/ui/layout/Container';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Section from '@/components/ui/layout/Section';
-import ProgressBar from '@/components/ui/decorations/ProgressBar';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
 import { HeroDecorations } from '@/components/ui/decorations/BackgroundCircles';
+import { motion } from 'framer-motion';
+import { useProgressBarAnimation } from '@/utils/animationUtils';
 
 // Hero component - Main landing section showcasing the product
 export default function Hero() {
   // Access the waitlist modal functionality
   const { openWaitlist } = useWaitlist();
+
+  // Get animation props for each progress bar
+  const citrusAnimation = useProgressBarAnimation({ value: 68, color: 'bg-yellow-400' });
+  const floralAnimation = useProgressBarAnimation({ value: 55, color: 'bg-pink-400' });
+  const muskAnimation = useProgressBarAnimation({ value: 66, color: 'bg-purple-400' });
 
   return (
     <Section id="hero" ariaLabel="Hero section">
@@ -88,9 +94,50 @@ export default function Hero() {
               </div>
               {/* Scent preference bars */}
               <div className="space-y-0.5 md:space-y-1 lg:space-y-1.5">
-                <ProgressBar label="Citrus" value={68} color="bg-yellow-400" />
-                <ProgressBar label="Floral" value={55} color="bg-pink-400" />
-                <ProgressBar label="Musk" value={66} color="bg-purple-400" isLast />
+                {/* Citrus progress bar */}
+                <div className="flex items-center w-full mb-3 md:mb-4">
+                  <span className="font-sans text-xs md:text-sm text-white/90 w-[60px] md:w-[70px] flex-shrink-0 font-medium">
+                    Citrus
+                  </span>
+                  <div className="relative w-full h-1.5 md:h-2 flex-grow ml-2 md:ml-3 overflow-hidden rounded-md">
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                    <motion.div 
+                      className={citrusAnimation.className}
+                      animate={citrusAnimation.animate}
+                      transition={citrusAnimation.transition}
+                    />
+                  </div>
+                </div>
+
+                {/* Floral progress bar */}
+                <div className="flex items-center w-full mb-3 md:mb-4">
+                  <span className="font-sans text-xs md:text-sm text-white/90 w-[60px] md:w-[70px] flex-shrink-0 font-medium">
+                    Floral
+                  </span>
+                  <div className="relative w-full h-1.5 md:h-2 flex-grow ml-2 md:ml-3 overflow-hidden rounded-md">
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                    <motion.div 
+                      className={floralAnimation.className}
+                      animate={floralAnimation.animate}
+                      transition={floralAnimation.transition}
+                    />
+                  </div>
+                </div>
+
+                {/* Musk progress bar */}
+                <div className="flex items-center w-full">
+                  <span className="font-sans text-xs md:text-sm text-white/90 w-[60px] md:w-[70px] flex-shrink-0 font-medium">
+                    Musk
+                  </span>
+                  <div className="relative w-full h-1.5 md:h-2 flex-grow ml-2 md:ml-3 overflow-hidden rounded-md">
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
+                    <motion.div 
+                      className={muskAnimation.className}
+                      animate={muskAnimation.animate}
+                      transition={muskAnimation.transition}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
