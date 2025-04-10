@@ -1,6 +1,5 @@
 'use client';
 
-import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
@@ -30,7 +29,7 @@ const FormulaBreakdown = () => {
 
       <div className="mb-6">
         <h4 className="text-xl font-semibold text-white mb-2">Your Custom Scent Formula</h4>
-        <p className="text-sm text-gray-300 mb-6">Personalized just for you based on your profile</p>
+        <p className="text-sm text-gray-300 mb-6">Personalized based on your profile</p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {formulaElements.map((element, index) => (
@@ -49,7 +48,7 @@ const FormulaBreakdown = () => {
       
       <div className="w-full bg-gray-800/40 rounded-lg p-3 text-center pointer-events-none">
         <span className="text-sm font-medium text-white">
-          Your Personalized Scent
+          Your Perfume
         </span>
       </div>
     </div>
@@ -71,9 +70,6 @@ export default function CTA() {
         <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between gap-10 lg:gap-0">
           {/* Left panel - Content */}
           <div className="w-full max-w-xl lg:w-1/2 text-center lg:text-left flex flex-col h-full justify-center py-8 lg:py-16 lg:pr-8">
-            <div className="mb-4 sm:mb-5">
-              <Badge>Exclusive Launch Access</Badge>
-            </div>
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-4 xs:mb-5 sm:mb-6 md:mb-7 leading-tight text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Discover Your
