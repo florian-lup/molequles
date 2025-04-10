@@ -43,4 +43,4 @@ export function useProgressBarAnimation({ value, color }: ProgressBarAnimationPr
       repeatType: 'loop' as const,
     }
   };
-} 
+}

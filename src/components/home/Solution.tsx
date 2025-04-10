@@ -9,10 +9,10 @@ import { useProgressBarAnimation } from '@/utils/animationUtils';
 // Skin Analysis Card component with enhanced responsiveness
 const SkinAnalysisCard = () => {
   const skinParameters = [
-    { name: 'pH Level', value: 58, color: 'bg-emerald-900/30', icon: '⚖️' },
-    { name: 'Sebum', value: 42, color: 'bg-purple-900/30', icon: '💫' },
-    { name: 'Temperature', value: 65, color: 'bg-red-900/30', icon: '🔥' },
-    { name: 'Moisture', value: 37, color: 'bg-blue-900/30', icon: '💧' }
+    { name: 'pH Level', value: 58, color: 'bg-emerald-900/30', textColor: 'text-emerald-400' },
+    { name: 'Sebum', value: 42, color: 'bg-purple-900/30', textColor: 'text-purple-400' },
+    { name: 'Temperature', value: 65, color: 'bg-red-900/30', textColor: 'text-red-400' },
+    { name: 'Moisture', value: 37, color: 'bg-blue-900/30', textColor: 'text-blue-400' }
   ];
 
 
@@ -25,19 +25,23 @@ const SkinAnalysisCard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 lg:gap-10 xl:gap-12 relative">
         {/* Left side - Skin Parameters Section */}
         <div>
-          <h4 className="text-xs xs:text-sm font-medium text-gray-400 mb-3 xs:mb-4">Your Skin Profile</h4>
-          <div className="grid grid-cols-2 gap-3 xs:gap-4 mb-4 xs:mb-5 sm:mb-6">
+          <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
+            <span className="mr-1.5 md:mr-2 text-sm md:text-base">🧪</span>
+            <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
+              Skin Profile
+            </h3>
+          </div>
+          
+          {/* Percentage Cards */}
+          <div className="grid grid-cols-2 gap-2 md:gap-3 mb-4 xs:mb-5 sm:mb-6">
             {skinParameters.map((param, index) => (
-              <div key={index} className={`${param.color} rounded-lg p-2 xs:p-3 flex items-center justify-center h-[55px] xs:h-[60px] sm:h-[65px]`}>
-                <div className="flex items-center">
-                  <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-700/50 flex items-center justify-center mr-1.5 xs:mr-2">
-                    <span>{param.icon}</span>
-                  </div>
-                  <span className="text-xs xs:text-sm font-medium text-white/90">{param.name}</span>
-                </div>
+              <div key={index} className={`${param.color} rounded-lg p-1.5 md:p-2 text-center`}>
+                <div className={`text-base md:text-lg font-bold ${param.textColor}`}>{param.value}%</div>
+                <div className="text-xs md:text-sm text-gray-400">{param.name}</div>
               </div>
             ))}
           </div>
+          
           <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
             Key skin parameters are analyzed to understand how your skin interacts with different fragrance molecules.
           </p>
@@ -53,7 +57,13 @@ const SkinAnalysisCard = () => {
         
         {/* Right side - Ingredient Compatibility Section */}
         <div>
-          <h4 className="text-xs xs:text-sm font-medium text-gray-400 mb-3 xs:mb-4">Ingredient Compatibility</h4>
+          <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
+            <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
+            <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
+              Ingredient Compatibility
+            </h3>
+          </div>
+          
           <div className="space-y-3 xs:space-y-4 mb-4 xs:mb-5 sm:mb-6">
             {/* Floral compatibility */}
             <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
@@ -64,7 +74,7 @@ const SkinAnalysisCard = () => {
                   </div>
                   <span className="text-xs xs:text-sm font-medium text-white/90">Floral</span>
                 </div>
-                <span className="text-xs xs:text-sm font-medium text-gray-400">76%</span>
+                <span className="text-xs xs:text-sm font-medium text-pink-400">76%</span>
               </div>
               <div className="relative w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-md overflow-hidden">
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
@@ -85,7 +95,7 @@ const SkinAnalysisCard = () => {
                   </div>
                   <span className="text-xs xs:text-sm font-medium text-white/90">Woody</span>
                 </div>
-                <span className="text-xs xs:text-sm font-medium text-gray-400">68%</span>
+                <span className="text-xs xs:text-sm font-medium text-amber-400">68%</span>
               </div>
               <div className="relative w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-md overflow-hidden">
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
