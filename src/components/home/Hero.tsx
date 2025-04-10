@@ -1,23 +1,23 @@
 'use client';
 
-// Imports
+// Core imports and dependencies
 import Button from '@/components/ui/Button';
 import Container from '@/components/ui/layout/Container';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import PercentageCard from '@/components/ui/PercentageCard';
-import ProgressBar from '@/components/ui/ProgressBar';
+import MetricCard from '@/components/ui/hero/MetricCard';
+import ProgressBar from '@/components/ui/hero/ProgressBar';
 
-// Props types
+// Type definitions
 interface WaitlistCtaProps {
   openWaitlist: () => void;
 }
 
 interface ProductFeaturesPanelProps {}
 
-// Marketing content and CTA section
+// Marketing message component with CTA button
 const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => (
   <div className="w-full md:max-w-xl lg:max-w-lg text-left mb-10 lg:mb-0">
     {/* Headline with gradient text */}
@@ -47,64 +47,80 @@ const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => (
   </div>
 );
 
-// Skin chemistry metrics display
-const SkinChemistryDisplay = () => (
-  <div className="mb-3 md:mb-4 lg:mb-5">
-    <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-      <span className="mr-1.5 md:mr-2 text-sm md:text-base">🧪</span>
-      <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-        Skin Chemistry
-      </h3>
+// Displays skin chemistry metrics with animated percentage counters
+const SkinChemistryDisplay = () => {
+  return (
+    <div className="mb-10 lg:mb-6">
+      <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
+        <span className="mr-1.5 md:mr-2 text-sm md:text-base">🧪</span>
+        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
+          Skin Chemistry
+        </h3>
+      </div>
+      <div className="grid grid-cols-3 gap-2 md:gap-3">
+        <MetricCard 
+          value={44}
+          label="Hydration"
+          bgColorClass="bg-cyan-900/30"
+          textColorClass="text-cyan-400"
+        />
+        <MetricCard 
+          value={55}
+          label="pH Level"
+          bgColorClass="bg-amber-900/30"
+          textColorClass="text-amber-400"
+        />
+        <MetricCard 
+          value={40}
+          label="Sebum"
+          bgColorClass="bg-rose-900/30"
+          textColorClass="text-rose-400"
+        />
+      </div>
     </div>
-    <div className="grid grid-cols-3 gap-2 md:gap-3">
-      <PercentageCard
-        value={44}
-        label="Hydration"
-        bgColor="bg-blue-900/30"
-        textColor="text-blue-400"
-      />
-      <PercentageCard
-        value={55}
-        label="pH Level"
-        bgColor="bg-emerald-900/30"
-        textColor="text-emerald-400"
-      />
-      <PercentageCard
-        value={40}
-        label="Sebum"
-        bgColor="bg-purple-900/30"
-        textColor="text-purple-400"
-      />
-    </div>
-  </div>
-);
+  );
+};
 
-// Scent profile visualization
-const ScentProfileVisualizer = () => (
-  <div>
-    <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-      <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
-      <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-        Scent Profile
-      </h3>
+// Displays scent profile with animated progress bars
+const ScentProfileDisplay = () => {
+  return (
+    <div>
+      <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
+        <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
+        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
+          Scent Profile
+        </h3>
+      </div>
+      <div className="space-y-2">
+        <ProgressBar 
+          label="Citrus"
+          value={68}
+          barColorClass="bg-yellow-400"
+        />
+        <ProgressBar 
+          label="Floral"
+          value={55}
+          barColorClass="bg-pink-400"
+        />
+        <ProgressBar 
+          label="Musk"
+          value={66}
+          barColorClass="bg-purple-400"
+        />
+      </div>
     </div>
-    <div className="space-y-0.5 md:space-y-1 lg:space-y-1.5">
-      <ProgressBar label="Citrus" value={68} color="bg-yellow-400" />
-      <ProgressBar label="Floral" value={55} color="bg-pink-400" />
-      <ProgressBar label="Musk" value={66} color="bg-purple-400" />
-    </div>
-  </div>
-);
+  );
+};
 
-// Interactive product metrics panel
+// Container for skin chemistry and scent profile displays
 const ProductFeaturesPanel = ({}: ProductFeaturesPanelProps) => (
-  <div className="w-full md:max-w-xl lg:max-w-sm bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 md:p-4 lg:p-5 border border-gray-800/50">
+  <div className="w-full md:max-w-xl lg:max-w-sm bg-gray-900/40 backdrop-blur-sm rounded-xl p-5 border border-gray-800/50">
     <SkinChemistryDisplay />
-    <ScentProfileVisualizer />
+    <ScentProfileDisplay />
   </div>
 );
 
-// Main hero section
+// Main hero section combining marketing message and product features
 export default function Hero() {
   const { openWaitlist } = useWaitlist();
 

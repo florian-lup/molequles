@@ -4,7 +4,6 @@ import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
-import { BenefitsDecorations } from '@/components/ui/decorations/BackgroundCircles';
 
 interface BenefitCardProps {
   icon: string;
@@ -82,7 +81,6 @@ export default function Benefits() {
       aria-label="Benefits section"
     >
       <GradientBorder />
-      <BenefitsDecorations />
       
       <div className="mx-auto max-w-7xl w-full px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center w-full">

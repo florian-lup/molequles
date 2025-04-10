@@ -6,7 +6,6 @@ import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import ProgressBar from '@/components/ui/ProgressBar';
 
 // Props types
 interface WaitlistCtaProps {
@@ -71,49 +70,33 @@ const ScentIngredientGrid = () => (
     <div className="grid grid-cols-2 gap-2 md:gap-3">
       {/* Citrus component */}
       <div className="bg-gray-800/50 rounded-lg p-2 md:p-3">
-        <div className="space-y-0.5 md:space-y-1">
-          <ProgressBar 
-            label="Citrus" 
-            value={75} 
-            color="bg-blue-400"
-            marginClassName="mb-0" 
-          />
+        <div className="flex justify-between items-center">
+          <span className="text-xs md:text-sm text-gray-300">Citrus</span>
+          <span className="text-xs md:text-sm font-medium text-blue-400">75%</span>
         </div>
       </div>
 
       {/* Floral component */}
       <div className="bg-gray-800/50 rounded-lg p-2 md:p-3">
-        <div className="space-y-0.5 md:space-y-1">
-          <ProgressBar 
-            label="Floral" 
-            value={55} 
-            color="bg-pink-400"
-            marginClassName="mb-0" 
-          />
+        <div className="flex justify-between items-center">
+          <span className="text-xs md:text-sm text-gray-300">Floral</span>
+          <span className="text-xs md:text-sm font-medium text-pink-400">55%</span>
         </div>
       </div>
 
       {/* Woody component */}
       <div className="bg-gray-800/50 rounded-lg p-2 md:p-3">
-        <div className="space-y-0.5 md:space-y-1">
-          <ProgressBar 
-            label="Woody" 
-            value={65} 
-            color="bg-amber-400"
-            marginClassName="mb-0" 
-          />
+        <div className="flex justify-between items-center">
+          <span className="text-xs md:text-sm text-gray-300">Woody</span>
+          <span className="text-xs md:text-sm font-medium text-amber-400">65%</span>
         </div>
       </div>
 
       {/* Spice component */}
       <div className="bg-gray-800/50 rounded-lg p-2 md:p-3">
-        <div className="space-y-0.5 md:space-y-1">
-          <ProgressBar 
-            label="Spice" 
-            value={50} 
-            color="bg-red-400"
-            marginClassName="mb-0" 
-          />
+        <div className="flex justify-between items-center">
+          <span className="text-xs md:text-sm text-gray-300">Spice</span>
+          <span className="text-xs md:text-sm font-medium text-red-400">50%</span>
         </div>
       </div>
     </div>

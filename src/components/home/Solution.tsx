@@ -2,24 +2,48 @@
 
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
-import { SolutionDecorations } from '@/components/ui/decorations/BackgroundCircles';
-import { motion } from 'framer-motion';
-import { useProgressBarAnimation } from '@/utils/animationUtils';
+import Container from '@/components/ui/layout/Container';
+import Section from '@/components/ui/layout/Section';
 
-// Skin Analysis Card component with enhanced responsiveness
-const SkinAnalysisCard = () => {
-  const skinParameters = [
-    { name: 'pH Level', value: 58, color: 'bg-emerald-900/30', textColor: 'text-emerald-400' },
-    { name: 'Sebum', value: 42, color: 'bg-purple-900/30', textColor: 'text-purple-400' },
-    { name: 'Temperature', value: 65, color: 'bg-red-900/30', textColor: 'text-red-400' },
-    { name: 'Moisture', value: 37, color: 'bg-blue-900/30', textColor: 'text-blue-400' }
-  ];
+// Props types
+interface ScentCompatibilityProps {}
 
+// Ingredient compatibility visualization
+const IngredientCompatibilityDisplay = () => {
+  return (
+    <div>
+      <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
+        <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
+        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
+          Ingredient Compatibility
+        </h3>
+      </div>
+      
+      <div className="space-y-3 xs:space-y-4 mb-4 xs:mb-5 sm:mb-6">
+        <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-sm text-gray-300">Floral</span>
+            <span className="text-sm font-medium text-gray-200">76%</span>
+          </div>
+        </div>
+        
+        <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-sm text-gray-300">Woody</span>
+            <span className="text-sm font-medium text-gray-200">68%</span>
+          </div>
+        </div>
+      </div>
+      
+      <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
+        Based on your profile, our AI determines which fragrance families will work with your natural chemistry.
+      </p>
+    </div>
+  );
+};
 
-  // Get animation props for progress bars
-  const floralAnimation = useProgressBarAnimation({ value: 76, color: 'bg-pink-400' });
-  const woodyAnimation = useProgressBarAnimation({ value: 68, color: 'bg-amber-400' });
-
+// Skin analysis card component
+const SkinAnalysisCard = ({}: ScentCompatibilityProps) => {
   return (
     <div className="w-full max-w-full md:max-w-5xl bg-gray-900/50 backdrop-blur-md rounded-xl p-4 xs:p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 shadow-2xl border border-gray-800/60">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 lg:gap-10 xl:gap-12 relative">
@@ -32,14 +56,23 @@ const SkinAnalysisCard = () => {
             </h3>
           </div>
           
-          {/* Percentage Cards */}
           <div className="grid grid-cols-2 gap-2 md:gap-3 mb-4 xs:mb-5 sm:mb-6">
-            {skinParameters.map((param, index) => (
-              <div key={index} className={`${param.color} rounded-lg p-1.5 md:p-2 text-center`}>
-                <div className={`text-base md:text-lg font-bold ${param.textColor}`}>{param.value}%</div>
-                <div className="text-xs md:text-sm text-gray-400">{param.name}</div>
-              </div>
-            ))}
+            <div className="bg-emerald-900/30 rounded-lg p-3">
+              <p className="text-emerald-400 text-sm font-medium">pH Level</p>
+              <p className="text-white text-lg">58%</p>
+            </div>
+            <div className="bg-purple-900/30 rounded-lg p-3">
+              <p className="text-purple-400 text-sm font-medium">Sebum</p>
+              <p className="text-white text-lg">42%</p>
+            </div>
+            <div className="bg-red-900/30 rounded-lg p-3">
+              <p className="text-red-400 text-sm font-medium">Temperature</p>
+              <p className="text-white text-lg">65%</p>
+            </div>
+            <div className="bg-blue-900/30 rounded-lg p-3">
+              <p className="text-blue-400 text-sm font-medium">Moisture</p>
+              <p className="text-white text-lg">37%</p>
+            </div>
           </div>
           
           <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -56,78 +89,23 @@ const SkinAnalysisCard = () => {
         <hr className="border-gray-700/50 lg:hidden my-2 xs:my-3 sm:my-4" />
         
         {/* Right side - Ingredient Compatibility Section */}
-        <div>
-          <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-            <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
-            <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-              Ingredient Compatibility
-            </h3>
-          </div>
-          
-          <div className="space-y-3 xs:space-y-4 mb-4 xs:mb-5 sm:mb-6">
-            {/* Floral compatibility */}
-            <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
-              <div className="flex justify-between items-center mb-1.5 xs:mb-2">
-                <div className="flex items-center">
-                  <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-700/50 flex items-center justify-center mr-1.5 xs:mr-2">
-                    <span>🌸</span>
-                  </div>
-                  <span className="text-xs xs:text-sm font-medium text-white/90">Floral</span>
-                </div>
-                <span className="text-xs xs:text-sm font-medium text-pink-400">76%</span>
-              </div>
-              <div className="relative w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-md overflow-hidden">
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
-                <motion.div 
-                  className={floralAnimation.className}
-                  animate={floralAnimation.animate}
-                  transition={floralAnimation.transition}
-                />
-              </div>
-            </div>
-
-            {/* Woody compatibility */}
-            <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
-              <div className="flex justify-between items-center mb-1.5 xs:mb-2">
-                <div className="flex items-center">
-                  <div className="w-5 h-5 xs:w-6 xs:h-6 rounded-full bg-gray-700/50 flex items-center justify-center mr-1.5 xs:mr-2">
-                    <span>🌲</span>
-                  </div>
-                  <span className="text-xs xs:text-sm font-medium text-white/90">Woody</span>
-                </div>
-                <span className="text-xs xs:text-sm font-medium text-amber-400">68%</span>
-              </div>
-              <div className="relative w-full h-1.5 xs:h-2 bg-gray-700/50 rounded-md overflow-hidden">
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
-                <motion.div 
-                  className={woodyAnimation.className}
-                  animate={woodyAnimation.animate}
-                  transition={woodyAnimation.transition}
-                />
-              </div>
-            </div>
-          </div>
-          <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
-            Based on your profile, our AI determines which fragrance families will work with your natural chemistry.
-          </p>
-        </div>
+        <IngredientCompatibilityDisplay />
       </div>
     </div>
   );
 };
 
+// Main solution section
 export default function Solution() {
   return (
-    <section 
+    <Section 
       id="solution" 
-      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
-      aria-label="Solution section"
+      ariaLabel="Solution section"
     >
       <GradientBorder />
-      <SolutionDecorations />
       
-      <div className="mx-auto w-full max-w-[90%] xs:max-w-[92%] sm:max-w-[94%] md:max-w-[96%] lg:max-w-7xl relative">
-        <div className="flex flex-col items-center">
+      <Container>
+        <div className="flex flex-col items-center py-12 xs:py-16 sm:py-20 md:py-24">
           {/* Header section */}
           <div className="text-left w-full max-w-full md:max-w-5xl mx-auto mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16">
             <div className="mb-3 xs:mb-4 sm:mb-5">
@@ -143,7 +121,7 @@ export default function Solution() {
             <SkinAnalysisCard />
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
