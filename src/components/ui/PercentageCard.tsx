@@ -30,7 +30,6 @@ export default function PercentageCard({
   }, []);
 
   // Calculate value range
-  const minValue = min !== undefined ? min : Math.max(0, Math.floor(value * 0.9));
   const maxValue = max !== undefined ? max : Math.ceil(value * 1.1);
 
   // Animation config
@@ -38,21 +37,21 @@ export default function PercentageCard({
     animate: isClient
       ? {
           number: [
-            minValue,
             value,
+            value * 0.8,
             maxValue,
-            value - Math.floor((value - minValue) * 0.5),
-            value + Math.floor((maxValue - value) * 0.3),
-            value,
+            value * 0.9,
+            value * 0.7,
+            value * 0.85,
           ],
         }
       : { number: value },
     transition: {
-      duration: 15,
-      times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+      duration: 8,
+      times: [0, 0.3, 0.5, 0.7, 0.85, 1],
       repeat: Infinity,
-      ease: 'easeInOut',
-      repeatType: 'mirror' as const,
+      ease: "easeInOut",
+      repeatType: 'loop' as const,
     },
   };
 
