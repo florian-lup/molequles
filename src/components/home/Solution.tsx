@@ -6,79 +6,89 @@ import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 
 // Props types
-interface ScentCompatibilityProps {}
+interface SolutionProps {}
 
-// Ingredient compatibility visualization
-const IngredientCompatibilityDisplay = () => {
+// Perfume ingredients list component
+const PerfumeIngredientsList = () => {
+  // Sample perfume ingredients with their characteristics (reduced to 4)
+  const ingredients = [
+    { name: "Bergamot", description: "Fresh, uplifting top note" },
+    { name: "Jasmine", description: "Rich, sweet middle note" },
+    { name: "Sandalwood", description: "Warm, creamy base note" },
+    { name: "Amber", description: "Warm, powdery base note" }
+  ];
+
   return (
     <div>
-      <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-        <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
-        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
+      <div className="flex items-center mb-4 border-b border-gray-700/50 pb-2">
+        <span className="mr-2 text-base">🌿</span>
+        <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
           Ingredient Compatibility
         </h3>
       </div>
       
-      <div className="space-y-3 xs:space-y-4 mb-4 xs:mb-5 sm:mb-6">
-        <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-sm text-gray-300">Floral</span>
-            <span className="text-sm font-medium text-gray-200">76%</span>
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        {ingredients.map((ingredient, index) => (
+          <div key={index} className="bg-gray-800/50 rounded-lg p-3">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-sm font-medium text-white">{ingredient.name}</span>
+            </div>
+            <p className="text-xs text-gray-400">{ingredient.description}</p>
           </div>
-        </div>
-        
-        <div className="bg-gray-800/50 rounded-lg p-2 xs:p-3 sm:p-4">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-sm text-gray-300">Woody</span>
-            <span className="text-sm font-medium text-gray-200">68%</span>
-          </div>
-        </div>
+        ))}
       </div>
       
-      <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
-        Based on your profile, our AI determines which fragrance families will work with your natural chemistry.
+      <p className="text-sm text-gray-300 leading-relaxed">
+        Our AI analyzes these raw ingredients to find the perfect match for your unique skin chemistry.
       </p>
     </div>
   );
 };
 
-// Skin analysis card component
-const SkinAnalysisCard = ({}: ScentCompatibilityProps) => {
+// Skin parameters component
+const SkinParametersList = () => {
+  // Sample skin parameters with descriptions
+  const parameters = [
+    { name: "pH Level", importance: "Affects fragrance longevity" },
+    { name: "Temperature", importance: "Influences evaporation rate" },
+    { name: "Sebum", importance: "Impacts scent diffusion" },
+    { name: "Moisture", importance: "Alters fragrance development" }
+  ];
+
+  return (
+    <div>
+      <div className="flex items-center mb-4 border-b border-gray-700/50 pb-2">
+        <span className="mr-2 text-base">🧪</span>
+        <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+          Skin Parameters
+        </h3>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        {parameters.map((param, index) => (
+          <div key={index} className="bg-gray-800/50 rounded-lg p-3">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-sm font-medium text-white">{param.name}</span>
+            </div>
+            <p className="text-xs text-gray-400 italic">{param.importance}</p>
+          </div>
+        ))}
+      </div>
+      
+      <p className="text-sm text-gray-300 leading-relaxed">
+        We measure these key parameters to understand how your skin interacts with different fragrance molecules.
+      </p>
+    </div>
+  );
+};
+
+// Main solution card component
+const SolutionCard = ({}: SolutionProps) => {
   return (
     <div className="w-full max-w-full md:max-w-5xl bg-gray-900/50 backdrop-blur-md rounded-xl p-4 xs:p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 shadow-2xl border border-gray-800/60">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 lg:gap-10 xl:gap-12 relative">
-        {/* Left side - Skin Parameters Section */}
-        <div>
-          <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-            <span className="mr-1.5 md:mr-2 text-sm md:text-base">🧪</span>
-            <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-              Skin Profile
-            </h3>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-2 md:gap-3 mb-4 xs:mb-5 sm:mb-6">
-            <div className="bg-emerald-900/30 rounded-lg p-3">
-              <p className="text-emerald-400 text-sm font-medium">pH Level</p>
-              <p className="text-white text-lg">58%</p>
-            </div>
-            <div className="bg-purple-900/30 rounded-lg p-3">
-              <p className="text-purple-400 text-sm font-medium">Sebum</p>
-              <p className="text-white text-lg">42%</p>
-            </div>
-            <div className="bg-red-900/30 rounded-lg p-3">
-              <p className="text-red-400 text-sm font-medium">Temperature</p>
-              <p className="text-white text-lg">65%</p>
-            </div>
-            <div className="bg-blue-900/30 rounded-lg p-3">
-              <p className="text-blue-400 text-sm font-medium">Moisture</p>
-              <p className="text-white text-lg">37%</p>
-            </div>
-          </div>
-          
-          <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">
-            Key skin parameters are analyzed to understand how your skin interacts with different fragrance molecules.
-          </p>
-        </div>
+        {/* Left side - Skin Parameters List */}
+        <SkinParametersList />
 
         {/* Vertical divider for desktop */}
         <div className="hidden lg:block absolute inset-y-0 left-1/2 transform -translate-x-1/2">
@@ -88,8 +98,8 @@ const SkinAnalysisCard = ({}: ScentCompatibilityProps) => {
         {/* Horizontal divider for mobile */}
         <hr className="border-gray-700/50 lg:hidden my-2 xs:my-3 sm:my-4" />
         
-        {/* Right side - Ingredient Compatibility Section */}
-        <IngredientCompatibilityDisplay />
+        {/* Right side - Perfume Ingredients List */}
+        <PerfumeIngredientsList />
       </div>
     </div>
   );
@@ -118,7 +128,7 @@ export default function Solution() {
 
           {/* Main content */}
           <div className="w-full flex justify-center">
-            <SkinAnalysisCard />
+            <SolutionCard />
           </div>
         </div>
       </Container>
