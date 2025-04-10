@@ -7,7 +7,6 @@ import GradientBorder from '@/components/ui/GradientBorder';
 import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import { HeroDecorations } from '@/components/ui/decorations/BackgroundCircles';
 import { motion } from 'framer-motion';
 import { useProgressBarAnimation } from '@/utils/animationUtils';
 
@@ -25,7 +24,6 @@ export default function Hero() {
     <Section id="hero" ariaLabel="Hero section">
       {/* Decorative elements */}
       <GradientBorder />
-      <HeroDecorations />
 
       <Container>
         <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between min-h-screen">

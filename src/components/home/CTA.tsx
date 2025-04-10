@@ -6,7 +6,6 @@ import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import { CTADecorations } from '@/components/ui/decorations/BackgroundCircles';
 import { motion } from 'framer-motion';
 import { useProgressBarAnimation } from '@/utils/animationUtils';
 
@@ -24,9 +23,7 @@ export default function CTA() {
 
   return (
     <Section id="cta" ariaLabel="Call to action section">
-      {/* Background decorative elements */}
-      <CTADecorations />
-
+      
       <Container>
         <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between min-h-screen">
           {/* Left panel - Marketing content */}

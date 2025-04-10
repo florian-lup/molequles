@@ -71,7 +71,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-950 text-white">
       {/* Top gradient border */}
-      <div className="h-px w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+      <div className="h-px w-full bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400"></div>
       
       {/* Main footer content */}
       <div className="max-w-7xl mx-auto pt-16 pb-12 px-4 sm:px-6 lg:px-8">
