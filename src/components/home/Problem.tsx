@@ -10,7 +10,7 @@ interface FrustrationCardProps {
   icon: string;
   title: string;
   description: string;
-  tags: string[];
+  tags: { text: string; colorIndex: number }[];
   index: number;
 }
 
@@ -26,7 +26,7 @@ const FrustrationCard: FC<FrustrationCardProps> = ({ icon, title, description, t
       
       <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
         {tags.map((tag, i) => (
-          <Tag key={i} text={tag} index={i} />
+          <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
         ))}
       </div>
     </div>
@@ -39,19 +39,28 @@ const frustrations = [
     title: "Poor Performance",
     description: "Fragrances that fade quickly or transform unpredictably on your skin throughout the day.",
     icon: "⏳",
-    tags: ["Short-lived", "Inconsistent", "Low sillage"]
+    tags: [
+      { text: "Short-lived", colorIndex: 0 },
+      { text: "Inconsistent", colorIndex: 1 }
+    ]
   },
   {
     title: "Allergic Reactions",
     description: "Irritation and sensitivities from ingredients that don't work with your unique skin chemistry.",
     icon: "🤧",
-    tags: ["Skin irritation", "Headaches", "Synthetic compounds"]
+    tags: [
+      { text: "Skin irritation", colorIndex: 2 },
+      { text: "Headaches", colorIndex: 0 }
+    ]
   },
   {
     title: "Endless Trial & Error",
     description: "Wasted time and money testing countless fragrances trying to find \"the one\".",
     icon: "🔄",
-    tags: ["Time-consuming", "Expensive", "Disappointing"]
+    tags: [
+      { text: "Time-consuming", colorIndex: 1 },
+      { text: "Expensive", colorIndex: 2 }
+    ]
   }
 ];
 

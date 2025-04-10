@@ -10,7 +10,7 @@ interface BenefitCardProps {
   icon: string;
   title: string;
   description: string;
-  tags: string[];
+  tags: { text: string; colorIndex: number }[];
   className?: string;
 }
 
@@ -27,7 +27,7 @@ const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, tags, cla
       {/* Tags */}
       <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 mt-auto">
         {tags.map((tag, i) => (
-          <Tag key={i} text={tag} index={i} />
+          <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
         ))}
       </div>
     </div>
@@ -40,25 +40,37 @@ const benefits = [
     icon: "🔬",
     title: "Personalized Signature Scent",
     description: "Enjoy a fragrance that is uniquely tailored to your skin's chemistry, creating a scent that feels inherently yours.",
-    tags: ["Custom formula", "Unique profile", "Signature scent"]
+    tags: [
+      { text: "Custom formula", colorIndex: 0 },
+      { text: "Signature scent", colorIndex: 2 }
+    ]
   },
   {
     icon: "⏱️",
     title: "Enhanced Longevity",
     description: "Benefit from a perfume that performs reliably throughout the day, maintaining its intended balance on your skin.",
-    tags: ["All-day wear", "Stable scent", "Slow release"]
+    tags: [
+      { text: "All-day wear", colorIndex: 1 },
+      { text: "Stable scent", colorIndex: 0 }
+    ]
   },
   {
     icon: "🛡️",
     title: "Reduced Allergy Risks",
     description: "Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing experience.",
-    tags: ["Hypoallergenic", "Skin-safe", "Low irritation"]
+    tags: [
+      { text: "Hypoallergenic", colorIndex: 2 },
+      { text: "Skin-safe", colorIndex: 1 }
+    ]
   },
   {
     icon: "♻️",
     title: "Sustainability",
     description: "Save time and money by avoiding endless experimentation through precise formulations tailored exactly to you.",
-    tags: ["Cost-effective", "Time-saving", "Eco-friendly"]
+    tags: [
+      { text: "Cost-effective", colorIndex: 0 },
+      { text: "Time-saving", colorIndex: 2 }
+    ]
   }
 ];
 

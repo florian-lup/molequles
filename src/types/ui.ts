@@ -3,12 +3,7 @@ import { ReactNode } from 'react';
 export interface BadgeProps {
   children: ReactNode;
   icon?: ReactNode;
-  color?: 'default' | 'primary' | 'secondary' | 'brand' | 'custom';
-  customColors?: {
-    text?: string;
-    bg?: string;
-    border?: string;
-  };
+  color?: 'default' | 'brand';
   withPulse?: boolean;
   className?: string;
 }

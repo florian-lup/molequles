@@ -11,7 +11,7 @@ interface TimelineStepProps {
   title: string;
   description: string;
   icon: string;
-  tags: string[];
+  tags: { text: string; colorIndex: number }[];
 }
 
 // Timeline steps with responsive design for all screen sizes
@@ -45,7 +45,7 @@ const TimelineStep: FC<TimelineStepProps> = ({ step, title, description, icon, t
             
             <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
               {tags.map((tag, i) => (
-                <Tag key={i} text={tag} index={i} />
+                <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
               ))}
             </div>
           </div>
@@ -62,28 +62,44 @@ const steps = [
     icon: "📊",
     title: "Collecting Skin Data",
     description: "Start the journey by visiting a local dermatologist to discover your unique skin parameters.",
-    tags: ["Biomarkers", "Skin chemistry", "Dermatology"]
+    tags: [
+      { text: "Biomarkers", colorIndex: 0 },
+      { text: "Skin chemistry", colorIndex: 1 },
+      { text: "Dermatology", colorIndex: 2 }
+    ]
   },
   {
     step: 2,
     icon: "🧠",
     title: "AI-Powered Analysis",
     description: "Advanced AI interprets your data using insights from chemistry, dermatology, and perfumery.",
-    tags: ["Machine learning", "Data analysis", "Research integration"]
+    tags: [
+      { text: "Machine learning", colorIndex: 2 },
+      { text: "Data analysis", colorIndex: 0 },
+      { text: "Research integration", colorIndex: 1 }
+    ]
   },
   {
     step: 3,
     icon: "🌸",
     title: "Creating Scent Profile",
     description: "An LLM predicts the ideal ingredient blend, crafting a custom scent with consistent performance.",
-    tags: ["Bespoke formula", "Ingredient matching", "Scent optimization"]
+    tags: [
+      { text: "Bespoke formula", colorIndex: 1 },
+      { text: "Ingredient matching", colorIndex: 2 },
+      { text: "Scent optimization", colorIndex: 0 }
+    ]
   },
   {
     step: 4,
     icon: "🔄",
     title: "Continuous Optimization",
     description: "A feedback loop refines future versions based on your experience, so your scent evolves with you.",
-    tags: ["Feedback loop", "Iterative process", "Evolution"]
+    tags: [
+      { text: "Feedback loop", colorIndex: 0 },
+      { text: "Iterative process", colorIndex: 1 },
+      { text: "Evolution", colorIndex: 2 }
+    ]
   }
 ];
 
