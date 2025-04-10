@@ -9,6 +9,7 @@ interface ProgressBarProps {
   color?: string;
   className?: string;
   labelClassName?: string;
+  marginClassName?: string;
 }
 
 export default function ProgressBar({
@@ -17,15 +18,16 @@ export default function ProgressBar({
   color = 'bg-blue-400',
   className = '',
   labelClassName = 'font-sans text-xs md:text-sm text-white/90 w-[60px] md:w-[70px] flex-shrink-0 font-medium',
+  marginClassName = 'mb-3 md:mb-4',
 }: ProgressBarProps) {
   const [isClient, setIsClient] = useState(false);
 
-  // Client-side only animation to prevent hydration issues
+  // Enable client-side animations
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Clamp value between 0-100
+  // Ensure value is between 0-100
   const clampedValue = Math.max(0, Math.min(100, value));
 
   // Animation config
@@ -53,12 +55,12 @@ export default function ProgressBar({
   };
 
   return (
-    <div className={`flex items-center w-full mb-3 md:mb-4 ${className}`}>
+    <div className={`flex items-center w-full ${marginClassName} ${className}`}>
       <span className={labelClassName}>{label}</span>
       <div className="relative w-full h-1.5 md:h-2 flex-grow ml-2 md:ml-3 overflow-hidden rounded-md">
         {/* Background */}
         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
-        {/* Animated foreground */}
+        {/* Animated bar */}
         <motion.div
           className={animation.className}
           animate={animation.animate}

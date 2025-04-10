@@ -24,12 +24,12 @@ export default function PercentageCard({
 }: PercentageCardProps) {
   const [isClient, setIsClient] = useState(false);
 
-  // Client-side only animation to prevent hydration issues
+  // Enable client-side animations
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Set fluctuation range based on value
+  // Calculate value range
   const minValue = min !== undefined ? min : Math.max(0, Math.floor(value * 0.9));
   const maxValue = max !== undefined ? max : Math.ceil(value * 1.1);
 
@@ -56,11 +56,10 @@ export default function PercentageCard({
     },
   };
 
-  // Motion value for animated number
   const count = useMotionValue(value);
   const rounded = useTransform(count, Math.round);
 
-  // Update motion value when animation changes
+  // Initialize motion value
   useEffect(() => {
     if (animation.animate.number && Array.isArray(animation.animate.number)) {
       count.set(animation.animate.number[0]);
