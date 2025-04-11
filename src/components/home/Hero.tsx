@@ -162,9 +162,9 @@ export default function Hero() {
     <Section id="hero" ariaLabel="Hero section">
       <GradientBorder />
 
-      <Container className="flex flex-col justify-center items-center lg:flex-row lg:justify-between " maxWidth="6xl">
-            <MarketingMessagePanel openWaitlist={openWaitlist} />
-            <ProductFeaturesPanel />
+      <Container className="flex flex-col justify-center items-center lg:flex-row lg:justify-between">
+        <MarketingMessagePanel openWaitlist={openWaitlist} />
+        <ProductFeaturesPanel />
       </Container>
     </Section>
   );

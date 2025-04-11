@@ -142,7 +142,7 @@ export default function Solution() {
     >
       <GradientBorder />
       
-      <Container className="flex flex-col justify-center items-center" maxWidth="6xl">
+      <Container className="flex flex-col justify-center items-center">
           {/* Header section */}
           <div className="text-left w-full mb-8">
             <div className="mb-3">
