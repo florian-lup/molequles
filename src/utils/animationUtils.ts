@@ -105,12 +105,14 @@ export const createPercentageAnimation = (
  * @param isClient - Whether client-side rendering is active
  * @param itemCount - The total number of items to cycle through
  * @param accentColor - The background color class for the highlighted item (default is indigo)
+ * @param textColor - The text color class for the highlighted item (default is text-white)
  * @returns Animation configuration with current highlighted index and animation props
  */
 export const createSequentialHighlight = (
   isClient: boolean,
   itemCount: number,
-  accentColor: string = 'bg-indigo-900/30'
+  accentColor: string = 'bg-indigo-900/30',
+  textColor: string = 'text-white'
 ) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -165,6 +167,9 @@ export const createSequentialHighlight = (
     getItemProps: (index: number) => ({
       className: `${index === activeIndex ? accentColor : 'bg-gray-800/30'} rounded-lg p-2 md:p-3 lg:p-4 flex flex-col justify-between transition-all duration-300`,
       ...(index === activeIndex ? highlightAnimation : {})
+    }),
+    getTextProps: (index: number) => ({
+      className: `${index === activeIndex ? textColor : 'text-gray-400'} transition-colors duration-300`
     })
   };
 };

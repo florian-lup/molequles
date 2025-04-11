@@ -29,7 +29,7 @@ const Container = ({
     <div
       className={`
         ${margin} 
-        ${fullHeight ? 'h-full' : ''} 
+        ${fullHeight ? 'min-h-screen' : ''} 
         ${maxWidthClass} 
         ${padding}
         ${className}

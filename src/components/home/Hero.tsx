@@ -18,7 +18,7 @@ interface WaitlistCtaProps {
 
 // Marketing message component with CTA button
 const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => (
-  <div className="w-full md:max-w-xl lg:max-w-lg text-left mb-10 lg:mb-0">
+  <div className="w-full lg:max-w-lg text-left mb-10 lg:mb-0">
     {/* Headline with gradient text */}
     <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight text-white">
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
@@ -148,7 +148,7 @@ const ScentProfileDisplay = () => {
 
 // Container for skin chemistry and scent profile displays
 const ProductFeaturesPanel = () => (
-  <div className="w-full md:max-w-xl lg:max-w-sm bg-gray-900/40 backdrop-blur-sm rounded-xl p-5 border border-gray-800/50">
+  <div className="w-full lg:max-w-md bg-gray-900/40 backdrop-blur-sm rounded-xl p-5 border border-gray-800/50">
     <SkinChemistryDisplay />
     <ScentProfileDisplay />
   </div>
@@ -162,15 +162,9 @@ export default function Hero() {
     <Section id="hero" ariaLabel="Hero section">
       <GradientBorder />
 
-      <Container>
-        <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between min-h-screen">
-          <div className="flex justify-center items-center w-full">
+      <Container className="flex flex-col justify-center items-center lg:flex-row lg:justify-between " maxWidth="6xl">
             <MarketingMessagePanel openWaitlist={openWaitlist} />
-          </div>
-          <div className="flex justify-center items-center w-full">
             <ProductFeaturesPanel />
-          </div>
-        </div>
       </Container>
     </Section>
   );

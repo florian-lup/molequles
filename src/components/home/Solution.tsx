@@ -20,17 +20,18 @@ const PerfumeIngredientsList = () => {
 
   // Sample perfume ingredients with their characteristics (reduced to 4)
   const ingredients = [
-    { name: "Bergamot", description: "Fresh, uplifting top note" },
-    { name: "Jasmine", description: "Rich, sweet middle note" },
-    { name: "Sandalwood", description: "Warm, creamy base note" },
-    { name: "Amber", description: "Warm, powdery base note" }
+    { name: "Bergamot", description: "Fresh, uplifting top note", emoji: "🍊" },
+    { name: "Jasmine", description: "Rich, sweet middle note", emoji: "🌸" },
+    { name: "Sandalwood", description: "Warm, creamy base note", emoji: "🪵" },
+    { name: "Amber", description: "Warm, powdery base note", emoji: "✨" }
   ];
 
   // Apply the sequential highlight animation
-  const { getItemProps } = createSequentialHighlight(
+  const { getItemProps: getIngredientItemProps, getTextProps: getIngredientTextProps } = createSequentialHighlight(
     isClient,
     ingredients.length,
-    'bg-rose-900/30'
+    'bg-rose-900/30',
+    'text-rose-200'
   );
 
   return (
@@ -43,15 +44,18 @@ const PerfumeIngredientsList = () => {
       </div>
       
       <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
-        {ingredients.map((ingredient, index) => (
-          <div 
-            key={index} 
-            {...getItemProps(index)}
-          >
-            <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{ingredient.name}</span>
-            <p className="text-xs md:text-sm text-gray-400">{ingredient.description}</p>
-          </div>
-        ))}
+        {ingredients.map((ingredient, index) => {
+          const textClassName = `text-xs md:text-sm ${getIngredientTextProps(index).className}`;
+          return (
+            <div 
+              key={index} 
+              {...getIngredientItemProps(index)}
+            >
+              <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{ingredient.emoji} {ingredient.name}</span>
+              <p className={textClassName}>{ingredient.description}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -67,17 +71,18 @@ const SkinCharacteristicsList = () => {
 
   // Sample skin characteristics with descriptions
   const characteristics = [
-    { name: "pH Level", importance: "Affects longevity" },
-    { name: "Temperature", importance: "Influences evaporation" },
-    { name: "Sebum", importance: "Impacts diffusion" },
-    { name: "Moisture", importance: "Alters development" }
+    { name: "pH Level", description: "Affects longevity", emoji: "🔬" },
+    { name: "Temperature", description: "Influences evaporation", emoji: "🌡️" },
+    { name: "Sebum", description: "Impacts diffusion", emoji: "🫧" },
+    { name: "Moisture", description: "Alters development", emoji: "💧" }
   ];
 
   // Apply the sequential highlight animation
-  const { getItemProps } = createSequentialHighlight(
+  const { getItemProps: getSkinItemProps, getTextProps: getSkinTextProps } = createSequentialHighlight(
     isClient,
     characteristics.length,
-    'bg-violet-900/30'
+    'bg-amber-900/30',
+    'text-amber-200'
   );
 
   return (
@@ -90,15 +95,18 @@ const SkinCharacteristicsList = () => {
       </div>
       
       <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
-        {characteristics.map((characteristic, index) => (
-          <div
-            key={index}
-            {...getItemProps(index)}
-          >
-            <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{characteristic.name}</span>
-            <p className="text-xs md:text-sm text-gray-400 italic">{characteristic.importance}</p>
-          </div>
-        ))}
+        {characteristics.map((characteristic, index) => {
+          const textClassName = `text-xs md:text-sm italic ${getSkinTextProps(index).className}`;
+          return (
+            <div
+              key={index}
+              {...getSkinItemProps(index)}
+            >
+              <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{characteristic.emoji} {characteristic.name}</span>
+              <p className={textClassName}>{characteristic.description}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -134,21 +142,19 @@ export default function Solution() {
     >
       <GradientBorder />
       
-      <Container>
-        <div className="flex flex-col justify-center items-center min-h-screen">
+      <Container className="flex flex-col justify-center items-center" maxWidth="6xl">
           {/* Header section */}
           <div className="text-left w-full mb-8">
             <div className="mb-3">
               <Badge>Our Approach</Badge>
             </div>
             <h3 className="text-base md:text-2xl lg:text-3xl text-white mb-2 leading-relaxed">
-              We use advanced AI to analyze your skin traits and identify perfume ingredients that complement your natural chemistry.
+              We use AI to analyze your unique skin characteristics alongside various fragrance molecules, and determine which raw ingredients best complement your natural chemistry.
             </h3>
           </div>
 
           {/* Main content */}
             <SolutionCard />
-        </div>
       </Container>
     </Section>
   );
