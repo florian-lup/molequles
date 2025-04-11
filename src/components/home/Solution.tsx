@@ -31,14 +31,14 @@ const PerfumeIngredientsList = () => {
     isClient,
     ingredients.length,
     'bg-rose-900/30',
-    'text-rose-200'
+    'text-rose-400'
   );
 
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
         <span className="mr-2 text-base md:text-lg">🌿</span>
-        <h3 className="text-sm md:text-base font-semibold text-gray-300 uppercase tracking-wide">
+        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
           Ingredient Compatibility
         </h3>
       </div>
@@ -82,14 +82,14 @@ const SkinCharacteristicsList = () => {
     isClient,
     characteristics.length,
     'bg-amber-900/30',
-    'text-amber-200'
+    'text-amber-400'
   );
 
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
         <span className="mr-2 text-base md:text-lg">🧪</span>
-        <h3 className="text-sm md:text-base font-semibold text-gray-300 uppercase tracking-wide">
+        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
           Skin Characteristics
         </h3>
       </div>
@@ -148,13 +148,13 @@ export default function Solution() {
             <div className="mb-3">
               <Badge>Our Approach</Badge>
             </div>
-            <h3 className="text-base md:text-2xl lg:text-3xl text-white mb-2 leading-relaxed">
+            <h3 className="text-sm md:text-lg lg:text-2xl text-white mb-2 leading-relaxed">
               We use AI to analyze your unique skin characteristics alongside various fragrance molecules, and determine which raw ingredients best complement your natural chemistry.
             </h3>
           </div>
 
           {/* Main content */}
-            <SolutionCard />
+          <SolutionCard />
       </Container>
     </Section>
   );
