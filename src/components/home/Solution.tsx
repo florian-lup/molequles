@@ -53,24 +53,20 @@ const PerfumeIngredientsList = () => {
           </div>
         ))}
       </div>
-      
-      <p className="text-sm md:text-base text-gray-300 leading-relaxed mt-auto">
-        Our AI determines which fragrance families will work with your natural chemistry.
-      </p>
     </div>
   );
 };
 
-// Skin parameters component
-const SkinParametersList = () => {
+// Skin characteristics component
+const SkinCharacteristicsList = () => {
   // Check if we're on the client side
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Sample skin parameters with descriptions
-  const parameters = [
+  // Sample skin characteristics with descriptions
+  const characteristics = [
     { name: "pH Level", importance: "Affects longevity" },
     { name: "Temperature", importance: "Influences evaporation" },
     { name: "Sebum", importance: "Impacts diffusion" },
@@ -80,7 +76,7 @@ const SkinParametersList = () => {
   // Apply the sequential highlight animation
   const { getItemProps } = createSequentialHighlight(
     isClient,
-    parameters.length,
+    characteristics.length,
     'bg-violet-900/30'
   );
 
@@ -89,25 +85,21 @@ const SkinParametersList = () => {
       <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
         <span className="mr-2 text-base md:text-lg">🧪</span>
         <h3 className="text-sm md:text-base font-semibold text-gray-300 uppercase tracking-wide">
-          Skin Parameters
+          Skin Characteristics
         </h3>
       </div>
       
       <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
-        {parameters.map((param, index) => (
+        {characteristics.map((characteristic, index) => (
           <div
             key={index}
             {...getItemProps(index)}
           >
-            <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{param.name}</span>
-            <p className="text-xs md:text-sm text-gray-400 italic">{param.importance}</p>
+            <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{characteristic.name}</span>
+            <p className="text-xs md:text-sm text-gray-400 italic">{characteristic.importance}</p>
           </div>
         ))}
       </div>
-      
-      <p className="text-sm md:text-base text-gray-300 leading-relaxed mt-auto">
-        Key parameters are analyzed to understand how your skin interacts with different fragrance molecules.
-      </p>
     </div>
   );
 };
@@ -115,9 +107,9 @@ const SkinParametersList = () => {
 // Main solution card component
 const SolutionCard = () => (
   <div className="w-full bg-gray-900/50 backdrop-blur-md rounded-xl p-5 border border-gray-800/60">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative">
-      {/* Left side - Skin Parameters List */}
-      <SkinParametersList />
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 relative">
+      {/* Left side - Skin Characteristics List */}
+      <SkinCharacteristicsList />
 
       {/* Vertical divider for desktop */}
       <div className="hidden lg:block absolute inset-y-0 left-1/2 transform -translate-x-1/2">

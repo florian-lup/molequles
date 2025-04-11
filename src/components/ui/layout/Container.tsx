@@ -5,7 +5,7 @@ interface ContainerProps {
   className?: string; // Additional CSS classes
   children: ReactNode; // Child components/elements
   fullHeight?: boolean; // Whether container should take full height
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '7xl' | 'full' | 'none'; // Maximum width constraint
+  maxWidth?: 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' |'7xl' | 'max-w-full' | 'max-w-min' | 'none'; // Maximum width constraint
   padding?: string; // Custom padding classes
   margin?: string; // Custom margin classes
 }
