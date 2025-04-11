@@ -173,3 +173,42 @@ export const createSequentialHighlight = (
     })
   };
 };
+
+/**
+ * Creates an animation for fluid/filling level that continuously rises and falls
+ * @param minPercentage - The minimum fill percentage (0-100)
+ * @param maxPercentage - The maximum fill percentage (0-100)
+ * @param duration - Animation duration in seconds for one cycle (min to max and back to min)
+ * @returns Animation configuration object with animate and transition properties
+ */
+export const createFlowAnimation = (
+  minPercentage: number,
+  maxPercentage: number,
+  duration: number = 8 // Default duration for a full cycle
+) => {
+  // Clamp values to be within 0-100
+  const clampedMin = Math.max(0, Math.min(100, minPercentage));
+  const clampedMax = Math.max(0, Math.min(100, maxPercentage));
+
+  // Ensure min is less than max
+  const actualMin = Math.min(clampedMin, clampedMax);
+  const actualMax = Math.max(clampedMin, clampedMax);
+
+  // Create the animation configuration for a smooth min -> max -> min oscillation
+  return {
+    animate: {
+      height: [
+        `${actualMin}%`,
+        `${actualMax}%`,
+        `${actualMin}%`,
+      ],
+    },
+    transition: {
+      duration,
+      times: [0, 0.5, 1], // Min at 0%, Max at 50%, Min again at 100% of duration
+      repeat: Infinity,
+      repeatType: 'loop' as const,
+      ease: "easeInOut",
+    },
+  };
+};

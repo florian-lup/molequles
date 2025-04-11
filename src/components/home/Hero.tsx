@@ -72,21 +72,21 @@ const SkinChemistryDisplay = () => {
       </div>
       <div className="grid grid-cols-3 gap-2 md:gap-3">
         {metrics.map((metric, index) => {
-          const animation = createPercentageAnimation(isClient, metric.value);
+          const { animation, count, rounded } = createPercentageAnimation(isClient, metric.value);
           
           return (
             <div key={index} className={`${metric.bgColorClass} rounded-lg p-1.5 md:p-2 text-center`}>
               <motion.div
-                animate={animation.animation.animate}
-                transition={animation.animation.transition}
+                animate={animation.animate}
+                transition={animation.transition}
                 onUpdate={(latest) => {
                   if (typeof latest.number === 'number') {
-                    animation.count.set(latest.number);
+                    count.set(latest.number);
                   }
                 }}
                 className={`text-base md:text-lg font-bold ${metric.textColorClass}`}
               >
-                <motion.span>{animation.rounded}</motion.span>%
+                <motion.span>{rounded}</motion.span>%
               </motion.div>
               <div className="text-xs md:text-sm text-gray-400">{metric.label}</div>
             </div>
