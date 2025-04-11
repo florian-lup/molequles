@@ -6,6 +6,7 @@ import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 import { createSequentialHighlight } from '@/utils/animationUtils';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 // Props types
 // Empty interface removed
@@ -45,15 +46,17 @@ const PerfumeIngredientsList = () => {
       
       <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
         {ingredients.map((ingredient, index) => {
+          const { className, ...animationProps } = getIngredientItemProps(index);
           const textClassName = `text-xs md:text-sm ${getIngredientTextProps(index).className}`;
           return (
-            <div 
-              key={index} 
-              {...getIngredientItemProps(index)}
+            <motion.div 
+              key={index}
+              className={className}
+              {...animationProps}
             >
               <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{ingredient.emoji} {ingredient.name}</span>
               <p className={textClassName}>{ingredient.description}</p>
-            </div>
+            </motion.div>
           );
         })}
       </div>
@@ -96,15 +99,17 @@ const SkinCharacteristicsList = () => {
       
       <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
         {characteristics.map((characteristic, index) => {
+          const { className, ...animationProps } = getSkinItemProps(index);
           const textClassName = `text-xs md:text-sm italic ${getSkinTextProps(index).className}`;
           return (
-            <div
+            <motion.div
               key={index}
-              {...getSkinItemProps(index)}
+              className={className}
+              {...animationProps}
             >
               <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{characteristic.emoji} {characteristic.name}</span>
               <p className={textClassName}>{characteristic.description}</p>
-            </div>
+            </motion.div>
           );
         })}
       </div>
