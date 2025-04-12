@@ -7,6 +7,7 @@ import Section from '@/components/ui/layout/Section';
 import { createSequentialHighlight } from '@/utils/animationUtils';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { HiArrowRight } from 'react-icons/hi';
 
 // Props types
 // Empty interface removed
@@ -119,21 +120,23 @@ const SkinCharacteristicsList = () => {
 
 // Main solution card component
 const SolutionCard = () => (
-  <div className="w-full bg-gray-900/50 backdrop-blur-md rounded-xl p-5 border border-gray-800/60">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 relative">
-      {/* Left side - Skin Characteristics List */}
-      <SkinCharacteristicsList />
-
-      {/* Vertical divider for desktop */}
-      <div className="hidden lg:block absolute inset-y-0 left-1/2 transform -translate-x-1/2">
-        <div className="h-full w-px bg-gray-700/50"></div>
+  <div className="w-full p-5">
+    {/* Use grid layout: 3 cols on lg, 1 col on mobile */}
+    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-10 items-center">
+      {/* Column 1: Skin Characteristics List */}
+      <div className="lg:order-1">
+        <SkinCharacteristicsList />
       </div>
 
-      {/* Horizontal divider for mobile */}
-      <hr className="border-gray-700/50 lg:hidden my-2" />
-      
-      {/* Right side - Perfume Ingredients List */}
-      <PerfumeIngredientsList />
+      {/* Column 2: Central Separator/Graphic (visible on lg screens) */}
+      <div className="hidden lg:flex lg:order-2 justify-center items-center h-full">
+        <HiArrowRight className="w-8 h-8 text-gray-600" />
+      </div>
+
+      {/* Column 3: Perfume Ingredients List */}
+      <div className="lg:order-3">
+        <PerfumeIngredientsList />
+      </div>
     </div>
   </div>
 );
@@ -148,13 +151,13 @@ export default function Solution() {
       <GradientBorder />
       
       <Container className="flex flex-col justify-center items-center">
-          {/* Header section */}
-          <div className="text-left w-full mb-8">
+          {/* Header section - Centered with highlighted text */}
+          <div className="text-center mb-10 md:mb-12">
             <div className="mb-3">
               <Badge>Our Approach</Badge>
             </div>
-            <h3 className="text-sm md:text-lg lg:text-2xl text-white mb-2 leading-relaxed">
-              We use AI to analyze your unique skin characteristics alongside various fragrance molecules, and determine which raw ingredients best complement your natural chemistry.
+            <h3 className="text-sm md:text-lg lg:text-2xl text-white mb-2 leading-relaxed max-w-3xl mx-auto">
+              We use <span className="font-medium">AI to analyze</span> your <span className="font-medium">unique skin characteristics</span> alongside various <span className="font-medium">fragrance molecules</span>, and determine which ingredients <span className="font-medium">best complement your chemistry</span>.
             </h3>
           </div>
 
