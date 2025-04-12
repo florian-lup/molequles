@@ -1,106 +1,119 @@
 'use client';
 
-import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
+import Container from '@/components/ui/layout/Container';
+import Section from '@/components/ui/layout/Section';
+import { motion } from 'framer-motion';
+import { createPulsatingAnimation } from '@/utils/animationUtils';
+import { useEffect, useState } from 'react';
 
-interface FrustrationCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  tags: { text: string; colorIndex: number }[];
-  index: number;
-}
+// Define tags data
+const tags = [
+  { text: "Short-lived", colorIndex: 0 },
+  { text: "Inconsistent", colorIndex: 1 },
+  { text: "Skin irritation", colorIndex: 2 },
+  { text: "Headaches", colorIndex: 0 },
+  { text: "Time-consuming", colorIndex: 1 },
+  { text: "Expensive", colorIndex: 2 }
+];
 
-const FrustrationCard: FC<FrustrationCardProps> = ({ icon, title, description, tags }) => {
+// Define happiness meter emojis and labels
+const happinessLevels = [
+  { emoji: "😖", label: "Very Unhappy" },
+  { emoji: "🙁", label: "Unhappy" },
+  { emoji: "😐", label: "Neutral" },
+  { emoji: "🙂", label: "Happy" },
+  { emoji: "😄", label: "Very Happy" }
+];
+
+// Happiness meter component
+const HappinessMeter = () => {
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  const pulsatingAnimation = createPulsatingAnimation(isClient);
+  
   return (
-    <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col">
-      <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 flex items-center border-b border-gray-700/50 pb-1.5">
-        <span className="mr-2 text-base xs:text-lg sm:text-xl">{icon}</span>
-        <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white truncate">{title}</h3>
-      </div>
-      
-      <p className="text-xs xs:text-sm sm:text-base text-gray-400 leading-relaxed mb-3 xs:mb-4 md:mb-5 flex-grow">{description}</p>
-      
-      <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
-        {tags.map((tag, i) => (
-          <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
-        ))}
+    <div className="mb-4 mt-6">
+      <p className="text-sm text-gray-300 mb-2">Customer satisfaction with traditional perfumes:</p>
+      <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-3 border border-gray-700/30">
+        <div className="flex justify-between">
+          {happinessLevels.map((level, index) => (
+            <span key={index} className="text-center">
+              {index < 3 ? (
+                <motion.span 
+                  className="text-xl sm:text-2xl md:text-3xl inline-block"
+                  {...pulsatingAnimation}
+                >
+                  {level.emoji}
+                </motion.span>
+              ) : (
+                <span className="text-xl sm:text-2xl md:text-3xl">
+                  {level.emoji}
+                </span>
+              )}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-// Define frustrations data outside the component
-const frustrations = [
-  {
-    title: "Poor Performance",
-    description: "Fragrances that fade quickly or transform unpredictably on your skin throughout the day.",
-    icon: "⏳",
-    tags: [
-      { text: "Short-lived", colorIndex: 0 },
-      { text: "Inconsistent", colorIndex: 1 }
-    ]
-  },
-  {
-    title: "Allergic Reactions",
-    description: "Irritation and sensitivities from ingredients that don't work with your unique skin chemistry.",
-    icon: "🤧",
-    tags: [
-      { text: "Skin irritation", colorIndex: 2 },
-      { text: "Headaches", colorIndex: 0 }
-    ]
-  },
-  {
-    title: "Endless Trial & Error",
-    description: "Wasted time and money testing countless fragrances trying to find \"the one\".",
-    icon: "🔄",
-    tags: [
-      { text: "Time-consuming", colorIndex: 1 },
-      { text: "Expensive", colorIndex: 2 }
-    ]
-  }
-];
+// Tags list component
+const TagsList = () => {
+  return (
+    <div className="flex flex-wrap gap-2 xs:gap-2.5 sm:gap-3 mt-3 mb-1">
+      {tags.map((tag, i) => (
+        <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
+      ))}
+    </div>
+  );
+};
+
+// Problem card component
+const ProblemCard = () => {
+  return (
+    <div className="w-full">      
+      {/* Happiness Meter */}
+      <HappinessMeter />
+      
+      {/* Divider */}
+      <div className="h-px w-full bg-gray-700 my-4"></div>
+      
+      {/* Tags section */}
+      <TagsList />
+    </div>
+  );
+};
 
 export default function Problem() {
   return (
-    <section
+    <Section
       id="problem" 
-      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
-      aria-label="Problem section"
+      ariaLabel="Problem section"
     >
       <GradientBorder />
       
-      <div className="mx-auto max-w-7xl w-full px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center w-full">
-          {/* Header section */}
-          <div className="text-left w-full mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-            <div className="mb-2 xs:mb-3 sm:mb-4">
-              <Badge>The Challenge</Badge>
-            </div>
-            <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl text-white mb-2 xs:mb-3 leading-relaxed">
-              Traditional perfumes are mass-produced using standardized formulas that overlook individual skin chemistry, leading to inconsistent scents.
-            </h3>
+      <Container className="flex flex-col justify-center items-center">
+        {/* Header section */}
+        <div className="text-left w-full mb-4">
+          <div className="mb-2">
+            <Badge>The Challenge</Badge>
           </div>
-
-          {/* Frustrations section */}
-          <div className="w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-              {frustrations.map((item, index) => (
-                <FrustrationCard
-                  key={index}
-                  index={index}
-                  icon={item.icon}
-                  title={item.title}
-                  description={item.description}
-                  tags={item.tags}
-                />
-              ))}
-            </div>
+          <h3 className="text-base md:text-2xl text-white mb-3 leading-relaxed">
+            Traditional perfumes are mass-produced using standardized formulas that overlook individual skin chemistry, leading to inconsistent scents, poor performance, and allergic reactions.
+          </h3>
           </div>
-        </div>
-      </div>
-    </section>
+          
+          {/* Main content */}
+          <ProblemCard />
+      </Container>
+    </Section>
   );
 } 

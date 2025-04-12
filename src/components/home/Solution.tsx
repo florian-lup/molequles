@@ -8,6 +8,7 @@ import { createSequentialHighlight } from '@/utils/animationUtils';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowRight } from 'react-icons/hi';
+import { div } from 'framer-motion/client';
 
 // Props types
 // Empty interface removed
@@ -120,7 +121,7 @@ const SkinCharacteristicsList = () => {
 
 // Main solution card component
 const SolutionCard = () => (
-  <div className="w-full p-5">
+  <div className="w-full">
     {/* Use grid layout: 3 cols on lg, 1 col on mobile */}
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-10 items-center">
       {/* Column 1: Skin Characteristics List */}
@@ -151,13 +152,13 @@ export default function Solution() {
       <GradientBorder />
       
       <Container className="flex flex-col justify-center items-center">
-          {/* Header section - Centered with highlighted text */}
-          <div className="text-center mb-10 md:mb-12">
-            <div className="mb-3">
+          {/* Header section */}
+          <div className="text-left w-full mb-4">
+            <div className="mb-2">
               <Badge>Our Approach</Badge>
             </div>
-            <h3 className="text-sm md:text-lg lg:text-2xl text-white mb-2 leading-relaxed max-w-3xl mx-auto">
-              We use <span className="font-medium">AI to analyze</span> your <span className="font-medium">unique skin characteristics</span> alongside various <span className="font-medium">fragrance molecules</span>, and determine which ingredients <span className="font-medium">best complement your chemistry</span>.
+            <h3 className="text-base md:text-2xl text-white mb-3 leading-relaxed">
+              We use AI to analyze your unique skin characteristics alongside various fragrance molecules, and determine which ingredients best complement your chemistry.
             </h3>
           </div>
 

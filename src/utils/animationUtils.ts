@@ -212,3 +212,30 @@ export const createFlowAnimation = (
     },
   };
 };
+
+/**
+ * Creates a pulsating animation configuration that can be applied to elements
+ * @param isClient - Whether client-side rendering is active
+ * @param intensity - How strong the pulsation should be (default 1.2)
+ * @param duration - Animation duration in seconds (default 2)
+ * @returns Animation configuration object with animate and transition properties
+ */
+export const createPulsatingAnimation = (
+  isClient: boolean,
+  intensity: number = 1.2,
+  duration: number = 2
+) => {
+  return {
+    animate: isClient
+      ? {
+          scale: [1, intensity, 1],
+        }
+      : { scale: 1 },
+    transition: {
+      duration,
+      repeat: Infinity,
+      repeatType: 'loop' as const,
+      ease: "easeInOut",
+    },
+  };
+};
