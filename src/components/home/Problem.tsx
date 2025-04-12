@@ -41,7 +41,7 @@ const HappinessMeter = () => {
   return (
     <div className="mb-4 mt-6">
       <p className="text-sm text-gray-300 mb-2">Customer satisfaction with traditional perfumes:</p>
-      <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-3 border border-gray-700/30">
+      <div className="bg-gray-800/50 backdrop-blur-sm rounded-full p-3 border border-gray-700/30">
         <div className="flex justify-between">
           {happinessLevels.map((level, index) => (
             <span key={index} className="text-center">

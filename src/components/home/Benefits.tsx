@@ -6,29 +6,25 @@ import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
 
 interface BenefitCardProps {
-  icon: string;
   title: string;
   description: string;
   tags: { text: string; colorIndex: number }[];
   className?: string;
 }
 
-const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, tags, className }) => {
+const BenefitCard: FC<BenefitCardProps> = ({ title, description, tags, className }) => {
   return (
     <div className={`bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col ${className || ''}`}>
-      <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 flex items-center border-b border-gray-700/50 pb-1.5">
-        <span className="mr-2 text-base xs:text-lg sm:text-xl md:text-2xl">{icon}</span>
-        <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white truncate">{title}</h3>
+      <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 flex items-center justify-between border-b border-gray-700/50 pb-1.5 flex-wrap gap-2">
+        <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white truncate mr-2">{title}</h3>
+        <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
+          {tags.map((tag, i) => (
+            <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
+          ))}
+        </div>
       </div>
       
       <p className="text-xs xs:text-sm sm:text-base text-gray-400 leading-relaxed mb-3 xs:mb-4 flex-grow">{description}</p>
-      
-      {/* Tags */}
-      <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 mt-auto">
-        {tags.map((tag, i) => (
-          <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
-        ))}
-      </div>
     </div>
   );
 };
@@ -36,8 +32,7 @@ const BenefitCard: FC<BenefitCardProps> = ({ icon, title, description, tags, cla
 // Define benefits data outside the component
 const benefits = [
   {
-    icon: "🔬",
-    title: "Personalized Signature Scent",
+    title: "Personalized Scent",
     description: "Enjoy a fragrance that is uniquely tailored to your skin's chemistry, creating a scent that feels inherently yours.",
     tags: [
       { text: "Custom formula", colorIndex: 0 },
@@ -45,7 +40,6 @@ const benefits = [
     ]
   },
   {
-    icon: "⏱️",
     title: "Enhanced Longevity",
     description: "Benefit from a perfume that performs reliably throughout the day, maintaining its intended balance on your skin.",
     tags: [
@@ -54,7 +48,6 @@ const benefits = [
     ]
   },
   {
-    icon: "🛡️",
     title: "Reduced Allergy Risks",
     description: "Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing experience.",
     tags: [
@@ -63,7 +56,6 @@ const benefits = [
     ]
   },
   {
-    icon: "♻️",
     title: "Sustainability",
     description: "Save time and money by avoiding endless experimentation through precise formulations tailored exactly to you.",
     tags: [
@@ -100,7 +92,6 @@ export default function Benefits() {
               {benefits.map((benefit, index) => (
                 <BenefitCard
                   key={index}
-                  icon={benefit.icon}
                   title={benefit.title}
                   description={benefit.description}
                   tags={benefit.tags}
