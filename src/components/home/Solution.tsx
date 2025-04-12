@@ -129,9 +129,9 @@ const SolutionCard = () => (
         <SkinCharacteristicsList />
       </div>
 
-      {/* Column 2: Central Separator/Graphic (visible on lg screens) */}
-      <div className="hidden lg:flex lg:order-2 justify-center items-center h-full">
-        <HiArrowRight className="w-8 h-8 text-gray-600" />
+      {/* Column 2: Central Separator/Graphic (visible on all screens) */}
+      <div className="flex justify-center items-center h-full lg:order-2">
+        <HiArrowRight className="w-8 h-8 text-gray-600 transform rotate-90 lg:rotate-0" />
       </div>
 
       {/* Column 3: Perfume Ingredients List */}

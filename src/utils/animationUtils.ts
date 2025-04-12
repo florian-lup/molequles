@@ -218,19 +218,24 @@ export const createFlowAnimation = (
  * @param isClient - Whether client-side rendering is active
  * @param intensity - How strong the pulsation should be (default 1.2)
  * @param duration - Animation duration in seconds (default 2)
+ * @param startColor - The starting text shadow color (default yellow glow)
+ * @param endColor - The ending text shadow color (default red glow)
  * @returns Animation configuration object with animate and transition properties
  */
 export const createPulsatingAnimation = (
   isClient: boolean,
   intensity: number = 1.2,
-  duration: number = 2
+  duration: number = 2,
+  startColor: string = '0 0 8px rgba(255, 255, 0, 0.7)', // Yellow glow
+  endColor: string = '0 0 12px rgba(255, 0, 0, 0.9)' // Red glow
 ) => {
   return {
     animate: isClient
       ? {
           scale: [1, intensity, 1],
+          textShadow: [startColor, endColor, startColor],
         }
-      : { scale: 1 },
+      : { scale: 1, textShadow: 'none' },
     transition: {
       duration,
       repeat: Infinity,
