@@ -8,6 +8,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
 import { motion } from 'framer-motion';
 import { createFlowAnimation, createPercentageAnimation } from '@/utils/animationUtils';
+import GradientBorder from '@/components/ui/GradientBorder';
 import { useState, useEffect } from 'react';
 
 // Props types
@@ -168,7 +169,8 @@ export default function CTA() {
 
   return (
     <Section id="cta" ariaLabel="Call to action section">
-
+      <GradientBorder />
+      
       <Container className="flex flex-col justify-center items-center lg:flex-row lg:justify-between">
         <WaitlistPromotionPanel openWaitlist={openWaitlist} />
         <PerfumeFormulaCard />

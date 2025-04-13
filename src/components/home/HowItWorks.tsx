@@ -28,7 +28,7 @@ const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) =
         </div>
         
         {/* Right column - Custom content for each step */}
-        <div className="flex items-stretch justify-center p-0 md:w-1/4 bg-gray-900/40">
+        <div className="flex items-stretch justify-center p-0 md:w-1/4 bg-transparent">
           <div className="w-full h-full flex items-center justify-center p-2">
             {step === 1 && (
               <div className="w-full h-full">
