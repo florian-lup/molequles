@@ -18,9 +18,9 @@ interface BenefitCardProps {
 // Benefit card component
 const BenefitCard: FC<BenefitCardProps> = ({ title, description, tags, className }) => {
   return (
-    <div className={`bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col ${className || ''}`}>
+    <div className={`bg-gray-900/40 rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col ${className || ''}`}>
       <div className="mb-2 xs:mb-3 sm:mb-4 md:mb-5 flex items-center justify-between border-b border-gray-700/50 pb-1.5 flex-wrap gap-2">
-        <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white truncate mr-2">{title}</h3>
+        <h3 className="text-sm lg:text-base font-semibold text-white truncate mr-2">{title}</h3>
         <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
           {tags.map((tag, i) => (
             <Tag key={i} text={tag.text} colorIndex={tag.colorIndex as 0 | 1 | 2} />
@@ -95,7 +95,7 @@ export default function Benefits() {
     >
       <GradientBorder />
       
-      <Container className="flex flex-col items-center w-full">
+      <Container className="flex flex-col justify-center items-center">
         {/* Header section */}
         <div className="text-left w-full mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
           <div className="mb-2 xs:mb-3 sm:mb-4">

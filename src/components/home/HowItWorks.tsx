@@ -6,14 +6,6 @@ import GradientBorder from '@/components/ui/GradientBorder';
 import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 
-// Define colors for each step
-const stepColors = [
-  'bg-cyan-500/20 border-cyan-400 text-cyan-400', // Step 1
-  'bg-teal-500/20 border-teal-400 text-teal-400',     // Step 2
-  'bg-pink-500/20 border-pink-400 text-pink-400',     // Step 3
-  // Add more colors if needed
-];
-
 interface StepProps {
   step: number;
   title: string;
@@ -23,20 +15,59 @@ interface StepProps {
 
 // Timeline style step component with connecting elements
 const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) => {
-  // Select color based on step number (use fallback for safety)
-  const colorClass = stepColors[step - 1] || 'bg-gray-500/20 border-gray-500 text-gray-500'; 
-  
   return (
-    <div className="relative flex flex-col items-center">
-      {/* Step number bubble */}
-      <div className={`w-8 h-8 md:w-12 md:h-12 rounded-full ${colorClass} border-2 flex items-center justify-center font-bold text-sm md:text-base mb-4 z-10`}>
-        {step}
-      </div>
-      
-      {/* Content */}
-      <div className="text-center px-4">
-        <h3 className="text-base xs:text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-2">{title}</h3>
-        <p className="text-xs xs:text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed">{description}</p>
+    <div className="w-full mb-8 border border-gray-800 rounded-lg overflow-hidden">
+      <div className="flex flex-col md:flex-row">
+        {/* Left column - Content */}
+        <div className="p-6 md:w-3/4">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-xs bg-gray-800 text-white px-2 py-1 rounded">Step {step}</span>
+            <h3 className="text-base xs:text-lg sm:text-xl lg:text-2xl font-semibold text-white">{title}</h3>
+          </div>
+          <p className="text-xs xs:text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed">{description}</p>
+        </div>
+        
+        {/* Right column - Custom content for each step */}
+        <div className="flex items-stretch justify-center p-0 md:w-1/4 bg-gray-900/40">
+          <div className="w-full h-full flex items-center justify-center p-2">
+            {step === 1 && (
+              <div className="w-full h-full">
+                <div className="grid grid-cols-2 gap-3 h-full">
+                  <div className="bg-blue-900/30 rounded p-3 flex flex-col justify-center">
+                    <div className="text-xs text-white mb-1">pH Level</div>
+                    <div className="text-base font-medium text-white">5.5</div>
+                  </div>
+                  <div className="bg-blue-900/30 rounded p-3 flex flex-col justify-center">
+                    <div className="text-xs text-white mb-1">Moisture</div>
+                    <div className="text-base font-medium text-white">65%</div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {step === 2 && (
+              <div className="w-full h-full bg-indigo-900/30 rounded p-3 flex flex-col justify-center">
+                <div className="text-xs text-white mb-2">Compatibility</div>
+                <div className="flex items-center">
+                  <div className="w-full bg-gray-700 rounded-full h-2.5">
+                    <div className="bg-indigo-400 h-2.5 rounded-full" style={{ width: '87%' }}></div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {step === 3 && (
+              <div className="w-full h-full bg-teal-900/30 rounded p-3 flex flex-col justify-center">
+                <div className="text-xs text-white mb-2">Top Ingredients</div>
+                <div className="flex flex-wrap gap-1.5 justify-start mt-1">
+                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Jasmine</span>
+                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Bergamot</span>
+                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Vanilla</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -56,7 +87,7 @@ const steps = [
   },
   {
     step: 3,
-    title: "Creating Scent Profile",
+    title: "Creating Your Scent",
     description: "We craft your unique perfume using the AI-recommended ingredients.",
   },
 ];
@@ -64,7 +95,7 @@ const steps = [
 // Steps list component
 const StepsList = () => {
   return (
-    <div className="w-full mx-auto flex flex-col md:flex-row items-center justify-center gap-16 md:gap-10 mt-4">
+    <div className="w-full mx-auto flex flex-col gap-4 mt-8">
       {steps.map((step, index) => (
         <StepItem
           key={index}
@@ -89,7 +120,7 @@ export default function HowItWorks() {
       
       <Container className="flex flex-col justify-center items-center">
         {/* Header section */}
-        <div className="text-center w-full mb-4">
+        <div className="text-left w-full mb-4">
           <div className="mb-2">
             <Badge>The Process</Badge>
           </div>
@@ -97,9 +128,6 @@ export default function HowItWorks() {
             From skin data collection and AI analysis to personalized scent creation.
           </h3>
         </div>
-
-        {/* Divider */}
-        <div className="w-full border-t border-gray-700 my-5"></div>
 
         {/* Steps list */}
         <StepsList />
