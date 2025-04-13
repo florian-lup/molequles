@@ -128,15 +128,15 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
               <Badge>Join Our Waitlist</Badge>
             </div>
             
-            <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-2 xs:mb-3 leading-tight text-white text-center">
+            <h2 className="text-xl md:text-2xl font-bold mb-2 xs:mb-3 leading-tight text-white text-center">
               Be First to Experience{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
                 Molequles
               </span>
             </h2>
             
-            <p className="text-sm xs:text-base text-gray-300 mb-5 xs:mb-6 sm:mb-7 text-center">
-              Join our exclusive waitlist to be among the first to experience our personalized perfume technology.
+            <p className="text-xs md:text-sm text-gray-300 mb-5 xs:mb-6 sm:mb-7 text-center">
+              Join the waitlist to be among the first to experience our personalized perfume technology.
             </p>
             
             {/* Decorative elements */}
@@ -156,7 +156,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="bg-gray-800/50 border border-gray-700/50 text-white text-sm rounded-lg block w-full pl-10 p-2.5 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 placeholder-gray-400"
+                      className="bg-gray-800/50 border border-gray-700/50 text-white text-sm rounded-lg block w-full pl-10 p-2.5 focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 placeholder-gray-400 text-[16px]"
                       placeholder="your-email@example.com"
                       required
                     />
@@ -192,11 +192,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                   </p>
                 </div>
               )}
-              
-              <p className="text-xs text-gray-400 mt-4 text-center">
-                By joining, you agree to receive updates about our products.
-                We'll never spam or share your email.
-              </p>
+
             </form>
           </motion.div>
         </div>
