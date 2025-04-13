@@ -4,7 +4,10 @@ import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
 import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
+import Container from '@/components/ui/layout/Container';
+import Section from '@/components/ui/layout/Section';
 
+// Type definitions
 interface BenefitCardProps {
   title: string;
   description: string;
@@ -12,6 +15,7 @@ interface BenefitCardProps {
   className?: string;
 }
 
+// Benefit card component
 const BenefitCard: FC<BenefitCardProps> = ({ title, description, tags, className }) => {
   return (
     <div className={`bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 xs:p-4 sm:p-5 md:p-6 border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col ${className || ''}`}>
@@ -25,6 +29,24 @@ const BenefitCard: FC<BenefitCardProps> = ({ title, description, tags, className
       </div>
       
       <p className="text-xs xs:text-sm sm:text-base text-gray-400 leading-relaxed mb-3 xs:mb-4 flex-grow">{description}</p>
+    </div>
+  );
+};
+
+// Benefits grid component
+const BenefitsGrid = () => {
+  return (
+    <div className="w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        {benefits.map((benefit, index) => (
+          <BenefitCard
+            key={index}
+            title={benefit.title}
+            description={benefit.description}
+            tags={benefit.tags}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -67,40 +89,26 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section
+    <Section
       id="benefits" 
-      className="bg-gray-950 relative w-full min-h-[550px] flex items-center justify-center overflow-hidden py-12 xs:py-16 sm:py-20 md:py-24"
-      aria-label="Benefits section"
+      ariaLabel="Benefits section"
     >
       <GradientBorder />
       
-      <div className="mx-auto max-w-7xl w-full px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center w-full">
-          {/* Header section */}
-          <div className="text-left w-full mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-            <div className="mb-2 xs:mb-3 sm:mb-4">
-              <Badge>Why Molequles</Badge>
-            </div>
-            <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl text-white mb-2 xs:mb-3 leading-relaxed">
-              Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
-            </h3>
+      <Container className="flex flex-col items-center w-full">
+        {/* Header section */}
+        <div className="text-left w-full mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+          <div className="mb-2 xs:mb-3 sm:mb-4">
+            <Badge>Why Molequles</Badge>
           </div>
-
-          {/* Benefits Section */}
-          <div className="w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-              {benefits.map((benefit, index) => (
-                <BenefitCard
-                  key={index}
-                  title={benefit.title}
-                  description={benefit.description}
-                  tags={benefit.tags}
-                />
-              ))}
-            </div>
-          </div>
+          <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl text-white mb-2 xs:mb-3 leading-relaxed">
+            Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
+          </h3>
         </div>
-      </div>
-    </section>
+
+        {/* Benefits Grid */}
+        <BenefitsGrid />
+      </Container>
+    </Section>
   );
 }
