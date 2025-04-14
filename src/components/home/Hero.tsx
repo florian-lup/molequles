@@ -1,171 +1,85 @@
 'use client';
 
 // Core imports and dependencies
-import Button from '@/components/ui/Button';
-import Container from '@/components/ui/layout/Container';
-import GradientBorder from '@/components/ui/GradientBorder';
-import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import { motion } from 'framer-motion';
+import ProductFeaturesPanel from '@/components/ui/ProductFeaturesPanel';
+import { GiMolecule } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
-import { createPercentageAnimation, createBarAnimation } from '@/utils/animationUtils';
 
 // Type definitions
 interface WaitlistCtaProps {
   openWaitlist: () => void;
 }
 
-// Marketing message component with CTA button
-const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => (
-  <div className="w-full lg:max-w-lg text-left mb-10 lg:mb-0">
-    {/* Headline with gradient text */}
-    <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight text-white">
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-        Scientifically
-      </span>{' '}
-      <br className="hidden lg:block" />
-      Crafted Scents
-    </h1>
-    <p className="text-lg md:text-2xl lg:text-2xl text-gray-300 mb-2 md:mb-3 lg:mb-4 leading-relaxed">
-      Personalized fragrances engineered with AI technology for your skin chemistry.
-    </p>
-
-    <div>
-      <Button
-        variant="neon"
-        size="md"
-        shape="pill"
-        icon={<FiArrowRight />}
-        iconPosition="right"
-        onClick={openWaitlist}
-      >
-        Join Waitlist
-      </Button>
-    </div>
-  </div>
-);
-
-// Displays skin chemistry metrics with animated percentage counters
-const SkinChemistryDisplay = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  // Enable animations only after client-side hydration
+// Scientific marketing message component with CTA button
+const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {
+  const [, setIsClient] = useState(false);
+  
   useEffect(() => {
     setIsClient(true);
   }, []);
   
-  // Skin chemistry metrics data
-  const metrics = [
-    { value: 44, label: "Hydration", bgColorClass: "bg-cyan-900/30", textColorClass: "text-cyan-400" },
-    { value: 55, label: "pH Level", bgColorClass: "bg-amber-900/30", textColorClass: "text-amber-400" },
-    { value: 40, label: "Sebum", bgColorClass: "bg-rose-900/30", textColorClass: "text-rose-400" }
-  ];
-
   return (
-    <div className="mb-10 lg:mb-6">
-      <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-        <span className="mr-1.5 md:mr-2 text-sm md:text-base">🧪</span>
-        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-          Skin Chemistry
-        </h3>
+    <div className="w-full lg:max-w-lg text-left mb-6 md:mb-8 lg:mb-0">
+      {/* Headline with laboratory-inspired styling */}
+      <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight">
+        <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+          Scientifically
+        </span>{' '}
+        <br className="hidden lg:block" />
+        <span className="text-gray-100">Crafted Scents</span>
+      </h1>
+      
+      <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-4 md:mb-5 lg:mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-3 md:pl-4">
+        Personalized fragrances engineered with AI technology for your skin chemistry.
+      </p>
+
+      {/* Scientific credibility badge without animation */}
+      <div className="flex items-center gap-2 mb-6 p-2 rounded-lg bg-gray-900/60 border border-gray-800 w-fit">
+        <div className="flex gap-1">
+          <GiMolecule className="text-cyan-400 h-5 w-5" />
+        </div>
+        <span className="text-xs text-gray-300 font-light">
+          <span className="text-cyan-400 font-mono">100%</span> Unique AI-generated formula composition
+        </span>
       </div>
-      <div className="grid grid-cols-3 gap-2 md:gap-3">
-        {metrics.map((metric, index) => {
-          const { animation, count, rounded } = createPercentageAnimation(isClient, metric.value);
-          
-          return (
-            <div key={index} className={`${metric.bgColorClass} rounded-lg p-1.5 md:p-2 text-center`}>
-              <motion.div
-                animate={animation.animate}
-                transition={animation.transition}
-                onUpdate={(latest) => {
-                  if (typeof latest.number === 'number') {
-                    count.set(latest.number);
-                  }
-                }}
-                className={`text-base md:text-lg font-bold ${metric.textColorClass}`}
-              >
-                <motion.span>{rounded}</motion.span>%
-              </motion.div>
-              <div className="text-xs md:text-sm text-gray-400">{metric.label}</div>
-            </div>
-          );
-        })}
+
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
+        <button 
+          onClick={openWaitlist}
+          className="inline-flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 font-medium text-sm md:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full hover:from-cyan-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg shadow-cyan-500/25 transition-all duration-200 cursor-pointer"
+        >
+          Join Waitlist
+          <FiArrowRight size={16} className="md:hidden" />
+          <FiArrowRight size={18} className="hidden md:block" />
+        </button>
+        <span className="text-xs text-cyan-600 font-mono sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
       </div>
     </div>
   );
 };
-
-// Displays scent profile with animated progress bars
-const ScentProfileDisplay = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  // Enable animations only after client-side hydration
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-  
-  // Scent profile data
-  const profiles = [
-    { label: "Citrus", value: 68, barColorClass: "bg-yellow-400" },
-    { label: "Floral", value: 55, barColorClass: "bg-pink-400" },
-    { label: "Musk", value: 66, barColorClass: "bg-purple-400" }
-  ];
-
-  return (
-    <div>
-      <div className="flex items-center mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-        <span className="mr-1.5 md:mr-2 text-sm md:text-base">🌸</span>
-        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-          Scent Profile
-        </h3>
-      </div>
-      <div className="space-y-2">
-        {profiles.map((profile, index) => {
-          const animation = createBarAnimation(isClient, profile.value, profile.barColorClass);
-          
-          return (
-            <div key={index} className="flex items-center w-full">
-              <span className="font-sans text-xs md:text-sm text-white/90 w-[60px] md:w-[70px] flex-shrink-0 font-medium">
-                {profile.label}
-              </span>
-              <div className="relative w-full h-1.5 md:h-2 flex-grow ml-2 md:ml-3 overflow-hidden rounded-md">
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-800/70 to-gray-700/50" />
-                <motion.div
-                  className={animation.className}
-                  animate={animation.animate}
-                  transition={animation.transition}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-// Container for skin chemistry and scent profile displays
-const ProductFeaturesPanel = () => (
-  <div className="w-full lg:max-w-md bg-gray-900/40 backdrop-blur-sm rounded-xl p-5 border border-gray-800/50">
-    <SkinChemistryDisplay />
-    <ScentProfileDisplay />
-  </div>
-);
 
 // Main hero section combining marketing message and product features
 export default function Hero() {
   const { openWaitlist } = useWaitlist();
 
   return (
-    <Section id="hero" ariaLabel="Hero section">
-      <GradientBorder />
-
-      <Container className="flex flex-col justify-center items-center lg:flex-row lg:justify-between">
-        <MarketingMessagePanel openWaitlist={openWaitlist} />
-        <ProductFeaturesPanel />
-      </Container>
-    </Section>
+    <section 
+      id="hero" 
+      aria-label="Hero section" 
+      className="bg-gradient-to-b from-gray-950 to-gray-900 relative py-8 sm:py-12 md:py-16 lg:py-20"
+    >
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between py-2 md:py-4">
+          <MarketingMessagePanel openWaitlist={openWaitlist} />
+          <div className="w-full lg:max-w-lg">
+            <ProductFeaturesPanel />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
+

@@ -110,7 +110,7 @@ const Section = ({
   children,
   fullScreen = true,
   background = 'bg-gray-950',
-  showParticles = true,
+  showParticles = false,
 }: SectionProps) => {
   return (
     <section

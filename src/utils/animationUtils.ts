@@ -6,45 +6,6 @@ import { useMotionValue, useTransform } from 'framer-motion';
 import { useEffect, useState, useCallback } from 'react';
 
 /**
- * Creates animation configuration for progress bars
- * @param isClient - Whether client-side rendering is active
- * @param value - The percentage value (0-100)
- * @param color - CSS class for the color
- * @returns Animation configuration object
- */
-export const createBarAnimation = (
-  isClient: boolean,
-  value: number,
-  color: string = ''
-) => {
-  // Ensure value is between 0-100
-  const clampedValue = Math.max(0, Math.min(100, value));
-
-  return {
-    className: `absolute inset-y-0 left-0 h-full ${color} rounded-md`,
-    animate: isClient
-      ? {
-          width: [
-            `${clampedValue * 0.2}%`,
-            `${clampedValue}%`,
-            `${clampedValue * 0.5}%`,
-            `${clampedValue * 0.8}%`,
-            `${clampedValue * 0.4}%`,
-            `${clampedValue * 0.6}%`,
-          ],
-        }
-      : { width: 0 },
-    transition: {
-      duration: 8,
-      times: [0, 0.3, 0.5, 0.7, 0.85, 1],
-      repeat: Infinity,
-      ease: 'easeInOut',
-      repeatType: 'loop' as const,
-    },
-  };
-};
-
-/**
  * Creates animation configuration for percentage cards
  * @param isClient - Whether client-side rendering is active
  * @param value - The percentage value
@@ -175,7 +136,7 @@ export const createSequentialHighlight = (
 };
 
 /**
- * Creates an animation for fluid/filling level that continuously rises and falls
+ * Delete This. Creates an animation for fluid/filling level that continuously rises and falls
  * @param minPercentage - The minimum fill percentage (0-100)
  * @param maxPercentage - The maximum fill percentage (0-100)
  * @param duration - Animation duration in seconds for one cycle (min to max and back to min)
@@ -198,6 +159,45 @@ export const createFlowAnimation = (
   return {
     animate: {
       height: [
+        `${actualMin}%`,
+        `${actualMax}%`,
+        `${actualMin}%`,
+      ],
+    },
+    transition: {
+      duration,
+      times: [0, 0.5, 1], // Min at 0%, Max at 50%, Min again at 100% of duration
+      repeat: Infinity,
+      repeatType: 'loop' as const,
+      ease: "easeInOut",
+    },
+  };
+};
+
+/**
+ * Creates an animation for horizontal fluid/filling level that continuously rises and falls
+ * @param minPercentage - The minimum fill percentage (0-100)
+ * @param maxPercentage - The maximum fill percentage (0-100)
+ * @param duration - Animation duration in seconds for one cycle (min to max and back to min)
+ * @returns Animation configuration object with animate and transition properties
+ */
+export const createHorizontalFlowAnimation = (
+  minPercentage: number,
+  maxPercentage: number,
+  duration: number = 8 // Default duration for a full cycle
+) => {
+  // Clamp values to be within 0-100
+  const clampedMin = Math.max(0, Math.min(100, minPercentage));
+  const clampedMax = Math.max(0, Math.min(100, maxPercentage));
+
+  // Ensure min is less than max
+  const actualMin = Math.min(clampedMin, clampedMax);
+  const actualMax = Math.max(clampedMin, clampedMax);
+
+  // Create the animation configuration for a smooth min -> max -> min oscillation
+  return {
+    animate: {
+      width: [
         `${actualMin}%`,
         `${actualMax}%`,
         `${actualMin}%`,

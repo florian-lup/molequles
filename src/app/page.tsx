@@ -1,6 +1,5 @@
 import Header from "@/components/layout/Header";
 import Hero from "@/components/home/Hero";
-import Problem from "@/components/home/Problem";
 import Solution from "@/components/home/Solution";
 import Benefits from "@/components/home/Benefits";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -20,7 +19,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Problem />
         <Solution />
         <Benefits />
         <HowItWorks />
