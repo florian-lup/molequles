@@ -1,14 +1,12 @@
 'use client';
 
 import Badge from '@/components/ui/Badge';
-import GradientBorder from '@/components/ui/GradientBorder';
 import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 import { createSequentialHighlight } from '@/utils/animationUtils';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiArrowRight } from 'react-icons/hi';
-import { div } from 'framer-motion/client';
 
 // Props types
 // Empty interface removed
@@ -149,8 +147,6 @@ export default function Solution() {
       id="solution" 
       ariaLabel="Solution section"
     >
-      <GradientBorder />
-      
       <Container className="flex flex-col justify-center items-center">
           {/* Header section */}
           <div className="text-left w-full mb-4">

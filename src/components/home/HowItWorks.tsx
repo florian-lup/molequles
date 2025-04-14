@@ -2,7 +2,6 @@
 
 import { FC } from 'react';
 import Badge from '@/components/ui/Badge';
-import GradientBorder from '@/components/ui/GradientBorder';
 import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
 
@@ -116,8 +115,6 @@ export default function HowItWorks() {
       id="how-it-works" 
       ariaLabel="How it works section"
     >
-      <GradientBorder />
-      
       <Container className="flex flex-col justify-center items-center">
         {/* Header section */}
         <div className="text-left w-full mb-4">

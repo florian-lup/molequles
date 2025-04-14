@@ -1,7 +1,6 @@
 'use client';
 
 import Badge from '@/components/ui/Badge';
-import GradientBorder from '@/components/ui/GradientBorder';
 import Tag from '@/components/ui/Tag';
 import Container from '@/components/ui/layout/Container';
 import Section from '@/components/ui/layout/Section';
@@ -98,8 +97,6 @@ export default function Problem() {
       id="problem" 
       ariaLabel="Problem section"
     >
-      <GradientBorder />
-      
       <Container className="flex flex-col justify-center items-center">
         {/* Header section */}
         <div className="text-left w-full mb-4">
