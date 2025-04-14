@@ -1,72 +1,77 @@
 'use client';
 
-import { FC } from 'react';
-import Badge from '@/components/ui/Badge';
-import Container from '@/components/ui/layout/Container';
-import Section from '@/components/ui/layout/Section';
+import { GiMolecule, GiMicroscope, GiChemicalDrop, GiTestTubes } from 'react-icons/gi';
+import { useEffect, useState } from 'react';
 
-interface StepProps {
-  step: number;
-  title: string;
-  description: string;
-  isLast?: boolean;
-}
-
-// Timeline style step component with connecting elements
-const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) => {
+const HowItWorksContent = () => {
+  const [, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
   return (
-    <div className="w-full mb-8 border border-gray-800 rounded-lg overflow-hidden">
-      <div className="flex flex-col md:flex-row">
-        {/* Left column - Content */}
-        <div className="p-6 md:w-3/4">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-xs bg-gray-800 text-white px-2 py-1 rounded">Step {step}</span>
-            <h3 className="text-base xs:text-lg sm:text-xl lg:text-2xl font-semibold text-white">{title}</h3>
+    <div className="w-full text-left grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+      {/* Left Column - Main Content */}
+      <div className="max-w-xl">
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+            The Process
+          </span>{' '}
+          <span className="text-gray-100">Behind The Scent</span>
+        </h2>
+        
+        <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-4">
+          From analysis to creation, our scientific approach ensures your perfume perfectly matches your unique skin chemistry.
+        </p>
+        
+        <div className="mt-8 hidden md:block">
+          <div className="inline-block py-1 px-2 bg-gray-800/50 rounded text-xs font-mono text-gray-400 border border-gray-700">
+            <span className="text-cyan-400">99.8%</span> molecular precision
           </div>
-          <p className="text-xs xs:text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed">{description}</p>
+        </div>
+      </div>
+      
+      {/* Right Column - Scientific Process Timeline */}
+      <div className="relative">
+        <div className="absolute left-3.5 top-0 h-full w-px bg-gradient-to-b from-cyan-500 via-blue-500 to-indigo-500"></div>
+        
+        {/* Step 1 */}
+        <div className="relative pl-10 pb-8">
+          <div className="absolute left-0 w-7 h-7 rounded-full bg-gray-900 border-2 border-cyan-500 flex items-center justify-center">
+            <GiMicroscope className="text-cyan-400" size={16} />
+          </div>
+          <h3 className="text-base md:text-lg lg:text-xl font-medium text-cyan-400">Step 1: Collecting Skin Data</h3>
+          <p className="text-sm md:text-base text-gray-400 mt-1">
+            Visit a local dermatologist to identify your unique skin parameters.
+          </p>
         </div>
         
-        {/* Right column - Custom content for each step */}
-        <div className="flex items-stretch justify-center p-0 md:w-1/4 bg-transparent">
-          <div className="w-full h-full flex items-center justify-center p-2">
-            {step === 1 && (
-              <div className="w-full h-full">
-                <div className="grid grid-cols-2 gap-3 h-full">
-                  <div className="bg-blue-900/30 rounded p-3 flex flex-col items-center justify-center">
-                    <div className="text-xs text-white mb-1">pH Level</div>
-                    <div className="text-base font-medium text-white">5.5</div>
-                  </div>
-                  <div className="bg-blue-900/30 rounded p-3 flex flex-col items-center justify-center">
-                    <div className="text-xs text-white mb-1">Moisture</div>
-                    <div className="text-base font-medium text-white">65%</div>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {step === 2 && (
-              <div className="w-full h-full bg-indigo-900/30 rounded p-3 flex flex-col justify-center">
-                <div className="text-xs text-white mb-2">Compatibility</div>
-                <div className="flex items-center gap-2">
-                  <div className="w-full bg-gray-700 rounded-full h-2.5">
-                    <div className="bg-indigo-400 h-2.5 rounded-full" style={{ width: '87%' }}></div>
-                  </div>
-                  <span className="text-xs text-white">87%</span>
-                </div>
-              </div>
-            )}
-            
-            {step === 3 && (
-              <div className="w-full h-full bg-teal-900/30 rounded p-3 flex flex-col justify-center">
-                <div className="text-xs text-white mb-2">Top Ingredients</div>
-                <div className="flex flex-wrap gap-1.5 justify-start mt-1">
-                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Jasmine</span>
-                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Bergamot</span>
-                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Vanilla</span>
-                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Amber</span>
-                </div>
-              </div>
-            )}
+        {/* Step 2 */}
+        <div className="relative pl-10 pb-8">
+          <div className="absolute left-0 w-7 h-7 rounded-full bg-gray-900 border-2 border-blue-500 flex items-center justify-center">
+            <GiMolecule className="text-blue-400" size={16} />
+          </div>
+          <h3 className="text-base md:text-lg lg:text-xl font-medium text-blue-400">Step 2: AI-Powered Analysis</h3>
+          <p className="text-sm md:text-base text-gray-400 mt-1">
+            Our AI interprets your data and predicts the ideal ingredient blend.
+          </p>
+        </div>
+        
+        {/* Step 3 */}
+        <div className="relative pl-10">
+          <div className="absolute left-0 w-7 h-7 rounded-full bg-gray-900 border-2 border-indigo-500 flex items-center justify-center">
+            <GiTestTubes className="text-indigo-400" size={16} />
+          </div>
+          <h3 className="text-base md:text-lg lg:text-xl font-medium text-indigo-400">Step 3: Creating Your Scent</h3>
+          <p className="text-sm md:text-base text-gray-400 mt-1">
+            We craft your unique perfume using the AI-recommended ingredients.
+          </p>
+        </div>
+        
+        <div className="mt-5 ml-10 md:hidden">
+          <div className="inline-block py-1 px-2 bg-gray-800/50 rounded text-[10px] md:text-xs font-mono text-gray-400 border border-gray-700">
+            <span className="text-cyan-400">99.8%</span> molecular precision
           </div>
         </div>
       </div>
@@ -74,63 +79,16 @@ const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) =
   );
 };
 
-// Define steps data
-const steps = [
-  {
-    step: 1,
-    title: "Collecting Skin Data",
-    description: "Visit a local dermatologist to identify your unique skin parameters.",
-  },
-  {
-    step: 2,
-    title: "AI-Powered Analysis",
-    description: "Our AI interprets your data and predicts the ideal ingredient blend.",
-  },
-  {
-    step: 3,
-    title: "Creating Your Scent",
-    description: "We craft your unique perfume using the AI-recommended ingredients.",
-  },
-];
-
-// Steps list component
-const StepsList = () => {
-  return (
-    <div className="w-full mx-auto flex flex-col gap-4 mt-8">
-      {steps.map((step, index) => (
-        <StepItem
-          key={index}
-          title={step.title}
-          description={step.description}
-          step={step.step}
-          isLast={index === steps.length - 1}
-        />
-      ))}
-    </div>
-  );
-};
-
-// Main HowItWorks component
 export default function HowItWorks() {
   return (
-    <Section 
+    <section 
       id="how-it-works" 
-      ariaLabel="How it works section"
+      aria-label="How it works section" 
+      className="bg-gradient-to-b from-gray-950 to-gray-900 relative py-12 md:py-16 lg:py-20"
     >
-      <Container className="flex flex-col justify-center items-center">
-        {/* Header section */}
-        <div className="text-left w-full mb-4">
-          <div className="mb-2">
-            <Badge>The Process</Badge>
-          </div>
-          <h3 className="text-base md:text-2xl text-white leading-relaxed">
-            From skin data collection and AI analysis to personalized scent creation.
-          </h3>
-        </div>
-
-        {/* Steps list */}
-        <StepsList />
-      </Container>
-    </Section>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <HowItWorksContent />
+      </div>
+    </section>
   );
 }
