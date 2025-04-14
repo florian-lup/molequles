@@ -1,94 +1,117 @@
 'use client';
 
-import { FC } from 'react';
-import Badge from '@/components/ui/Badge';
-import Container from '@/components/ui/layout/Container';
-import Section from '@/components/ui/layout/Section';
+import { GiTestTubes, GiChemicalDrop } from 'react-icons/gi';
+import { FiCheck } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
+import { IconType } from 'react-icons';
 
-// Type definitions
-interface PricingTierProps {
+interface PricingCardProps {
   title: string;
   price: string;
   description: string;
   features: string[];
-  primary?: boolean;
+  icon: IconType;
+  iconColor: string;
+  gradient: string;
+  isPopular?: boolean;
 }
 
-// Pricing tier component
-const PricingTier: FC<PricingTierProps> = ({ title, price, description, features, primary = false }) => {
+const PricingCard = ({ 
+  title, 
+  price, 
+  description, 
+  features, 
+  icon: Icon, 
+  iconColor,
+  gradient, 
+  isPopular = false 
+}: PricingCardProps) => {
   return (
-    <div className={`${primary ? 'bg-indigo-900/30 border-indigo-700/50' : 'bg-gray-900/40 border-gray-800/50'} 
-      rounded-xl p-4 sm:p-6 md:p-8 border hover:border-gray-700/70 transition-all duration-300 
-      hover:shadow-lg hover:shadow-indigo-500/10 h-full flex flex-col`}
-    >
-      <div className="mb-3 sm:mb-4 md:mb-6 border-b border-gray-700/50 pb-3 sm:pb-5">
-        <div className="text-sm text-gray-400 mb-1">{title}</div>
-        <div className="flex items-baseline">
-          <span className={`text-2xl sm:text-3xl md:text-4xl font-bold ${primary ? 'text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400' : 'text-white'}`}>{price}</span>
-          {price !== 'Free' && <span className="text-sm text-gray-400 ml-1">/bottle</span>}
-        </div>
-        <p className="text-sm sm:text-base text-gray-400 mt-3">{description}</p>
+    <div className={`bg-gray-900/60 border border-gray-800 rounded-lg p-6 hover:bg-gray-800/60 transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-cyan-400' : ''}`}>
+      <div className="flex items-center gap-2 mb-3">
+        <Icon className={`${iconColor} h-6 w-6`} />
+        <h3 className={`text-xl font-medium text-transparent bg-clip-text ${gradient}`}>
+          {title}
+        </h3>
       </div>
       
-      <div className="flex-grow">
-        <ul className="space-y-3">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <svg className={`w-5 h-5 ${primary ? 'text-indigo-400' : 'text-gray-400'} mr-2 mt-0.5 flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <span className="text-sm sm:text-base text-gray-300">{feature}</span>
-            </li>
-          ))}
-        </ul>
+      <div className="mb-4">
+        <span className="text-2xl md:text-3xl font-bold text-gray-100">{price}</span>
+        {title === "Full Size" && <span className="text-gray-400 text-sm ml-1">/bottle</span>}
       </div>
+      
+      <p className="text-gray-300 font-light text-sm md:text-base mb-5">
+        {description}
+      </p>
+      
+      <ul className="space-y-3">
+        {features.map((feature: string, index: number) => (
+          <li key={index} className="flex items-start gap-2">
+            <FiCheck className="text-cyan-400 mt-1 h-4 w-4 flex-shrink-0" />
+            <span className="text-gray-300 text-sm">{feature}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-// Define pricing tiers
-const pricingTiers = [
-  {
-    title: "Sample",
-    price: "Free",
-    description: "Try our personalized fragrance approach with a small sample size.",
-    features: [
-      "2ml sample size",
-      "1 skin analysis",
-      "1 unique AI-generated formula",
-      "7-day satisfaction guarantee"
-    ]
-  },
-  {
-    title: "Full Size",
-    price: "$150",
-    description: "Experience your perfect signature scent in a premium full-size bottle.",
-    features: [
-      "50ml premium bottle",
-      "Comprehensive skin analysis",
-      "Advanced AI formula optimization",
-      "Luxury gift packaging",
-      "30-day satisfaction guarantee"
-    ],
-    primary: true
-  }
-];
-
-// PricingGrid component
-const PricingGrid = () => {
+const PricingContent = () => {
+  const [, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
-        {pricingTiers.map((tier, index) => (
-          <PricingTier
-            key={index}
-            title={tier.title}
-            price={tier.price}
-            description={tier.description}
-            features={tier.features}
-            primary={tier.primary}
-          />
-        ))}
+    <div className="w-full text-left">
+      <div className="max-w-2xl mb-10">
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+            Signature
+          </span>{' '}
+          <span className="text-gray-100">Scent Packages</span>
+        </h2>
+        
+        <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-4 max-w-2xl">
+          Choose between a free sample to experience our AI-driven approach or commit to a full-size signature fragrance.
+        </p>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-6 mt-10">
+        {/* Sample Tier */}
+        <PricingCard
+          title="Sample"
+          price="Free"
+          description="Try our personalized fragrance approach with a small sample size."
+          features={[
+            "2ml sample size",
+            "1 skin analysis",
+            "1 unique AI-generated formula",
+            "7-day satisfaction guarantee"
+          ]}
+          icon={GiTestTubes}
+          iconColor="text-cyan-400"
+          gradient="bg-gradient-to-r from-cyan-400 to-blue-500"
+        />
+        
+        {/* Full Size Tier */}
+        <PricingCard
+          title="Full Size"
+          price="$150"
+          description="Experience your perfect signature scent in a premium full-size bottle."
+          features={[
+            "50ml premium bottle",
+            "Comprehensive skin analysis",
+            "Advanced AI formula optimization",
+            "Luxury gift packaging",
+            "30-day satisfaction guarantee"
+          ]}
+          icon={GiChemicalDrop}
+          iconColor="text-blue-400"
+          gradient="bg-gradient-to-r from-blue-400 to-indigo-500"
+          isPopular={true}
+        />
       </div>
     </div>
   );
@@ -96,28 +119,14 @@ const PricingGrid = () => {
 
 export default function Pricing() {
   return (
-    <Section 
+    <section 
       id="pricing" 
-      ariaLabel="Pricing section"
-    >      
-      <Container className="flex flex-col justify-center items-center">
-        {/* Header section */}
-        <div className="text-left w-full mb-6 sm:mb-10 md:mb-12">
-            <Badge>Pricing</Badge>
-          <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-2 leading-relaxed">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-              Personalized perfumes
-            </span>{' '}
-            that match your unique skin chemistry.
-          </h3>
-          <p className="text-sm sm:text-base text-gray-400">
-            Choose between a free sample to experience our AI-driven approach or commit to a full-size signature fragrance.
-          </p>
-        </div>
-
-        {/* Pricing Grid */}
-        <PricingGrid />
-      </Container>
-    </Section>
+      aria-label="Pricing section" 
+      className="bg-gradient-to-b from-gray-900 to-gray-950 relative py-12 md:py-16 lg:py-20"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <PricingContent />
+      </div>
+    </section>
   );
-} 
+}
