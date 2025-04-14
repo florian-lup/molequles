@@ -32,11 +32,11 @@ const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) =
             {step === 1 && (
               <div className="w-full h-full">
                 <div className="grid grid-cols-2 gap-3 h-full">
-                  <div className="bg-blue-900/30 rounded p-3 flex flex-col justify-center">
+                  <div className="bg-blue-900/30 rounded p-3 flex flex-col items-center justify-center">
                     <div className="text-xs text-white mb-1">pH Level</div>
                     <div className="text-base font-medium text-white">5.5</div>
                   </div>
-                  <div className="bg-blue-900/30 rounded p-3 flex flex-col justify-center">
+                  <div className="bg-blue-900/30 rounded p-3 flex flex-col items-center justify-center">
                     <div className="text-xs text-white mb-1">Moisture</div>
                     <div className="text-base font-medium text-white">65%</div>
                   </div>
@@ -47,10 +47,11 @@ const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) =
             {step === 2 && (
               <div className="w-full h-full bg-indigo-900/30 rounded p-3 flex flex-col justify-center">
                 <div className="text-xs text-white mb-2">Compatibility</div>
-                <div className="flex items-center">
+                <div className="flex items-center gap-2">
                   <div className="w-full bg-gray-700 rounded-full h-2.5">
                     <div className="bg-indigo-400 h-2.5 rounded-full" style={{ width: '87%' }}></div>
                   </div>
+                  <span className="text-xs text-white">87%</span>
                 </div>
               </div>
             )}
@@ -62,6 +63,7 @@ const StepItem: FC<StepProps> = ({ title, description, step, isLast = false }) =
                   <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Jasmine</span>
                   <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Bergamot</span>
                   <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Vanilla</span>
+                  <span className="text-xs bg-teal-500/30 text-white px-2 py-1 rounded">Amber</span>
                 </div>
               </div>
             )}
