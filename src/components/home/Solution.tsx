@@ -1,166 +1,74 @@
 'use client';
 
-import Badge from '@/components/ui/Badge';
-import Container from '@/components/ui/layout/Container';
-import Section from '@/components/ui/layout/Section';
-import { createSequentialHighlight } from '@/utils/animationUtils';
+import { GiMolecule } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { HiArrowRight } from 'react-icons/hi';
 
-// Props types
-// Empty interface removed
-
-// Perfume ingredients list component
-const PerfumeIngredientsList = () => {
-  // Check if we're on the client side
-  const [isClient, setIsClient] = useState(false);
+const SolutionContent = () => {
+  const [, setIsClient] = useState(false);
+  
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  // Sample perfume ingredients with their characteristics (reduced to 4)
-  const ingredients = [
-    { name: "Bergamot", description: "Fresh, uplifting top note", emoji: "🍊" },
-    { name: "Jasmine", description: "Rich, sweet middle note", emoji: "🌸" },
-    { name: "Sandalwood", description: "Warm, creamy base note", emoji: "🪵" },
-    { name: "Amber", description: "Warm, powdery base note", emoji: "✨" }
-  ];
-
-  // Apply the sequential highlight animation
-  const { getItemProps: getIngredientItemProps, getTextProps: getIngredientTextProps } = createSequentialHighlight(
-    isClient,
-    ingredients.length,
-    'bg-rose-900/30',
-    'text-rose-400'
-  );
-
+  
   return (
-    <div className="h-full flex flex-col">
-      <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
-        <span className="mr-2 text-base md:text-lg">🌿</span>
-        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-          Ingredient Compatibility
-        </h3>
+    <div className="w-full text-left">
+      <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+          Beyond Traditional
+        </span>{' '}
+        <span className="text-gray-100">Perfumery</span>
+      </h2>
+      
+      <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-3 md:pl-4 max-w-2xl">
+        Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
+      </p>
+      
+      <div className="p-3 bg-gray-900/40 rounded-lg border border-gray-800 mb-4 max-w-2xl">
+        <div className="flex gap-2 items-center">
+          <GiMolecule className="text-cyan-400 h-6 w-6" />
+          <p className="text-gray-200 text-sm font-light">
+            Our AI analyzes thousands of molecular combinations to create your perfect scent profile
+          </p>
+        </div>
       </div>
       
-      <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
-        {ingredients.map((ingredient, index) => {
-          const { className, ...animationProps } = getIngredientItemProps(index);
-          const textClassName = `text-xs md:text-sm ${getIngredientTextProps(index).className}`;
-          return (
-            <motion.div 
-              key={index}
-              className={className}
-              {...animationProps}
-            >
-              <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{ingredient.emoji} {ingredient.name}</span>
-              <p className={textClassName}>{ingredient.description}</p>
-            </motion.div>
-          );
-        })}
+      <div className="grid md:grid-cols-2 gap-6 mt-8 max-w-4xl">
+        <div className="bg-gray-900/60 border border-gray-800 rounded-lg p-5 hover:bg-gray-800/60 transition-all duration-200">
+          <h3 className="text-xl font-medium mb-3">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              Scientifically Crafted
+            </span>
+          </h3>
+          <p className="text-gray-300 font-light border-l-2 border-cyan-500 pl-3">
+            Using cutting-edge AI algorithms to analyze molecular compatibility with your skin chemistry.
+          </p>
+        </div>
+        
+        <div className="bg-gray-900/60 border border-gray-800 rounded-lg p-5 hover:bg-gray-800/60 transition-all duration-200">
+          <h3 className="text-xl font-medium mb-3">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+              Personalized Performance
+            </span>
+          </h3>
+          <p className="text-gray-300 font-light border-l-2 border-cyan-500 pl-3">
+            Fragrances that adapt to your body's chemistry for optimal scent expression throughout the day.
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
-// Skin characteristics component
-const SkinCharacteristicsList = () => {
-  // Check if we're on the client side
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Sample skin characteristics with descriptions
-  const characteristics = [
-    { name: "pH Level", description: "Affects longevity", emoji: "🔬" },
-    { name: "Temperature", description: "Influences evaporation", emoji: "🌡️" },
-    { name: "Sebum", description: "Impacts diffusion", emoji: "🫧" },
-    { name: "Moisture", description: "Alters development", emoji: "💧" }
-  ];
-
-  // Apply the sequential highlight animation
-  const { getItemProps: getSkinItemProps, getTextProps: getSkinTextProps } = createSequentialHighlight(
-    isClient,
-    characteristics.length,
-    'bg-amber-900/30',
-    'text-amber-400'
-  );
-
-  return (
-    <div className="h-full flex flex-col">
-      <div className="flex items-center mb-3 border-b border-gray-700/50 pb-1.5">
-        <span className="mr-2 text-base md:text-lg">🧪</span>
-        <h3 className="text-xs md:text-sm font-semibold text-gray-300 uppercase tracking-wide">
-          Skin Characteristics
-        </h3>
-      </div>
-      
-      <div className="grid grid-cols-2 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4 flex-grow">
-        {characteristics.map((characteristic, index) => {
-          const { className, ...animationProps } = getSkinItemProps(index);
-          const textClassName = `text-xs md:text-sm italic ${getSkinTextProps(index).className}`;
-          return (
-            <motion.div
-              key={index}
-              className={className}
-              {...animationProps}
-            >
-              <span className="text-sm md:text-base font-medium text-white mb-1 md:mb-1.5">{characteristic.emoji} {characteristic.name}</span>
-              <p className={textClassName}>{characteristic.description}</p>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-// Main solution card component
-const SolutionCard = () => (
-  <div className="w-full">
-    {/* Use grid layout: 3 cols on lg, 1 col on mobile */}
-    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-10 items-center">
-      {/* Column 1: Skin Characteristics List */}
-      <div className="lg:order-1">
-        <SkinCharacteristicsList />
-      </div>
-
-      {/* Column 2: Central Separator/Graphic (visible on all screens) */}
-      <div className="flex justify-center items-center h-full lg:order-2">
-        <HiArrowRight className="w-8 h-8 text-gray-600 transform rotate-90 lg:rotate-0" />
-      </div>
-
-      {/* Column 3: Perfume Ingredients List */}
-      <div className="lg:order-3">
-        <PerfumeIngredientsList />
-      </div>
-    </div>
-  </div>
-);
-
-// Main solution section
 export default function Solution() {
   return (
-    <Section 
+    <section 
       id="solution" 
-      ariaLabel="Solution section"
+      aria-label="Solution section" 
+      className="bg-gradient-to-b from-gray-900 to-gray-950 relative py-12 md:py-16 lg:py-20"
     >
-      <Container className="flex flex-col justify-center items-center">
-          {/* Header section */}
-          <div className="text-left w-full mb-4">
-            <div className="mb-2">
-              <Badge>Our Approach</Badge>
-            </div>
-            <h3 className="text-base md:text-2xl text-white mb-3 leading-relaxed">
-              We use AI to analyze your unique skin characteristics alongside various fragrance molecules, and determine which ingredients best complement your chemistry.
-            </h3>
-          </div>
-
-          {/* Main content */}
-          <SolutionCard />
-      </Container>
-    </Section>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SolutionContent />
+      </div>
+    </section>
   );
 }
