@@ -1,7 +1,6 @@
 import Header from "@/components/layout/Header";
 import Hero from "@/components/home/Hero";
 import Solution from "@/components/home/Solution";
-import Benefits from "@/components/home/Benefits";
 import HowItWorks from "@/components/home/HowItWorks";
 import Pricing from "@/components/home/Pricing";
 import CTA from "@/components/home/CTA";
@@ -20,7 +19,6 @@ export default function Home() {
       <main>
         <Hero />
         <Solution />
-        <Benefits />
         <HowItWorks />
         <Pricing />
         <CTA />
