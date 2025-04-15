@@ -1,180 +1,218 @@
 'use client';
 
-// Imports
-import Button from '@/components/ui/Button';
-import Container from '@/components/ui/layout/Container';
-import Section from '@/components/ui/layout/Section';
 import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { createFlowAnimation, createPercentageAnimation } from '@/utils/animationUtils';
-import GradientBorder from '@/components/ui/GradientBorder';
-import { useState, useEffect } from 'react';
+import { TbFlask, TbDroplet, TbTemperature, TbCircleHalf, TbPlant, TbLeaf, TbAtom } from 'react-icons/tb';
 
-// Props types
-interface WaitlistCtaProps {
-  openWaitlist: () => void;
-}
-
-interface PerfumeFormulaCardProps {}
-
-// Marketing content and CTA section
-const WaitlistPromotionPanel = ({ openWaitlist }: WaitlistCtaProps) => (
-  <div className="w-full lg:max-w-lg text-left mb-10 lg:mb-0">
-    {/* Headline with gradient text */}
-    <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight text-white">
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-        Discover Your
-      </span>{' '}
-      <br className="hidden lg:block" />
-      Signature Scent
-    </h2>
-    <p className="text-lg md:text-2xl lg:text-2xl text-gray-300 mb-2 md:mb-3 lg:mb-4 leading-relaxed">
-      Join the waitlist for early access to our personalized perfume technology.
-    </p>
-    <div>
-      <Button
-        variant="neon"
-        size="md"
-        shape="pill"
-        icon={<FiArrowRight />}
-        iconPosition="right"
-        onClick={openWaitlist}
-      >
-        Join Waitlist
-      </Button>
-    </div>
-  </div>
-);
-
-// Formula card header
-const FormulaCardHeader = () => (
-  <div className="flex items-center justify-between mb-2 md:mb-3 border-b border-gray-700/50 pb-1 md:pb-1.5">
-    <div className="flex items-center">
-      <h3 className="text-xs md:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-        Molequles
-      </h3>
-    </div>
-    <span className="text-xs px-2 py-0.5 rounded-full bg-gray-800/50 text-gray-300 border border-gray-700/50">
-      BETA
-    </span>
-  </div>
-);
-
-// Cylinder component representing scent composition
-const NoteCylinder = () => {
-  // Animate between 30% and 75%
-  const flowAnimation = createFlowAnimation(30, 75, 8); // min 30%, max 75%, duration 8s
+// CTA content panel component
+const CTAMessagePanel = () => {
+  const { openWaitlist } = useWaitlist();
   
   return (
-    <div className="relative h-full w-1.5 rounded-full overflow-hidden bg-gray-700/30">
-      <motion.div 
-        className="absolute w-full bottom-0 left-0 rounded-full"
-        style={{ 
-          background: 'linear-gradient(to top, #fbbf24, #f472b6, #60a5fa)'
-        }}
-        {...flowAnimation}
-      />
+    <div className="w-full lg:max-w-lg text-left mb-8 lg:mb-0">
+      {/* Headline with gradient styling */}
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+        <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+          Discover Your
+        </span>{' '}
+        <br className="hidden sm:block" />
+        <span className="text-gray-100">Signature Scent</span>
+      </h2>
+      
+      <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-3 md:pl-4">
+        Join the waitlist for early access to our personalized perfume technology.
+      </p>
+
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
+        <button 
+          onClick={openWaitlist}
+          className="inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 font-medium text-sm md:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full hover:from-cyan-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg shadow-cyan-500/25 transition-all duration-200 cursor-pointer"
+        >
+          Join Waitlist
+          <FiArrowRight size={16} className="md:hidden" />
+          <FiArrowRight size={18} className="hidden md:block" />
+        </button>
+        <span className="text-xs text-cyan-600 font-mono sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
+      </div>
     </div>
   );
 };
 
-// Scent components grid display
-const IngredientList = () => {
-  // Client-side check for animations
+// Visual panel showing skin parameters and ingredients
+const SkinParametersPanel = () => {
   const [isClient, setIsClient] = useState(false);
+  
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Note data with type, color, and numeric value
-  const notes = [
-    { 
-      type: "Top Notes", 
-      colorClass: "text-blue-400", 
-      value: 25, // Changed from percentage: "25%"
-      ingredients: "Citrus, Bergamot, Lavender" 
-    },
-    { 
-      type: "Middle Notes", 
-      colorClass: "text-pink-400", 
-      value: 60, // Changed from percentage: "60%"
-      ingredients: "Rose, Jasmine, Spice" 
-    },
-    { 
-      type: "Base Notes", 
-      colorClass: "text-amber-400", 
-      value: 40, // Changed from percentage: "40%"
-      ingredients: "Sandalwood, Vanilla, Musk" 
-    }
-  ];
-
   return (
-    <div>
-
-      <div className="flex gap-3 md:gap-4">
-        <div className="flex flex-col gap-2 md:gap-3 flex-1">
-          {notes.map((note, index) => {
-            // Use note.value directly for animation
-            // Destructure correctly: animation object, count motion value, rounded motion value
-            const { animation, count, rounded } = createPercentageAnimation(isClient, note.value); // Pass note.value directly
-
-            return (
-              <div key={index} className="bg-gray-800/50 rounded-lg p-2 md:p-3">
-                <div className="flex justify-between items-center mb-1">
-                  <span className={`text-xs md:text-sm font-medium ${note.colorClass}`}>{note.type}</span>
-                  {/* Animated percentage */}
-                  <motion.span 
-                    className={`text-xs md:text-sm ${note.colorClass}`}
-                    // Apply animation properties directly from the animation object
-                    animate={animation.animate} 
-                    transition={animation.transition}
-                    // Use the separate 'count' motion value in onUpdate
-                    onUpdate={(latest) => {
-                      if (typeof latest.number === 'number') {
-                        count.set(latest.number); // Use count directly
-                      }
-                    }}
-                  >
-                    {/* Wrap rounded value in motion.span and add % outside */}
-                    <motion.span>{rounded}</motion.span>%
-                  </motion.span>
-                </div>
-                <p className="text-xs text-gray-400">{note.ingredients}</p>
-              </div>
-            );
-          })}
+    <div className="w-full bg-gray-900/80 backdrop-blur-sm rounded-xl p-5 border border-cyan-900/30 shadow-inner shadow-cyan-500/5">
+      {/* Skin Parameters Section */}
+      <div className="mb-6">
+        <div className="flex items-center mb-3 border-b border-cyan-900/50 pb-2">
+          <div className="mr-2 text-cyan-500">
+            <TbFlask size={18} />
+          </div>
+          <h3 className="text-xs md:text-sm font-mono font-semibold text-cyan-400 uppercase tracking-wide">
+            Your Skin Parameters
+          </h3>
         </div>
         
-        {/* Cylinder positioned to the right */}
-        <div className="flex items-center">
-          <NoteCylinder />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+          {/* Sebum */}
+          <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-2 text-center">
+            <div className="flex justify-center text-cyan-500 mb-1">
+              <TbDroplet size={16} />
+            </div>
+            <div className="text-base font-bold text-cyan-400">
+              <span>75</span>
+              <span className="text-xs font-normal"> μg</span>
+            </div>
+            <div className="text-xs text-gray-400">Sebum</div>
+          </div>
+
+          {/* Temperature */}
+          <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-2 text-center">
+            <div className="flex justify-center text-blue-500 mb-1">
+              <TbTemperature size={16} />
+            </div>
+            <div className="text-base font-bold text-blue-400">
+              <span>33</span>
+              <span className="text-xs font-normal"> °C</span>
+            </div>
+            <div className="text-xs text-gray-400">Temp</div>
+          </div>
+
+          {/* pH Level */}
+          <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-2 text-center">
+            <div className="flex justify-center text-indigo-500 mb-1">
+              <TbAtom size={16} />
+            </div>
+            <div className="text-base font-bold text-indigo-400">
+              <span className="text-xs font-normal">~</span>
+              <span>5.5</span>
+            </div>
+            <div className="text-xs text-gray-400">pH Level</div>
+          </div>
+
+          {/* Hydration */}
+          <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-2 text-center">
+            <div className="flex justify-center text-cyan-500 mb-1">
+              <TbCircleHalf size={16} />
+            </div>
+            <div className="text-base font-bold text-cyan-400">
+              <span>60</span>
+              <span className="text-xs font-normal"> AU</span>
+            </div>
+            <div className="text-xs text-gray-400">Hydration</div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Ingredients Section */}
+      <div>
+        <div className="flex items-center mb-3 border-b border-cyan-900/50 pb-2">
+          <div className="mr-2 text-indigo-500">
+            <TbPlant size={18} />
+          </div>
+          <h3 className="text-xs md:text-sm font-mono font-semibold text-indigo-400 uppercase tracking-wide">
+            Key Ingredients
+          </h3>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-lg p-3 border border-cyan-900/30">
+            <div className="flex items-start gap-3">
+              <div className="bg-cyan-500/20 rounded-full p-2 mt-1">
+                <TbLeaf size={18} className="text-cyan-400" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-cyan-400 font-semibold">Bergamot</div>
+                  <div className="text-xs text-cyan-500 font-mono">35%</div>
+                </div>
+                <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
+                  <div className="bg-gradient-to-r from-cyan-500 to-cyan-400 h-full rounded-full" style={{ width: '35%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 rounded-lg p-3 border border-blue-900/30">
+            <div className="flex items-start gap-3">
+              <div className="bg-blue-500/20 rounded-full p-2 mt-1">
+                <TbLeaf size={18} className="text-blue-400" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-blue-400 font-semibold">Neroli</div>
+                  <div className="text-xs text-blue-500 font-mono">28%</div>
+                </div>
+                <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
+                  <div className="bg-gradient-to-r from-blue-500 to-blue-400 h-full rounded-full" style={{ width: '28%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-indigo-900/20 to-purple-900/20 rounded-lg p-3 border border-indigo-900/30">
+            <div className="flex items-start gap-3">
+              <div className="bg-indigo-500/20 rounded-full p-2 mt-1">
+                <TbLeaf size={18} className="text-indigo-400" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-indigo-400 font-semibold">Amber</div>
+                  <div className="text-xs text-indigo-500 font-mono">22%</div>
+                </div>
+                <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
+                  <div className="bg-gradient-to-r from-indigo-500 to-indigo-400 h-full rounded-full" style={{ width: '22%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-lg p-3 border border-purple-900/30">
+            <div className="flex items-start gap-3">
+              <div className="bg-purple-500/20 rounded-full p-2 mt-1">
+                <TbLeaf size={18} className="text-purple-400" />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-purple-400 font-semibold">Sandalwood</div>
+                  <div className="text-xs text-purple-500 font-mono">15%</div>
+                </div>
+                <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
+                  <div className="bg-gradient-to-r from-purple-500 to-purple-400 h-full rounded-full" style={{ width: '15%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-// Formula card panel component
-const PerfumeFormulaCard = ({}: PerfumeFormulaCardProps) => (
-  <div className="w-full lg:max-w-md bg-gray-900/40 backdrop-blur-sm rounded-xl p-3 md:p-4 lg:p-5 border border-gray-800/50">
-    <FormulaCardHeader />
-    <IngredientList />
-  </div>
-);
-
 // Main CTA section
 export default function CTA() {
-  const { openWaitlist } = useWaitlist();
-
   return (
-    <Section id="cta" ariaLabel="Call to action section">
-      <GradientBorder />
-      
-      <Container className="flex flex-col justify-center items-center lg:flex-row lg:justify-between">
-        <WaitlistPromotionPanel openWaitlist={openWaitlist} />
-        <PerfumeFormulaCard />
-      </Container>
-    </Section>
+    <section 
+      id="cta" 
+      aria-label="Call to action section" 
+      className="relative py-16 md:py-20 lg:py-24"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between py-2 md:py-4">
+          <CTAMessagePanel />
+          <div className="w-full lg:max-w-lg">
+            <SkinParametersPanel />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

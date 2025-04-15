@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { createPercentageAnimation, createHorizontalFlowAnimation } from '@/utils/animationUtils';
+import { createPercentageAnimation, createFlowAnimation } from '@/utils/animationUtils';
 import { TbFlask, TbAtom, TbTemperature, TbDroplet, TbCircleHalf, TbRulerMeasure } from 'react-icons/tb';
 
 // Displays skin chemistry metrics with animated values
@@ -129,9 +129,9 @@ const FragranceNotesDisplay = () => {
   }, []);
   
   // Create flow animations for each note
-  const topNoteAnimation = createHorizontalFlowAnimation(50, 80, 8);
-  const midNoteAnimation = createHorizontalFlowAnimation(60, 90, 10);
-  const baseNoteAnimation = createHorizontalFlowAnimation(40, 70, 12);
+  const topNoteAnimation = createFlowAnimation(50, 80, 8);
+  const midNoteAnimation = createFlowAnimation(60, 90, 10);
+  const baseNoteAnimation = createFlowAnimation(40, 70, 12);
   
   return (
     <div>
