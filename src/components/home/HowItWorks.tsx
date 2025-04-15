@@ -2,6 +2,7 @@
 
 import { GiMolecule, GiMicroscope, GiChemicalDrop, GiTestTubes } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
+import Tag from '@/components/ui/Tag';
 
 const HowItWorksContent = () => {
   const [, setIsClient] = useState(false);
@@ -26,9 +27,7 @@ const HowItWorksContent = () => {
         </p>
         
         <div className="mt-8 hidden md:block">
-          <div className="inline-block py-1 px-2 bg-gray-800/50 rounded text-xs font-mono text-gray-400 border border-gray-700">
-            <span className="text-cyan-400">99.8%</span> molecular precision
-          </div>
+          <Tag highlight="99.8%" text="molecular precision" />
         </div>
       </div>
       
@@ -70,9 +69,7 @@ const HowItWorksContent = () => {
         </div>
         
         <div className="mt-5 ml-10 md:hidden">
-          <div className="inline-block py-1 px-2 bg-gray-800/50 rounded text-[10px] md:text-xs font-mono text-gray-400 border border-gray-700">
-            <span className="text-cyan-400">99.8%</span> molecular precision
-          </div>
+          <Tag highlight="99.8%" text="molecular precision" size="sm" />
         </div>
       </div>
     </div>

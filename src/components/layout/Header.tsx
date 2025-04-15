@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { useWaitlist } from '@/contexts/WaitlistContext';
 import { useRouter } from 'next/navigation';
+import { GiMolecule } from 'react-icons/gi';
+import Button from '@/components/ui/Button';
+import { useWaitlist } from '@/contexts/WaitlistContext';
 
 // Define types for the navigation items
 type NavigationItem = {
@@ -18,13 +17,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { openWaitlist } = useWaitlist();
   const router = useRouter();
-
+  
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navigation: NavigationItem[] = [
-    { name: 'Home', href: '#hero' },
     { name: 'Solution', href: '#solution' },
-    { name: 'Benefits', href: '#benefits' },
     { name: 'How It Works', href: '#how-it-works' },
     { name: 'Pricing', href: '#pricing' },
   ];
@@ -52,104 +49,51 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full z-50 py-4 bg-gray-950 backdrop-blur-lg">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+    <header 
+      className="sticky top-0 left-0 w-full z-40 "
+    >
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
+        <div className="bg-gray-950 flex items-center justify-between p-4 rounded-full border border-cyan-900/30">
           {/* Logo */}
           <Link 
             href="/" 
-            className="relative z-10 flex items-center"
+            className="flex items-center"
+            onClick={() => setIsMenuOpen(false)}
           >
-            <div className="flex items-center">
-              <Image 
-                src="/icons/molequles-logo.svg" 
-                alt="Molequles Logo" 
-                width={25} 
-                height={25} 
-              />
-              <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-indigo-400 to-cyan-400">
-                Molequles
-              </span>
-            </div>
+            <GiMolecule className="text-cyan-400 h-6 w-6 mr-2" />
+            <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
+              Molequles
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
-            {navigation.map((item) => (
-              <a 
-                key={item.name} 
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors cursor-pointer"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button 
-              variant="neon"
-              size="sm"
-              shape="pill"
-              onClick={openWaitlist}
-            >
-              Join Waitlist
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none"
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <FiX className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <FiMenu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 w-full shadow-lg">
-          <div className="pt-2 pb-4 bg-gray-950/90 backdrop-blur-lg border-t border-gray-800">
-            <div className="px-4 space-y-1 max-h-[calc(100vh-10rem)] overflow-y-auto">
+          <div className="flex items-center">
+            {/* Desktop Navigation - hidden on mobile */}
+            <nav className="hidden md:flex items-center space-x-8 mr-6">
               {navigation.map((item) => (
-                <a
+                <a 
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="block px-3 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-md transition-colors duration-150 cursor-pointer"
+                  className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   {item.name}
                 </a>
               ))}
-              
-              <div className="pt-4 border-t border-gray-800 mt-3">
-                <Button
-                  variant="neon"
-                  shape="pill"
-                  fullWidth
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    openWaitlist();
-                  }}
-                >
-                  Join Waitlist
-                </Button>
-              </div>
-            </div>
+            </nav>
+
+            {/* Waitlist Button - visible on all screen sizes */}
+            <Button
+              onClick={openWaitlist}
+              size="sm"
+              rightIcon
+            >
+              Join Waitlist
+            </Button>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Mobile Menu - Removed in favor of direct waitlist button */}
     </header>
   );
-} 
+}

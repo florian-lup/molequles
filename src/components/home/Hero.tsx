@@ -1,11 +1,12 @@
 'use client';
 
 // Core imports and dependencies
-import { FiArrowRight } from 'react-icons/fi';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import ProductFeaturesPanel from '@/components/ui/ProductFeaturesPanel';
+import ProductFeaturesPanel from '@/components/ui/HeroFeatures';
 import { GiMolecule } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
+import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 // Type definitions
 interface WaitlistCtaProps {
@@ -35,25 +36,22 @@ const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {
         Personalized fragrances engineered with AI technology for your skin chemistry.
       </p>
 
-      {/* Scientific credibility badge without animation */}
-      <div className="flex items-center gap-2 mb-6 p-2 rounded-lg bg-gray-900/60 border border-gray-800 w-fit">
-        <div className="flex gap-1">
-          <GiMolecule className="text-cyan-400 h-5 w-5" />
-        </div>
-        <span className="text-xs text-gray-300 font-light">
-          <span className="text-cyan-400 font-mono">100%</span> Unique AI-generated formula composition
-        </span>
-      </div>
+      {/* Scientific credibility badge */}
+      <Badge
+        icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
+        highlight="100%"
+        text="Unique AI-generated formula composition"
+        className="mb-6"
+      />
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
-        <button 
+        <Button 
           onClick={openWaitlist}
-          className="inline-flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3 font-medium text-sm md:text-base text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full hover:from-cyan-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg shadow-cyan-500/25 transition-all duration-200 cursor-pointer"
+          size="md"
+          rightIcon
         >
           Join Waitlist
-          <FiArrowRight size={16} className="md:hidden" />
-          <FiArrowRight size={18} className="hidden md:block" />
-        </button>
+        </Button>
         <span className="text-xs text-cyan-600 font-mono sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
       </div>
     </div>

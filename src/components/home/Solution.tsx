@@ -2,6 +2,7 @@
 
 import { GiMolecule, GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
+import Badge from '@/components/ui/Badge';
 
 const SolutionContent = () => {
   const [, setIsClient] = useState(false);
@@ -24,14 +25,11 @@ const SolutionContent = () => {
           Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
         </p>
         
-        <div className="p-3 bg-gray-900/40 rounded-lg border border-gray-800 mb-4 max-w-2xl">
-          <div className="flex gap-2 items-center">
-            <GiMolecule className="text-cyan-400 h-6 w-6" />
-            <p className="text-gray-200 text-sm font-light">
-              Our AI analyzes your unique skin chemistry to create a personalized fragrance formula
-            </p>
-          </div>
-        </div>
+        <Badge 
+          icon={<GiMolecule className="text-cyan-400 h-6 w-6" />}
+          text="Our AI analyzes your unique skin chemistry to create a personalized fragrance formula"
+          className="mb-4 max-w-2xl"
+        />
       </div>
       
       <div className="grid md:grid-cols-3 gap-5 mt-10">
