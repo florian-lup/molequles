@@ -84,7 +84,7 @@ export default function HowItWorks() {
     <section 
       id="how-it-works" 
       aria-label="How it works section" 
-      className="bg-gradient-to-b from-gray-950 to-gray-900 relative py-12 md:py-16 lg:py-20"
+      className="relative py-12 md:py-16 lg:py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <HowItWorksContent />

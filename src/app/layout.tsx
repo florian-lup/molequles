@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased bg-gray-950 text-white overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased overflow-x-hidden`}>
         <WaitlistProvider>
           {children}
         </WaitlistProvider>

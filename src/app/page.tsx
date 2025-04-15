@@ -2,6 +2,7 @@ import Header from "@/components/layout/Header";
 import Hero from "@/components/home/Hero";
 import Solution from "@/components/home/Solution";
 import HowItWorks from "@/components/home/HowItWorks";
+import SkinInfluence from "@/components/home/SkinInfluence";
 import Pricing from "@/components/home/Pricing";
 import CTA from "@/components/home/CTA";
 import Footer from "@/components/layout/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <Solution />
         <HowItWorks />
+        <SkinInfluence />
         <Pricing />
         <CTA />
       </main>

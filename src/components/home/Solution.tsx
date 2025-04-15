@@ -83,7 +83,7 @@ export default function Solution() {
     <section 
       id="solution" 
       aria-label="Solution section" 
-      className="bg-gradient-to-b from-gray-900 to-gray-950 relative py-12 md:py-16 lg:py-20"
+      className="relative py-12 md:py-16 lg:py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SolutionContent />

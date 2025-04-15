@@ -68,7 +68,7 @@ export default function Hero() {
     <section 
       id="hero" 
       aria-label="Hero section" 
-      className="bg-gradient-to-b from-gray-950 to-gray-900 relative py-8 sm:py-12 md:py-16 lg:py-20"
+      className="relative py-8 sm:py-12 md:py-16 lg:py-20"
     >
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
