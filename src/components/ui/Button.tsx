@@ -8,6 +8,9 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   rightIcon?: boolean;
   className?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function Button({
@@ -17,6 +20,9 @@ export default function Button({
   size = 'md',
   rightIcon = false,
   className = '',
+  disabled = false,
+  loading = false,
+  type = 'button',
 }: ButtonProps) {
   // Base styles
   const baseStyles = "inline-flex items-center justify-center gap-2 font-medium text-white rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg shadow-cyan-500/25 transition-all duration-200 cursor-pointer";
@@ -34,12 +40,19 @@ export default function Button({
     lg: "px-8 py-4 text-base"
   };
   
-  const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+  const disabledStyles = disabled ? "opacity-60 cursor-not-allowed" : "";
+  
+  const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`;
 
   return (
-    <button onClick={onClick} className={combinedClassName}>
-      {children}
-      {rightIcon && (
+    <button 
+      onClick={onClick} 
+      className={combinedClassName}
+      disabled={disabled || loading}
+      type={type}
+    >
+      {loading ? "Loading..." : children}
+      {rightIcon && !loading && (
         <>
           <FiArrowRight size={16} className="md:hidden" />
           <FiArrowRight size={18} className="hidden md:block" />
