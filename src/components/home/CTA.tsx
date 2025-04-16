@@ -85,7 +85,7 @@ const IngredientsSection = () => {
               <div className="flex-1">
                 <div className="flex justify-between items-center">
                   <div className={`text-sm ${ingredient.textColor} font-semibold`}>{ingredient.name}</div>
-                  <div className={`text-xs ${ingredient.textColor} font-mono`}>{ingredient.percentage}%</div>
+                  <div className={`text-xs ${ingredient.textColor}`}>{ingredient.percentage}%</div>
                 </div>
                 <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
                   <div className={`bg-gradient-to-r ${ingredient.barGradient} h-full rounded-full`} style={{ width: `${ingredient.percentage}%` }}></div>
@@ -122,7 +122,7 @@ const CTAMessagePanel = () => {
     <div className="w-full lg:max-w-lg text-left mb-8 lg:mb-0">
       {/* Headline with gradient styling */}
       <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-        <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
           Discover Your
         </span>{' '}
         <br className="hidden sm:block" />
@@ -141,7 +141,7 @@ const CTAMessagePanel = () => {
         >
           Join Waitlist
         </Button>
-        <span className="text-xs text-cyan-600 font-mono text-center sm:text-left sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
+        <span className="text-xs text-cyan-600 text-center sm:text-left sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
       </div>
     </div>
   );

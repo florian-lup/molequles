@@ -23,7 +23,7 @@ export default function Footer() {
                 height={24} 
                 className="text-cyan-400 mr-2" 
               />
-              <h3 className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
+              <h3 className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
                 Molequles
               </h3>
             </div>
@@ -89,7 +89,7 @@ export default function Footer() {
           
           <div className="flex items-center space-x-2 order-1 md:order-2">
             <span className="text-xs text-gray-400 font-light">
-              <span className="text-cyan-500 font-mono">100%</span> Unique AI-generated formulas
+              <span className="text-cyan-500">100%</span> Unique AI-generated formulas
             </span>
           </div>
         </div>

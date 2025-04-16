@@ -26,7 +26,7 @@ const SkinChemistryDisplay = () => {
         <div className="mr-2 text-cyan-500">
           <TbFlask size={18} />
         </div>
-        <h3 className="text-xs md:text-sm font-mono font-semibold text-cyan-400 uppercase tracking-wide">
+        <h3 className="text-xs md:text-sm font-semibold text-cyan-400 uppercase tracking-wide">
           Skin Chemistry
         </h3>
       </div>
@@ -139,7 +139,7 @@ const FragranceNotesDisplay = () => {
         <div className="mr-2 text-indigo-500">
           <TbAtom size={18} />
         </div>
-        <h3 className="text-xs md:text-sm font-mono font-semibold text-indigo-400 uppercase tracking-wide">
+        <h3 className="text-xs md:text-sm font-semibold text-indigo-400 uppercase tracking-wide">
           Fragrance Profile
         </h3>
       </div>

@@ -125,7 +125,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
             </button>
             
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 leading-tight">
-              <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
                 Join Our
               </span>{' '}
               <span className="text-gray-100">Waitlist</span>
@@ -168,7 +168,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                     >
                       Join Waitlist
                     </Button>
-                    <span className="text-xs text-cyan-600 font-mono mt-2 text-center">Free Samples Available</span>
+                    <span className="text-xs text-cyan-600 mt-2 text-center">Free Samples Available</span>
                   </div>
                 </>
               ) : (

@@ -19,7 +19,7 @@ export default function Badge({
         {icon}
       </div>
       <span className="text-xs text-gray-300 font-light">
-        {highlight && <span className="text-cyan-400 font-mono">{highlight}</span>} {text}
+        {highlight && <span className="text-cyan-400">{highlight}</span>} {text}
       </span>
     </div>
   );

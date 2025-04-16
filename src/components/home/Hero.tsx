@@ -25,7 +25,7 @@ const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {
     <div className="w-full lg:max-w-lg text-left mb-6 md:mb-8 lg:mb-0">
       {/* Headline with laboratory-inspired styling */}
       <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 md:mb-3 lg:mb-4 leading-tight">
-        <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
           Scientifically
         </span>{' '}
         <br className="hidden lg:block" />
@@ -52,7 +52,7 @@ const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {
         >
           Join Waitlist
         </Button>
-        <span className="text-xs text-cyan-600 font-mono text-center sm:text-left sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
+        <span className="text-xs text-cyan-600 text-center sm:text-left sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
       </div>
     </div>
   );

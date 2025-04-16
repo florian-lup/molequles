@@ -66,7 +66,7 @@ export default function Header() {
               height={24}
               className="text-cyan-400 mr-2"
             />
-            <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
+            <span className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
               Molequles
             </span>
           </Link>
