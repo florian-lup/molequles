@@ -1,10 +1,9 @@
 'use client';
 
-import { GiMolecule, GiMicroscope, GiChemicalDrop, GiTestTubes } from 'react-icons/gi';
+import { GiMolecule, GiMicroscope, GiTestTubes } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import Badge from '@/components/ui/Badge';
 import FeaturesCard from '@/components/ui/FeaturesCard';
-import Image from 'next/image';
 
 const HowItWorksContent = () => {
   const [, setIsClient] = useState(false);
@@ -16,7 +15,7 @@ const HowItWorksContent = () => {
   return (
     <div className="w-full text-left">
       {/* Top Section - Main Content */}
-      <div className="max-w-xl mb-12">
+      <div className="max-w-2xl mb-10">
         <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
             The Science
@@ -28,13 +27,12 @@ const HowItWorksContent = () => {
           From analysis to creation, our scientific approach ensures your perfume perfectly matches your unique skin chemistry.
         </p>
         
-        <div className="my-8 block">
           <Badge 
             icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
             highlight="99.8%"
             text="we match your skin and raw ingredients with molecular precision"
+            className="mb-4 max-w-2xl"
           />
-        </div>
       </div>
       
       {/* Bottom Section - Steps */}

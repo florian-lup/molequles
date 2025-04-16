@@ -2,11 +2,11 @@ import Header from "@/components/layout/Header";
 import Hero from "@/components/home/Hero";
 import Solution from "@/components/home/Solution";
 import HowItWorks from "@/components/home/HowItWorks";
-import SkinInfluence from "@/components/home/SkinInfluence";
 import Pricing from "@/components/home/Pricing";
 import CTA from "@/components/home/CTA";
 import Footer from "@/components/layout/Footer";
 import { Metadata } from "next";
+import Facts from "@/components/home/Facts";
 
 export const metadata: Metadata = {
   title: "Molequles | AI-Powered Personalized Perfumes",
@@ -20,8 +20,8 @@ export default function Home() {
       <main>
         <Hero />
         <Solution />
+        <Facts />
         <HowItWorks />
-        <SkinInfluence />
         <Pricing />
         <CTA />
       </main>
@@ -29,3 +29,4 @@ export default function Home() {
     </div>
   );
 }
+

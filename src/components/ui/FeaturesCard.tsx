@@ -19,7 +19,6 @@ export default function FeaturesCard({
   iconColor = 'text-cyan-400',
   className = '',
 }: FeaturesCardProps) {
-  const iconClass = iconColor || 'text-cyan-400';
   
   return (
     <div className={`bg-gray-900/60 border border-gray-800 rounded-lg p-5 hover:bg-gray-800/60 transition-all duration-300 transform hover:-translate-y-1 ${className}`}>

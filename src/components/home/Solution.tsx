@@ -1,6 +1,6 @@
 'use client';
 
-import { GiMolecule, GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
+import { GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import Badge from '@/components/ui/Badge';
 import FeaturesCard from '@/components/ui/FeaturesCard';
@@ -27,8 +27,9 @@ const SolutionContent = () => {
         </p>
         
         <Badge 
-          icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
-          text="Our AI analyzes your unique skin chemistry to create a personalized fragrance formula"
+          icon={<GiShieldReflect className="text-cyan-400 h-5 w-5" />}
+          highlight="Our AI"
+          text="analyzes your unique skin chemistry to create a personalized fragrance formula"
           className="mb-4 max-w-2xl"
         />
       </div>

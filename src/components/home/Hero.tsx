@@ -2,8 +2,8 @@
 
 // Core imports and dependencies
 import { useWaitlist } from '@/contexts/WaitlistContext';
-import ProductFeaturesPanel from '@/components/ui/HeroFeatures';
-import { GiMolecule } from 'react-icons/gi';
+import ProductFeaturesPanel from '@/components/ui/HeroCard';
+import { GiMolecule, GiTestTubes } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
@@ -38,7 +38,7 @@ const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {
 
       {/* Scientific credibility badge */}
       <Badge
-        icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
+        icon={<GiTestTubes className="text-cyan-400 h-5 w-5" />}
         highlight="100%"
         text="Unique AI-generated formula composition"
         className="mb-6"
@@ -52,7 +52,7 @@ const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {
         >
           Join Waitlist
         </Button>
-        <span className="text-xs text-cyan-600 font-mono sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
+        <span className="text-xs text-cyan-600 font-mono text-center sm:text-left sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
       </div>
     </div>
   );

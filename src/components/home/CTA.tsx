@@ -5,6 +5,61 @@ import { useWaitlist } from '@/contexts/WaitlistContext';
 import Button from '@/components/ui/Button';
 import { TbFlask, TbPlant, TbLeaf } from 'react-icons/tb';
 
+// Ingredient data structure
+interface IngredientData {
+  name: string;
+  percentage: number;
+  bgGradient: string;
+  borderColor: string;
+  iconBg: string;
+  iconColor: string;
+  textColor: string;
+  barGradient: string;
+}
+
+const ingredientsData: IngredientData[] = [
+  {
+    name: 'Bergamot',
+    percentage: 35,
+    bgGradient: 'from-cyan-900/20 to-blue-900/20',
+    borderColor: 'border-cyan-900/30',
+    iconBg: 'bg-cyan-500/20',
+    iconColor: 'text-cyan-400',
+    textColor: 'text-cyan-400',
+    barGradient: 'from-cyan-500 to-cyan-400',
+  },
+  {
+    name: 'Neroli',
+    percentage: 28,
+    bgGradient: 'from-blue-900/20 to-indigo-900/20',
+    borderColor: 'border-blue-900/30',
+    iconBg: 'bg-blue-500/20',
+    iconColor: 'text-blue-400',
+    textColor: 'text-blue-400',
+    barGradient: 'from-blue-500 to-blue-400',
+  },
+  {
+    name: 'Amber',
+    percentage: 22,
+    bgGradient: 'from-indigo-900/20 to-purple-900/20',
+    borderColor: 'border-indigo-900/30',
+    iconBg: 'bg-indigo-500/20',
+    iconColor: 'text-indigo-400',
+    textColor: 'text-indigo-400',
+    barGradient: 'from-indigo-500 to-indigo-400',
+  },
+  {
+    name: 'Sandalwood',
+    percentage: 15,
+    bgGradient: 'from-purple-900/20 to-blue-900/20',
+    borderColor: 'border-purple-900/30',
+    iconBg: 'bg-purple-500/20',
+    iconColor: 'text-purple-400',
+    textColor: 'text-purple-400',
+    barGradient: 'from-purple-500 to-purple-400',
+  },
+];
+
 // Ingredients Section Component
 const IngredientsSection = () => {
   return (
@@ -30,73 +85,24 @@ const IngredientsSection = () => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-lg p-3 border border-cyan-900/30">
-          <div className="flex items-start gap-3">
-            <div className="bg-cyan-500/20 rounded-full p-2 mt-1">
-              <TbLeaf size={18} className="text-cyan-400" />
-            </div>
-            <div className="flex-1">
-              <div className="flex justify-between items-center">
-                <div className="text-sm text-cyan-400 font-semibold">Bergamot</div>
-                <div className="text-xs text-cyan-500 font-mono">35%</div>
+        {ingredientsData.map((ingredient, idx) => (
+          <div key={idx} className={`bg-gradient-to-r ${ingredient.bgGradient} rounded-lg p-3 border ${ingredient.borderColor}`}>
+            <div className="flex items-start gap-3">
+              <div className={`${ingredient.iconBg} rounded-full p-2 mt-1`}>
+                <TbLeaf size={18} className={ingredient.iconColor} />
               </div>
-              <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
-                <div className="bg-gradient-to-r from-cyan-500 to-cyan-400 h-full rounded-full" style={{ width: '35%' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 rounded-lg p-3 border border-blue-900/30">
-          <div className="flex items-start gap-3">
-            <div className="bg-blue-500/20 rounded-full p-2 mt-1">
-              <TbLeaf size={18} className="text-blue-400" />
-            </div>
-            <div className="flex-1">
-              <div className="flex justify-between items-center">
-                <div className="text-sm text-blue-400 font-semibold">Neroli</div>
-                <div className="text-xs text-blue-500 font-mono">28%</div>
-              </div>
-              <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-400 h-full rounded-full" style={{ width: '28%' }}></div>
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <div className={`text-sm ${ingredient.textColor} font-semibold`}>{ingredient.name}</div>
+                  <div className={`text-xs ${ingredient.textColor} font-mono`}>{ingredient.percentage}%</div>
+                </div>
+                <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
+                  <div className={`bg-gradient-to-r ${ingredient.barGradient} h-full rounded-full`} style={{ width: `${ingredient.percentage}%` }}></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div className="bg-gradient-to-r from-indigo-900/20 to-purple-900/20 rounded-lg p-3 border border-indigo-900/30">
-          <div className="flex items-start gap-3">
-            <div className="bg-indigo-500/20 rounded-full p-2 mt-1">
-              <TbLeaf size={18} className="text-indigo-400" />
-            </div>
-            <div className="flex-1">
-              <div className="flex justify-between items-center">
-                <div className="text-sm text-indigo-400 font-semibold">Amber</div>
-                <div className="text-xs text-indigo-500 font-mono">22%</div>
-              </div>
-              <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
-                <div className="bg-gradient-to-r from-indigo-500 to-indigo-400 h-full rounded-full" style={{ width: '22%' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-lg p-3 border border-purple-900/30">
-          <div className="flex items-start gap-3">
-            <div className="bg-purple-500/20 rounded-full p-2 mt-1">
-              <TbLeaf size={18} className="text-purple-400" />
-            </div>
-            <div className="flex-1">
-              <div className="flex justify-between items-center">
-                <div className="text-sm text-purple-400 font-semibold">Sandalwood</div>
-                <div className="text-xs text-purple-500 font-mono">15%</div>
-              </div>
-              <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
-                <div className="bg-gradient-to-r from-purple-500 to-purple-400 h-full rounded-full" style={{ width: '15%' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -144,7 +150,7 @@ const CTAMessagePanel = () => {
         >
           Join Waitlist
         </Button>
-        <span className="text-xs text-cyan-600 font-mono sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
+        <span className="text-xs text-cyan-600 font-mono text-center sm:text-left sm:ml-3 mt-2 sm:mt-0">Free Samples Available</span>
       </div>
     </div>
   );
