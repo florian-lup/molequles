@@ -27,7 +27,7 @@ const PricingCard = ({
   isPopular = false 
 }: PricingCardProps) => {
   return (
-    <div className={`bg-gray-900/60 border border-gray-800 rounded-lg p-6 hover:bg-gray-800/60 transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-cyan-400' : ''}`}>
+    <div className={`overflow-hidden rounded-xl shadow-xl border border-cyan-900/50 bg-gradient-to-b from-gray-900 to-gray-950 p-6 hover:bg-gray-800/50 transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-cyan-400' : ''}`}>
       <div className="flex items-center gap-2 mb-3">
         <Icon className={`${iconColor} h-6 w-6`} />
         <h3 className={`text-xl font-medium text-transparent bg-clip-text ${gradient}`}>
@@ -86,9 +86,8 @@ const PricingContent = () => {
           description="Try our personalized fragrance approach with a small sample size."
           features={[
             "2ml sample size",
-            "1 skin analysis",
+            "2 skin parameters",
             "1 unique AI-generated formula",
-            "7-day satisfaction guarantee"
           ]}
           icon={GiTestTubes}
           iconColor="text-cyan-400"
@@ -102,10 +101,8 @@ const PricingContent = () => {
           description="Experience your perfect signature scent in a premium full-size bottle."
           features={[
             "50ml premium bottle",
-            "Comprehensive skin analysis",
+            "4 skin parameters",
             "Advanced AI formula optimization",
-            "Luxury gift packaging",
-            "30-day satisfaction guarantee"
           ]}
           icon={GiChemicalDrop}
           iconColor="text-blue-400"
