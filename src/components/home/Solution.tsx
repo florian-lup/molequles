@@ -3,6 +3,7 @@
 import { GiMolecule, GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import Badge from '@/components/ui/Badge';
+import FeaturesCard from '@/components/ui/FeaturesCard';
 
 const SolutionContent = () => {
   const [, setIsClient] = useState(false);
@@ -26,7 +27,7 @@ const SolutionContent = () => {
         </p>
         
         <Badge 
-          icon={<GiMolecule className="text-cyan-400 h-6 w-6" />}
+          icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
           text="Our AI analyzes your unique skin chemistry to create a personalized fragrance formula"
           className="mb-4 max-w-2xl"
         />
@@ -34,43 +35,34 @@ const SolutionContent = () => {
       
       <div className="grid md:grid-cols-3 gap-5 mt-10">
         {/* Benefit 1 */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-lg p-5 hover:bg-gray-800/60 transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center gap-2 mb-3">
-            <GiHeartBeats className="text-cyan-400 h-6 w-6" />
-            <h3 className="text-base md:text-lg lg:text-xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Consistent Performance
-            </h3>
-          </div>
-          <p className="text-gray-300 font-light text-sm md:text-base">
-            Performs reliably throughout the day, maintaining its intended balance and longevity on your skin.
-          </p>
-        </div>
+        <FeaturesCard
+          icon={<GiHeartBeats className="h-6 w-6" />}
+          title="Consistent Performance"
+          description="Performs reliably throughout the day, maintaining its intended balance and longevity on your skin."
+          gradientFrom="cyan-400"
+          gradientTo="blue-500"
+          iconColor="text-cyan-400"
+        />
         
         {/* Benefit 2 */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-lg p-5 hover:bg-gray-800/60 transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center gap-2 mb-3">
-            <GiShieldReflect className="text-blue-400 h-6 w-6" />
-            <h3 className="text-base md:text-lg lg:text-xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
-              Reduced Allergy Risks
-            </h3>
-          </div>
-          <p className="text-gray-300 font-light text-sm md:text-base">
-            Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing.
-          </p>
-        </div>
+        <FeaturesCard
+          icon={<GiShieldReflect className="h-6 w-6" />}
+          title="Reduced Allergy Risks"
+          description="Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing."
+          gradientFrom="blue-400"
+          gradientTo="indigo-500"
+          iconColor="text-blue-400"
+        />
         
         {/* Benefit 3 */}
-        <div className="bg-gray-900/60 border border-gray-800 rounded-lg p-5 hover:bg-gray-800/60 transition-all duration-300 transform hover:-translate-y-1">
-          <div className="flex items-center gap-2 mb-3">
-            <GiRecycle className="text-indigo-400 h-6 w-6" />
-            <h3 className="text-base md:text-lg lg:text-xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">
-              Sustainability
-            </h3>
-          </div>
-          <p className="text-gray-300 font-light text-sm md:text-base">
-            Save time and money by avoiding endless experimentation through precise formulations tailored to you.
-          </p>
-        </div>
+        <FeaturesCard
+          icon={<GiRecycle className="h-6 w-6" />}
+          title="Sustainability"
+          description="Save time and money by avoiding endless experimentation through precise formulations tailored to you."
+          gradientFrom="indigo-400"
+          gradientTo="purple-500"
+          iconColor="text-indigo-400"
+        />
       </div>
     </div>
   );

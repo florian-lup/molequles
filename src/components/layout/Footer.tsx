@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Image 
-                src="/icons/molecule.svg" 
+                src="/icons/logo.svg" 
                 alt="Molecule" 
                 width={24} 
                 height={24} 

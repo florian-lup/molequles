@@ -18,7 +18,6 @@ export default function Header() {
   const { openWaitlist } = useWaitlist();
   const router = useRouter();
   
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navigation: NavigationItem[] = [
     { name: 'Solution', href: '#solution' },
@@ -61,7 +60,7 @@ export default function Header() {
             onClick={() => setIsMenuOpen(false)}
           >
             <Image
-              src="/icons/molecule.svg"
+              src="/icons/logo.svg"
               alt="Molecule"
               width={24}
               height={24}

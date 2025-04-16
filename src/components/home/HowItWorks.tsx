@@ -2,7 +2,9 @@
 
 import { GiMolecule, GiMicroscope, GiChemicalDrop, GiTestTubes } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
-import Tag from '@/components/ui/Tag';
+import Badge from '@/components/ui/Badge';
+import FeaturesCard from '@/components/ui/FeaturesCard';
+import Image from 'next/image';
 
 const HowItWorksContent = () => {
   const [, setIsClient] = useState(false);
@@ -12,9 +14,9 @@ const HowItWorksContent = () => {
   }, []);
   
   return (
-    <div className="w-full text-left grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-      {/* Left Column - Main Content */}
-      <div className="max-w-xl">
+    <div className="w-full text-left">
+      {/* Top Section - Main Content */}
+      <div className="max-w-xl mb-12">
         <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
             The Science
@@ -26,51 +28,46 @@ const HowItWorksContent = () => {
           From analysis to creation, our scientific approach ensures your perfume perfectly matches your unique skin chemistry.
         </p>
         
-        <div className="mt-8 hidden md:block">
-          <Tag highlight="99.8%" text="molecular precision" />
+        <div className="my-8 block">
+          <Badge 
+            icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
+            highlight="99.8%"
+            text="we match your skin and raw ingredients with molecular precision"
+          />
         </div>
       </div>
       
-      {/* Right Column - Scientific Process Timeline */}
-      <div className="relative">
-        <div className="absolute left-3.5 top-0 h-full w-px bg-gradient-to-b from-cyan-500 via-blue-500 to-indigo-500"></div>
-        
+      {/* Bottom Section - Steps */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         {/* Step 1 */}
-        <div className="relative pl-10 pb-8">
-          <div className="absolute left-0 w-7 h-7 rounded-full bg-gray-900 border-2 border-cyan-500 flex items-center justify-center">
-            <GiMicroscope className="text-cyan-400" size={16} />
-          </div>
-          <h3 className="text-base md:text-lg lg:text-xl font-medium text-cyan-400">Step 1: Collecting Skin Data</h3>
-          <p className="text-sm md:text-base text-gray-400 mt-1">
-            Visit a local dermatologist to identify your unique skin parameters.
-          </p>
-        </div>
+        <FeaturesCard
+          icon={<GiMicroscope className="h-6 w-6" />}
+          title="Step 1: Collecting Skin Data"
+          description="Visit a local dermatologist to identify your unique skin parameters."
+          gradientFrom="cyan-400"
+          gradientTo="blue-400"
+          iconColor="text-cyan-400"
+        />
         
         {/* Step 2 */}
-        <div className="relative pl-10 pb-8">
-          <div className="absolute left-0 w-7 h-7 rounded-full bg-gray-900 border-2 border-blue-500 flex items-center justify-center">
-            <GiMolecule className="text-blue-400" size={16} />
-          </div>
-          <h3 className="text-base md:text-lg lg:text-xl font-medium text-blue-400">Step 2: AI-Powered Analysis</h3>
-          <p className="text-sm md:text-base text-gray-400 mt-1">
-            Our AI interprets your data and predicts the ideal ingredient blend.
-          </p>
-        </div>
+        <FeaturesCard
+          icon={<GiMolecule className="h-6 w-6" />}
+          title="Step 2: AI-Powered Analysis"
+          description="Our AI interprets your data and predicts the ideal ingredient blend."
+          gradientFrom="blue-400"
+          gradientTo="indigo-500"
+          iconColor="text-blue-400"
+        />
         
         {/* Step 3 */}
-        <div className="relative pl-10">
-          <div className="absolute left-0 w-7 h-7 rounded-full bg-gray-900 border-2 border-indigo-500 flex items-center justify-center">
-            <GiTestTubes className="text-indigo-400" size={16} />
-          </div>
-          <h3 className="text-base md:text-lg lg:text-xl font-medium text-indigo-400">Step 3: Creating Your Scent</h3>
-          <p className="text-sm md:text-base text-gray-400 mt-1">
-            We craft your unique perfume using the AI-recommended ingredients.
-          </p>
-        </div>
-        
-        <div className="mt-5 ml-10 md:hidden">
-          <Tag highlight="99.8%" text="molecular precision" size="sm" />
-        </div>
+        <FeaturesCard
+          icon={<GiTestTubes className="h-6 w-6" />}
+          title="Step 3: Creating Your Scent"
+          description="We craft your unique perfume using the AI-recommended ingredients."
+          gradientFrom="indigo-400"
+          gradientTo="purple-500"
+          iconColor="text-indigo-400"
+        />
       </div>
     </div>
   );
