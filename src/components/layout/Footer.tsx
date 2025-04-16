@@ -1,9 +1,9 @@
 'use client';
 
 import { FiMapPin, FiMail, FiInstagram, FiTwitter } from 'react-icons/fi';
-import { GiMolecule } from 'react-icons/gi';
 import { FaTiktok } from 'react-icons/fa';
 import { getCurrentYear } from '@/utils/dateUtils';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = getCurrentYear();
@@ -16,7 +16,13 @@ export default function Footer() {
           {/* Logo and company description */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <GiMolecule className="text-cyan-400 h-6 w-6 mr-2" />
+              <Image 
+                src="/icons/molecule.svg" 
+                alt="Molecule" 
+                width={24} 
+                height={24} 
+                className="text-cyan-400 mr-2" 
+              />
               <h3 className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
                 Molequles
               </h3>

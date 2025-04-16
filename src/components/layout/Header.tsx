@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { GiMolecule } from 'react-icons/gi';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useWaitlist } from '@/contexts/WaitlistContext';
 
@@ -53,14 +53,20 @@ export default function Header() {
       className="sticky top-0 left-0 w-full z-40 "
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
-        <div className="bg-gray-950 flex items-center justify-between p-4 rounded-full border border-cyan-900/30">
+        <div className="bg-gray-950 flex items-center justify-between p-3 rounded-full border border-cyan-900/30">
           {/* Logo */}
           <Link 
             href="/" 
             className="flex items-center"
             onClick={() => setIsMenuOpen(false)}
           >
-            <GiMolecule className="text-cyan-400 h-6 w-6 mr-2" />
+            <Image
+              src="/icons/molecule.svg"
+              alt="Molecule"
+              width={24}
+              height={24}
+              className="text-cyan-400 mr-2"
+            />
             <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
               Molequles
             </span>

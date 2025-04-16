@@ -68,9 +68,9 @@ const PricingContent = () => {
       <div className="max-w-2xl mb-10">
         <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
-            Signature
+            Select a
           </span>{' '}
-          <span className="text-gray-100">Scent Packages</span>
+          <span className="text-gray-100">Package</span>
         </h2>
         
         <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-4 max-w-2xl">

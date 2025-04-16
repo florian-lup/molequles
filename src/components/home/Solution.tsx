@@ -68,7 +68,7 @@ const SolutionContent = () => {
             </h3>
           </div>
           <p className="text-gray-300 font-light text-sm md:text-base">
-            Save time and money by avoiding endless experimentation through precise formulations tailored exactly to you.
+            Save time and money by avoiding endless experimentation through precise formulations tailored to you.
           </p>
         </div>
       </div>
