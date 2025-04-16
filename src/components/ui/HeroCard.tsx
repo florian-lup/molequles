@@ -186,7 +186,7 @@ const FragranceNotesDisplay = () => {
 
 // Container for skin chemistry and fragrance notes displays
 const ProductFeaturesPanel = () => (
-  <div className="w-full bg-gray-900/80 backdrop-blur-sm rounded-xl p-5 border border-cyan-900/30 shadow-inner shadow-cyan-500/5">
+  <div className="w-full bg-gradient-to-b from-gray-900 to-gray-950 rounded-xl p-5 border border-cyan-900/50 shadow-xl">
     <SkinChemistryDisplay />
     <FragranceNotesDisplay />
   </div>

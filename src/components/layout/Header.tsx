@@ -51,7 +51,7 @@ export default function Header() {
     <header 
       className="sticky top-0 left-0 w-full z-40 "
     >
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-2 sm:py-4 lg:py-6">
         <div className="bg-gray-950 flex items-center justify-between p-3 rounded-full border border-cyan-900/30">
           {/* Logo */}
           <Link 

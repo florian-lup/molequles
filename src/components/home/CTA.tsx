@@ -65,23 +65,14 @@ const IngredientsSection = () => {
   return (
     <div>
       <div className="mb-6">
-        <div className="flex items-center mb-3 border-b border-cyan-900/50 pb-2">
-          <div className="mr-2 p-1.5 bg-cyan-900/30 rounded-full text-cyan-500">
-            <TbFlask size={18} />
-          </div>
+        <div className="flex justify-between items-center mb-3 border-b border-cyan-900/50 pb-2">
           <h3 className="text-sm md:text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 tracking-wide">
             Personalized Scent Formula
           </h3>
-        </div>
-      </div>
-      
-      <div className="flex items-center mb-3 border-b border-cyan-900/50 pb-2">
-        <div className="mr-2 p-1.5 bg-indigo-900/30 rounded-full text-indigo-500">
-          <TbPlant size={18} />
-        </div>
-        <span className="px-2 py-0.5 bg-indigo-900/30 rounded-md text-xs font-medium text-indigo-400">
+          <span className="px-2 py-0.5 bg-indigo-900/30 rounded-md text-xs font-medium text-indigo-400">
           KEY INGREDIENTS
         </span>
+        </div>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -130,7 +121,7 @@ const CTAMessagePanel = () => {
   return (
     <div className="w-full lg:max-w-lg text-left mb-8 lg:mb-0">
       {/* Headline with gradient styling */}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+      <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
         <span className="font-mono text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
           Discover Your
         </span>{' '}
