@@ -3,11 +3,7 @@
 import { useEffect, useState } from 'react';
 import { GiChemicalDrop } from 'react-icons/gi';
 import Badge from '@/components/ui/Badge';
-
-interface InfluenceData {
-  factor: string;
-  scentEffect?: string;
-}
+import { InfluenceData } from '@/types/home';
 
 const FactsData: InfluenceData[] = [
   {

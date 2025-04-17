@@ -1,11 +1,4 @@
-import { ReactNode } from 'react';
-
-interface BadgeProps {
-  icon: ReactNode;
-  text: string;
-  highlight?: string;
-  className?: string;
-}
+import { BadgeProps } from '@/types/ui';
 
 export default function Badge({
   icon,

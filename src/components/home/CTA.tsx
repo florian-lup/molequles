@@ -3,19 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useWaitlist } from '@/contexts/WaitlistContext';
 import Button from '@/components/ui/Button';
-import { TbFlask, TbPlant, TbLeaf } from 'react-icons/tb';
-
-// Ingredient data structure
-interface IngredientData {
-  name: string;
-  percentage: number;
-  bgGradient: string;
-  borderColor: string;
-  iconBg: string;
-  iconColor: string;
-  textColor: string;
-  barGradient: string;
-}
+import { TbLeaf } from 'react-icons/tb';
+import { IngredientData } from '@/types/home';
 
 const ingredientsData: IngredientData[] = [
   {

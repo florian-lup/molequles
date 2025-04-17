@@ -3,18 +3,7 @@
 import { GiTestTubes, GiChemicalDrop } from 'react-icons/gi';
 import { FiCheck } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
-import { IconType } from 'react-icons';
-
-interface PricingCardProps {
-  title: string;
-  price: string;
-  description: string;
-  features: string[];
-  icon: IconType;
-  iconColor: string;
-  gradient: string;
-  isPopular?: boolean;
-}
+import { PricingCardProps } from '@/types/home';
 
 const PricingCard = ({ 
   title, 

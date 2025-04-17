@@ -3,15 +3,11 @@
 // Core imports and dependencies
 import { useWaitlist } from '@/contexts/WaitlistContext';
 import ProductFeaturesPanel from '@/components/ui/HeroCard';
-import { GiMolecule, GiTestTubes } from 'react-icons/gi';
+import { GiTestTubes } from 'react-icons/gi';
 import { useEffect, useState } from 'react';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
-
-// Type definitions
-interface WaitlistCtaProps {
-  openWaitlist: () => void;
-}
+import { WaitlistCtaProps } from '@/types/home';
 
 // Scientific marketing message component with CTA button
 const MarketingMessagePanel = ({ openWaitlist }: WaitlistCtaProps) => {

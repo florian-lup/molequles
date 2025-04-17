@@ -1,14 +1,4 @@
-import { ReactNode } from 'react';
-
-interface FeaturesCardProps {
-  icon: ReactNode;
-  title: string;
-  description: string;
-  gradientFrom?: string;
-  gradientTo?: string;
-  iconColor?: string;
-  className?: string;
-}
+import { FeaturesCardProps } from '@/types/ui';
 
 export default function FeaturesCard({
   icon,

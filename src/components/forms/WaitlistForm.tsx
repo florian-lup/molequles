@@ -5,11 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiMail } from 'react-icons/fi';
 import { GiMolecule } from 'react-icons/gi';
 import Button from '@/components/ui/Button';
-
-interface WaitlistFormProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import { WaitlistFormProps } from '@/types/forms';
 
 const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');

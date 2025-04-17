@@ -1,17 +1,5 @@
-import { ReactNode } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-
-interface ButtonProps {
-  onClick: () => void;
-  children: ReactNode;
-  variant?: 'primary' | 'secondary';
-  size?: 'sm' | 'md' | 'lg';
-  rightIcon?: boolean;
-  className?: string;
-  disabled?: boolean;
-  loading?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-}
+import { ButtonProps } from '@/types/ui';
 
 export default function Button({
   onClick,

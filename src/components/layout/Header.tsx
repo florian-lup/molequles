@@ -6,12 +6,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import { useWaitlist } from '@/contexts/WaitlistContext';
-
-// Define types for the navigation items
-type NavigationItem = {
-  name: string;
-  href: string;
-};
+import { NavigationItem } from '@/types/layout';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
