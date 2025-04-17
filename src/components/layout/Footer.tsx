@@ -6,14 +6,15 @@ import { getCurrentYear } from '@/utils/dateUtils';
 import Image from 'next/image';
 
 export default function Footer() {
+  // Get current year for copyright text
   const currentYear = getCurrentYear();
 
   return (
     <footer className="bg-gray-950 text-white border-t border-cyan-900/30">
-      {/* Main footer content */}
+      {/* Main footer content container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-          {/* Logo and company description */}
+          {/* Brand section with logo and tagline */}
           <div className="space-y-4">
             <div className="flex items-center">
               <Image 
@@ -32,7 +33,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Contact */}
+          {/* Contact information section */}
           <div className="space-y-4">
             <h4 className="text-gray-200 font-medium text-base">Contact</h4>
             <div className="space-y-2">
@@ -49,7 +50,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social and links */}
+          {/* Social media links section */}
           <div className="space-y-4">
             <h4 className="text-gray-200 font-medium text-base">Connect</h4>
             <div className="flex space-x-3">
@@ -81,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom copyright section */}
+        {/* Footer bottom with copyright and product info */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-cyan-900/30">
           <p className="text-gray-500 text-xs order-2 md:order-1 mt-4 md:mt-0">
             &copy; {currentYear} Molequles. All rights reserved.

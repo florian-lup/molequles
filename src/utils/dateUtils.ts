@@ -1,24 +1,16 @@
 /**
- * Returns the current year as a number
- * 
- * @returns {number} - The current year
- * 
- * @example
- * getCurrentYear() // returns: 2024
+ * Gets current year
+ * @returns Current year as number
  */
 export function getCurrentYear(): number {
   return new Date().getFullYear();
 }
 
 /**
- * Formats a date into a human-readable string
- * 
- * @param {Date} date - The date to format
- * @param {Intl.DateTimeFormatOptions} options - Formatting options
- * @returns {string} - Formatted date string
- * 
- * @example
- * formatDate(new Date(), { month: 'long', day: 'numeric', year: 'numeric' })
+ * Formats date to readable string
+ * @param date - Date to format
+ * @param options - Formatting options
+ * @returns Formatted date string
  */
 export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions): string {
   const defaultOptions: Intl.DateTimeFormatOptions = {
@@ -32,13 +24,9 @@ export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions): st
 }
 
 /**
- * Returns a relative time string (e.g., "2 days ago")
- * 
- * @param {Date} date - The date to convert to relative time
- * @returns {string} - Relative time string
- * 
- * @example
- * getRelativeTimeString(new Date(Date.now() - 86400000)) // returns: "1 day ago"
+ * Converts date to relative time (e.g., "2 days ago")
+ * @param date - Date to convert
+ * @returns Relative time string
  */
 export function getRelativeTimeString(date: Date): string {
   const formatter = new Intl.RelativeTimeFormat('en', {

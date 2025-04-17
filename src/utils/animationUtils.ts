@@ -1,16 +1,16 @@
 /**
- * Animation utilities for components
+ * Animation utilities for UI components
  */
 
 import { useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 
 /**
- * Creates animation configuration for percentage cards
- * @param isClient - Whether client-side rendering is active
- * @param value - The percentage value
- * @param max - Optional maximum value for animation
- * @returns Animation configuration object and motion values
+ * Creates animation for percentage display cards
+ * @param isClient - Client-side rendering flag
+ * @param value - Target percentage value
+ * @param max - Optional maximum animation value
+ * @returns Animation config and motion values
  */
 export const createPercentageAnimation = (
   isClient: boolean,
@@ -62,16 +62,16 @@ export const createPercentageAnimation = (
 };
 
 /**
- * Creates an animation for fluid/filling level that continuously rises and falls
- * @param minPercentage - The minimum fill percentage (0-100)
- * @param maxPercentage - The maximum fill percentage (0-100)
- * @param duration - Animation duration in seconds for one cycle (min to max and back to min)
- * @returns Animation configuration object with animate and transition properties
+ * Creates fluid level animation that oscillates between values
+ * @param minPercentage - Minimum fill level (0-100)
+ * @param maxPercentage - Maximum fill level (0-100)
+ * @param duration - Cycle duration in seconds
+ * @returns Animation configuration object
  */
 export const createFlowAnimation = (
   minPercentage: number,
   maxPercentage: number,
-  duration: number = 8 // Default duration for a full cycle
+  duration: number = 8
 ) => {
   // Clamp values to be within 0-100
   const clampedMin = Math.max(0, Math.min(100, minPercentage));

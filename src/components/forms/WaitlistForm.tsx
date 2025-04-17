@@ -5,18 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiMail } from 'react-icons/fi';
 import { GiMolecule } from 'react-icons/gi';
 import Button from '@/components/ui/Button';
-import { WaitlistFormProps } from '@/types/forms';
+
+// Props interface for WaitlistForm component
+export interface WaitlistFormProps {
+  isOpen: boolean;  // Controls visibility of the modal
+  onClose: () => void;  // Callback function to close the modal
+} 
 
 const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
+  // Form state management
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   
+  // Element references for modal and input focus
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   
-  // Close modal when clicking outside
+  // Modal clickout detection and body scroll management
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
@@ -26,9 +33,9 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
     
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
       
-      // Focus the input when modal opens
+      // Focus input on open for immediate typing
       setTimeout(() => {
         inputRef.current?.focus();
       }, 100);
@@ -36,11 +43,11 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
     
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'auto'; // Restore scrolling when modal closes
+      document.body.style.overflow = 'auto'; // Restore scrolling
     };
   }, [isOpen, onClose]);
   
-  // Handle Escape key press
+  // Keyboard escape key handler
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -57,18 +64,18 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
     };
   }, [isOpen, onClose]);
   
-  // Validate email
+  // Email validation regex function
   const validateEmail = (email: string) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
   };
   
-  // Update validation on email change
+  // Real-time email validation
   useEffect(() => {
     setIsValid(validateEmail(email));
   }, [email]);
   
-  // Handle submit
+  // Form submission handler with success sequence
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -76,12 +83,12 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
     
     setIsSubmitting(true);
     
-    // Simulate form submission (will be replaced with actual API call)
+    // Simulated API call with delayed success response
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       
-      // Reset form after 3 seconds
+      // Auto-close the modal after showing success message
       setTimeout(() => {
         setEmail('');
         setIsSubmitted(false);
@@ -94,7 +101,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          {/* Backdrop */}
+          {/* Semi-transparent backdrop with blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -102,7 +109,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
             className="absolute inset-0 bg-gray-950/80 backdrop-blur-sm"
           />
           
-          {/* Modal */}
+          {/* Modal container with animation */}
           <motion.div
             ref={modalRef}
             initial={{ scale: 0.9, opacity: 0 }}
@@ -111,7 +118,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
             transition={{ type: 'spring', damping: 30, stiffness: 500 }}
             className="bg-gray-900/90 backdrop-blur-md rounded-xl border border-gray-800/70 p-5 sm:p-6 lg:p-8 shadow-xl w-full max-w-md relative z-10"
           >
-            {/* Close button */}
+            {/* Modal close button */}
             <button
               onClick={onClose}
               className="absolute top-3 right-3 text-gray-400 hover:text-white p-1 rounded-full transition-colors duration-200 cursor-pointer"
@@ -131,11 +138,11 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
               Be among the first to experience our personalized perfume technology.
             </p>
             
-            {/* Decorative elements */}
+            {/* Background gradient decorations */}
             <div className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/10 blur-xl -z-10"></div>
             <div className="absolute bottom-1/3 left-1/3 w-24 h-24 rounded-full bg-gradient-to-r from-blue-500/20 to-indigo-500/10 blur-xl -z-10"></div>
             
-            {/* Form */}
+            {/* Email submission form */}
             <form onSubmit={handleSubmit} className="space-y-4">
               {!isSubmitted ? (
                 <>
@@ -168,6 +175,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                   </div>
                 </>
               ) : (
+                // Success confirmation view
                 <div className="text-center py-4">
                   <div className="flex items-center justify-center mb-4">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500/30 to-blue-500/20 flex items-center justify-center">

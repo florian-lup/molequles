@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useWaitlist } from '@/contexts/WaitlistContext';
+import { useClientSide, useWaitlist } from '@/hooks';
 import Button from '@/components/ui/Button';
 import { TbLeaf } from 'react-icons/tb';
 import { IngredientData } from '@/types/home';
 
+// Sample ingredient data with styling configurations
 const ingredientsData: IngredientData[] = [
   {
     name: 'Bergamot',
@@ -49,10 +49,11 @@ const ingredientsData: IngredientData[] = [
   },
 ];
 
-// Ingredients Section Component
+// Component to display ingredient sections with percentage visualizations
 const IngredientsSection = () => {
   return (
     <div>
+      {/* Section header */}
       <div className="mb-6">
         <div className="flex justify-between items-center mb-3 border-b border-cyan-900/50 pb-2">
           <h3 className="text-sm md:text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 tracking-wide">
@@ -64,18 +65,22 @@ const IngredientsSection = () => {
         </div>
       </div>
       
+      {/* Two-column grid of ingredient cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {ingredientsData.map((ingredient, idx) => (
           <div key={idx} className={`overflow-hidden rounded-xl shadow-xl bg-gradient-to-b from-gray-900 to-gray-950 p-3 border ${ingredient.borderColor}`}>
             <div className="flex items-start gap-3">
+              {/* Ingredient icon */}
               <div className={`${ingredient.iconBg} rounded-full p-2 mt-1`}>
                 <TbLeaf size={18} className={ingredient.iconColor} />
               </div>
+              {/* Ingredient name and percentage bar */}
               <div className="flex-1">
                 <div className="flex justify-between items-center">
                   <div className={`text-sm ${ingredient.textColor} font-semibold`}>{ingredient.name}</div>
                   <div className={`text-xs ${ingredient.textColor}`}>{ingredient.percentage}%</div>
                 </div>
+                {/* Percentage visualization bar */}
                 <div className="w-full bg-gray-800/50 h-2 rounded-full mt-1.5 overflow-hidden">
                   <div className={`bg-gradient-to-r ${ingredient.barGradient} h-full rounded-full`} style={{ width: `${ingredient.percentage}%` }}></div>
                 </div>
@@ -88,13 +93,8 @@ const IngredientsSection = () => {
   );
 };
 
-// IngredientProfile Component
-function IngredientProfile  () {
-  const [, setIsClient] = useState(false);
-  
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+// Card displaying personalized ingredient profile
+function IngredientProfile() {
 
   return (
     <div className="w-full overflow-hidden rounded-xl shadow-xl bg-gradient-to-b from-gray-900 to-gray-950 p-5 border border-cyan-900/50">
@@ -103,13 +103,13 @@ function IngredientProfile  () {
   );
 }
 
-// CTA content panel component
+// Panel containing call-to-action message and waitlist button
 const CTAMessagePanel = () => {
   const { openWaitlist } = useWaitlist();
   
   return (
     <div className="w-full lg:max-w-lg text-left mb-8 lg:mb-0">
-      {/* Headline with gradient styling */}
+      {/* Two-part gradient headline with responsive line break */}
       <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
           Discover Your
@@ -118,10 +118,12 @@ const CTAMessagePanel = () => {
         <span className="text-gray-100">Signature Scent</span>
       </h2>
       
+      {/* CTA description with highlighting border */}
       <p className="text-base md:text-lg lg:text-xl text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-3 md:pl-4">
         Join the waitlist for early access to our personalized perfume technology.
       </p>
 
+      {/* Waitlist button with promotional text */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0">
         <Button 
           onClick={openWaitlist}
@@ -136,8 +138,10 @@ const CTAMessagePanel = () => {
   );
 };
 
-// Main CTA section
+// Main CTA section combining messaging and ingredient display
 export default function CTA() {
+  useWaitlist();
+  
   return (
     <section 
       id="cta" 
@@ -145,6 +149,7 @@ export default function CTA() {
       className="relative py-16 md:py-20 lg:py-24"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Two-column layout: CTA message and ingredient profile */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between py-2 md:py-4">
           <CTAMessagePanel />
           <div className="w-full lg:max-w-lg">

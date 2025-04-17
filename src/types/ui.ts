@@ -1,5 +1,8 @@
 import { ReactNode } from 'react';
 
+/**
+ * Properties for badge component
+ */
 export interface BadgeProps {
   icon: ReactNode;
   text: string;
@@ -7,16 +10,21 @@ export interface BadgeProps {
   className?: string;
 }
 
+/**
+ * Properties for feature card component
+ */
 export interface FeaturesCardProps {
   icon: ReactNode;
   title: string;
   description: string;
-  gradientFrom?: string;
-  gradientTo?: string;
+  titleClassName?: string;
   iconColor?: string;
   className?: string;
 }
 
+/**
+ * Properties for button component
+ */
 export interface ButtonProps {
   onClick: () => void;
   children: ReactNode;

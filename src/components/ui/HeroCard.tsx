@@ -1,20 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useClientSide } from '@/hooks/useClientSide';
 import { motion } from 'framer-motion';
 import { createPercentageAnimation, createFlowAnimation } from '@/utils/animationUtils';
 import { TbFlask, TbAtom, TbTemperature, TbDroplet, TbCircleHalf, TbRulerMeasure } from 'react-icons/tb';
 
-// Displays skin chemistry metrics with animated values
+// Display component for skin chemistry metrics with animated values
 const SkinChemistryDisplay = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  // Enable animations only after client-side hydration
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isClient = useClientSide();
   
-  // Get animations for each metric
+  // Initialize animation hooks for different skin metrics
   const sebumAnimation = createPercentageAnimation(isClient, 75);
   const tempAnimation = createPercentageAnimation(isClient, 33);
   const phLevelAnimation = createPercentageAnimation(isClient, 5);
@@ -22,6 +17,7 @@ const SkinChemistryDisplay = () => {
 
   return (
     <div className="mb-10 lg:mb-6">
+      {/* Section header with icon */}
       <div className="flex items-center mb-3 border-b border-cyan-900/50 pb-2">
         <div className="mr-2 text-cyan-500">
           <TbFlask size={18} />
@@ -30,8 +26,9 @@ const SkinChemistryDisplay = () => {
           Skin Chemistry
         </h3>
       </div>
+      {/* Metrics grid with 4 measurement cards */}
       <div className="grid grid-cols-4 gap-2 md:gap-3">
-        {/* Sebum */}
+        {/* Sebum measurement card with animation */}
         <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-1.5 md:p-2 text-center">
           <div className="flex justify-center text-cyan-500 mb-1">
             <TbDroplet size={16} />
@@ -52,7 +49,7 @@ const SkinChemistryDisplay = () => {
           <div className="text-xs md:text-sm text-gray-400">Sebum</div>
         </div>
 
-        {/* Temperature */}
+        {/* Temperature measurement card with animation */}
         <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-1.5 md:p-2 text-center">
           <div className="flex justify-center text-blue-500 mb-1">
             <TbTemperature size={16} />
@@ -73,7 +70,7 @@ const SkinChemistryDisplay = () => {
           <div className="text-xs md:text-sm text-gray-400">Temp</div>
         </div>
 
-        {/* pH Level */}
+        {/* pH Level measurement card with animation */}
         <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-1.5 md:p-2 text-center">
           <div className="flex justify-center text-indigo-500 mb-1">
             <TbRulerMeasure size={16} />
@@ -94,7 +91,7 @@ const SkinChemistryDisplay = () => {
           <div className="text-xs md:text-sm text-gray-400">pH Level</div>
         </div>
 
-        {/* Hydration */}
+        {/* Hydration measurement card with animation */}
         <div className="bg-cyan-900/20 border border-cyan-800/20 rounded-lg p-1.5 md:p-2 text-center">
           <div className="flex justify-center text-cyan-500 mb-1">
             <TbCircleHalf size={16} />
@@ -119,22 +116,18 @@ const SkinChemistryDisplay = () => {
   );
 };
 
-// Displays fragrance notes breakdown
+// Display component for fragrance notes with animated flow indicators
 const FragranceNotesDisplay = () => {
-  const [, setIsClient] = useState(false);
-
-  // Enable animations only after client-side hydration
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isClient = useClientSide();
   
-  // Create flow animations for each note
+  // Configure animations for different fragrance note types
   const topNoteAnimation = createFlowAnimation(50, 80, 8);
   const midNoteAnimation = createFlowAnimation(60, 90, 10);
   const baseNoteAnimation = createFlowAnimation(40, 70, 12);
   
   return (
     <div>
+      {/* Section header with icon */}
       <div className="flex items-center mb-3 border-b border-cyan-900/50 pb-2">
         <div className="mr-2 text-indigo-500">
           <TbAtom size={18} />
@@ -144,7 +137,7 @@ const FragranceNotesDisplay = () => {
         </h3>
       </div>
       <div className="space-y-3">
-        {/* Top Notes */}
+        {/* Top notes with animated background */}
         <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-lg p-2 border border-cyan-900/30 relative overflow-hidden">
           <div className="flex items-center relative z-10">
             <span className="text-xs text-cyan-500 font-bold mr-2">TOP.NOTES:</span>
@@ -156,7 +149,7 @@ const FragranceNotesDisplay = () => {
           />
         </div>
 
-        {/* Heart Notes */}
+        {/* Middle/heart notes with animated background */}
         <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 rounded-lg p-2 border border-indigo-900/30 relative overflow-hidden">
           <div className="flex items-center relative z-10">
             <span className="text-xs text-blue-500 font-bold mr-2">MID.NOTES:</span>
@@ -168,7 +161,7 @@ const FragranceNotesDisplay = () => {
           />
         </div>
 
-        {/* Base Notes */}
+        {/* Base notes with animated background */}
         <div className="bg-gradient-to-r from-indigo-900/20 to-blue-900/30 rounded-lg p-2 border border-blue-900/30 relative overflow-hidden">
           <div className="flex items-center relative z-10">
             <span className="text-xs text-indigo-500 font-bold mr-2">BASE.NOTES:</span>
@@ -184,7 +177,7 @@ const FragranceNotesDisplay = () => {
   );
 };
 
-// Container for skin chemistry and fragrance notes displays
+// Main product features panel that combines skin chemistry and fragrance displays
 const ProductFeaturesPanel = () => (
   <div className="w-full bg-gradient-to-b from-gray-900 to-gray-950 rounded-xl p-5 border border-cyan-900/50 shadow-xl">
     <SkinChemistryDisplay />

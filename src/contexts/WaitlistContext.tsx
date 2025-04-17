@@ -1,8 +1,11 @@
 'use client';
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 import WaitlistForm from '@/components/forms/WaitlistForm';
 
+/**
+ * Context for managing waitlist modal state
+ */
 interface WaitlistContextType {
   isWaitlistOpen: boolean;
   openWaitlist: () => void;
@@ -11,18 +14,13 @@ interface WaitlistContextType {
 
 const WaitlistContext = createContext<WaitlistContextType | undefined>(undefined);
 
-export const useWaitlist = () => {
-  const context = useContext(WaitlistContext);
-  if (context === undefined) {
-    throw new Error('useWaitlist must be used within a WaitlistProvider');
-  }
-  return context;
-};
-
 interface WaitlistProviderProps {
   children: ReactNode;
 }
 
+/**
+ * Provider component that makes waitlist state available to app
+ */
 export const WaitlistProvider = ({ children }: WaitlistProviderProps) => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
