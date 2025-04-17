@@ -51,8 +51,8 @@ export default function Header() {
     <header 
       className="sticky top-0 left-0 w-full z-40 "
     >
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-2 sm:py-4 lg:py-6">
-        <div className="bg-gray-950 flex items-center justify-between p-3 rounded-full border border-cyan-900/30">
+      <div className="max-w-7xl mx-auto p-2 sm:p-4 lg:p-6">
+        <div className="bg-gray-950 flex items-center justify-between p-2 rounded-full border border-cyan-900/30">
           {/* Logo */}
           <Link 
             href="/" 
@@ -62,11 +62,11 @@ export default function Header() {
             <Image
               src="/icons/logo.svg"
               alt="Molecule"
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               className="text-cyan-400 mr-2"
             />
-            <span className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
+            <span className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-lg">
               Molequles
             </span>
           </Link>

@@ -39,7 +39,7 @@ const SolutionContent = () => {
         <FeaturesCard
           icon={<GiHeartBeats className="h-6 w-6" />}
           title="Consistent Performance"
-          description="Performs reliably throughout the day, maintaining its intended balance and longevity on your skin."
+          description="Performs reliably throughout the day, maintaining its intended balance and longevity."
           gradientFrom="cyan-400"
           gradientTo="blue-500"
           iconColor="text-cyan-400"
@@ -49,7 +49,7 @@ const SolutionContent = () => {
         <FeaturesCard
           icon={<GiShieldReflect className="h-6 w-6" />}
           title="Reduced Allergy Risks"
-          description="Experience fewer irritations by eliminating ingredients that trigger sensitivities, ensuring a safer wearing."
+          description="Experience fewer irritations by eliminating ingredients that trigger sensitivities."
           gradientFrom="blue-400"
           gradientTo="indigo-500"
           iconColor="text-blue-400"
@@ -59,7 +59,7 @@ const SolutionContent = () => {
         <FeaturesCard
           icon={<GiRecycle className="h-6 w-6" />}
           title="Sustainability"
-          description="Save time and money by avoiding endless experimentation through precise formulations tailored to you."
+          description="Save time and money by avoiding endless experimentation through precise formulations."
           gradientFrom="indigo-400"
           gradientTo="purple-500"
           iconColor="text-indigo-400"

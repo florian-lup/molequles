@@ -52,14 +52,10 @@ const SkinInfluenceContent = () => {
           
           <Badge 
             icon={<GiChemicalDrop className="text-cyan-400 h-5 w-5" />}
-            highlight="4x"
-            text="more consistent fragrance performance with personalized formulas"
+            highlight="Your skin's"
+            text="unique properties influence how fragrance molecules express themselves."
             className="mb-5"
           />
-          
-          <div className="text-sm text-gray-400 italic">
-            Note: Your skin's unique properties dramatically influence how fragrance molecules express themselves.
-          </div>
         </div>
         
         <div className="lg:w-1/2">
@@ -69,7 +65,7 @@ const SkinInfluenceContent = () => {
               {FactsData.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="hover:bg-cyan-900/10 transition-colors duration-150 ease-in-out rounded-lg p-4 border border-gray-800/30"
+                  className="hover:bg-cyan-900/10 transition-colors duration-150 ease-in-out rounded-lg p-4 border border-cyan-900/50"
                 >
                   <div className="flex items-center mb-2">
                     <div className="text-sm font-medium bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
