@@ -67,7 +67,7 @@ export default function Header() {
               alt="Molecule"
               width={20}
               height={20}
-              className="text-cyan-400 mr-2"
+              className="text-cyan-400 mx-2"
             />
             <span className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-lg">
               Molequles

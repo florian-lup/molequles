@@ -140,7 +140,7 @@ const FragranceNotesDisplay = () => {
         {/* Top notes with animated background */}
         <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-lg p-2 border border-cyan-900/30 relative overflow-hidden">
           <div className="flex items-center relative z-10">
-            <span className="text-xs text-cyan-500 font-bold mr-2">TOP.NOTES:</span>
+            <span className="text-xs text-cyan-500 font-bold mr-2">TOP NOTES:</span>
             <span className="text-xs text-gray-300">Bergamot, Lemon</span>
           </div>
           <motion.div 
@@ -152,7 +152,7 @@ const FragranceNotesDisplay = () => {
         {/* Middle/heart notes with animated background */}
         <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 rounded-lg p-2 border border-indigo-900/30 relative overflow-hidden">
           <div className="flex items-center relative z-10">
-            <span className="text-xs text-blue-500 font-bold mr-2">MID.NOTES:</span>
+            <span className="text-xs text-blue-500 font-bold mr-2">MID NOTES:</span>
             <span className="text-xs text-gray-300">Lavender, Neroli, Rose Absolute</span>
           </div>
           <motion.div 
@@ -164,7 +164,7 @@ const FragranceNotesDisplay = () => {
         {/* Base notes with animated background */}
         <div className="bg-gradient-to-r from-indigo-900/20 to-blue-900/30 rounded-lg p-2 border border-blue-900/30 relative overflow-hidden">
           <div className="flex items-center relative z-10">
-            <span className="text-xs text-indigo-500 font-bold mr-2">BASE.NOTES:</span>
+            <span className="text-xs text-indigo-500 font-bold mr-2">BASE NOTES:</span>
             <span className="text-xs text-gray-300">Sandalwood, Vetiver, Amber Accord</span>
           </div>
           <motion.div 

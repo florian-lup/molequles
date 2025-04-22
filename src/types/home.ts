@@ -13,6 +13,9 @@ export interface WaitlistCtaProps {
 export interface InfluenceData {
   factor: string;
   scentEffect?: string;
+  gradient?: string;
+  iconColor?: string;
+  icon?: IconType;
 }
 
 /**

@@ -1,27 +1,41 @@
 'use client';
 
-import { useClientSide } from '@/hooks/useClientSide';
 import { GiChemicalDrop } from 'react-icons/gi';
+import { TbDroplet, TbTemperature, TbCircleHalf, TbRulerMeasure } from 'react-icons/tb';
 import Badge from '@/components/ui/Badge';
 import { InfluenceData } from '@/types/home';
+import FeaturesCard from '@/components/ui/FeaturesCard';
+import React from 'react';
 
 // Data for skin factors and their effects on fragrance
 const FactsData: InfluenceData[] = [
   {
     factor: 'Sebum',
     scentEffect: 'Can enhance notes and accelerate oxidation',
+    gradient: 'bg-gradient-to-r from-cyan-400 to-blue-500',
+    iconColor: 'text-cyan-500',
+    icon: TbDroplet
   },
   {
     factor: 'Temperature',
     scentEffect: 'Increases scent projection and evolution speed',
+    gradient: 'bg-gradient-to-r from-blue-400 to-indigo-500',
+    iconColor: 'text-blue-500',
+    icon: TbTemperature
   },
   {
     factor: 'Hydration',
     scentEffect: 'Maintains fragrance integrity and longevity',
+    gradient: 'bg-gradient-to-r from-indigo-400 to-purple-500',
+    iconColor: 'text-cyan-500',
+    icon: TbCircleHalf
   },
   {
     factor: 'pH Level',
     scentEffect: 'Influences the overall composition balance',
+    gradient: 'bg-gradient-to-r from-purple-400 to-pink-500',
+    iconColor: 'text-indigo-500',
+    icon: TbRulerMeasure
   },
 ];
 
@@ -57,25 +71,19 @@ const SkinInfluenceContent = () => {
         
         {/* Right column: skin factors data display */}
         <div className="lg:w-1/2">
-          <div className="overflow-hidden rounded-xl shadow-xl border border-cyan-900/50 bg-gradient-to-b from-gray-900 to-gray-950 p-6">
-            <h3 className="text-center mb-6 text-sm font-medium text-cyan-400 uppercase tracking-wider">Skin Factors & Effects</h3>
-            
-            {/* Grid of skin factor cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {FactsData.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="hover:bg-cyan-900/10 transition-colors duration-150 ease-in-out rounded-lg p-4 border border-cyan-900/50"
-                >
-                  <div className="flex items-center mb-2">
-                    <div className="text-sm font-medium bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                      {item.factor}
-                    </div>
-                  </div>
-                  <div className="text-sm text-gray-300 leading-relaxed">{item.scentEffect}</div>
-                </div>
-              ))}
-            </div>
+          {/* Grid of skin factor cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {FactsData.map((item, idx) => (
+              <FeaturesCard
+                key={idx}
+                icon={item.icon && React.createElement(item.icon, { className: "h-6 w-6" })}
+                title={item.factor}
+                description={item.scentEffect || ""}
+                titleClassName={item.gradient}
+                iconColor={item.iconColor}
+                className="p-4"
+              />
+            ))}
           </div>
         </div>
       </div>
