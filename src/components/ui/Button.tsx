@@ -14,12 +14,12 @@ export default function Button({
   type = 'button',
 }: ButtonProps) {
   // Base styles applied to all button variants
-  const baseStyles = "inline-flex items-center justify-center gap-2 font-medium text-white rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-gray-900 shadow-lg shadow-cyan-500/25 transition-all duration-200 cursor-pointer";
+  const baseStyles = "inline-flex items-center justify-center gap-2 font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all duration-200 cursor-pointer";
   
   // Styles specific to each button variant (primary/secondary)
   const variantStyles = {
-    primary: "bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700",
-    secondary: "bg-gray-800 hover:bg-gray-700 border border-gray-700"
+    primary: "bg-black text-white hover:bg-gray-800 shadow-md",
+    secondary: "bg-white text-black border border-gray-200 hover:bg-gray-50"
   };
   
   // Styles specific to each button size

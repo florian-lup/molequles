@@ -1,97 +1,28 @@
 'use client';
 
-import { FiMapPin, FiMail, FiInstagram, FiTwitter } from 'react-icons/fi';
-import { FaTiktok } from 'react-icons/fa';
+import { FiMapPin } from 'react-icons/fi';
 import { getCurrentYear } from '@/utils/dateUtils';
-import Image from 'next/image';
 
 export default function Footer() {
   // Get current year for copyright text
   const currentYear = getCurrentYear();
 
   return (
-    <footer className="bg-gray-950 text-white border-t border-cyan-900/30">
+    <footer className="bg-white text-black border-t border-gray-200">
       {/* Main footer content container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-          {/* Brand section with logo and tagline */}
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <Image 
-                src="/icons/logo.svg" 
-                alt="Molecule" 
-                width={24} 
-                height={24} 
-                className="text-cyan-400 mr-2" 
-              />
-              <h3 className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-xl">
-                Molequles
-              </h3>
-            </div>
-            <p className="text-gray-400 text-sm border-l-2 border-cyan-500 pl-3 font-light">
-              Scientifically crafted scents personalized for your unique skin chemistry.
-            </p>
-          </div>
-
-          {/* Contact information section */}
-          <div className="space-y-4">
-            <h4 className="text-gray-200 font-medium text-base">Contact</h4>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2 text-gray-400">
-                <FiMail className="h-4 w-4 text-cyan-500" />
-                <a href="mailto:info@molequles.com" className="text-sm hover:text-cyan-400 transition-colors">
-                  info@molequles.com
-                </a>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <FiMapPin className="h-4 w-4 text-cyan-500" />
-                <span className="text-sm">London, United Kingdom</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Social media links section */}
-          <div className="space-y-4">
-            <h4 className="text-gray-200 font-medium text-base">Connect</h4>
-            <div className="flex space-x-3">
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-900/80 border border-cyan-900/30 hover:bg-cyan-900/20 transition-colors"
-              >
-                <FiInstagram className="h-4 w-4 text-cyan-400" />
-              </a>
-              <a 
-                href="https://tiktok.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-900/80 border border-cyan-900/30 hover:bg-cyan-900/20 transition-colors"
-              >
-                <FaTiktok className="h-4 w-4 text-cyan-400" />
-              </a>
-              <a 
-                href="https://x.com" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-900/80 border border-cyan-900/30 hover:bg-cyan-900/20 transition-colors"
-              >
-                <FiTwitter className="h-4 w-4 text-cyan-400" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer bottom with copyright and product info */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-cyan-900/30">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 py-4 md:py-6">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          {/* Copyright */}
           <p className="text-gray-500 text-xs order-2 md:order-1 mt-4 md:mt-0">
             &copy; {currentYear} Molequles. All rights reserved.
           </p>
           
-          <div className="flex items-center space-x-2 order-1 md:order-2">
-            <span className="text-xs text-gray-400 font-light">
-              <span className="text-cyan-500">100%</span> Unique AI-generated formulas
-            </span>
+          {/* Location */}
+          <div className="flex items-center space-x-2 order-1 md:order-2 mb-4 md:mb-0">
+            <div className="flex items-center space-x-2 text-gray-600">
+              <FiMapPin className="h-4 w-4 text-gray-500" />
+              <span className="text-xs">London, United Kingdom</span>
+            </div>
           </div>
         </div>
       </div>

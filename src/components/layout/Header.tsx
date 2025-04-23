@@ -52,10 +52,10 @@ export default function Header() {
 
   return (
     <header 
-      className="sticky top-0 left-0 w-full z-40 "
+      className="sticky top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-sm"
     >
-      <div className="max-w-7xl mx-auto p-2 sm:p-4 lg:p-6">
-        <div className="bg-gray-950 flex items-center justify-between p-2 rounded-full border border-cyan-900/30">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between py-4">
           {/* Logo and brand name */}
           <Link 
             href="/" 
@@ -65,11 +65,11 @@ export default function Header() {
             <Image
               src="/icons/logo.svg"
               alt="Molecule"
-              width={20}
-              height={20}
-              className="text-cyan-400 mx-2"
+              width={24}
+              height={24}
+              className="mr-2"
             />
-            <span className=" text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 font-bold text-lg">
+            <span className="text-black font-bold text-lg">
               Molequles
             </span>
           </Link>
@@ -82,7 +82,7 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
+                  className="text-gray-700 hover:text-black transition-colors text-sm font-medium"
                 >
                   {item.name}
                 </a>
@@ -100,8 +100,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-
-      {/* Mobile menu removed */}
     </header>
   );
 }

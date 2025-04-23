@@ -24,14 +24,14 @@ export default function Hero() {
         />
       </div>
       
-      <div className="container mx-auto z-10 flex flex-col flex-1 justify-end">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 z-10 flex flex-col flex-1 justify-end">
         {/* Main Title Section - Top */}
-          <div className="text-center max-w-4xl mx-auto pb-10 px-4">
+          <div className="text-center max-w-4xl mx-auto pb-10">
             {/* Badge */}
             <div className="mb-8">
               <Badge text="Free Samples Available" />
           </div>
-            <h1 className="text-2xl md:text-5xl lg:text-5xl text-black mt-4 md:mt-6 leading-tight tracking-tight">
+            <h1 className="text-lg md:text-3xl lg:text-4xl text-black mt-4 md:mt-6 leading-tight">
               Personalized fragrances engineered with AI for your skin chemistry
             </h1>
           </div>
