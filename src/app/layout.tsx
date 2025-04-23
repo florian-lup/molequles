@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { WaitlistProvider } from "@/contexts/WaitlistContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const jetbrainsMono = JetBrains_Mono({ 
+  weight: ['400', '700'],
+  subsets: ["latin"] 
+});
 
 export const metadata: Metadata = {
   title: "Molequles | AI-Powered Personalized Perfumes",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased overflow-x-hidden`}>
+      <body className={`${jetbrainsMono.className} antialiased overflow-x-hidden`}>
         <WaitlistProvider>
           {children}
         </WaitlistProvider>

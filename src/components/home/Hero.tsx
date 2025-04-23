@@ -30,13 +30,10 @@ export default function Hero() {
             {/* Badge */}
             <div className="mb-8">
               <Badge text="Free Samples Available" />
-            </div>
-            <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-              Scientifically Crafted Scents
+          </div>
+            <h1 className="text-2xl md:text-5xl lg:text-5xl text-black mt-4 md:mt-6 leading-tight tracking-tight">
+              Personalized fragrances engineered with AI for your skin chemistry
             </h1>
-            <p className="text-base md:text-3xl lg:text-4xl text-gray-700 mt-4 md:mt-6">
-              Personalized fragrances engineered with AI technology for your skin chemistry
-            </p>
           </div>
         
         {/* Image Section - Bottom */}
