@@ -1,16 +1,6 @@
 import { ReactNode } from 'react';
 
 /**
- * Properties for badge component
- */
-export interface BadgeProps {
-  icon: ReactNode;
-  text: string;
-  highlight?: string;
-  className?: string;
-}
-
-/**
  * Properties for feature card component
  */
 export interface FeaturesCardProps {
