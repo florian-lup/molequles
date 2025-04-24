@@ -1,6 +1,6 @@
 'use client';
 
-import { useClientSide, useWaitlist } from '@/hooks';
+import { useWaitlist } from '@/hooks';
 import Button from '@/components/ui/Button';
 import { TbLeaf } from 'react-icons/tb';
 import { IngredientData } from '@/types/home';

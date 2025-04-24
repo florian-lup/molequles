@@ -1,7 +1,6 @@
 'use client';
 
 import { GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
-import { useClientSide } from '@/hooks/useClientSide';
 import Badge from '@/components/ui/Badge';
 import FeaturesCard from '@/components/ui/FeaturesCard';
 
@@ -26,10 +25,7 @@ const SolutionContent = () => {
         
         {/* Key technology highlight badge */}
         <Badge 
-          icon={<GiShieldReflect className="text-cyan-400 h-5 w-5" />}
-          highlight="Our AI"
           text="analyzes your unique skin chemistry to create a personalized fragrance formula"
-          className="mb-4 max-w-2xl"
         />
       </div>
       
