@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function RawIngredients() {
   return (
@@ -32,20 +33,34 @@ export default function RawIngredients() {
           </p>
         </div>
         
-        {/* Statistics */}
-        <div className="flex justify-center mb-10">
-          <div className="grid grid-cols-3">
-            <div className="text-center p-4">
+        {/* Image and statistics side by side */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Perfume bottle image */}
+          <div className="w-full md:w-1/2">
+            <div className="relative w-full aspect-square max-w-sm mx-auto">
+              <Image 
+                src="/images/perfume_bottle.webp"
+                alt="Perfume Bottle"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+          
+          {/* Statistics stacked vertically */}
+          <div className="w-full md:w-1/2 space-y-8">
+            <div className="text-center md:text-left p-4 border-l-4 border-gray-200 pl-6">
               <p className="text-lg md:text-2xl font-bold text-black mb-2">4,000+</p>
-              <p className="text-xs md:text-sm text-gray-600 border-t border-gray-300 mt-2 pt-2">Available Ingredients</p>
+              <p className="text-xs md:text-sm text-gray-600">Available Ingredients</p>
             </div>
-            <div className="text-center p-4">
+            <div className="text-center md:text-left p-4 border-l-4 border-gray-200 pl-6">
               <p className="text-lg md:text-2xl font-bold text-black mb-2">Billions</p>
-              <p className="text-xs md:text-sm text-gray-600 border-t border-gray-300 mt-2 pt-2">Potential Combinations</p>
+              <p className="text-xs md:text-sm text-gray-600">Potential Combinations</p>
             </div>
-            <div className="text-center p-4">
+            <div className="text-center md:text-left p-4 border-l-4 border-gray-200 pl-6">
               <p className="text-lg md:text-2xl font-bold text-black mb-2">100%</p>
-              <p className="text-xs md:text-sm text-gray-600 border-t border-gray-300 mt-2 pt-2">Personalized Formulas</p>
+              <p className="text-xs md:text-sm text-gray-600">Personalized Formulas</p>
             </div>
           </div>
         </div>

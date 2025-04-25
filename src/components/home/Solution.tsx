@@ -1,62 +1,58 @@
 'use client';
 
+import { div } from 'framer-motion/client';
 import { GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
-import Badge from '@/components/ui/Badge';
-import FeaturesCard from '@/components/ui/FeaturesCard';
 
 // Main content component for the solution/benefits section
 const SolutionContent = () => {
-  
   return (
-    <div className="w-full text-left">
+    <div className="w-full text-center">
       {/* Section headline and description */}
-      <div className="max-w-2xl mb-10">
+      <div className="max-w-4xl mx-auto mb-10">
         <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
-            Beyond Traditional
-          </span>{' '}
-          <span className="text-gray-100">Perfumery</span>
+          Beyond Traditional Perfumery
         </h2>
         
-        {/* Value proposition with highlighting border */}
-        <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-4 max-w-2xl">
+        {/* Value proposition with highlighting */}
+        <p className="text-gray-600 text-xs md:text-lg lg:text-xl mb-6">
           Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
-        </p>
-        
-        {/* Key technology highlight badge */}
-        <Badge 
-          text="analyzes your unique skin chemistry to create a personalized fragrance formula"
-        />
+        </p>        
       </div>
       
       {/* Three-column benefits grid */}
-      <div className="grid md:grid-cols-3 gap-5 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
         {/* Performance benefit card */}
-        <FeaturesCard
-          icon={<GiHeartBeats className="h-6 w-6" />}
-          title="Consistent Performance"
-          description="Performs reliably throughout the day, maintaining its intended balance and longevity."
-          titleClassName="bg-gradient-to-r from-cyan-400 to-blue-500"
-          iconColor="text-cyan-400"
-        />
+        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+          <div className="flex justify-center mb-4">
+            <GiHeartBeats className="h-6 w-6 text-black" />
+          </div>
+          <h3 className="text-black text-lg font-semibold mb-3">Consistent Performance</h3>
+          <p className="text-gray-600 text-sm">
+            Performs reliably throughout the day, maintaining its intended balance and longevity
+          </p>
+        </div>
         
         {/* Health/safety benefit card */}
-        <FeaturesCard
-          icon={<GiShieldReflect className="h-6 w-6" />}
-          title="Reduced Allergy Risks"
-          description="Experience fewer irritations by eliminating ingredients that trigger sensitivities."
-          titleClassName="bg-gradient-to-r from-blue-400 to-indigo-500"
-          iconColor="text-blue-400"
-        />
+        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+          <div className="flex justify-center mb-4">
+            <GiShieldReflect className="h-6 w-6 text-black" />
+          </div>
+          <h3 className="text-black text-lg font-semibold mb-3">Reduced Allergy Risks</h3>
+          <p className="text-gray-600 text-sm">
+            Experience fewer irritations by eliminating ingredients that trigger sensitivities
+          </p>
+        </div>
         
         {/* Sustainability benefit card */}
-        <FeaturesCard
-          icon={<GiRecycle className="h-6 w-6" />}
-          title="Sustainability"
-          description="Save time and money by avoiding endless experimentation through precise formulations."
-          titleClassName="bg-gradient-to-r from-indigo-400 to-purple-500"
-          iconColor="text-indigo-400"
-        />
+        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+          <div className="flex justify-center mb-4">
+            <GiRecycle className="h-6 w-6 text-black" />
+          </div>
+          <h3 className="text-black text-lg font-semibold mb-3">Sustainability</h3>
+          <p className="text-gray-600 text-sm">
+            Save time and money by avoiding endless experimentation through precise formulations
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -68,9 +64,9 @@ export default function Solution() {
     <section 
       id="solution" 
       aria-label="Solution section" 
-      className="relative py-12 md:py-16 lg:py-20"
+      className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SolutionContent />
       </div>
     </section>
