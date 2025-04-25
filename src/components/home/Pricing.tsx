@@ -57,7 +57,7 @@ const PricingContent = () => {
       {/* Section headline */}
       <div className="text-center mx-auto mb-16 max-w-4xl">
         <h2 className="text-lg md:text-3xl lg:text-4xl text-black leading-relaxed">
-          Choose a package to start your journey into custom fragrance
+          Start your journey into custom fragrances
         </h2>
       </div>
       

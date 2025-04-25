@@ -6,7 +6,8 @@ import Pricing from "@/components/home/Pricing";
 import CTA from "@/components/home/CTA";
 import Footer from "@/components/layout/Footer";
 import { Metadata } from "next";
-import Facts from "@/components/home/Facts";
+import RawIngredients from "@/components/home/RawIngredients";
+import SkinChemistry from "@/components/home/SkinChemistry";
 
 export const metadata: Metadata = {
   title: "Molequles | AI-Powered Personalized Perfumes",
@@ -20,7 +21,8 @@ export default function Home() {
       <main>
         <Hero />
         <Solution />
-        <Facts />
+        <RawIngredients />
+        <SkinChemistry />
         <HowItWorks />
         <Pricing />
         <CTA />
