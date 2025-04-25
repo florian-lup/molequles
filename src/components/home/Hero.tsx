@@ -32,7 +32,7 @@ export default function Hero() {
             <div className="mb-8">
               <Badge text="Free Samples Available" />
             </div>
-            <h1 className="text-lg md:text-3xl lg:text-4xl text-black mt-4 md:mt-6 leading-relaxed">
+            <h1 className="text-lg md:text-3xl lg:text-4xl mt-4 md:mt-6 leading-relaxed">
               Personalized fragrances engineered with AI for your skin chemistry
             </h1>
           </div>

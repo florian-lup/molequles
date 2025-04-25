@@ -34,7 +34,7 @@ export default function SkinChemistry() {
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Section heading */}
         <div className="text-center mb-8 md:mb-10 lg:mb-14">
-          <h2 className="text-xl md:text-3xl lg:text-4xl text-black font-bold mb-4 md:mb-6">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
             The Role of Skin Chemistry
           </h2>
           <p className="text-gray-600 text-xs md:text-lg lg:text-xl">
@@ -84,7 +84,7 @@ export default function SkinChemistry() {
 
               {/* Title between buttons */}
               {getActiveFactorIndex() >= 0 && (
-                <h3 className="text-base md:text-xl font-bold text-black truncate max-w-[120px] md:max-w-full">
+                <h3 className="text-base md:text-xl text-black truncate max-w-[120px] md:max-w-full">
                   {skinFactors[getActiveFactorIndex()].title}
                 </h3>
               )}
