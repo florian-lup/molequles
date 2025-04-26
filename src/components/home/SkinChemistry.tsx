@@ -46,8 +46,8 @@ export default function SkinChemistry() {
         <div className="mt-6 md:mt-8 lg:mt-10 mx-auto max-w-4xl">
           <div className="bg-amber-50/30 rounded-xl border p-4 md:p-6 border-gray-200 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
             {/* Image with embedded skin factors */}
-            <div className="relative flex justify-center">
-              <div className="relative w-full max-w-md aspect-[5/5]">
+            <div className="max-w-lg mx-auto relative flex justify-center border border-gray-500">
+              <div className="relative w-full max-w-md aspect-[5/5] border border-gray-500 rounded-full">
                 <Image 
                   src="/images/vitruvian_man.png" 
                   alt="Skin chemistry measurement diagram"
@@ -62,7 +62,7 @@ export default function SkinChemistry() {
             <div className="text-center ">
               {getActiveFactorIndex() >= 0 && (
                 <>
-                  <p className="text-xs md:text-base text-gray-600 mt-3">
+                  <p className="text-xs md:text-base text-gray-600 mt-5">
                     {skinFactors[getActiveFactorIndex()].description}
                   </p>
                 </>

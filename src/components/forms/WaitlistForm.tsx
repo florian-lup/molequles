@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiMail } from 'react-icons/fi';
 import { GiMolecule } from 'react-icons/gi';
 import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 // Props interface for WaitlistForm component
 export interface WaitlistFormProps {
@@ -127,20 +128,17 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
               <FiX size={20} />
             </button>
             
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 leading-tight">
-              <span className="text-black">
-                Join Our
-              </span>{' '}
-              <span className="text-black">Waitlist</span>
-            </h2>
+            <div className="flex justify-left mb-4">
+              <Badge 
+                text="No Credit Card Required" 
+                textSize="xs"
+                textColor="text-gray-600"
+              />
+            </div>
             
             <p className="text-sm sm:text-base text-gray-600 mb-5 leading-relaxed font-light border-l-2 border-gray-300 pl-3">
               Be among the first to experience our AI personalized perfume technology.
             </p>
-            
-            {/* Background decorations */}
-            <div className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-gray-100 blur-xl -z-10"></div>
-            <div className="absolute bottom-1/3 left-1/3 w-24 h-24 rounded-full bg-gray-100 blur-xl -z-10"></div>
             
             {/* Email submission form */}
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -171,7 +169,6 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                     >
                       Join Waitlist
                     </Button>
-                    <span className="text-xs text-gray-600 mt-2 text-center">Free Samples Available</span>
                   </div>
                 </>
               ) : (

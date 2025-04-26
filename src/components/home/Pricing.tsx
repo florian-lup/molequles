@@ -55,15 +55,8 @@ const PricingContent = () => {
   
   return (
     <div className="w-full">
-      {/* Section headline */}
-      <div className="text-center mx-auto mb-16 max-w-4xl">
-        <h2 className="text-lg md:text-3xl lg:text-4xl text-black leading-relaxed">
-          Start your journey into custom fragrances
-        </h2>
-      </div>
-      
       {/* Two-column pricing tier cards */}
-      <div className="grid md:grid-cols-2 gap-6 mt-10">
+      <div className="grid md:grid-cols-2 gap-6">
         {/* Mid-tier option */}
         <PricingCard
           title="Travel Size"
@@ -102,7 +95,19 @@ export default function Pricing() {
       aria-label="Pricing section" 
       className="relative py-12 md:py-16 lg:py-20 bg-white"
     >
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section headline */}
+        <div className="max-w-4xl mx-auto mb-10 text-center">
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+          Start your journey into custom fragrances
+        </h2>
+        
+        {/* Value proposition with highlighting */}
+        <p className="text-gray-600 text-xs md:text-lg lg:text-xl mb-6">
+          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
+        </p>        
+      </div>
+        
         <PricingContent />
       </div>
     </section>

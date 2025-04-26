@@ -1,7 +1,6 @@
 'use client';
 
-import { div } from 'framer-motion/client';
-import { GiHeartBeats, GiShieldReflect, GiRecycle } from 'react-icons/gi';
+import { GiHeartBeats, GiShieldReflect, GiTestTubes } from 'react-icons/gi';
 
 // Main content component for the solution/benefits section
 const SolutionContent = () => {
@@ -15,7 +14,7 @@ const SolutionContent = () => {
         
         {/* Value proposition with highlighting */}
         <p className="text-gray-600 text-xs md:text-lg lg:text-xl mb-6">
-          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
+          Molequles uses AI to analyze your skin and discover unique fragrance blends, crafting personalized perfumes tailored to your chemistry
         </p>        
       </div>
       
@@ -28,7 +27,7 @@ const SolutionContent = () => {
           </div>
           <h3 className="text-black text-lg font-semibold mb-3">Consistent Performance</h3>
           <p className="text-gray-600 text-sm">
-            Performs reliably throughout the day, maintaining its intended balance and longevity
+            Maintains balance and longevity throughout the day
           </p>
         </div>
         
@@ -39,18 +38,18 @@ const SolutionContent = () => {
           </div>
           <h3 className="text-black text-lg font-semibold mb-3">Reduced Allergy Risks</h3>
           <p className="text-gray-600 text-sm">
-            Experience fewer irritations by eliminating ingredients that trigger sensitivities
+            Reduces irritation by avoiding sensitive ingredients
           </p>
         </div>
         
         {/* Sustainability benefit card */}
         <div className="bg-amber-50/30 rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
           <div className="flex justify-center mb-4">
-            <GiRecycle className="h-6 w-6 text-black" />
+            <GiTestTubes className="h-6 w-6 text-black" />
           </div>
-          <h3 className="text-black text-lg font-semibold mb-3">Sustainability</h3>
+          <h3 className="text-black text-lg font-semibold mb-3">Personalized blends</h3>
           <p className="text-gray-600 text-sm">
-            Save time and money by avoiding endless experimentation through precise formulations
+            Creates a scent uniquely tailored to your skin
           </p>
         </div>
       </div>
