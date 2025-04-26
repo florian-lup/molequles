@@ -22,7 +22,7 @@ const SolutionContent = () => {
       {/* Three-column benefits grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
         {/* Performance benefit card */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+        <div className="bg-amber-50/30 rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
           <div className="flex justify-center mb-4">
             <GiHeartBeats className="h-6 w-6 text-black" />
           </div>
@@ -33,7 +33,7 @@ const SolutionContent = () => {
         </div>
         
         {/* Health/safety benefit card */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+        <div className="bg-amber-50/30 rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
           <div className="flex justify-center mb-4">
             <GiShieldReflect className="h-6 w-6 text-black" />
           </div>
@@ -44,7 +44,7 @@ const SolutionContent = () => {
         </div>
         
         {/* Sustainability benefit card */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+        <div className="bg-amber-50/30 rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
           <div className="flex justify-center mb-4">
             <GiRecycle className="h-6 w-6 text-black" />
           </div>
