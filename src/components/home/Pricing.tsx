@@ -1,5 +1,6 @@
 'use client';
 
+import { div } from 'framer-motion/client';
 import { FiCheck } from 'react-icons/fi';
 
 /**
@@ -61,20 +62,8 @@ const PricingContent = () => {
         </h2>
       </div>
       
-      {/* Three-column pricing tier cards */}
-      <div className="grid md:grid-cols-3 gap-6 mt-10">
-        {/* Free sample tier */}
-        <PricingCard
-          title="Sample"
-          price="Free"
-          description="Try our personalized fragrance approach with a small sample size."
-          features={[
-            "2ml (0.07oz) sample size",
-            "2 skin parameters",
-            "1 unique AI-generated formula",
-          ]}
-        />
-        
+      {/* Two-column pricing tier cards */}
+      <div className="grid md:grid-cols-2 gap-6 mt-10">
         {/* Mid-tier option */}
         <PricingCard
           title="Travel Size"
@@ -113,7 +102,7 @@ export default function Pricing() {
       aria-label="Pricing section" 
       className="relative py-12 md:py-16 lg:py-20 bg-white"
     >
-      <div className="container mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PricingContent />
       </div>
     </section>

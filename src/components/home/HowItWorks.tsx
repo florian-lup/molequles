@@ -11,11 +11,8 @@ const HowItWorksContent = () => {
     <div className="w-full text-left">
       {/* Section headline and description */}
       <div className="max-w-2xl mb-10">
-        <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
-            The Science
-          </span>{' '}
-          <span className="text-gray-100">of Creation</span>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+          Scientifically Crafted Scents
         </h2>
         
         {/* Section summary with highlighting border */}
