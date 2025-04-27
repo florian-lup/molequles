@@ -1,6 +1,5 @@
 'use client';
 
-import { div } from 'framer-motion/client';
 import { FiCheck } from 'react-icons/fi';
 
 /**

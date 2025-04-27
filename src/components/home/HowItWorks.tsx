@@ -1,77 +1,102 @@
 'use client';
 
-import { GiMolecule, GiMicroscope, GiTestTubes } from 'react-icons/gi';
-import Badge from '@/components/ui/Badge';
-import FeaturesCard from '@/components/ui/FeaturesCard';
+import { useState } from 'react';
+import { GiChemicalDrop, GiBrain, GiPerfumeBottle } from 'react-icons/gi';
 
-// Main content component for the How It Works section
-const HowItWorksContent = () => {
-  
-  return (
-    <div className="w-full text-left">
-      {/* Section headline and description */}
-      <div className="max-w-2xl mb-10">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-          Scientifically Crafted Scents
-        </h2>
-        
-        {/* Section summary with highlighting border */}
-        <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed font-light border-l-2 border-cyan-500 pl-4">
-          From analysis to creation, our scientific approach ensures your perfume perfectly matches your unique skin chemistry.
-        </p>
-        
-        {/* Precision highlight badge */}
-          <Badge 
-            icon={<GiMolecule className="text-cyan-400 h-5 w-5" />}
-            highlight="99.8%"
-            text="we match your skin and raw ingredients with molecular precision"
-            className="mb-4 max-w-2xl"
-          />
-      </div>
-      
-      {/* Three-step process cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        {/* Data collection step */}
-        <FeaturesCard
-          icon={<GiMicroscope className="h-6 w-6" />}
-          title="Step 1: Collecting Skin Data"
-          description="Visit a local dermatologist to identify your unique skin parameters."
-          titleClassName="bg-gradient-to-r from-cyan-400 to-blue-400"
-          iconColor="text-cyan-400"
-        />
-        
-        {/* AI analysis step */}
-        <FeaturesCard
-          icon={<GiMolecule className="h-6 w-6" />}
-          title="Step 2: AI-Powered Analysis"
-          description="Our AI interprets your data and predicts the ideal ingredient blend."
-          titleClassName="bg-gradient-to-r from-blue-400 to-indigo-500"
-          iconColor="text-blue-400"
-        />
-        
-        {/* Fragrance creation step */}
-        <FeaturesCard
-          icon={<GiTestTubes className="h-6 w-6" />}
-          title="Step 3: Creating Your Scent"
-          description="We craft your unique perfume using the AI-recommended ingredients."
-          titleClassName="bg-gradient-to-r from-indigo-400 to-purple-500"
-          iconColor="text-indigo-400"
-        />
-      </div>
-    </div>
-  );
-};
-
-// Main section wrapper with ID for navigation targeting
 export default function HowItWorks() {
+  const steps = [
+    {
+      title: "Collecting Skin Data",
+      description: "Visit a local dermatologist to identify your unique skin parameters.",
+      icon: <GiChemicalDrop className="h-8 w-8 text-black" />
+    },
+    {
+      title: "AI-Powered Analysis",
+      description: "Our AI interprets your data and predicts the ideal ingredient blend.",
+      icon: <GiBrain className="h-8 w-8 text-black" />
+    },
+    {
+      title: "Creating Your Scent",
+      description: "We craft your unique perfume using the AI-recommended ingredients.",
+      icon: <GiPerfumeBottle className="h-8 w-8 text-black" />
+    }
+  ];
+
+  const [activeStep, setActiveStep] = useState(0);
+
   return (
-    <section 
+    <section
       id="how-it-works" 
       aria-label="How it works section" 
-      className="relative py-12 md:py-16 lg:py-20"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <HowItWorksContent />
+      className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden">
+      
+      <div className="container mx-auto px-4 max-w-4xl z-10 relative">
+        {/* Section heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
+            Scientifically Crafted Scents
+          </h2>
+          <p className="text-gray-600 text-xs md:text-lg lg:text-xl">
+            From analysis to creation, our scientific approach ensures your perfume perfectly matches your unique skin chemistry. We match your skin and raw ingredients with molecular precision.
+          </p>
+        </div>
+        
+        {/* Process visualization */}
+        <div className="mt-8 md:mt-12">
+          {/* Step indicators */}
+          <div className="flex justify-between items-center mb-8 relative">
+            {steps.map((step, index) => (
+              <div 
+                key={index} 
+                className="flex flex-col items-center cursor-pointer z-10"
+                onClick={() => setActiveStep(index)}
+              >
+                <div 
+                  className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center 
+                    ${activeStep === index ? 'bg-amber-50 shadow-md' : 'bg-gray-100'} 
+                    transition-all duration-300`}
+                >
+                  {step.icon}
+                </div>
+                <span className="text-xs md:text-sm font-medium mt-2 text-center">Step {index + 1}</span>
+              </div>
+            ))}
+            
+            {/* Connection line */}
+            <div className="absolute h-1 bg-gray-200 left-0 right-0 top-6 md:top-8 -z-0" />
+            <div 
+              className="absolute h-1 bg-gray-400 left-0 top-6 md:top-8 -z-0 transition-all duration-500"
+              style={{ width: `${(activeStep / (steps.length - 1)) * 100}%` }}
+            />
+          </div>
+          
+          {/* Step content */}
+          <div className="bg-amber-50/30 rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
+            <div className="text-center py-8">
+              <h3 className="text-xl md:text-2xl font-semibold mb-4">{steps[activeStep].title}</h3>
+              <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto">{steps[activeStep].description}</p>
+            </div>
+            
+            {/* Navigation buttons */}
+            <div className="flex justify-between items-center mt-6">
+              <button
+                className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => setActiveStep(prev => Math.max(0, prev - 1))}
+                disabled={activeStep === 0}
+              >
+                <span className="mr-1">←</span> Previous
+              </button>
+
+              <button
+                className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => setActiveStep(prev => Math.min(steps.length - 1, prev + 1))}
+                disabled={activeStep === steps.length - 1}
+              >
+                Next <span className="ml-1">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

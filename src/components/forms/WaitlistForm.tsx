@@ -132,7 +132,9 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
               <Badge 
                 text="No Credit Card Required" 
                 textSize="xs"
-                textColor="text-gray-600"
+                dotColor="bg-green-500" 
+                bgColor="bg-green-50" 
+                textColor="text-green-700"
               />
             </div>
             

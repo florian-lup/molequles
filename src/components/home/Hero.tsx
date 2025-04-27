@@ -30,7 +30,12 @@ export default function Hero() {
           <div className="text-center max-w-4xl mx-auto pb-10">
             {/* Badge */}
             <div className="mb-8">
-              <Badge text="Free Samples Available" />
+            <Badge 
+            text="Free Samples Available" 
+            dotColor="bg-green-500" 
+            bgColor="bg-green-50" 
+            textColor="text-green-700"
+            />
             </div>
             <h1 className="text-lg md:text-3xl lg:text-4xl mt-4 md:mt-6 leading-relaxed">
               Personalized fragrances engineered with AI for your skin chemistry

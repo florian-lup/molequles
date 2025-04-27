@@ -22,7 +22,7 @@ export default function Header() {
   
   // Navigation menu items configuration
   const navigation: NavigationItem[] = [
-    { name: 'Solution', href: '#solution' },
+    { name: 'About', href: '#solution' },
     { name: 'How It Works', href: '#how-it-works' },
     { name: 'Pricing', href: '#pricing' },
   ];
