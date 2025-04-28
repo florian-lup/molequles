@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Badge from '../ui/Badge';
-import { div } from 'framer-motion/client';
 
 export default function Hero() {
   return (
@@ -49,7 +48,6 @@ export default function Hero() {
               src="/images/hero_image.webp"
               alt="Adaptive Robotic Mannequin"
               fill
-              priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 896px"
               className="object-contain object-bottom"
             />

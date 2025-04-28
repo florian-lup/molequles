@@ -135,7 +135,7 @@ export default function CTA() {
                 alt="Sample Bottle"
                 fill
                 className="object-contain"
-                priority
+                sizes="(max-width: 768px) 250px, 300px"
               />
               
               {/* Left side parameters inside image div */}

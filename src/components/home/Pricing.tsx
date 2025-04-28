@@ -22,7 +22,7 @@ const PricingCard = ({
   isPopular = false // Whether to highlight as popular choice
 }: PricingCardProps) => {
   return (
-    <div className={`overflow-hidden rounded-xl shadow-md border ${isPopular ? 'border-gray-300 bg-gray-50' : 'border-gray-200 bg-white'} p-6 hover:bg-gray-50 transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-gray-300' : ''}`}>
+    <div className={`overflow-hidden rounded-xl shadow-sm border ${isPopular ? 'border-gray-300' : 'border-gray-200'} p-6 bg-amber-50/30 bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px] transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-gray-300' : ''}`}>
       {/* Card header with title */}
       
       {/* Price display with title */}
@@ -56,28 +56,28 @@ const PricingContent = () => {
     <div className="w-full">
       {/* Two-column pricing tier cards */}
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Mid-tier option */}
+        {/* Basic tier option */}
         <PricingCard
-          title="Travel Size"
+          title="Ingredients Plan"
           price="$75"
-          description="Perfect for travel or testing your personalized scent before committing."
+          description="Experience a unique fragrance created from our vast library of ingredients."
           features={[
-            "50ml (1.7oz) bottle",
-            "3 skin parameters",
-            "2 formula iterations",
-            "Elegant travel case"
+            "100ml (3.4oz) bottle",
+            "Access to 4,000+ ingredients",
+            "Unique formula creation",
           ]}
         />
         
         {/* Premium tier with highlight */}
         <PricingCard
-          title="Full Size"
+          title="Skin Chemistry Plan"
           price="$150"
-          description="Experience your perfect signature scent in a premium full-size bottle."
+          description="Advanced personalization that adapts to your unique skin chemistry."
           features={[
             "100ml (3.4oz) bottle",
-            "4 skin parameters",
-            "Advanced AI formula optimization",
+            "Access to 4,000+ ingredients",
+            "Unique formula creation",
+            "Full skin chemistry analysis"
           ]}
           isPopular={true}
         />
@@ -98,12 +98,12 @@ export default function Pricing() {
         {/* Section headline */}
         <div className="max-w-4xl mx-auto mb-10 text-center">
         <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-          Start your journey into custom fragrances
+          Start your journey
         </h2>
         
         {/* Value proposition with highlighting */}
         <p className="text-gray-600 text-xs md:text-lg lg:text-xl mb-6">
-          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer.
+          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer
         </p>        
       </div>
         
