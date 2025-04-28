@@ -21,7 +21,7 @@ export default function Button({
   onClick,
   children,
   variant = 'primary',
-  size = 'md',
+  size = 'sm',
   rightIcon = false,
   className = '',
   disabled = false,

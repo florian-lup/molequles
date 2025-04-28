@@ -37,7 +37,7 @@ export default function HowItWorks() {
             Scientifically Crafted Scents
           </h2>
           <p className="text-gray-600 text-xs md:text-lg lg:text-xl">
-            From analysis to creation, our scientific approach ensures your perfume perfectly matches your unique skin chemistry. We match your skin and raw ingredients with molecular precision.
+            We match your skin and raw ingredients with molecular precision.
           </p>
         </div>
         
