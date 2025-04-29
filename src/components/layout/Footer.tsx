@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="bg-white text-black border-t border-gray-200">
       {/* Main footer content container */}
-      <div className="container mx-auto px-2 sm:px-4 lg:px-6 py-4 md:py-6">
+      <div className="w-full px-4 sm:px-6 lg:px-10 py-4 md:py-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright */}
           <p className="text-gray-500 text-xs order-2 md:order-1 mt-4 md:mt-0">

@@ -54,7 +54,7 @@ export default function Header() {
     <header 
       className="sticky top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-sm"
     >
-      <div className="container mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="w-full px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between py-4">
           {/* Logo and brand name */}
           <Link 

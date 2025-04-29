@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { WaitlistProvider } from "@/contexts/WaitlistContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const jetbrainsMono = JetBrains_Mono({ 
   weight: ['400', '700'],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <WaitlistProvider>
           {children}
         </WaitlistProvider>
+        <Analytics />
       </body>
     </html>
   );
