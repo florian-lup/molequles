@@ -37,7 +37,7 @@ const SkinParameterCard = ({ value, unit, label, color }: SkinParameterProps) =>
  */
 const CTAMessagePanel = () => {
   const { openWaitlist } = useWaitlist();
-  
+
   return (
     <div className="w-full text-center">
       {/* Centered headline */}
@@ -47,18 +47,14 @@ const CTAMessagePanel = () => {
 
       {/* Waitlist button with promotional text */}
       <div className="flex items-center justify-center gap-4">
-        <Button 
-          onClick={openWaitlist}
-          size="sm"
-          rightIcon
-        >
+        <Button onClick={openWaitlist} size="sm" rightIcon>
           Join Waitlist
         </Button>
-        <Badge 
-          text="Free Samples Available" 
-          textSize="xs" 
-          dotColor="bg-green-500" 
-          bgColor="bg-green-50" 
+        <Badge
+          text="Free Samples Available"
+          textSize="xs"
+          dotColor="bg-green-500"
+          bgColor="bg-green-50"
           textColor="text-green-700"
         />
       </div>
@@ -71,58 +67,61 @@ const CTAMessagePanel = () => {
  */
 export default function CTA() {
   useWaitlist();
-  
+
   // Skin parameter data
   const parameters = [
-    { 
-      value: '74', 
-      unit: 'μg', 
-      label: 'Sebum', 
-      color: 'cyan-500' 
+    {
+      value: '74',
+      unit: 'μg',
+      label: 'Sebum',
+      color: 'cyan-500',
     },
-    { 
-      value: '33', 
-      unit: '°C', 
-      label: 'Temp', 
-      color: 'blue-500' 
+    {
+      value: '33',
+      unit: '°C',
+      label: 'Temp',
+      color: 'blue-500',
     },
-    { 
-      value: '~5.5', 
-      unit: '', 
-      label: 'pH Level', 
-      color: 'indigo-500' 
+    {
+      value: '~5.5',
+      unit: '',
+      label: 'pH Level',
+      color: 'indigo-500',
     },
-    { 
-      value: '61', 
-      unit: 'AU', 
-      label: 'Hydration', 
-      color: 'purple-500' 
+    {
+      value: '61',
+      unit: 'AU',
+      label: 'Hydration',
+      color: 'purple-500',
     },
   ];
-  
+
   return (
-    <section 
-      id="cta" 
-      aria-label="Call to action section" 
+    <section
+      id="cta"
+      aria-label="Call to action section"
       className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden"
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 z-0">
-        <div className="h-3/4 w-full absolute left-0 right-0 top-1/2 -translate-y-1/2" 
+        <div
+          className="h-3/4 w-full absolute left-0 right-0 top-1/2 -translate-y-1/2"
           style={{
-            backgroundImage: 'linear-gradient(to right, #f7f7f7 1px, transparent 1px), linear-gradient(to bottom, #f7f7f7 1px, transparent 1px)',
+            backgroundImage:
+              'linear-gradient(to right, #f7f7f7 1px, transparent 1px), linear-gradient(to bottom, #f7f7f7 1px, transparent 1px)',
             backgroundSize: '30px 30px',
-            backgroundPosition: 'center center'
+            backgroundPosition: 'center center',
           }}
         />
-        <div 
-          className="absolute inset-0" 
+        <div
+          className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at center, transparent 10%, rgba(255,255,255,0.8) 80%, white 100%)'
+            background:
+              'radial-gradient(circle at center, transparent 10%, rgba(255,255,255,0.8) 80%, white 100%)',
           }}
         />
       </div>
-      
+
       <div className="container mx-auto px-4 max-w-3xl z-10 relative">
         {/* Stacked vertical layout */}
         <div className="flex flex-col items-center justify-center gap-10 py-2 md:py-4">
@@ -137,7 +136,7 @@ export default function CTA() {
                 className="object-contain"
                 sizes="(max-width: 768px) 250px, 300px"
               />
-              
+
               {/* Left side parameters inside image div */}
               <div className="absolute left-[-60px] md:left-[-80px] top-[80px] md:top-[100px]">
                 <SkinParameterCard
@@ -155,7 +154,7 @@ export default function CTA() {
                   color={parameters[1].color}
                 />
               </div>
-              
+
               {/* Right side parameters inside image div */}
               <div className="absolute right-[-60px] md:right-[-80px] top-[80px] md:top-[100px]">
                 <SkinParameterCard

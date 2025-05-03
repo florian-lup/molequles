@@ -12,4 +12,4 @@ export const useWaitlist = () => {
     throw new Error('useWaitlist must be used within a WaitlistProvider');
   }
   return context;
-}; 
+};

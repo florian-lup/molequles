@@ -8,42 +8,45 @@ export default function Hero() {
     <section className="relative min-h-screen bg-white overflow-hidden flex flex-col">
       {/* Grid Background */}
       <div className="absolute inset-0 z-0">
-        <div className="h-full w-full" 
+        <div
+          className="h-full w-full"
           style={{
-            backgroundImage: 'linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)',
+            backgroundImage:
+              'linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)',
             backgroundSize: '40px 40px',
-            backgroundPosition: 'center center'
+            backgroundPosition: 'center center',
           }}
         />
         {/* Radial gradient overlay */}
-        <div 
-          className="absolute inset-0" 
+        <div
+          className="absolute inset-0"
           style={{
-            background: 'radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.6) 70%, white 100%)'
+            background:
+              'radial-gradient(circle at center, transparent 30%, rgba(255,255,255,0.6) 70%, white 100%)',
           }}
         />
       </div>
-      
+
       <div className="container mx-auto px-2 sm:px-4 lg:px-6 z-10 flex flex-col flex-1 justify-end">
         {/* Main Title Section - Top */}
-          <div className="text-center max-w-4xl mx-auto pb-10">
-            {/* Badge */}
-            <div className="mb-8">
-            <Badge 
-            text="Free Samples Available" 
-            dotColor="bg-green-500" 
-            bgColor="bg-green-50" 
-            textColor="text-green-700"
+        <div className="text-center max-w-4xl mx-auto pb-10">
+          {/* Badge */}
+          <div className="mb-8">
+            <Badge
+              text="Free Samples Available"
+              dotColor="bg-green-500"
+              bgColor="bg-green-50"
+              textColor="text-green-700"
             />
-            </div>
-            <h1 className="text-lg md:text-3xl lg:text-4xl mt-4 md:mt-6 leading-relaxed">
-              Personalized fragrances engineered with AI for your skin chemistry
-            </h1>
           </div>
-        
+          <h1 className="text-lg md:text-3xl lg:text-4xl mt-4 md:mt-6 leading-relaxed">
+            Personalized fragrances engineered with AI for your skin chemistry
+          </h1>
+        </div>
+
         {/* Image Section - Bottom */}
         <div className="flex items-end justify-center">
-          <div className="relative w-full max-w-4xl mx-auto" style={{ height: "50vh" }}>
+          <div className="relative w-full max-w-4xl mx-auto" style={{ height: '50vh' }}>
             <Image
               src="/images/hero_image.webp"
               alt="Adaptive Robotic Mannequin"

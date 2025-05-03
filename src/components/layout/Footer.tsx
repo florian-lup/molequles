@@ -16,7 +16,7 @@ export default function Footer() {
           <p className="text-gray-500 text-xs order-2 md:order-1 mt-4 md:mt-0">
             &copy; {currentYear} Molequles. All rights reserved.
           </p>
-          
+
           {/* Location */}
           <div className="flex items-center space-x-2 order-1 md:order-2 mb-4 md:mb-0">
             <div className="flex items-center space-x-2 text-gray-600">
@@ -28,4 +28,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}

@@ -11,7 +11,7 @@ import { useWaitlist } from '@/hooks/useWaitlist';
 export type NavigationItem = {
   name: string;
   href: string;
-}; 
+};
 
 export default function Header() {
   // State for mobile menu toggle
@@ -19,7 +19,7 @@ export default function Header() {
   // Custom hook for waitlist modal control
   const { openWaitlist } = useWaitlist();
   const router = useRouter();
-  
+
   // Navigation menu items configuration
   const navigation: NavigationItem[] = [
     { name: 'About', href: '#solution' },
@@ -30,12 +30,12 @@ export default function Header() {
   // Handles navigation link clicks with smooth scrolling
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    
+
     // Close mobile menu
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
-    
+
     // Handle smooth scrolling for anchor links
     if (href.startsWith('#')) {
       const element = document.getElementById(href.substring(1));
@@ -51,34 +51,20 @@ export default function Header() {
   };
 
   return (
-    <header 
-      className="sticky top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-sm"
-    >
+    <header className="sticky top-0 left-0 w-full z-40 bg-white/80 backdrop-blur-sm">
       <div className="w-full px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between py-4">
           {/* Logo and brand name */}
-          <Link 
-            href="/" 
-            className="flex items-center"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <Image
-              src="/icons/logo.svg"
-              alt="Molecule"
-              width={24}
-              height={24}
-              className="mr-2"
-            />
-            <span className="text-black font-bold text-lg">
-              Molequles
-            </span>
+          <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
+            <Image src="/icons/logo.svg" alt="Molecule" width={24} height={24} className="mr-2" />
+            <span className="text-black font-bold text-lg">Molequles</span>
           </Link>
 
           <div className="flex items-center">
             {/* Desktop navigation menu */}
             <nav className="hidden md:flex items-center space-x-8 mr-6">
               {navigation.map((item) => (
-                <a 
+                <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
@@ -90,11 +76,7 @@ export default function Header() {
             </nav>
 
             {/* Waitlist call-to-action button */}
-            <Button
-              onClick={openWaitlist}
-              size="sm"
-              rightIcon
-            >
+            <Button onClick={openWaitlist} size="sm" rightIcon>
               Join Waitlist
             </Button>
           </div>

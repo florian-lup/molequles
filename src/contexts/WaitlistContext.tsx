@@ -41,4 +41,4 @@ export const WaitlistProvider = ({ children }: WaitlistProviderProps) => {
   );
 };
 
-export default WaitlistContext; 
+export default WaitlistContext;

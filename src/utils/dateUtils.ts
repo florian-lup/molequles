@@ -17,9 +17,9 @@ export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions): st
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    ...options
+    ...options,
   };
-  
+
   return new Intl.DateTimeFormat('en-US', defaultOptions).format(date);
 }
 
@@ -30,12 +30,12 @@ export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions): st
  */
 export function getRelativeTimeString(date: Date): string {
   const formatter = new Intl.RelativeTimeFormat('en', {
-    numeric: 'auto'
+    numeric: 'auto',
   });
-  
+
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-  
+
   // Convert to appropriate time unit
   if (diffInSeconds < 60) {
     return formatter.format(-diffInSeconds, 'second');
@@ -50,4 +50,4 @@ export function getRelativeTimeString(date: Date): string {
   } else {
     return formatter.format(-Math.floor(diffInSeconds / 31536000), 'year');
   }
-} 
+}

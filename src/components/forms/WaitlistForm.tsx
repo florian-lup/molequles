@@ -8,9 +8,9 @@ import Badge from '@/components/ui/Badge';
 
 // Props interface for WaitlistForm component
 export interface WaitlistFormProps {
-  isOpen: boolean;  // Controls visibility of the modal
-  onClose: () => void;  // Callback function to close the modal
-} 
+  isOpen: boolean; // Controls visibility of the modal
+  onClose: () => void; // Callback function to close the modal
+}
 
 const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
   // Form state management
@@ -18,11 +18,11 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
   const [isValid, setIsValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   // Element references for modal and input focus
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  
+
   // Modal clickout detection and body scroll management
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -30,23 +30,23 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
         onClose();
       }
     };
-    
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'hidden'; // Prevent scrolling
-      
+
       // Focus input on open for immediate typing
       setTimeout(() => {
         inputRef.current?.focus();
       }, 100);
     }
-    
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'auto'; // Restore scrolling
     };
   }, [isOpen, onClose]);
-  
+
   // Keyboard escape key handler
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -54,40 +54,40 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
         onClose();
       }
     };
-    
+
     if (isOpen) {
       document.addEventListener('keydown', handleEscapeKey);
     }
-    
+
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [isOpen, onClose]);
-  
+
   // Email validation regex function
   const validateEmail = (email: string) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
   };
-  
+
   // Real-time email validation
   useEffect(() => {
     setIsValid(validateEmail(email));
   }, [email]);
-  
+
   // Form submission handler with success sequence
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!isValid) return;
-    
+
     setIsSubmitting(true);
-    
+
     // Simulated API call with delayed success response
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-      
+
       // Auto-close the modal after showing success message
       setTimeout(() => {
         setEmail('');
@@ -96,14 +96,14 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
       }, 3000);
     }, 1500);
   };
-  
+
   if (!isOpen) return null;
-  
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
       {/* Semi-transparent backdrop with blur */}
       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-      
+
       {/* Modal container */}
       <div
         ref={modalRef}
@@ -117,21 +117,21 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
         >
           <FiX size={20} />
         </button>
-        
+
         <div className="flex justify-left mb-4">
-          <Badge 
-            text="No Credit Card Required" 
+          <Badge
+            text="No Credit Card Required"
             textSize="xs"
-            dotColor="bg-green-500" 
-            bgColor="bg-green-50" 
+            dotColor="bg-green-500"
+            bgColor="bg-green-50"
             textColor="text-green-700"
           />
         </div>
-        
+
         <p className="text-sm sm:text-base text-gray-600 mb-5 leading-relaxed font-light border-l-2 border-gray-300 pl-3">
           Be among the first to experience our AI personalized perfume technology.
         </p>
-        
+
         {/* Email submission form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isSubmitted ? (
@@ -150,9 +150,9 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                   required
                 />
               </div>
-              
+
               <div className="flex flex-col">
-                <Button 
+                <Button
                   onClick={() => {}}
                   type="submit"
                   disabled={!isValid}
@@ -171,9 +171,7 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
                   <GiMolecule className="w-8 h-8 text-gray-700" />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-black mb-2">
-                You're on the list!
-              </h3>
+              <h3 className="text-xl font-semibold text-black mb-2">You're on the list!</h3>
               <p className="text-gray-600 text-sm border-l-2 border-gray-300 pl-3 inline-block">
                 Thank you for joining our waitlist. We'll be in touch soon!
               </p>
@@ -185,4 +183,4 @@ const WaitlistForm: FC<WaitlistFormProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default WaitlistForm; 
+export default WaitlistForm;
