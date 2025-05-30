@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { WaitlistProvider } from '@/contexts/WaitlistContext';
-import { Analytics } from '@vercel/analytics/react';
 
-const jetbrainsMono = JetBrains_Mono({
+const inter = Inter({
   weight: ['400', '700'],
   subsets: ['latin'],
 });
@@ -24,9 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${jetbrainsMono.className} antialiased overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased overflow-x-hidden`}>
         <WaitlistProvider>{children}</WaitlistProvider>
-        <Analytics />
       </body>
     </html>
   );

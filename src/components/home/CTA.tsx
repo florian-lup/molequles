@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import { useWaitlist } from '@/hooks';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 
@@ -9,69 +7,32 @@ import Badge from '@/components/ui/Badge';
  * Panel containing call-to-action message and waitlist form
  */
 const CTAMessagePanel = () => {
-  const { openWaitlist } = useWaitlist();
-  const [formData, setFormData] = useState({
-    email: '',
-    firstName: '',
-    lastName: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically handle the form submission
-    console.log('Form submitted:', formData);
-    openWaitlist();
-  };
-
   return (
-    <div className="w-full text-center max-w-md mx-auto">
+    <div className="w-full text-center mx-auto px-4">
       {/* Centered headline */}
-      <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-black">
-        Sign up for early access
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-black leading-tight">
+        Ready to Find Your Signature Scent?
       </h2>
 
+      {/* Paragraph */}
+      <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        Sign up now and get <span className="text-emerald-600 font-semibold">20%</span> off your first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping.
+      </p>
+
       {/* Waitlist form */}
-      <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-        <div className="grid grid-cols-2 gap-3">
+      <form className="mb-8 max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
           <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleInputChange}
-            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            className="flex-1 px-4 py-4 sm:py-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all duration-200 text-base"
             required
           />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleInputChange}
-            className="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-            required
-          />
+          <Button type="submit" size="lg" className="w-full sm:w-auto sm:rounded-l-none px-6" onClick={() => { }}>
+            Join Waitlist
+          </Button>
         </div>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email address"
-          value={formData.email}
-          onChange={handleInputChange}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-          required
-        />
-        <Button type="submit" size="lg" className="w-full" onClick={() => { }}>
-          Join Waitlist
-        </Button>
       </form>
 
       {/* Badge */}
@@ -92,37 +53,15 @@ const CTAMessagePanel = () => {
  * Main CTA section with waitlist signup form
  */
 export default function CTA() {
-  useWaitlist();
-
   return (
     <section
       id="cta"
       aria-label="Call to action section"
-      className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
     >
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="h-3/4 w-full absolute left-0 right-0 top-1/2 -translate-y-1/2"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, #f7f7f7 1px, transparent 1px), linear-gradient(to bottom, #f7f7f7 1px, transparent 1px)',
-            backgroundSize: '30px 30px',
-            backgroundPosition: 'center center',
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(circle at center, transparent 10%, rgba(255,255,255,0.8) 80%, white 100%)',
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 max-w-3xl z-10 relative">
+      <div className="container mx-auto px-4 max-w-4xl">
         {/* Centered form layout */}
-        <div className="flex flex-col items-center justify-center py-2 md:py-4">
+        <div className="flex flex-col items-center justify-center">
           <CTAMessagePanel />
         </div>
       </div>

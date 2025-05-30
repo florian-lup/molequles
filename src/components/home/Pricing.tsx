@@ -1,6 +1,7 @@
 'use client';
 
 import { FiCheck } from 'react-icons/fi';
+import Badge from '@/components/ui/Badge';
 
 /**
  * Properties for pricing card components
@@ -23,13 +24,25 @@ const PricingCard = ({
 }: PricingCardProps) => {
   return (
     <div
-      className={`overflow-hidden rounded-xl shadow-sm border ${isPopular ? 'border-gray-300' : 'border-gray-200'} p-6 bg-amber-50/30 bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px] transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-gray-300' : ''}`}
+      className={`relative overflow-hidden rounded-xl shadow-sm border ${isPopular ? 'border-emerald-500 pt-10' : 'border-gray-200'} p-6 bg-amber-50/30 bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px] transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-emerald-500' : ''}`}
     >
-      {/* Card header with title */}
+      {/* Popular badge */}
+      {isPopular && (
+        <div className="absolute top-3 right-3">
+          <Badge
+            text="Most Popular"
+            textSize="xs"
+            bgColor="bg-emerald-500"
+            textColor="text-white"
+            showDot={false}
+            className="border-emerald-500"
+          />
+        </div>
+      )}
 
       {/* Price display with title */}
       <div className="mb-5">
-        <span className="text-2xl md:text-3xl font-bold text-black">{price}</span>
+        <span className="text-2xl md:text-3xl font-bold text-emerald-600">{price}</span>
         <span className="text-gray-500 text-sm ml-1">/{title.toLowerCase()}</span>
       </div>
 
@@ -40,7 +53,7 @@ const PricingCard = ({
       <ul className="space-y-3">
         {features.map((feature: string, index: number) => (
           <li key={index} className="flex items-start gap-2">
-            <FiCheck className="text-black mt-1 h-4 w-4 flex-shrink-0" />
+            <FiCheck className="text-emerald-600 mt-1 h-4 w-4 flex-shrink-0" />
             <span className="text-gray-600 text-sm">{feature}</span>
           </li>
         ))}
@@ -103,11 +116,18 @@ export default function Pricing() {
           {/* Value proposition with highlighting */}
           <p className="text-gray-600 text-xs md:text-lg lg:text-xl mb-6">
             Unlock smarter scents, greater skin compatibility, and more consistent performance
-            beyond what traditional perfumery can offer
           </p>
         </div>
 
         <PricingContent />
+
+        {/* Satisfaction guarantee badge */}
+        <div className="flex justify-center mt-8">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+            <span className="text-emerald-600">✨</span>
+            <span className="text-emerald-700 text-sm font-medium">All plans include a 30-day satisfaction guarantee</span>
+          </div>
+        </div>
       </div>
     </section>
   );

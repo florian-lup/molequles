@@ -30,7 +30,7 @@ export default function Button({
 }: ButtonProps) {
   // Base styles applied to all button variants
   const baseStyles =
-    'inline-flex items-center justify-center gap-2 font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all duration-200 cursor-pointer';
+    'inline-flex items-center justify-center gap-2 font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 transition-all duration-200 cursor-pointer';
 
   // Styles specific to each button variant (primary/secondary)
   const variantStyles = {

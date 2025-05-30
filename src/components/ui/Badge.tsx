@@ -7,6 +7,8 @@ interface BadgeProps {
   dotColor?: string;
   bgColor?: string;
   textColor?: string;
+  icon?: React.ReactNode;
+  showDot?: boolean;
 }
 
 export default function Badge({
@@ -16,12 +18,15 @@ export default function Badge({
   dotColor = 'bg-black',
   bgColor = 'bg-gray-50',
   textColor = 'text-gray-700',
+  icon,
+  showDot = true,
 }: BadgeProps) {
   return (
     <div
       className={`inline-flex items-center px-3 py-1 rounded-full ${bgColor} border border-gray-200 shadow-sm ${className}`}
     >
-      <div className={`w-2 h-2 rounded-full ${dotColor} mr-2 animate-pulse`}></div>
+      {icon && <span className="mr-2">{icon}</span>}
+      {!icon && showDot && <div className={`w-2 h-2 rounded-full ${dotColor} mr-2 animate-pulse`}></div>}
       <span className={`text-${textSize} font-medium ${textColor}`}>{text}</span>
     </div>
   );
