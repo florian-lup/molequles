@@ -5,7 +5,18 @@ interface SectionProps {
   readonly ariaLabel?: string;
   readonly className?: string;
   readonly containerClassName?: string;
-  readonly maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+  readonly maxWidth?:
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | '6xl'
+    | '7xl'
+    | 'full';
   readonly padding?: 'sm' | 'md' | 'lg' | 'xl';
   readonly background?: 'white' | 'gray' | 'transparent';
   readonly children: ReactNode;
@@ -38,28 +49,32 @@ const backgroundClasses = {
   transparent: 'bg-transparent',
 } as const;
 
-const Section = memo<SectionProps>(({
-  id,
-  ariaLabel,
-  className = '',
-  containerClassName = '',
-  maxWidth = 'lg',
-  padding = 'lg',
-  background = 'white',
-  children,
-}) => {
-  return (
-    <section
-      id={id}
-      aria-label={ariaLabel}
-      className={`relative ${paddingClasses[padding]} ${backgroundClasses[background]} overflow-hidden ${className}`}
-    >
-      <div className={`container mx-auto px-4 ${maxWidthClasses[maxWidth]} z-10 relative ${containerClassName}`}>
-        {children}
-      </div>
-    </section>
-  );
-});
+const Section = memo<SectionProps>(
+  ({
+    id,
+    ariaLabel,
+    className = '',
+    containerClassName = '',
+    maxWidth = 'lg',
+    padding = 'lg',
+    background = 'white',
+    children,
+  }) => {
+    return (
+      <section
+        id={id}
+        aria-label={ariaLabel}
+        className={`relative ${paddingClasses[padding]} ${backgroundClasses[background]} overflow-hidden ${className}`}
+      >
+        <div
+          className={`container mx-auto px-4 ${maxWidthClasses[maxWidth]} z-10 relative ${containerClassName}`}
+        >
+          {children}
+        </div>
+      </section>
+    );
+  }
+);
 
 Section.displayName = 'Section';
 

@@ -1,7 +1,15 @@
 'use client';
 
 import { memo, useCallback, useMemo, useState, type FormEvent } from 'react';
-import { FiMapPin, FiMail, FiPhone, FiInstagram, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi';
+import {
+  FiMapPin,
+  FiMail,
+  FiPhone,
+  FiInstagram,
+  FiTwitter,
+  FiFacebook,
+  FiYoutube,
+} from 'react-icons/fi';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
 
@@ -31,117 +39,131 @@ const Footer = memo(() => {
   // Get current year for copyright text
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
-  const socialLinks: readonly SocialLink[] = useMemo(() => [
-    {
-      name: 'instagram',
-      href: '#',
-      icon: <FiInstagram className="h-6 w-6" />,
-      label: 'Follow us on Instagram'
-    },
-    {
-      name: 'twitter',
-      href: '#',
-      icon: <FiTwitter className="h-6 w-6" />,
-      label: 'Follow us on Twitter'
-    },
-    {
-      name: 'facebook',
-      href: '#',
-      icon: <FiFacebook className="h-6 w-6" />,
-      label: 'Follow us on Facebook'
-    },
-    {
-      name: 'youtube',
-      href: '#',
-      icon: <FiYoutube className="h-6 w-6" />,
-      label: 'Subscribe to our YouTube channel'
-    }
-  ], []);
+  const socialLinks: readonly SocialLink[] = useMemo(
+    () => [
+      {
+        name: 'instagram',
+        href: '#',
+        icon: <FiInstagram className="h-6 w-6" />,
+        label: 'Follow us on Instagram',
+      },
+      {
+        name: 'twitter',
+        href: '#',
+        icon: <FiTwitter className="h-6 w-6" />,
+        label: 'Follow us on Twitter',
+      },
+      {
+        name: 'facebook',
+        href: '#',
+        icon: <FiFacebook className="h-6 w-6" />,
+        label: 'Follow us on Facebook',
+      },
+      {
+        name: 'youtube',
+        href: '#',
+        icon: <FiYoutube className="h-6 w-6" />,
+        label: 'Subscribe to our YouTube channel',
+      },
+    ],
+    []
+  );
 
-  const quickLinks: readonly NavLink[] = useMemo(() => [
-    { name: 'About Us', href: '#' },
-    { name: 'Shop', href: '#' },
-    { name: 'Collections', href: '#' },
-    { name: 'Gift Cards', href: '#' },
-    { name: 'Reviews', href: '#' }
-  ], []);
+  const quickLinks: readonly NavLink[] = useMemo(
+    () => [
+      { name: 'About Us', href: '#' },
+      { name: 'Shop', href: '#' },
+      { name: 'Collections', href: '#' },
+      { name: 'Gift Cards', href: '#' },
+      { name: 'Reviews', href: '#' },
+    ],
+    []
+  );
 
-  const customerServiceLinks: readonly NavLink[] = useMemo(() => [
-    { name: 'Contact Us', href: '#' },
-    { name: 'Shipping & Returns', href: '#' },
-    { name: 'Size Guide', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Track Your Order', href: '#' }
-  ], []);
+  const customerServiceLinks: readonly NavLink[] = useMemo(
+    () => [
+      { name: 'Contact Us', href: '#' },
+      { name: 'Shipping & Returns', href: '#' },
+      { name: 'Size Guide', href: '#' },
+      { name: 'FAQ', href: '#' },
+      { name: 'Track Your Order', href: '#' },
+    ],
+    []
+  );
 
-  const contactInfo: readonly ContactInfo[] = useMemo(() => [
-    {
-      icon: <FiMapPin className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
-      content: <span>London, United Kingdom</span>,
-      label: 'Our location'
-    },
-    {
-      icon: <FiMail className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
-      content: (
-        <a
-          href="mailto:hello@molequles.com"
-          className="hover:text-black transition-colors duration-200 break-all"
-        >
-          hello@molequles.com
-        </a>
-      ),
-      label: 'Email us'
-    },
-    {
-      icon: <FiPhone className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
-      content: (
-        <a
-          href="tel:+44123456789"
-          className="hover:text-black transition-colors duration-200"
-        >
-          +44 123 456 789
-        </a>
-      ),
-      label: 'Call us'
-    }
-  ], []);
+  const contactInfo: readonly ContactInfo[] = useMemo(
+    () => [
+      {
+        icon: <FiMapPin className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
+        content: <span>London, United Kingdom</span>,
+        label: 'Our location',
+      },
+      {
+        icon: <FiMail className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
+        content: (
+          <a
+            href="mailto:hello@molequles.com"
+            className="hover:text-black transition-colors duration-200 break-all"
+          >
+            hello@molequles.com
+          </a>
+        ),
+        label: 'Email us',
+      },
+      {
+        icon: <FiPhone className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
+        content: (
+          <a href="tel:+44123456789" className="hover:text-black transition-colors duration-200">
+            +44 123 456 789
+          </a>
+        ),
+        label: 'Call us',
+      },
+    ],
+    []
+  );
 
-  const legalLinks: readonly NavLink[] = useMemo(() => [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Cookie Policy', href: '#' }
-  ], []);
+  const legalLinks: readonly NavLink[] = useMemo(
+    () => [
+      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms of Service', href: '#' },
+      { name: 'Cookie Policy', href: '#' },
+    ],
+    []
+  );
 
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }, []);
 
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-    if (!email.trim()) return;
+      if (!email.trim()) return;
 
-    setIsSubmitting(true);
+      setIsSubmitting(true);
 
-    try {
-      // TODO: Implement actual newsletter submission logic
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-      setIsSubmitted(true);
-      setEmail('');
-    } catch (error) {
-      console.error('Newsletter submission error:', error);
-      // TODO: Add error handling UI
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [email]);
+      try {
+        // TODO: Implement actual newsletter submission logic
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+        setIsSubmitted(true);
+        setEmail('');
+      } catch (error) {
+        console.error('Newsletter submission error:', error);
+        // TODO: Add error handling UI
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [email]
+  );
 
   return (
     <footer className="bg-gray-50 text-black border-t border-gray-200">
       {/* Main footer content container */}
       <div className="w-full px-4 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
-
           {/* Company Info */}
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
             <h3 className="text-lg font-semibold text-black">Molequles</h3>
@@ -228,7 +250,11 @@ const Footer = memo(() => {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-0" noValidate>
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col sm:flex-row gap-2 sm:gap-0"
+                  noValidate
+                >
                   <Input
                     type="email"
                     id="newsletter-email"

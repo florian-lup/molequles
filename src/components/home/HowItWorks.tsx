@@ -12,23 +12,26 @@ interface Step {
 }
 
 const HowItWorks = memo(() => {
-  const steps: readonly Step[] = useMemo(() => [
-    {
-      title: 'Collecting Skin Data',
-      description: 'Visit a local dermatologist to identify your unique skin parameters.',
-      icon: <GiChemicalDrop className="h-8 w-8 text-black" />,
-    },
-    {
-      title: 'AI-Powered Analysis',
-      description: 'Our AI interprets your data and predicts the ideal ingredient blend.',
-      icon: <GiBrain className="h-8 w-8 text-black" />,
-    },
-    {
-      title: 'Creating Your Scent',
-      description: 'We craft your unique perfume using the AI-recommended ingredients.',
-      icon: <GiPerfumeBottle className="h-8 w-8 text-black" />,
-    },
-  ], []);
+  const steps: readonly Step[] = useMemo(
+    () => [
+      {
+        title: 'Collecting Skin Data',
+        description: 'Visit a local dermatologist to identify your unique skin parameters.',
+        icon: <GiChemicalDrop className="h-8 w-8 text-black" />,
+      },
+      {
+        title: 'AI-Powered Analysis',
+        description: 'Our AI interprets your data and predicts the ideal ingredient blend.',
+        icon: <GiBrain className="h-8 w-8 text-black" />,
+      },
+      {
+        title: 'Creating Your Scent',
+        description: 'We craft your unique perfume using the AI-recommended ingredients.',
+        icon: <GiPerfumeBottle className="h-8 w-8 text-black" />,
+      },
+    ],
+    []
+  );
 
   const [activeStep, setActiveStep] = useState(0);
 
@@ -65,7 +68,9 @@ const HowItWorks = memo(() => {
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-          Our revolutionary process combines dermatological science with artificial intelligence to create fragrances that truly complement your unique skin chemistry, ensuring optimal performance and longevity.
+          Our revolutionary process combines dermatological science with artificial intelligence to
+          create fragrances that truly complement your unique skin chemistry, ensuring optimal
+          performance and longevity.
         </p>
       </div>
 
@@ -125,7 +130,10 @@ const HowItWorks = memo(() => {
               disabled={isFirstStep}
               aria-label="Go to previous step"
             >
-              <span className="mr-1" aria-hidden="true">←</span> Previous
+              <span className="mr-1" aria-hidden="true">
+                ←
+              </span>{' '}
+              Previous
             </button>
 
             {/* Title between buttons */}
@@ -140,7 +148,10 @@ const HowItWorks = memo(() => {
               disabled={isLastStep}
               aria-label="Go to next step"
             >
-              Next <span className="ml-1" aria-hidden="true">→</span>
+              Next{' '}
+              <span className="ml-1" aria-hidden="true">
+                →
+              </span>
             </button>
           </div>
         </Card>

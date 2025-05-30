@@ -6,7 +6,7 @@ interface CardProps {
   padding?: 'sm' | 'md' | 'lg';
   variant?: 'default' | 'highlight' | 'subtle';
   hover?: boolean;
-  [key: string]: any; // Allow additional props to be passed through
+  [key: string]: unknown; // Allow additional props to be passed through
 }
 
 const paddingClasses = {
@@ -45,10 +45,7 @@ export default function Card({
   }
 
   return (
-    <div
-      className={`${baseClasses.join(' ')} ${className}`}
-      {...props}
-    >
+    <div className={`${baseClasses.join(' ')} ${className}`} {...props}>
       {children}
     </div>
   );

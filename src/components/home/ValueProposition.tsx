@@ -58,9 +58,7 @@ const ValuePropositionContent = memo(() => {
               {benefit.icon}
             </div>
             <h3 className="text-lg font-semibold mb-3 text-black">{benefit.title}</h3>
-            <p className="text-sm text-gray-600">
-              {benefit.description}
-            </p>
+            <p className="text-sm text-gray-600">{benefit.description}</p>
           </Card>
         ))}
       </div>
@@ -73,11 +71,7 @@ ValuePropositionContent.displayName = 'ValuePropositionContent';
 // Main section wrapper with ID for navigation targeting
 const ValueProposition = memo(() => {
   return (
-    <Section
-      id="value-proposition"
-      ariaLabel="Value proposition section"
-      maxWidth="3xl"
-    >
+    <Section id="value-proposition" ariaLabel="Value proposition section" maxWidth="3xl">
       <ValuePropositionContent />
     </Section>
   );

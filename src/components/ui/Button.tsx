@@ -14,35 +14,39 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 // Reusable button component with multiple variants, sizes and states
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({
-    children,
-    variant = 'primary',
-    buttonSize = 'sm',
-    rightIcon = false,
-    className,
-    disabled = false,
-    loading = false,
-    type = 'button',
-    ...props
-  }, ref) => {
+  (
+    {
+      children,
+      variant = 'primary',
+      buttonSize = 'sm',
+      rightIcon = false,
+      className,
+      disabled = false,
+      loading = false,
+      type = 'button',
+      ...props
+    },
+    ref
+  ) => {
     // Base styles applied to all button variants
-    const baseStyles = "inline-flex items-center justify-center gap-2 font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 cursor-pointer";
+    const baseStyles =
+      'inline-flex items-center justify-center gap-2 font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 cursor-pointer';
 
     // Styles specific to each button variant (primary/secondary)
     const variantStyles = {
-      primary: "bg-black text-white hover:bg-gray-800 shadow-md focus:ring-cyan-500",
-      secondary: "bg-white text-black border border-gray-200 hover:bg-gray-50 focus:ring-cyan-500",
+      primary: 'bg-black text-white hover:bg-gray-800 shadow-md focus:ring-cyan-500',
+      secondary: 'bg-white text-black border border-gray-200 hover:bg-gray-50 focus:ring-cyan-500',
     };
 
     // Styles specific to each button size
     const sizeStyles = {
-      sm: "px-4 py-2 text-sm",
-      md: "px-6 py-3 text-base",
-      lg: "px-8 py-4 text-base",
+      sm: 'px-4 py-2 text-sm',
+      md: 'px-6 py-3 text-base',
+      lg: 'px-8 py-4 text-base',
     };
 
     // Additional styles for disabled state
-    const disabledStyles = (disabled || loading) ? "opacity-60 cursor-not-allowed" : "";
+    const disabledStyles = disabled || loading ? 'opacity-60 cursor-not-allowed' : '';
 
     return (
       <button
@@ -71,6 +75,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export default Button;

@@ -38,10 +38,7 @@ const HeroSection = memo(() => {
       <div className="text-center max-w-4xl mx-auto pb-5 z-10">
         {/* Badge */}
         <div className="mb-2">
-          <Badge
-            text="Free Samples Available"
-            variant="success"
-          />
+          <Badge text="Free Samples Available" variant="success" />
         </div>
         <h1 className="text-2xl md:text-4xl lg:text-5xl mt-2 leading-relaxed font-bold">
           Fragrances engineered with AI for your skin chemistry

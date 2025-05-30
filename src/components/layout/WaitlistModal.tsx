@@ -26,24 +26,27 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
     setEmail(e.target.value);
   }, []);
 
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-    if (!email.trim()) return;
+      if (!email.trim()) return;
 
-    setIsSubmitting(true);
+      setIsSubmitting(true);
 
-    try {
-      // TODO: Implement actual waitlist submission logic
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-      setIsSubmitted(true);
-    } catch (error) {
-      console.error('Waitlist submission error:', error);
-      // TODO: Add error handling UI
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [email]);
+      try {
+        // TODO: Implement actual waitlist submission logic
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+        setIsSubmitted(true);
+      } catch (error) {
+        console.error('Waitlist submission error:', error);
+        // TODO: Add error handling UI
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [email]
+  );
 
   const handleClose = useCallback(() => {
     if (!isSubmitting) {
@@ -131,17 +134,17 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
         {isSubmitted ? (
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <Badge
-                text="Welcome to the Waitlist!"
-                textSize="xs"
-                variant="success"
-              />
+              <Badge text="Welcome to the Waitlist!" textSize="xs" variant="success" />
             </div>
             <h2 id="waitlist-title" className="text-lg font-semibold text-black mb-4">
               Thank you for joining!
             </h2>
-            <p id="waitlist-description" className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed">
-              We'll notify you as soon as we're ready to launch. Get ready to discover your perfect scent!
+            <p
+              id="waitlist-description"
+              className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed"
+            >
+              We&apos;ll notify you as soon as we&apos;re ready to launch. Get ready to discover
+              your perfect scent!
             </p>
             <Button onClick={handleClose} variant="primary">
               Close
@@ -150,18 +153,17 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
         ) : (
           <>
             <div className="flex justify-left mb-4">
-              <Badge
-                text="No Credit Card Required"
-                textSize="xs"
-                variant="success"
-              />
+              <Badge text="No Credit Card Required" textSize="xs" variant="success" />
             </div>
 
             <h2 id="waitlist-title" className="text-lg font-semibold text-black mb-2">
               Join Our Waitlist
             </h2>
 
-            <p id="waitlist-description" className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed font-light border-l-2 border-gray-300 pl-3">
+            <p
+              id="waitlist-description"
+              className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed font-light border-l-2 border-gray-300 pl-3"
+            >
               Be among the first to experience our AI personalized perfume technology.
             </p>
 

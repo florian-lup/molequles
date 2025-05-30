@@ -14,25 +14,28 @@ const LeadCapturePanel = memo(() => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
 
-    if (!email.trim()) return;
+      if (!email.trim()) return;
 
-    setIsSubmitting(true);
+      setIsSubmitting(true);
 
-    try {
-      // TODO: Implement actual form submission logic
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
-      setIsSubmitted(true);
-      setEmail('');
-    } catch (error) {
-      console.error('Form submission error:', error);
-      // TODO: Add error handling UI
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [email]);
+      try {
+        // TODO: Implement actual form submission logic
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+        setIsSubmitted(true);
+        setEmail('');
+      } catch (error) {
+        console.error('Form submission error:', error);
+        // TODO: Add error handling UI
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [email]
+  );
 
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -47,14 +50,10 @@ const LeadCapturePanel = memo(() => {
           </h2>
         </div>
         <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          We'll be in touch soon with your exclusive early access and discount code.
+          We&apos;ll be in touch soon with your exclusive early access and discount code.
         </p>
         <div className="flex justify-center">
-          <Badge
-            text="You're on the list!"
-            textSize="xs"
-            variant="success"
-          />
+          <Badge text="You're on the list!" textSize="xs" variant="success" />
         </div>
       </div>
     );
@@ -71,7 +70,8 @@ const LeadCapturePanel = memo(() => {
 
       {/* Paragraph */}
       <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-        Sign up now and get <span className="text-emerald-600 font-semibold">20%</span> off your first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping.
+        Sign up now and get <span className="text-emerald-600 font-semibold">20%</span> off your
+        first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping.
       </p>
 
       {/* Waitlist form */}
@@ -107,11 +107,7 @@ const LeadCapturePanel = memo(() => {
 
       {/* Badge */}
       <div className="flex justify-center">
-        <Badge
-          text="Free Samples Available"
-          textSize="xs"
-          variant="success"
-        />
+        <Badge text="Free Samples Available" textSize="xs" variant="success" />
       </div>
     </div>
   );

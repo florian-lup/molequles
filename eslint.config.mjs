@@ -10,13 +10,21 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
   {
-    rules: {
-      'prettier/prettier': 'error',
-    },
-    plugins: ['prettier'],
+    ignores: [
+      '.next/**',
+      'node_modules/**',
+      'build/**',
+      'dist/**',
+      'public/**',
+      '*.config.js',
+      '*.config.mjs',
+      '*.config.ts',
+      'next-env.d.ts',
+      '.vercel/**',
+    ],
   },
+  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
 ];
 
 export default eslintConfig;

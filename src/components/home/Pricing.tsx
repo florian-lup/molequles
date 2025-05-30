@@ -27,85 +27,84 @@ interface PricingTier {
 }
 
 // Reusable pricing card component for product tiers
-const PricingCard = memo<PricingCardProps>(({
-  title,
-  price,
-  description,
-  features,
-  isPopular = false,
-}) => {
-  return (
-    <Card
-      variant={isPopular ? 'highlight' : 'default'}
-      hover={true}
-      className={`relative overflow-hidden ${isPopular ? 'pt-10' : ''}`}
-    >
-      {/* Popular badge */}
-      {isPopular && (
-        <div className="absolute top-3 right-3">
-          <Badge
-            text="Most Popular"
-            textSize="xs"
-            bgColor="bg-emerald-500"
-            textColor="text-white"
-            showDot={false}
-            className="border-emerald-500"
-          />
+const PricingCard = memo<PricingCardProps>(
+  ({ title, price, description, features, isPopular = false }) => {
+    return (
+      <Card
+        variant={isPopular ? 'highlight' : 'default'}
+        hover={true}
+        className={`relative overflow-hidden ${isPopular ? 'pt-10' : ''}`}
+      >
+        {/* Popular badge */}
+        {isPopular && (
+          <div className="absolute top-3 right-3">
+            <Badge
+              text="Most Popular"
+              textSize="xs"
+              bgColor="bg-emerald-500"
+              textColor="text-white"
+              showDot={false}
+              className="border-emerald-500"
+            />
+          </div>
+        )}
+
+        {/* Price display with title */}
+        <div className="mb-5">
+          <span className="text-3xl md:text-4xl font-bold text-emerald-600">{price}</span>
+          <span className="text-sm text-gray-500 ml-1">/{title.toLowerCase()}</span>
         </div>
-      )}
 
-      {/* Price display with title */}
-      <div className="mb-5">
-        <span className="text-3xl md:text-4xl font-bold text-emerald-600">{price}</span>
-        <span className="text-sm text-gray-500 ml-1">/{title.toLowerCase()}</span>
-      </div>
+        {/* Tier description */}
+        <p className="text-sm md:text-base text-gray-600 font-light mb-5">{description}</p>
 
-      {/* Tier description */}
-      <p className="text-sm md:text-base text-gray-600 font-light mb-5">{description}</p>
-
-      {/* Feature list with checkmarks */}
-      <ul className="space-y-3" role="list">
-        {features.map((feature, index) => (
-          <li key={`${title}-feature-${index}`} className="flex items-start gap-2">
-            <FiCheck className="text-emerald-600 mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
-            <span className="text-sm text-gray-600">{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </Card>
-  );
-});
+        {/* Feature list with checkmarks */}
+        <ul className="space-y-3" role="list">
+          {features.map((feature, index) => (
+            <li key={`${title}-feature-${index}`} className="flex items-start gap-2">
+              <FiCheck className="text-emerald-600 mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+              <span className="text-sm text-gray-600">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </Card>
+    );
+  }
+);
 
 PricingCard.displayName = 'PricingCard';
 
 // Main content component for the pricing section
 const PricingContent = memo(() => {
-  const pricingTiers: readonly PricingTier[] = useMemo(() => [
-    {
-      id: 'ingredients',
-      title: 'Ingredients Plan',
-      price: '$75',
-      description: 'Experience a unique fragrance created from our vast library of ingredients.',
-      features: [
-        '100ml (3.4oz) bottle',
-        'Access to 4,000+ ingredients',
-        'Unique formula creation',
-      ],
-    },
-    {
-      id: 'skin-chemistry',
-      title: 'Skin Chemistry Plan',
-      price: '$150',
-      description: 'Advanced personalization that adapts to your unique skin chemistry.',
-      features: [
-        '100ml (3.4oz) bottle',
-        'Access to 4,000+ ingredients',
-        'Unique formula creation',
-        'Full skin chemistry analysis',
-      ],
-      isPopular: true,
-    },
-  ], []);
+  const pricingTiers: readonly PricingTier[] = useMemo(
+    () => [
+      {
+        id: 'ingredients',
+        title: 'Ingredients Plan',
+        price: '$75',
+        description: 'Experience a unique fragrance created from our vast library of ingredients.',
+        features: [
+          '100ml (3.4oz) bottle',
+          'Access to 4,000+ ingredients',
+          'Unique formula creation',
+        ],
+      },
+      {
+        id: 'skin-chemistry',
+        title: 'Skin Chemistry Plan',
+        price: '$150',
+        description: 'Advanced personalization that adapts to your unique skin chemistry.',
+        features: [
+          '100ml (3.4oz) bottle',
+          'Access to 4,000+ ingredients',
+          'Unique formula creation',
+          'Full skin chemistry analysis',
+        ],
+        isPopular: true,
+      },
+    ],
+    []
+  );
 
   return (
     <div className="w-full">

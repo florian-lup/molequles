@@ -33,7 +33,7 @@ const TestimonialCard = memo(({ testimonial }: { testimonial: Testimonial }) => 
 
       {/* Testimonial content */}
       <blockquote className="text-sm md:text-base text-gray-600 mb-4 leading-relaxed">
-        "{testimonial.content}"
+        &quot;{testimonial.content}&quot;
       </blockquote>
 
       {/* Author info */}
@@ -48,32 +48,35 @@ const TestimonialCard = memo(({ testimonial }: { testimonial: Testimonial }) => 
 TestimonialCard.displayName = 'TestimonialCard';
 
 const StatsGrid = memo(() => {
-  const stats: readonly Stat[] = useMemo(() => [
-    {
-      id: 'customers',
-      icon: <FiUsers className="h-6 w-6 text-emerald-600" />,
-      value: "2,500+",
-      label: "Happy Customers"
-    },
-    {
-      id: 'rating',
-      icon: <FiStar className="h-6 w-6 text-emerald-600" />,
-      value: "4.9/5",
-      label: "Average Rating"
-    },
-    {
-      id: 'satisfaction',
-      icon: <FiTrendingUp className="h-6 w-6 text-emerald-600" />,
-      value: "95%",
-      label: "Satisfaction Rate"
-    },
-    {
-      id: 'guarantee',
-      icon: <FiAward className="h-6 w-6 text-emerald-600" />,
-      value: "30-Day",
-      label: "Guarantee"
-    }
-  ], []);
+  const stats: readonly Stat[] = useMemo(
+    () => [
+      {
+        id: 'customers',
+        icon: <FiUsers className="h-6 w-6 text-emerald-600" />,
+        value: '2,500+',
+        label: 'Happy Customers',
+      },
+      {
+        id: 'rating',
+        icon: <FiStar className="h-6 w-6 text-emerald-600" />,
+        value: '4.9/5',
+        label: 'Average Rating',
+      },
+      {
+        id: 'satisfaction',
+        icon: <FiTrendingUp className="h-6 w-6 text-emerald-600" />,
+        value: '95%',
+        label: 'Satisfaction Rate',
+      },
+      {
+        id: 'guarantee',
+        icon: <FiAward className="h-6 w-6 text-emerald-600" />,
+        value: '30-Day',
+        label: 'Guarantee',
+      },
+    ],
+    []
+  );
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
@@ -82,12 +85,8 @@ const StatsGrid = memo(() => {
           <div className="flex justify-center mb-3" aria-hidden="true">
             {stat.icon}
           </div>
-          <p className="text-xl md:text-2xl font-bold text-black mb-1">
-            {stat.value}
-          </p>
-          <p className="text-xs md:text-sm text-gray-600">
-            {stat.label}
-          </p>
+          <p className="text-xl md:text-2xl font-bold text-black mb-1">{stat.value}</p>
+          <p className="text-xs md:text-sm text-gray-600">{stat.label}</p>
         </Card>
       ))}
     </div>
@@ -97,9 +96,7 @@ const StatsGrid = memo(() => {
 StatsGrid.displayName = 'StatsGrid';
 
 const PressSection = memo(() => {
-  const pressLogos = useMemo(() => [
-    "TechCrunch", "Forbes", "Wired", "Beauty Magazine"
-  ], []);
+  const pressLogos = useMemo(() => ['TechCrunch', 'Forbes', 'Wired', 'Beauty Magazine'], []);
 
   return (
     <div className="text-center mb-12">
@@ -118,52 +115,61 @@ const PressSection = memo(() => {
 PressSection.displayName = 'PressSection';
 
 const SocialProof = memo(() => {
-  const testimonials: readonly Testimonial[] = useMemo(() => [
-    {
-      id: 'sarah',
-      name: "Sarah Chen",
-      role: "Marketing Director",
-      content: "Finally, a fragrance that actually lasts all day on my skin! The personalization process was fascinating and the results exceeded my expectations.",
-      rating: 5
-    },
-    {
-      id: 'michael',
-      name: "Dr. Michael Rodriguez",
-      role: "Dermatologist",
-      content: "As a dermatologist, I'm impressed by their scientific approach. The skin chemistry analysis is thorough and the allergen avoidance is excellent.",
-      rating: 5
-    },
-    {
-      id: 'emma',
-      name: "Emma Thompson",
-      role: "Beta Tester",
-      content: "I've tried dozens of perfumes that never worked with my skin chemistry. Molequles created something truly unique that feels like it was made just for me.",
-      rating: 5
-    }
-  ], []);
+  const testimonials: readonly Testimonial[] = useMemo(
+    () => [
+      {
+        id: 'sarah',
+        name: 'Sarah Chen',
+        role: 'Marketing Director',
+        content:
+          'Finally, a fragrance that actually lasts all day on my skin! The personalization process was fascinating and the results exceeded my expectations.',
+        rating: 5,
+      },
+      {
+        id: 'michael',
+        name: 'Dr. Michael Rodriguez',
+        role: 'Dermatologist',
+        content:
+          "As a dermatologist, I'm impressed by their scientific approach. The skin chemistry analysis is thorough and the allergen avoidance is excellent.",
+        rating: 5,
+      },
+      {
+        id: 'emma',
+        name: 'Emma Thompson',
+        role: 'Beta Tester',
+        content:
+          "I've tried dozens of perfumes that never worked with my skin chemistry. Molequles created something truly unique that feels like it was made just for me.",
+        rating: 5,
+      },
+    ],
+    []
+  );
 
-  const trustBadges = useMemo(() => [
-    {
-      id: 'guarantee',
-      text: "30-Day Money Back Guarantee",
-      variant: "success" as const,
-      icon: <FiAward className="h-3 w-3" />
-    },
-    {
-      id: 'cruelty-free',
-      text: "Cruelty-Free & Sustainable",
-      variant: "default" as const,
-      icon: <span className="text-green-600">🌿</span>,
-      showDot: false
-    },
-    {
-      id: 'dermatologist',
-      text: "Dermatologist Approved",
-      variant: "default" as const,
-      icon: <span className="text-blue-600">🧪</span>,
-      showDot: false
-    }
-  ], []);
+  const trustBadges = useMemo(
+    () => [
+      {
+        id: 'guarantee',
+        text: '30-Day Money Back Guarantee',
+        variant: 'success' as const,
+        icon: <FiAward className="h-3 w-3" />,
+      },
+      {
+        id: 'cruelty-free',
+        text: 'Cruelty-Free & Sustainable',
+        variant: 'default' as const,
+        icon: <span className="text-green-600">🌿</span>,
+        showDot: false,
+      },
+      {
+        id: 'dermatologist',
+        text: 'Dermatologist Approved',
+        variant: 'default' as const,
+        icon: <span className="text-blue-600">🧪</span>,
+        showDot: false,
+      },
+    ],
+    []
+  );
 
   return (
     <Section id="social-proof" ariaLabel="Social proof section" maxWidth="6xl" padding="md">
@@ -177,7 +183,8 @@ const SocialProof = memo(() => {
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-          Join thousands of satisfied customers who have discovered their perfect scent through our AI-powered personalization process.
+          Join thousands of satisfied customers who have discovered their perfect scent through our
+          AI-powered personalization process.
         </p>
       </div>
 
@@ -214,8 +221,3 @@ const SocialProof = memo(() => {
 SocialProof.displayName = 'SocialProof';
 
 export default SocialProof;
-
-
-
-
-

@@ -11,24 +11,27 @@ interface SkinFactor {
 }
 
 const SkinChemistry = memo(() => {
-  const skinFactors: readonly SkinFactor[] = useMemo(() => [
-    {
-      title: 'Temperature',
-      description: 'Affects how quickly your scent evolves and projects.',
-    },
-    {
-      title: 'Hydration',
-      description: 'Helps your fragrance last longer on your skin.',
-    },
-    {
-      title: 'pH',
-      description: 'Changes how certain notes appear in your scent.',
-    },
-    {
-      title: 'Sebum',
-      description: 'Blends with fragrance oils to create your unique signature.',
-    },
-  ], []);
+  const skinFactors: readonly SkinFactor[] = useMemo(
+    () => [
+      {
+        title: 'Temperature',
+        description: 'Affects how quickly your scent evolves and projects.',
+      },
+      {
+        title: 'Hydration',
+        description: 'Helps your fragrance last longer on your skin.',
+      },
+      {
+        title: 'pH',
+        description: 'Changes how certain notes appear in your scent.',
+      },
+      {
+        title: 'Sebum',
+        description: 'Blends with fragrance oils to create your unique signature.',
+      },
+    ],
+    []
+  );
 
   const [activeFactor, setActiveFactor] = useState(skinFactors[0].title);
 
@@ -63,7 +66,9 @@ const SkinChemistry = memo(() => {
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-          Your skin's natural characteristics interact with fragrance molecules to create a scent that's uniquely yours. Understanding these factors helps us craft the perfect personalized fragrance.
+          Your skin&apos;s natural characteristics interact with fragrance molecules to create a
+          scent that&apos;s uniquely yours. Understanding these factors helps us craft the perfect
+          personalized fragrance.
         </p>
       </div>
 
@@ -87,9 +92,7 @@ const SkinChemistry = memo(() => {
           {/* Content section */}
           <div className="text-center">
             {currentFactor && (
-              <p className="text-sm md:text-base text-gray-600 mt-8">
-                {currentFactor.description}
-              </p>
+              <p className="text-sm md:text-base text-gray-600 mt-8">{currentFactor.description}</p>
             )}
           </div>
 
@@ -101,7 +104,10 @@ const SkinChemistry = memo(() => {
               onClick={handlePrevious}
               aria-label="View previous skin factor"
             >
-              <span className="mr-1" aria-hidden="true">←</span> Previous
+              <span className="mr-1" aria-hidden="true">
+                ←
+              </span>{' '}
+              Previous
             </button>
 
             {/* Title between buttons */}
@@ -117,7 +123,10 @@ const SkinChemistry = memo(() => {
               onClick={handleNext}
               aria-label="View next skin factor"
             >
-              Next <span className="ml-1" aria-hidden="true">→</span>
+              Next{' '}
+              <span className="ml-1" aria-hidden="true">
+                →
+              </span>
             </button>
           </div>
         </Card>

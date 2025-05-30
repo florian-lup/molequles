@@ -21,40 +21,46 @@ const Header = memo(() => {
   const router = useRouter();
 
   // Navigation menu items configuration
-  const navigation: readonly NavigationItem[] = useMemo(() => [
-    { name: 'Solution', href: '#value-proposition' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'Reviews', href: '#social-proof' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'FAQ', href: '#faq' },
-  ], []);
+  const navigation: readonly NavigationItem[] = useMemo(
+    () => [
+      { name: 'Solution', href: '#value-proposition' },
+      { name: 'How It Works', href: '#how-it-works' },
+      { name: 'Reviews', href: '#social-proof' },
+      { name: 'Pricing', href: '#pricing' },
+      { name: 'FAQ', href: '#faq' },
+    ],
+    []
+  );
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
   }, []);
 
   // Handles navigation link clicks with smooth scrolling
-  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
 
-    // Close mobile menu
-    if (isMenuOpen) {
-      closeMenu();
-    }
-
-    // Handle smooth scrolling for anchor links
-    if (href.startsWith('#')) {
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        // Fall back to home page
-        router.push('/');
+      // Close mobile menu
+      if (isMenuOpen) {
+        closeMenu();
       }
-    } else {
-      router.push(href);
-    }
-  }, [isMenuOpen, closeMenu, router]);
+
+      // Handle smooth scrolling for anchor links
+      if (href.startsWith('#')) {
+        const element = document.getElementById(href.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // Fall back to home page
+          router.push('/');
+        }
+      } else {
+        router.push(href);
+      }
+    },
+    [isMenuOpen, closeMenu, router]
+  );
 
   const handleLogoClick = useCallback(() => {
     closeMenu();
@@ -84,7 +90,11 @@ const Header = memo(() => {
 
           <div className="flex items-center">
             {/* Desktop navigation menu */}
-            <nav className="hidden md:flex items-center space-x-8 mr-6" role="navigation" aria-label="Main navigation">
+            <nav
+              className="hidden md:flex items-center space-x-8 mr-6"
+              role="navigation"
+              aria-label="Main navigation"
+            >
               {navigation.map((item) => (
                 <a
                   key={item.name}
@@ -98,12 +108,7 @@ const Header = memo(() => {
             </nav>
 
             {/* Waitlist call-to-action button */}
-            <Button
-              onClick={openWaitlist}
-              buttonSize="sm"
-              rightIcon
-              aria-label="Join our waitlist"
-            >
+            <Button onClick={openWaitlist} buttonSize="sm" rightIcon aria-label="Join our waitlist">
               Join Waitlist
             </Button>
           </div>
