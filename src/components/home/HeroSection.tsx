@@ -1,10 +1,11 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
 import Badge from '../ui/badge';
 import Section from '@/components/layout/section';
 
-export default function HeroSection() {
+const HeroSection = memo(() => {
   return (
     <Section
       className="min-h-screen flex flex-col"
@@ -13,7 +14,7 @@ export default function HeroSection() {
       maxWidth="full"
     >
       {/* Grid Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" aria-hidden="true">
         <div
           className="h-full w-full"
           style={{
@@ -52,7 +53,7 @@ export default function HeroSection() {
         <div className="relative w-full max-w-4xl mx-auto" style={{ height: '50vh' }}>
           <Image
             src="/images/hero_image.webp"
-            alt="Adaptive Robotic Mannequin"
+            alt="Adaptive robotic mannequin representing AI-powered fragrance personalization technology"
             fill
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 896px"
@@ -62,4 +63,8 @@ export default function HeroSection() {
       </div>
     </Section>
   );
-}
+});
+
+HeroSection.displayName = 'HeroSection';
+
+export default HeroSection;

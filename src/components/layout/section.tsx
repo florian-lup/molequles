@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
+import { memo, type ReactNode } from 'react';
 
 interface SectionProps {
-  id?: string;
-  ariaLabel?: string;
-  className?: string;
-  containerClassName?: string;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
-  padding?: 'sm' | 'md' | 'lg' | 'xl';
-  background?: 'white' | 'gray' | 'transparent';
-  children: ReactNode;
+  readonly id?: string;
+  readonly ariaLabel?: string;
+  readonly className?: string;
+  readonly containerClassName?: string;
+  readonly maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | 'full';
+  readonly padding?: 'sm' | 'md' | 'lg' | 'xl';
+  readonly background?: 'white' | 'gray' | 'transparent';
+  readonly children: ReactNode;
 }
 
 const paddingClasses = {
@@ -16,7 +16,7 @@ const paddingClasses = {
   md: 'py-12 md:py-16 lg:py-20',
   lg: 'py-16 md:py-20 lg:py-24',
   xl: 'py-20 md:py-24 lg:py-28',
-};
+} as const;
 
 const maxWidthClasses = {
   sm: 'max-w-2xl',
@@ -30,15 +30,15 @@ const maxWidthClasses = {
   '6xl': 'max-w-screen-3xl',
   '7xl': 'max-w-7xl',
   full: 'max-w-full',
-};
+} as const;
 
 const backgroundClasses = {
   white: 'bg-white',
   gray: 'bg-gray-50',
   transparent: 'bg-transparent',
-};
+} as const;
 
-export default function Section({
+const Section = memo<SectionProps>(({
   id,
   ariaLabel,
   className = '',
@@ -47,7 +47,7 @@ export default function Section({
   padding = 'lg',
   background = 'white',
   children,
-}: SectionProps) {
+}) => {
   return (
     <section
       id={id}
@@ -59,4 +59,8 @@ export default function Section({
       </div>
     </section>
   );
-}
+});
+
+Section.displayName = 'Section';
+
+export default Section;

@@ -1,41 +1,58 @@
 'use client';
+
+import { memo, useCallback, useMemo, useState } from 'react';
 import Image from 'next/image';
-import { useState } from 'react';
 import Card from '@/components/ui/card';
 import Section from '@/components/layout/section';
 
-export default function SkinChemistry() {
-  const skinFactors = [
+interface SkinFactor {
+  readonly title: string;
+  readonly description: string;
+}
+
+const SkinChemistry = memo(() => {
+  const skinFactors: readonly SkinFactor[] = useMemo(() => [
     {
       title: 'Temperature',
-      description:
-        'Affects how quickly your scent evolves and projects.',
+      description: 'Affects how quickly your scent evolves and projects.',
     },
     {
       title: 'Hydration',
-      description:
-        'Helps your fragrance last longer on your skin.',
+      description: 'Helps your fragrance last longer on your skin.',
     },
     {
       title: 'pH',
-      description:
-        'Changes how certain notes appear in your scent.',
+      description: 'Changes how certain notes appear in your scent.',
     },
     {
       title: 'Sebum',
-      description:
-        'Blends with fragrance oils to create your unique signature.',
+      description: 'Blends with fragrance oils to create your unique signature.',
     },
-  ];
+  ], []);
 
   const [activeFactor, setActiveFactor] = useState(skinFactors[0].title);
 
-  const getActiveFactorIndex = () => {
+  const getActiveFactorIndex = useCallback(() => {
     return skinFactors.findIndex((factor) => factor.title === activeFactor);
-  };
+  }, [skinFactors, activeFactor]);
+
+  const handlePrevious = useCallback(() => {
+    const currentIndex = getActiveFactorIndex();
+    const newIndex = (currentIndex - 1 + skinFactors.length) % skinFactors.length;
+    setActiveFactor(skinFactors[newIndex].title);
+  }, [getActiveFactorIndex, skinFactors]);
+
+  const handleNext = useCallback(() => {
+    const currentIndex = getActiveFactorIndex();
+    const newIndex = (currentIndex + 1) % skinFactors.length;
+    setActiveFactor(skinFactors[newIndex].title);
+  }, [getActiveFactorIndex, skinFactors]);
+
+  const activeFactorIndex = getActiveFactorIndex();
+  const currentFactor = skinFactors[activeFactorIndex];
 
   return (
-    <Section padding="md">
+    <Section id="skin-chemistry" padding="md">
       {/* Section heading */}
       <div className="text-center mb-8 md:mb-10 lg:mb-14">
         <div className="relative inline-block">
@@ -43,7 +60,7 @@ export default function SkinChemistry() {
             Your skin chemistry makes every scent unique
           </h2>
           {/* Decorative underline */}
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div>
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
           Your skin's natural characteristics interact with fragrance molecules to create a scent that's uniquely yours. Understanding these factors helps us craft the perfect personalized fragrance.
@@ -62,54 +79,53 @@ export default function SkinChemistry() {
                 fill
                 sizes="(max-width: 768px) 100vw, 400px"
                 className="object-contain"
+                priority={false}
               />
             </div>
           </div>
 
           {/* Content section */}
-          <div className="text-center ">
-            {getActiveFactorIndex() >= 0 && (
-              <>
-                <p className="text-sm md:text-base text-gray-600 mt-8">
-                  {skinFactors[getActiveFactorIndex()].description}
-                </p>
-              </>
+          <div className="text-center">
+            {currentFactor && (
+              <p className="text-sm md:text-base text-gray-600 mt-8">
+                {currentFactor.description}
+              </p>
             )}
           </div>
 
           {/* Navigation buttons */}
           <div className="flex justify-between items-center mt-3">
             <button
-              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2"
-              onClick={() => {
-                const currentIndex = getActiveFactorIndex();
-                const newIndex = (currentIndex - 1 + skinFactors.length) % skinFactors.length;
-                setActiveFactor(skinFactors[newIndex].title);
-              }}
+              type="button"
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+              onClick={handlePrevious}
+              aria-label="View previous skin factor"
             >
-              <span className="mr-1">←</span> Previous
+              <span className="mr-1" aria-hidden="true">←</span> Previous
             </button>
 
             {/* Title between buttons */}
-            {getActiveFactorIndex() >= 0 && (
+            {currentFactor && (
               <h3 className="text-base md:text-lg text-black truncate max-w-[120px] md:max-w-full">
-                {skinFactors[getActiveFactorIndex()].title}
+                {currentFactor.title}
               </h3>
             )}
 
             <button
-              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2"
-              onClick={() => {
-                const currentIndex = getActiveFactorIndex();
-                const newIndex = (currentIndex + 1) % skinFactors.length;
-                setActiveFactor(skinFactors[newIndex].title);
-              }}
+              type="button"
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+              onClick={handleNext}
+              aria-label="View next skin factor"
             >
-              Next <span className="ml-1">→</span>
+              Next <span className="ml-1" aria-hidden="true">→</span>
             </button>
           </div>
         </Card>
       </div>
     </Section>
   );
-}
+});
+
+SkinChemistry.displayName = 'SkinChemistry';
+
+export default SkinChemistry;

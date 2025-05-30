@@ -1,11 +1,36 @@
 'use client';
 
+import { memo } from 'react';
 import { GiHeartBeats, GiShieldReflect, GiTestTubes } from 'react-icons/gi';
 import Card from '@/components/ui/card';
 import Section from '@/components/layout/section';
 
+interface Benefit {
+  readonly icon: React.ReactNode;
+  readonly title: string;
+  readonly description: string;
+}
+
+const benefits: readonly Benefit[] = [
+  {
+    icon: <GiHeartBeats className="h-6 w-6 text-black" />,
+    title: 'Consistent Performance',
+    description: 'Maintains longevity throughout the day',
+  },
+  {
+    icon: <GiShieldReflect className="h-6 w-6 text-black" />,
+    title: 'Reduced Allergy Risks',
+    description: 'Reduces irritation by avoiding sensitive ingredients',
+  },
+  {
+    icon: <GiTestTubes className="h-6 w-6 text-black" />,
+    title: 'Personalized blends',
+    description: 'Creates a scent uniquely tailored to your skin',
+  },
+] as const;
+
 // Main content component for the solution/benefits section
-const ValueProposition = () => {
+const ValuePropositionContent = memo(() => {
   return (
     <div className="w-full text-center">
       {/* Section headline and description */}
@@ -15,7 +40,7 @@ const ValueProposition = () => {
             Beyond Traditional Perfumery
           </h2>
           {/* Decorative underline */}
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div>
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
 
         {/* Value proposition with highlighting */}
@@ -27,50 +52,37 @@ const ValueProposition = () => {
 
       {/* Three-column benefits grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
-        {/* Performance benefit card */}
-        <Card>
-          <div className="flex justify-center mb-4">
-            <GiHeartBeats className="h-6 w-6 text-black" />
-          </div>
-          <h3 className="text-lg font-semibold mb-3 text-black">Consistent Performance</h3>
-          <p className="text-sm text-gray-600">
-            Maintains longevity throughout the day
-          </p>
-        </Card>
-
-        {/* Health/safety benefit card */}
-        <Card>
-          <div className="flex justify-center mb-4">
-            <GiShieldReflect className="h-6 w-6 text-black" />
-          </div>
-          <h3 className="text-lg font-semibold mb-3 text-black">Reduced Allergy Risks</h3>
-          <p className="text-sm text-gray-600">
-            Reduces irritation by avoiding sensitive ingredients
-          </p>
-        </Card>
-
-        {/* Sustainability benefit card */}
-        <Card>
-          <div className="flex justify-center mb-4">
-            <GiTestTubes className="h-6 w-6 text-black" />
-          </div>
-          <h3 className="text-lg font-semibold mb-3 text-black">Personalized blends</h3>
-          <p className="text-sm text-gray-600">Creates a scent uniquely tailored to your skin</p>
-        </Card>
+        {benefits.map((benefit) => (
+          <Card key={benefit.title}>
+            <div className="flex justify-center mb-4" aria-hidden="true">
+              {benefit.icon}
+            </div>
+            <h3 className="text-lg font-semibold mb-3 text-black">{benefit.title}</h3>
+            <p className="text-sm text-gray-600">
+              {benefit.description}
+            </p>
+          </Card>
+        ))}
       </div>
     </div>
   );
-};
+});
+
+ValuePropositionContent.displayName = 'ValuePropositionContent';
 
 // Main section wrapper with ID for navigation targeting
-export default function Solution() {
+const ValueProposition = memo(() => {
   return (
     <Section
-      id="solution"
-      ariaLabel="Solution section"
+      id="value-proposition"
+      ariaLabel="Value proposition section"
       maxWidth="3xl"
     >
-      <ValueProposition />
+      <ValuePropositionContent />
     </Section>
   );
-}
+});
+
+ValueProposition.displayName = 'ValueProposition';
+
+export default ValueProposition;
