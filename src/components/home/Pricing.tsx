@@ -1,7 +1,7 @@
 'use client';
 
 import { FiCheck } from 'react-icons/fi';
-import Badge from '@/components/ui/Badge';
+import Badge from '@/components/ui/badge';
 
 /**
  * Properties for pricing card components
@@ -109,25 +109,28 @@ export default function Pricing() {
       <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section headline */}
         <div className="max-w-4xl mx-auto mb-10 text-center">
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Start your journey
           </h2>
 
           {/* Value proposition with highlighting */}
-          <p className="text-gray-600 text-xs md:text-lg lg:text-xl mb-6">
-            Unlock smarter scents, greater skin compatibility, and more consistent performance
+          <p className="text-base sm:text-lg text-gray-600 mb-6">
+            Unlock smarter scents and greater skin compatibility
           </p>
+
+          {/* Satisfaction guarantee badge */}
+          <div className="mb-6">
+            <Badge
+              text="All plans include a 30-day satisfaction guarantee"
+              variant="success"
+              textSize="xs"
+              icon={<span className="text-green-600">✨</span>}
+              showDot={false}
+            />
+          </div>
         </div>
 
         <PricingContent />
-
-        {/* Satisfaction guarantee badge */}
-        <div className="flex justify-center mt-8">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-            <span className="text-emerald-600">✨</span>
-            <span className="text-emerald-700 text-sm font-medium">All plans include a 30-day satisfaction guarantee</span>
-          </div>
-        </div>
       </div>
     </section>
   );

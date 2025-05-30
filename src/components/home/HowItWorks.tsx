@@ -34,10 +34,10 @@ export default function HowItWorks() {
         {/* Section heading */}
         <div className="text-center mb-12">
           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
-            Scientifically Crafted Scents
+            How It Works
           </h2>
           <p className="text-gray-600 text-xs md:text-lg lg:text-xl">
-            We match your skin and raw ingredients with molecular precision
+            Three simple steps to your perfect personalized fragrance
           </p>
         </div>
 

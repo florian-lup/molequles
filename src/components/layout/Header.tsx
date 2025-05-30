@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 import { useWaitlist } from '@/hooks/useWaitlist';
 
 // Interface for navigation menu items
@@ -76,7 +76,7 @@ export default function Header() {
             </nav>
 
             {/* Waitlist call-to-action button */}
-            <Button onClick={openWaitlist} size="sm" rightIcon>
+            <Button onClick={openWaitlist} buttonSize="sm" rightIcon>
               Join Waitlist
             </Button>
           </div>

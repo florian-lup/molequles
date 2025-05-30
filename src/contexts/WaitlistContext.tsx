@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useState, ReactNode } from 'react';
-import WaitlistForm from '@/components/forms/WaitlistForm';
+import WaitlistModal from '@/components/forms/WaitlistModal';
 
 /**
  * Context for managing waitlist modal state
@@ -36,7 +36,7 @@ export const WaitlistProvider = ({ children }: WaitlistProviderProps) => {
       }}
     >
       {children}
-      <WaitlistForm isOpen={isWaitlistOpen} onClose={closeWaitlist} />
+      <WaitlistModal isOpen={isWaitlistOpen} onClose={closeWaitlist} />
     </WaitlistContext.Provider>
   );
 };

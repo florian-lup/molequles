@@ -1,1 +1,0 @@
-export { useWaitlist } from './useWaitlist';

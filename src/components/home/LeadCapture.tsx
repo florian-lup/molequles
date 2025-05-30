@@ -1,12 +1,13 @@
 'use client';
 
-import Button from '@/components/ui/Button';
-import Badge from '@/components/ui/Badge';
+import Button from '@/components/ui/button';
+import Badge from '@/components/ui/badge';
+import Input from '@/components/ui/input';
 
 /**
  * Panel containing call-to-action message and waitlist form
  */
-const CTAMessagePanel = () => {
+const LeadCapturePanel = () => {
   return (
     <div className="w-full text-center mx-auto px-4">
       {/* Centered headline */}
@@ -22,14 +23,16 @@ const CTAMessagePanel = () => {
       {/* Waitlist form */}
       <form className="mb-8 max-w-md mx-auto">
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
-          <input
+          <Input
             type="email"
             name="email"
             placeholder="Enter your email address"
-            className="flex-1 px-4 py-4 sm:py-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all duration-200 text-base"
+            inputSize="lg"
+            roundedVariant="left"
+            className="flex-1"
             required
           />
-          <Button type="submit" size="lg" className="w-full sm:w-auto sm:rounded-l-none px-6" onClick={() => { }}>
+          <Button type="submit" buttonSize="lg" className="w-full sm:w-auto sm:rounded-l-none px-6" onClick={() => { }}>
             Join Waitlist
           </Button>
         </div>
@@ -40,9 +43,7 @@ const CTAMessagePanel = () => {
         <Badge
           text="Free Samples Available"
           textSize="xs"
-          dotColor="bg-green-500"
-          bgColor="bg-green-50"
-          textColor="text-green-700"
+          variant="success"
         />
       </div>
     </div>
@@ -50,19 +51,19 @@ const CTAMessagePanel = () => {
 };
 
 /**
- * Main CTA section with waitlist signup form
+ * Main LeadCapture section with waitlist signup form
  */
-export default function CTA() {
+export default function LeadCapture() {
   return (
     <section
-      id="cta"
+      id="LeadCapture"
       aria-label="Call to action section"
       className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
     >
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Centered form layout */}
         <div className="flex flex-col items-center justify-center">
-          <CTAMessagePanel />
+          <LeadCapturePanel />
         </div>
       </div>
     </section>

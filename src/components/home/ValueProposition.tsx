@@ -3,7 +3,7 @@
 import { GiHeartBeats, GiShieldReflect, GiTestTubes } from 'react-icons/gi';
 
 // Main content component for the solution/benefits section
-const SolutionContent = () => {
+const ValueProposition = () => {
   return (
     <div className="w-full text-center">
       {/* Section headline and description */}
@@ -65,7 +65,7 @@ export default function Solution() {
       className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden"
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SolutionContent />
+        <ValueProposition />
       </div>
     </section>
   );

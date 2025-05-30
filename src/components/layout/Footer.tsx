@@ -1,6 +1,8 @@
 'use client';
 
 import { FiMapPin, FiMail, FiPhone, FiInstagram, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi';
+import Input from '@/components/ui/input';
+import Button from '@/components/ui/button';
 
 export default function Footer() {
   // Get current year for copyright text
@@ -86,16 +88,24 @@ export default function Footer() {
             {/* Newsletter Signup */}
             <div className="pt-2">
               <p className="text-sm text-gray-600 mb-4">Subscribe for exclusive offers and updates</p>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
-                <input
+              <form className="flex flex-col sm:flex-row gap-2 sm:gap-0">
+                <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-3 py-3 sm:py-2 text-sm border border-gray-300 rounded-md sm:rounded-l-md sm:rounded-r-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none"
+                  inputSize="sm"
+                  roundedVariant="left"
+                  className="flex-1 text-sm"
+                  required
                 />
-                <button className="px-4 py-3 sm:py-2 bg-black text-white text-sm rounded-md sm:rounded-l-none sm:rounded-r-md hover:bg-gray-800 transition-colors duration-200 font-medium">
+                <Button
+                  type="submit"
+                  buttonSize="sm"
+                  variant="primary"
+                  className="w-full sm:w-auto sm:rounded-l-none px-4 py-3 sm:py-2 text-sm font-medium"
+                >
                   Subscribe
-                </button>
-              </div>
+                </Button>
+              </form>
             </div>
           </div>
         </div>

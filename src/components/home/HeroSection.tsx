@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Badge from '../ui/Badge';
+import Badge from '../ui/badge';
 
-export default function Hero() {
+export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-white overflow-hidden flex flex-col">
       {/* Grid Background */}
@@ -34,9 +34,7 @@ export default function Hero() {
           <div className="mb-8">
             <Badge
               text="Free Samples Available"
-              dotColor="bg-green-500"
-              bgColor="bg-green-50"
-              textColor="text-green-700"
+              variant="success"
             />
           </div>
           <h1 className="text-lg md:text-3xl lg:text-4xl mt-4 md:mt-6 leading-relaxed">

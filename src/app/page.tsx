@@ -1,9 +1,9 @@
 import Header from '@/components/layout/Header';
-import Hero from '@/components/home/Hero';
-import Solution from '@/components/home/Solution';
+import HeroSection from '@/components/home/HeroSection';
+import Solution from '@/components/home/ValueProposition';
 import HowItWorks from '@/components/home/HowItWorks';
 import Pricing from '@/components/home/Pricing';
-import CTA from '@/components/home/CTA';
+import LeadCapture from '@/components/home/LeadCapture';
 import Footer from '@/components/layout/Footer';
 import { Metadata } from 'next';
 import RawIngredients from '@/components/home/RawIngredients';
@@ -20,13 +20,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main>
-        <Hero />
+        <HeroSection />
         <Solution />
         <RawIngredients />
         <SkinChemistry />
         <HowItWorks />
         <Pricing />
-        <CTA />
+        <LeadCapture />
       </main>
       <Footer />
     </div>
