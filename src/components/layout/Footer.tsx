@@ -91,6 +91,9 @@ export default function Footer() {
               <form className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                 <Input
                   type="email"
+                  id="newsletter-email"
+                  name="email"
+                  autoComplete="email"
                   placeholder="Enter your email"
                   inputSize="sm"
                   roundedVariant="left"

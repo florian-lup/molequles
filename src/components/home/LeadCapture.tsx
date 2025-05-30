@@ -28,7 +28,9 @@ const LeadCapturePanel = () => {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
           <Input
             type="email"
+            id="leadcapture-email"
             name="email"
+            autoComplete="email"
             placeholder="Enter your email address"
             inputSize="lg"
             roundedVariant="left"

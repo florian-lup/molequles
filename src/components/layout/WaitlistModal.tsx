@@ -96,6 +96,9 @@ const WaitlistModal: FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
           <Input
             ref={inputRef}
             type="email"
+            id="waitlist-email"
+            name="email"
+            autoComplete="email"
             variant="filled"
             inputSize="md"
             leftIcon={<FiMail size={18} />}

@@ -8,6 +8,8 @@ import Footer from '@/components/layout/Footer';
 import { Metadata } from 'next';
 import RawIngredients from '@/components/home/RawIngredients';
 import SkinChemistry from '@/components/home/SkinChemistry';
+import Faq from '@/components/home/Faq';
+import SocialProof from '@/components/home/SocialProof';
 
 export const metadata: Metadata = {
   title: 'Molequles | AI-Powered Personalized Perfumes',
@@ -25,7 +27,9 @@ export default function Home() {
         <RawIngredients />
         <SkinChemistry />
         <HowItWorks />
+        <SocialProof />
         <Pricing />
+        <Faq />
         <LeadCapture />
       </main>
       <Footer />

@@ -56,7 +56,7 @@ export default function Header() {
         <div className="flex items-center justify-between py-4">
           {/* Logo and brand name */}
           <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
-            <Image src="/icons/logo.svg" alt="Molecule" width={24} height={24} className="mr-2" />
+            <Image src="/logo/molequles_logo.svg" alt="Molecule" width={24} height={24} className="mr-2" />
             <span className="text-xl font-bold text-black">Molequles</span>
           </Link>
 
