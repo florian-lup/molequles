@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { GiChemicalDrop, GiBrain, GiPerfumeBottle } from 'react-icons/gi';
+import Card from '@/components/ui/card';
+import Section from '@/components/layout/section';
 
 export default function HowItWorks() {
   const steps = [
@@ -25,24 +27,25 @@ export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section
-      id="how-it-works"
-      aria-label="How it works section"
-      className="relative py-16 md:py-20 lg:py-24 bg-white overflow-hidden"
-    >
-      <div className="container mx-auto px-4 max-w-4xl z-10 relative">
-        {/* Section heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold mb-4">
+    <Section id="how-it-works" ariaLabel="How it works section">
+      {/* Section heading */}
+      <div className="text-center mb-12">
+        <div className="relative inline-block">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
             How It Works
           </h2>
-          <p className="text-gray-600 text-xs md:text-lg lg:text-xl">
-            Three simple steps to your perfect personalized fragrance
-          </p>
+          {/* Decorative underline */}
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div>
         </div>
+        <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
+          Our revolutionary process combines dermatological science with artificial intelligence to create fragrances that truly complement your unique skin chemistry, ensuring optimal performance and longevity.
+        </p>
+      </div>
 
-        {/* Process visualization */}
-        <div className="mt-8 md:mt-12">
+      {/* Process visualization */}
+      <div className="mt-8 md:mt-12">
+        {/* Step content */}
+        <Card>
           {/* Step indicators */}
           <div className="flex justify-between items-center mb-8 relative">
             {steps.map((step, index) => (
@@ -53,7 +56,7 @@ export default function HowItWorks() {
               >
                 <div
                   className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center 
-                    ${activeStep === index ? 'bg-amber-50 shadow-md' : 'bg-gray-100'} 
+                    ${activeStep === index ? 'bg-emerald-50 shadow-md' : 'bg-gray-100'} 
                     transition-all duration-300`}
                 >
                   {step.icon}
@@ -67,41 +70,42 @@ export default function HowItWorks() {
             {/* Connection line */}
             <div className="absolute h-1 bg-gray-200 left-0 right-0 top-6 md:top-8 -z-0" />
             <div
-              className="absolute h-1 bg-gray-400 left-0 top-6 md:top-8 -z-0 transition-all duration-500"
+              className="absolute h-1 bg-emerald-500 left-0 top-6 md:top-8 -z-0 transition-all duration-500"
               style={{ width: `${(activeStep / (steps.length - 1)) * 100}%` }}
             />
           </div>
 
-          {/* Step content */}
-          <div className="bg-amber-50/30 rounded-xl border border-gray-200 p-6 shadow-sm bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px]">
-            <div className="text-center py-8">
-              <h3 className="text-xl md:text-2xl font-semibold mb-4">{steps[activeStep].title}</h3>
-              <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto">
-                {steps[activeStep].description}
-              </p>
-            </div>
-
-            {/* Navigation buttons */}
-            <div className="flex justify-between items-center mt-6">
-              <button
-                className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                disabled={activeStep === 0}
-              >
-                <span className="mr-1">←</span> Previous
-              </button>
-
-              <button
-                className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                onClick={() => setActiveStep((prev) => Math.min(steps.length - 1, prev + 1))}
-                disabled={activeStep === steps.length - 1}
-              >
-                Next <span className="ml-1">→</span>
-              </button>
-            </div>
+          <div className="text-center pt-8">
+            <p className="text-sm md:text-base text-gray-600 max-w-xl mx-auto">
+              {steps[activeStep].description}
+            </p>
           </div>
-        </div>
+
+          {/* Navigation buttons */}
+          <div className="flex justify-between items-center mt-6">
+            <button
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
+              disabled={activeStep === 0}
+            >
+              <span className="mr-1">←</span> Previous
+            </button>
+
+            {/* Title between buttons */}
+            <h3 className="text-base md:text-lg text-black truncate max-w-[120px] md:max-w-full">
+              {steps[activeStep].title}
+            </h3>
+
+            <button
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={() => setActiveStep((prev) => Math.min(steps.length - 1, prev + 1))}
+              disabled={activeStep === steps.length - 1}
+            >
+              Next <span className="ml-1">→</span>
+            </button>
+          </div>
+        </Card>
       </div>
-    </section>
+    </Section>
   );
 }

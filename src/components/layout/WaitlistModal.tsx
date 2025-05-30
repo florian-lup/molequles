@@ -87,7 +87,7 @@ const WaitlistModal: FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
           />
         </div>
 
-        <p className="text-sm sm:text-base text-gray-600 mb-5 leading-relaxed font-light border-l-2 border-gray-300 pl-3">
+        <p className="text-sm md:text-base text-gray-600 mb-5 leading-relaxed font-light border-l-2 border-gray-300 pl-3">
           Be among the first to experience our AI personalized perfume technology.
         </p>
 

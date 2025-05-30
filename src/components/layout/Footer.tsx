@@ -116,7 +116,7 @@ export default function Footer() {
         <div className="w-full px-4 sm:px-6 lg:px-10 py-4 sm:py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
             {/* Copyright */}
-            <p className="text-gray-500 text-xs">
+            <p className="text-xs text-gray-500">
               &copy; {getCurrentYear()} Molequles. All rights reserved.
             </p>
 

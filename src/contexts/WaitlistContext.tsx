@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useState, ReactNode } from 'react';
-import WaitlistModal from '@/components/forms/WaitlistModal';
+import WaitlistModal from '@/components/layout/WaitlistModal';
 
 /**
  * Context for managing waitlist modal state

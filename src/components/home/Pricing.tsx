@@ -2,6 +2,8 @@
 
 import { FiCheck } from 'react-icons/fi';
 import Badge from '@/components/ui/badge';
+import Card from '@/components/ui/card';
+import Section from '@/components/layout/section';
 
 /**
  * Properties for pricing card components
@@ -23,8 +25,10 @@ const PricingCard = ({
   isPopular = false, // Whether to highlight as popular choice
 }: PricingCardProps) => {
   return (
-    <div
-      className={`relative overflow-hidden rounded-xl shadow-sm border ${isPopular ? 'border-emerald-500 pt-10' : 'border-gray-200'} p-6 bg-amber-50/30 bg-[linear-gradient(#33333310_1px,transparent_1px),linear-gradient(90deg,#33333310_1px,transparent_1px)] bg-[size:16px_16px] transition-all duration-300 transform hover:-translate-y-1 ${isPopular ? 'ring-1 ring-emerald-500' : ''}`}
+    <Card
+      variant={isPopular ? 'highlight' : 'default'}
+      hover={true}
+      className={`relative overflow-hidden ${isPopular ? 'pt-10' : ''}`}
     >
       {/* Popular badge */}
       {isPopular && (
@@ -42,23 +46,23 @@ const PricingCard = ({
 
       {/* Price display with title */}
       <div className="mb-5">
-        <span className="text-2xl md:text-3xl font-bold text-emerald-600">{price}</span>
-        <span className="text-gray-500 text-sm ml-1">/{title.toLowerCase()}</span>
+        <span className="text-3xl md:text-4xl font-bold text-emerald-600">{price}</span>
+        <span className="text-sm text-gray-500 ml-1">/{title.toLowerCase()}</span>
       </div>
 
       {/* Tier description */}
-      <p className="text-gray-600 font-light text-sm md:text-base mb-5">{description}</p>
+      <p className="text-sm md:text-base text-gray-600 font-light mb-5">{description}</p>
 
       {/* Feature list with checkmarks */}
       <ul className="space-y-3">
         {features.map((feature: string, index: number) => (
           <li key={index} className="flex items-start gap-2">
             <FiCheck className="text-emerald-600 mt-1 h-4 w-4 flex-shrink-0" />
-            <span className="text-gray-600 text-sm">{feature}</span>
+            <span className="text-sm text-gray-600">{feature}</span>
           </li>
         ))}
       </ul>
-    </div>
+    </Card>
   );
 };
 
@@ -101,37 +105,33 @@ const PricingContent = () => {
 // Main section wrapper with ID for navigation targeting
 export default function Pricing() {
   return (
-    <section
-      id="pricing"
-      aria-label="Pricing section"
-      className="relative py-12 md:py-16 lg:py-20 bg-white"
-    >
-      <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section headline */}
-        <div className="max-w-4xl mx-auto mb-10 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
+    <Section id="pricing" ariaLabel="Pricing section" maxWidth="xl" padding="md">
+      {/* Section headline */}
+      <div className="max-w-4xl mx-auto mb-10 text-center">
+        <div className="relative inline-block">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
             Start your journey
           </h2>
-
-          {/* Value proposition with highlighting */}
-          <p className="text-base sm:text-lg text-gray-600 mb-6">
-            Unlock smarter scents and greater skin compatibility
-          </p>
-
-          {/* Satisfaction guarantee badge */}
-          <div className="mb-6">
-            <Badge
-              text="All plans include a 30-day satisfaction guarantee"
-              variant="success"
-              textSize="xs"
-              icon={<span className="text-green-600">✨</span>}
-              showDot={false}
-            />
-          </div>
         </div>
 
-        <PricingContent />
+        {/* Value proposition with highlighting */}
+        <p className="text-base md:text-lg text-gray-600 mb-6">
+          Unlock smarter scents and greater skin compatibility
+        </p>
+
+        {/* Satisfaction guarantee badge */}
+        <div className="mb-6">
+          <Badge
+            text="All plans include a 30-day satisfaction guarantee"
+            variant="success"
+            textSize="xs"
+            icon={<span className="text-green-600">✨</span>}
+            showDot={false}
+          />
+        </div>
       </div>
-    </section>
+
+      <PricingContent />
+    </Section>
   );
 }

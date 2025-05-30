@@ -2,10 +2,16 @@
 
 import Image from 'next/image';
 import Badge from '../ui/badge';
+import Section from '@/components/layout/section';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden flex flex-col">
+    <Section
+      className="min-h-screen flex flex-col"
+      containerClassName="flex flex-col flex-1 justify-end px-2 sm:px-4 lg:px-6"
+      padding="sm"
+      maxWidth="full"
+    >
       {/* Grid Background */}
       <div className="absolute inset-0 z-0">
         <div
@@ -27,34 +33,32 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="container mx-auto px-2 sm:px-4 lg:px-6 z-10 flex flex-col flex-1 justify-end">
-        {/* Main Title Section - Top */}
-        <div className="text-center max-w-4xl mx-auto pb-10">
-          {/* Badge */}
-          <div className="mb-8">
-            <Badge
-              text="Free Samples Available"
-              variant="success"
-            />
-          </div>
-          <h1 className="text-lg md:text-3xl lg:text-4xl mt-4 md:mt-6 leading-relaxed">
-            Personalized fragrances engineered with AI for your skin chemistry
-          </h1>
+      {/* Main Title Section - Top */}
+      <div className="text-center max-w-4xl mx-auto pb-5 z-10">
+        {/* Badge */}
+        <div className="mb-2">
+          <Badge
+            text="Free Samples Available"
+            variant="success"
+          />
         </div>
+        <h1 className="text-2xl md:text-4xl lg:text-5xl mt-2 leading-relaxed font-bold">
+          Fragrances engineered with AI for your skin chemistry
+        </h1>
+      </div>
 
-        {/* Image Section - Bottom */}
-        <div className="flex items-end justify-center">
-          <div className="relative w-full max-w-4xl mx-auto" style={{ height: '50vh' }}>
-            <Image
-              src="/images/hero_image.webp"
-              alt="Adaptive Robotic Mannequin"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 896px"
-              className="object-contain object-bottom"
-            />
-          </div>
+      {/* Image Section - Bottom */}
+      <div className="flex items-end justify-center z-10">
+        <div className="relative w-full max-w-4xl mx-auto" style={{ height: '50vh' }}>
+          <Image
+            src="/images/hero_image.webp"
+            alt="Adaptive Robotic Mannequin"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 896px"
+            className="object-contain object-bottom"
+          />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

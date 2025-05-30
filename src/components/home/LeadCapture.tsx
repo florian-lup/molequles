@@ -3,6 +3,7 @@
 import Button from '@/components/ui/button';
 import Badge from '@/components/ui/badge';
 import Input from '@/components/ui/input';
+import Section from '@/components/layout/section';
 
 /**
  * Panel containing call-to-action message and waitlist form
@@ -11,12 +12,14 @@ const LeadCapturePanel = () => {
   return (
     <div className="w-full text-center mx-auto px-4">
       {/* Centered headline */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-black leading-tight">
-        Ready to Find Your Signature Scent?
-      </h2>
+      <div className="relative inline-block">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-black leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
+          Ready to Find Your Signature Scent?
+        </h2>
+      </div>
 
       {/* Paragraph */}
-      <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+      <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
         Sign up now and get <span className="text-emerald-600 font-semibold">20%</span> off your first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping.
       </p>
 
@@ -55,17 +58,11 @@ const LeadCapturePanel = () => {
  */
 export default function LeadCapture() {
   return (
-    <section
-      id="LeadCapture"
-      aria-label="Call to action section"
-      className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
-    >
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* Centered form layout */}
-        <div className="flex flex-col items-center justify-center">
-          <LeadCapturePanel />
-        </div>
+    <Section id="LeadCapture" ariaLabel="Call to action section" padding="md">
+      {/* Centered form layout */}
+      <div className="flex flex-col items-center justify-center">
+        <LeadCapturePanel />
       </div>
-    </section>
+    </Section>
   );
 }

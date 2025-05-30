@@ -57,7 +57,7 @@ export default function Header() {
           {/* Logo and brand name */}
           <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
             <Image src="/icons/logo.svg" alt="Molecule" width={24} height={24} className="mr-2" />
-            <span className="text-black font-bold text-lg">Molequles</span>
+            <span className="text-xl font-bold text-black">Molequles</span>
           </Link>
 
           <div className="flex items-center">
@@ -68,7 +68,7 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-gray-700 hover:text-black transition-colors text-sm font-medium"
+                  className="text-sm font-medium text-gray-700 hover:text-black transition-colors"
                 >
                   {item.name}
                 </a>
