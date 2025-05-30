@@ -42,7 +42,7 @@ export default function RawIngredients() {
           <div className="w-full md:w-1/2">
             <div className="relative w-full aspect-square max-w-sm mx-auto">
               <Image
-                src="/images/black_bottle.png"
+                src="/images/sample_bottle.png"
                 alt="Perfume Bottle"
                 fill
                 className="object-contain"
