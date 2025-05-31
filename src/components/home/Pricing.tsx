@@ -18,7 +18,7 @@ interface PricingCardProps {
 
 // Reusable pricing card component for product tiers
 const PricingCard = memo<PricingCardProps>(({ tier }) => {
-  const { title, price, description, features, isPopular = false } = tier;
+  const { title, price, description, features, isPopular = false, id } = tier;
 
   // Extract numeric price for formatting (assuming price is in format "$75")
   const numericPrice = parseInt(price.replace(/[^0-9]/g, ''), 10);
@@ -28,18 +28,43 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
     <Card
       variant={isPopular ? 'highlight' : 'default'}
       hover={true}
-      className={`relative overflow-hidden ${isPopular ? 'pt-10' : ''}`}
+      className={`relative overflow-hidden ${isPopular || id === 'ingredients' || id === 'premium' ? 'pt-10' : ''}`}
     >
+      {/* Starter badge for first card */}
+      {id === 'ingredients' && (
+        <div className="absolute top-3 right-3">
+          <Badge
+            text="Starter"
+            textSize="xs"
+            variant="info"
+            icon={<span className="text-blue-600">🚀</span>}
+            showDot={false}
+          />
+        </div>
+      )}
+
+      {/* Premium badge for third card */}
+      {id === 'premium' && (
+        <div className="absolute top-3 right-3">
+          <Badge
+            text="Premium"
+            textSize="xs"
+            variant="warning"
+            icon={<span className="text-yellow-600">👑</span>}
+            showDot={false}
+          />
+        </div>
+      )}
+
       {/* Popular badge */}
       {isPopular && (
         <div className="absolute top-3 right-3">
           <Badge
             text="Most Popular"
             textSize="xs"
-            bgColor="bg-emerald-500"
-            textColor="text-white"
+            variant="success"
+            icon={<span className="text-green-600">✨</span>}
             showDot={false}
-            className="border-emerald-500"
           />
         </div>
       )}
@@ -96,14 +121,28 @@ const PricingContent = memo(() => {
         ],
         isPopular: true,
       },
+      {
+        id: 'premium',
+        title: 'Premium Plan',
+        price: '$250',
+        description: 'The ultimate fragrance experience with luxury ingredients and premium service.',
+        features: [
+          `${PRODUCT_INFO.bottleSize} bottle`,
+          `Access to ${PRODUCT_INFO.ingredientCount} ingredients`,
+          'Unique formula creation',
+          'Full skin chemistry analysis',
+          'Premium luxury ingredients',
+          'Personal fragrance consultation',
+        ],
+      },
     ],
     []
   );
 
   return (
     <div className="w-full">
-      {/* Two-column pricing tier cards */}
-      <div className="grid md:grid-cols-2 gap-6">
+      {/* Three-column pricing tier cards */}
+      <div className="grid md:grid-cols-3 gap-6">
         {pricingTiers.map((tier) => (
           <PricingCard key={tier.id} tier={tier} />
         ))}
@@ -117,30 +156,19 @@ PricingContent.displayName = 'PricingContent';
 // Main section wrapper with ID for navigation targeting
 const Pricing = memo(() => {
   return (
-    <Section id="pricing" ariaLabel="Pricing section" maxWidth="xl" padding="md">
-      {/* Section headline */}
+    <Section id="pricing" ariaLabel="Pricing section" maxWidth="6xl" padding="md" showFrame={false}>
+      {/* Section heading */}
       <div className="max-w-4xl mx-auto mb-10 text-center">
         <div className="relative inline-block">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
             Start your journey
           </h2>
+          {/* Decorative underline */}
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
-
-        {/* Value proposition with highlighting */}
-        <p className="text-base md:text-lg text-gray-600 mb-6">
-          Unlock smarter scents and greater skin compatibility
+        <p className="text-base md:text-lg text-gray-600 mt-6 leading-relaxed">
+          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer
         </p>
-
-        {/* Satisfaction guarantee badge */}
-        <div className="mb-6">
-          <Badge
-            text={`All plans include a ${PRODUCT_INFO.satisfactionGuaranteeDays}-day satisfaction guarantee`}
-            variant="success"
-            textSize="xs"
-            icon={<span className="text-green-600">✨</span>}
-            showDot={false}
-          />
-        </div>
       </div>
 
       <PricingContent />

@@ -57,7 +57,7 @@ class ErrorBoundary extends Component<Props, State> {
             </div>
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-8 text-left">
-                <summary className="cursor-pointer text-sm text-gray-500">
+                <summary className="text-sm text-gray-500">
                   Error details (dev only)
                 </summary>
                 <pre className="mt-2 text-xs bg-gray-100 p-4 rounded overflow-auto">

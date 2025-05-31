@@ -84,7 +84,7 @@ const HowItWorks = memo(() => {
               <button
                 key={step.title}
                 type="button"
-                className="flex flex-col items-center cursor-pointer z-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-lg p-2"
+                className="flex flex-col items-center z-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-lg p-2"
                 onClick={() => handleStepClick(index)}
                 aria-label={`Go to step ${index + 1}: ${step.title}`}
                 aria-current={activeStep === index ? 'step' : undefined}
@@ -125,7 +125,7 @@ const HowItWorks = memo(() => {
           <div className="flex justify-between items-center mt-6">
             <button
               type="button"
-              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
               onClick={handlePreviousStep}
               disabled={isFirstStep}
               aria-label="Go to previous step"
@@ -143,7 +143,7 @@ const HowItWorks = memo(() => {
 
             <button
               type="button"
-              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center py-1 px-2 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
               onClick={handleNextStep}
               disabled={isLastStep}
               aria-label="Go to next step"

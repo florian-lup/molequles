@@ -7,7 +7,7 @@ import { PRODUCT_INFO } from '@/constants';
 
 const RawIngredients = memo(() => {
   return (
-    <Section id="ingredients" className="bg-white">
+    <Section id="ingredients" className="bg-white" showFrame={false}>
       {/* Subtle background pattern */}
       <div className="absolute inset-0 z-0">
         <div

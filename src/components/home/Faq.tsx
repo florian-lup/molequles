@@ -95,20 +95,16 @@ FaqAccordion.displayName = 'FaqAccordion';
 
 const Faq = memo(() => {
   return (
-    <Section id="faq" ariaLabel="Frequently asked questions section" maxWidth="3xl" padding="md">
+    <Section id="faq" ariaLabel="Frequently asked questions section" maxWidth="3xl" padding="md" showFrame={false}>
       {/* Section heading */}
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <div className="relative inline-block">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent text-left">
             Frequently Asked Questions
           </h2>
           {/* Decorative underline */}
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
+          <div className="absolute -bottom-1 left-0 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
-        <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-          Get answers to common questions about our AI-powered personalized fragrance creation
-          process and what makes Molequles different
-        </p>
       </div>
 
       <FaqAccordion />

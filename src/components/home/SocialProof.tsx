@@ -1,9 +1,9 @@
 'use client';
 
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FiStar, FiUsers, FiTrendingUp, FiAward } from 'react-icons/fi';
 import Card from '@/components/ui/card';
-import Badge from '@/components/ui/badge';
 import Section from '@/components/layout/section';
 
 interface Testimonial {
@@ -95,25 +95,6 @@ const StatsGrid = memo(() => {
 
 StatsGrid.displayName = 'StatsGrid';
 
-const PressSection = memo(() => {
-  const pressLogos = useMemo(() => ['TechCrunch', 'Forbes', 'Wired', 'Beauty Magazine'], []);
-
-  return (
-    <div className="text-center mb-12">
-      <p className="text-sm text-gray-500 mb-6">Featured in</p>
-      <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
-        {pressLogos.map((logo) => (
-          <div key={logo} className="text-gray-400 font-medium text-sm md:text-base">
-            {logo}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-});
-
-PressSection.displayName = 'PressSection';
-
 const SocialProof = memo(() => {
   const testimonials: readonly Testimonial[] = useMemo(
     () => [
@@ -141,78 +122,93 @@ const SocialProof = memo(() => {
           "I've tried dozens of perfumes that never worked with my skin chemistry. Molequles created something truly unique that feels like it was made just for me.",
         rating: 5,
       },
+      {
+        id: 'alex',
+        name: 'Alex Rivera',
+        role: 'Fashion Blogger',
+        content:
+          'The AI recommendations were spot-on! My personalized fragrance gets compliments everywhere I go. This is the future of perfumery.',
+        rating: 5,
+      },
+      {
+        id: 'jordan',
+        name: 'Jordan Kim',
+        role: 'Fragrance Collector',
+        content:
+          'After collecting fragrances for 15 years, I thought I knew what worked for me. Molequles proved me wrong in the best way possible.',
+        rating: 5,
+      },
+      {
+        id: 'sophie',
+        name: 'Sophie Laurent',
+        role: 'Beauty Editor',
+        content:
+          'The science behind this is remarkable. Finally, a brand that understands that fragrance is deeply personal and uses technology to solve real problems.',
+        rating: 5,
+      },
+      {
+        id: 'marcus',
+        name: 'Marcus Johnson',
+        role: 'Entrepreneur',
+        content:
+          'I was skeptical about personalized fragrances, but the skin analysis results were incredibly detailed. My custom scent is absolutely perfect.',
+        rating: 5,
+      },
+      {
+        id: 'ava',
+        name: 'Ava Martinez',
+        role: 'Content Creator',
+        content:
+          'This fragrance adapts to my skin like nothing else. The longevity is incredible and it evolves beautifully throughout the day.',
+        rating: 5,
+      },
     ],
     []
   );
 
-  const trustBadges = useMemo(
-    () => [
-      {
-        id: 'guarantee',
-        text: '30-Day Money Back Guarantee',
-        variant: 'success' as const,
-        icon: <FiAward className="h-3 w-3" />,
-      },
-      {
-        id: 'cruelty-free',
-        text: 'Cruelty-Free & Sustainable',
-        variant: 'default' as const,
-        icon: <span className="text-green-600">🌿</span>,
-        showDot: false,
-      },
-      {
-        id: 'dermatologist',
-        text: 'Dermatologist Approved',
-        variant: 'default' as const,
-        icon: <span className="text-blue-600">🧪</span>,
-        showDot: false,
-      },
-    ],
-    []
-  );
+  // Duplicate testimonials for seamless looping
+  const duplicatedTestimonials = useMemo(() => [...testimonials, ...testimonials], [testimonials]);
 
   return (
-    <Section id="social-proof" ariaLabel="Social proof section" maxWidth="6xl" padding="md">
+    <Section id="social-proof" ariaLabel="Social proof section" maxWidth="6xl" padding="md" frameStyle="bold" showFrame={false}>
       {/* Section heading */}
       <div className="text-center mb-12">
         <div className="relative inline-block">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
-            Trusted by Fragrance Enthusiasts
+            Featured in
           </h2>
           {/* Decorative underline */}
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
-        <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-          Join thousands of satisfied customers who have discovered their perfect scent through our
-          AI-powered personalization process
-        </p>
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 mt-8">
+          <div className="text-gray-400 font-medium text-sm md:text-base">TechCrunch</div>
+          <div className="text-gray-400 font-medium text-sm md:text-base">Forbes</div>
+          <div className="text-gray-400 font-medium text-sm md:text-base">Wired</div>
+          <div className="text-gray-400 font-medium text-sm md:text-base">Beauty Magazine</div>
+        </div>
       </div>
 
       {/* Statistics grid */}
       <StatsGrid />
 
-      {/* Testimonials grid */}
-      <div className="grid md:grid-cols-3 gap-6 mb-12">
-        {testimonials.map((testimonial) => (
-          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-        ))}
-      </div>
-
-      {/* Press mentions */}
-      <PressSection />
-
-      {/* Trust badges */}
-      <div className="flex flex-wrap justify-center gap-4">
-        {trustBadges.map((badge) => (
-          <Badge
-            key={badge.id}
-            text={badge.text}
-            variant={badge.variant}
-            textSize="xs"
-            icon={badge.icon}
-            showDot={badge.showDot}
-          />
-        ))}
+      {/* Continuous testimonials carousel */}
+      <div className="mb-12 overflow-hidden">
+        <motion.div
+          className="flex gap-6"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{
+            duration: testimonials.length * 4,
+            ease: "linear",
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+        >
+          {duplicatedTestimonials.map((testimonial, index) => (
+            <div key={`${testimonial.id}-${index}`} className="min-w-[300px] md:min-w-[350px]">
+              <TestimonialCard testimonial={testimonial} />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </Section>
   );

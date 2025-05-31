@@ -55,7 +55,7 @@ const SkinChemistry = memo(() => {
   const currentFactor = skinFactors[activeFactorIndex];
 
   return (
-    <Section id="skin-chemistry" padding="md">
+    <Section id="skin-chemistry" padding="md" showFrame={false}>
       {/* Section heading */}
       <div className="text-center mb-8 md:mb-10 lg:mb-14">
         <div className="relative inline-block">
@@ -100,7 +100,7 @@ const SkinChemistry = memo(() => {
           <div className="flex justify-between items-center mt-3">
             <button
               type="button"
-              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center py-1 px-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
               onClick={handlePrevious}
               aria-label="View previous skin factor"
             >
@@ -119,7 +119,7 @@ const SkinChemistry = memo(() => {
 
             <button
               type="button"
-              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center cursor-pointer py-1 px-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+              className="text-xs md:text-sm text-gray-600 hover:text-black flex items-center py-1 px-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
               onClick={handleNext}
               aria-label="View next skin factor"
             >

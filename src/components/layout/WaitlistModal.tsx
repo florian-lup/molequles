@@ -146,7 +146,7 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
         <button
           type="button"
           onClick={handleClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 p-1 rounded-full transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 p-1 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
           aria-label="Close modal"
           disabled={isSubmitting}
         >

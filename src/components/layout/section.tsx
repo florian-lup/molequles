@@ -6,20 +6,22 @@ interface SectionProps {
   readonly className?: string;
   readonly containerClassName?: string;
   readonly maxWidth?:
-    | 'sm'
-    | 'md'
-    | 'lg'
-    | 'xl'
-    | '2xl'
-    | '3xl'
-    | '4xl'
-    | '5xl'
-    | '6xl'
-    | '7xl'
-    | 'full';
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | '7xl'
+  | 'full';
   readonly padding?: 'sm' | 'md' | 'lg' | 'xl';
   readonly background?: 'white' | 'gray' | 'transparent';
   readonly children: ReactNode;
+  readonly showFrame?: boolean;
+  readonly frameStyle?: 'default' | 'subtle' | 'bold' | 'gradient';
 }
 
 const paddingClasses = {
@@ -49,6 +51,13 @@ const backgroundClasses = {
   transparent: 'bg-transparent',
 } as const;
 
+const frameStyles = {
+  default: 'border-2 border-gray-200 shadow-lg',
+  subtle: 'border border-gray-100 shadow-sm',
+  bold: 'border-4 border-gray-300 shadow-xl',
+  gradient: 'border-2 border-transparent bg-gradient-to-r from-emerald-200 via-gray-200 to-emerald-200 bg-clip-padding',
+} as const;
+
 const Section = memo<SectionProps>(
   ({
     id,
@@ -59,12 +68,18 @@ const Section = memo<SectionProps>(
     padding = 'lg',
     background = 'white',
     children,
+    showFrame = true,
+    frameStyle = 'default',
   }) => {
+    const frameClasses = showFrame
+      ? `${frameStyles[frameStyle]} rounded-xl mx-4 sm:mx-6 lg:mx-8 my-6 sm:my-8 lg:my-10`
+      : '';
+
     return (
       <section
         id={id}
         aria-label={ariaLabel}
-        className={`relative ${paddingClasses[padding]} ${backgroundClasses[background]} overflow-hidden ${className}`}
+        className={`relative ${paddingClasses[padding]} ${backgroundClasses[background]} overflow-hidden ${frameClasses} ${className}`}
       >
         <div
           className={`container mx-auto px-4 ${maxWidthClasses[maxWidth]} z-10 relative ${containerClassName}`}

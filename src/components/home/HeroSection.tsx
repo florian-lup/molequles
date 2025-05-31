@@ -12,6 +12,7 @@ const HeroSection = memo(() => {
       containerClassName="flex flex-col flex-1 justify-end px-2 sm:px-4 lg:px-6"
       padding="sm"
       maxWidth="full"
+      showFrame={false}
     >
       {/* Grid Background */}
       <div className="absolute inset-0 z-0" aria-hidden="true">

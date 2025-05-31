@@ -67,9 +67,6 @@ const LeadCapturePanel = memo(() => {
         <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
           We&apos;ll be in touch soon with your exclusive early access and discount code.
         </p>
-        <div className="flex justify-center">
-          <Badge text="You're on the list!" textSize="xs" variant="success" />
-        </div>
       </div>
     );
   }
@@ -126,9 +123,29 @@ const LeadCapturePanel = memo(() => {
         </p>
       </form>
 
-      {/* Badge */}
-      <div className="flex justify-center">
-        <Badge text="Free Samples Available" textSize="xs" variant="success" />
+      {/* Trust badges (moved from SocialProof) */}
+      <div className="flex flex-wrap justify-center gap-4 mt-6">
+        <Badge
+          text="30-Day Money Back Guarantee"
+          variant="default"
+          textSize="xs"
+          icon={<span className="text-yellow-500">🏅</span>}
+          showDot={false}
+        />
+        <Badge
+          text="Cruelty-Free & Sustainable"
+          variant="default"
+          textSize="xs"
+          icon={<span className="text-green-600">🌿</span>}
+          showDot={false}
+        />
+        <Badge
+          text="Dermatologist Approved"
+          variant="default"
+          textSize="xs"
+          icon={<span className="text-blue-600">🧪</span>}
+          showDot={false}
+        />
       </div>
     </div>
   );
@@ -141,7 +158,7 @@ LeadCapturePanel.displayName = 'LeadCapturePanel';
  */
 const LeadCapture = memo(() => {
   return (
-    <Section id="LeadCapture" ariaLabel="Call to action section" padding="md">
+    <Section id="LeadCapture" ariaLabel="Call to action section" padding="md" frameStyle="gradient">
       {/* Centered form layout */}
       <div className="flex flex-col items-center justify-center">
         <LeadCapturePanel />
