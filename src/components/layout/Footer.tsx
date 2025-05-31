@@ -12,18 +12,10 @@ import {
 } from 'react-icons/fi';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
-
-interface SocialLink {
-  readonly name: string;
-  readonly href: string;
-  readonly icon: React.ReactNode;
-  readonly label: string;
-}
-
-interface NavLink {
-  readonly name: string;
-  readonly href: string;
-}
+import { useFormSubmission } from '@/hooks/useFormSubmission';
+import { isValidEmail } from '@/utils';
+import { API_ENDPOINTS, COMPANY_INFO, EXTERNAL_LINKS, ANIMATION_DURATION } from '@/constants';
+import type { SocialLink, NavigationItem } from '@/types';
 
 interface ContactInfo {
   readonly icon: React.ReactNode;
@@ -33,7 +25,8 @@ interface ContactInfo {
 
 const Footer = memo(() => {
   const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const { isSubmitting, error, submitForm } = useFormSubmission();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Get current year for copyright text
@@ -43,25 +36,25 @@ const Footer = memo(() => {
     () => [
       {
         name: 'instagram',
-        href: '#',
+        href: EXTERNAL_LINKS.social.instagram,
         icon: <FiInstagram className="h-6 w-6" />,
         label: 'Follow us on Instagram',
       },
       {
         name: 'twitter',
-        href: '#',
+        href: EXTERNAL_LINKS.social.twitter,
         icon: <FiTwitter className="h-6 w-6" />,
         label: 'Follow us on Twitter',
       },
       {
         name: 'facebook',
-        href: '#',
+        href: EXTERNAL_LINKS.social.facebook,
         icon: <FiFacebook className="h-6 w-6" />,
         label: 'Follow us on Facebook',
       },
       {
         name: 'youtube',
-        href: '#',
+        href: EXTERNAL_LINKS.social.youtube,
         icon: <FiYoutube className="h-6 w-6" />,
         label: 'Subscribe to our YouTube channel',
       },
@@ -69,7 +62,7 @@ const Footer = memo(() => {
     []
   );
 
-  const quickLinks: readonly NavLink[] = useMemo(
+  const quickLinks: readonly NavigationItem[] = useMemo(
     () => [
       { name: 'About Us', href: '#' },
       { name: 'Shop', href: '#' },
@@ -80,7 +73,7 @@ const Footer = memo(() => {
     []
   );
 
-  const customerServiceLinks: readonly NavLink[] = useMemo(
+  const customerServiceLinks: readonly NavigationItem[] = useMemo(
     () => [
       { name: 'Contact Us', href: '#' },
       { name: 'Shipping & Returns', href: '#' },
@@ -95,17 +88,17 @@ const Footer = memo(() => {
     () => [
       {
         icon: <FiMapPin className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
-        content: <span>London, United Kingdom</span>,
+        content: <span>{COMPANY_INFO.location}</span>,
         label: 'Our location',
       },
       {
         icon: <FiMail className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
         content: (
           <a
-            href="mailto:hello@molequles.com"
+            href={`mailto:${COMPANY_INFO.email}`}
             className="hover:text-black transition-colors duration-200 break-all"
           >
-            hello@molequles.com
+            {COMPANY_INFO.email}
           </a>
         ),
         label: 'Email us',
@@ -113,8 +106,8 @@ const Footer = memo(() => {
       {
         icon: <FiPhone className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
         content: (
-          <a href="tel:+44123456789" className="hover:text-black transition-colors duration-200">
-            +44 123 456 789
+          <a href={`tel:${COMPANY_INFO.phone.replace(/\s/g, '')}`} className="hover:text-black transition-colors duration-200">
+            {COMPANY_INFO.phone}
           </a>
         ),
         label: 'Call us',
@@ -123,7 +116,7 @@ const Footer = memo(() => {
     []
   );
 
-  const legalLinks: readonly NavLink[] = useMemo(
+  const legalLinks: readonly NavigationItem[] = useMemo(
     () => [
       { name: 'Privacy Policy', href: '#' },
       { name: 'Terms of Service', href: '#' },
@@ -134,29 +127,45 @@ const Footer = memo(() => {
 
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    setValidationError(null);
   }, []);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      setValidationError(null);
 
-      if (!email.trim()) return;
+      if (!email.trim()) {
+        setValidationError('Please enter your email address');
+        return;
+      }
 
-      setIsSubmitting(true);
+      if (!isValidEmail(email)) {
+        setValidationError('Please enter a valid email address');
+        return;
+      }
 
-      try {
-        // TODO: Implement actual newsletter submission logic
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+      await submitForm(async () => {
+        const response = await fetch(API_ENDPOINTS.newsletter, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to subscribe to newsletter');
+        }
+
         setIsSubmitted(true);
         setEmail('');
-      } catch (error) {
-        console.error('Newsletter submission error:', error);
-        // TODO: Add error handling UI
-      } finally {
-        setIsSubmitting(false);
-      }
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 3000);
+      });
     },
-    [email]
+    [email, submitForm]
   );
 
   return (
@@ -166,7 +175,7 @@ const Footer = memo(() => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-lg font-semibold text-black">Molequles</h3>
+            <h3 className="text-lg font-semibold text-black">{COMPANY_INFO.name}</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               Discover your signature scent with our curated collection of premium fragrances.
               Quality craftsmanship meets modern elegance.
@@ -178,6 +187,8 @@ const Footer = memo(() => {
                   href={social.href}
                   className="text-gray-500 hover:text-black transition-colors duration-200 p-1"
                   aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {social.icon}
                 </a>
@@ -244,7 +255,10 @@ const Footer = memo(() => {
               </p>
 
               {isSubmitted ? (
-                <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                <div
+                  className="p-3 bg-green-50 border border-green-200 rounded-lg transition-opacity"
+                  style={{ animationDuration: `${ANIMATION_DURATION.normal}ms` }}
+                >
                   <p className="text-sm text-green-800">
                     Thank you for subscribing! Check your email for confirmation.
                   </p>
@@ -268,21 +282,29 @@ const Footer = memo(() => {
                     className="flex-1 text-sm"
                     required
                     aria-describedby="newsletter-help"
+                    aria-invalid={!!validationError || !!error}
                   />
                   <Button
                     type="submit"
                     buttonSize="sm"
                     variant="primary"
                     className="w-full sm:w-auto sm:rounded-l-none px-4 py-3 sm:py-2 text-sm font-medium"
-                    disabled={isSubmitting || !email.trim()}
+                    disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Subscribing...' : 'Subscribe'}
                   </Button>
-                  <p id="newsletter-help" className="sr-only">
-                    Subscribe to our newsletter for exclusive offers and updates
-                  </p>
                 </form>
               )}
+
+              {(validationError || error) && !isSubmitted && (
+                <p className="text-red-600 text-sm mt-2" role="alert">
+                  {validationError || error?.message || 'Something went wrong. Please try again.'}
+                </p>
+              )}
+
+              <p id="newsletter-help" className="sr-only">
+                Subscribe to our newsletter for exclusive offers and updates
+              </p>
             </div>
           </div>
         </div>
@@ -294,7 +316,7 @@ const Footer = memo(() => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
             {/* Copyright */}
             <p className="text-xs text-gray-500">
-              &copy; {currentYear} Molequles. All rights reserved.
+              &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
             </p>
 
             {/* Legal Links */}

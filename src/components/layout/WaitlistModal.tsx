@@ -5,6 +5,9 @@ import { FiX, FiMail } from 'react-icons/fi';
 import Button from '@/components/ui/button';
 import Badge from '@/components/ui/badge';
 import Input from '@/components/ui/input';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
+import { isValidEmail } from '@/utils';
+import { API_ENDPOINTS, ANIMATION_DURATION } from '@/constants';
 
 // Props interface for WaitlistModal component
 export interface WaitlistModalProps {
@@ -19,33 +22,45 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
 
   // Form state
   const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const { isSubmitting, error, submitForm } = useFormSubmission();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    setValidationError(null);
   }, []);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      setValidationError(null);
 
-      if (!email.trim()) return;
-
-      setIsSubmitting(true);
-
-      try {
-        // TODO: Implement actual waitlist submission logic
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
-        setIsSubmitted(true);
-      } catch (error) {
-        console.error('Waitlist submission error:', error);
-        // TODO: Add error handling UI
-      } finally {
-        setIsSubmitting(false);
+      if (!email.trim()) {
+        setValidationError('Please enter your email address');
+        return;
       }
+
+      if (!isValidEmail(email)) {
+        setValidationError('Please enter a valid email address');
+        return;
+      }
+
+      await submitForm(async () => {
+        const response = await fetch(API_ENDPOINTS.waitlist, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to join waitlist');
+        }
+
+        setIsSubmitted(true);
+      });
     },
-    [email]
+    [email, submitForm]
   );
 
   const handleClose = useCallback(() => {
@@ -55,7 +70,8 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
       setTimeout(() => {
         setEmail('');
         setIsSubmitted(false);
-      }, 300); // Delay to avoid flash during transition
+        setValidationError(null);
+      }, ANIMATION_DURATION.normal); // Use constant for animation duration
     }
   }, [onClose, isSubmitting]);
 
@@ -78,7 +94,12 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
 
       return () => {
         clearTimeout(focusTimeout);
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.body.style.overflow = 'auto'; // Restore scrolling
       };
+    } else {
+      // Restore scrolling when modal is closed
+      document.body.style.overflow = 'auto';
     }
 
     return () => {
@@ -114,7 +135,8 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
       {/* Modal container */}
       <div
         ref={modalRef}
-        className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 lg:p-8 shadow-lg w-full max-w-md relative z-10"
+        className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 lg:p-8 shadow-lg w-full max-w-md relative z-10 transition-all"
+        style={{ transitionDuration: `${ANIMATION_DURATION.normal}ms` }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="waitlist-title"
@@ -184,7 +206,13 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
                 className="text-[16px]"
                 required
                 aria-describedby="email-help"
+                aria-invalid={!!validationError || !!error}
               />
+              {(validationError || error) && (
+                <p className="text-red-600 text-sm -mt-2" role="alert">
+                  {validationError || error?.message || 'Something went wrong. Please try again.'}
+                </p>
+              )}
               <p id="email-help" className="sr-only">
                 Enter your email address to join our waitlist
               </p>
@@ -193,7 +221,7 @@ const WaitlistModal: FC<WaitlistModalProps> = memo(({ isOpen, onClose }) => {
                 <Button
                   type="submit"
                   rightIcon
-                  disabled={isSubmitting || !email.trim()}
+                  disabled={isSubmitting}
                   aria-describedby="submit-help"
                 >
                   {isSubmitting ? 'Joining...' : 'Join Waitlist'}

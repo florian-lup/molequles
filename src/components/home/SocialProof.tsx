@@ -184,7 +184,7 @@ const SocialProof = memo(() => {
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
           Join thousands of satisfied customers who have discovered their perfect scent through our
-          AI-powered personalization process.
+          AI-powered personalization process
         </p>
       </div>
 

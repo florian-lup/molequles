@@ -70,7 +70,7 @@ const HowItWorks = memo(() => {
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
           Our revolutionary process combines dermatological science with artificial intelligence to
           create fragrances that truly complement your unique skin chemistry, ensuring optimal
-          performance and longevity.
+          performance and longevity
         </p>
       </div>
 

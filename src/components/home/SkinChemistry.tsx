@@ -68,7 +68,7 @@ const SkinChemistry = memo(() => {
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
           Your skin&apos;s natural characteristics interact with fragrance molecules to create a
           scent that&apos;s uniquely yours. Understanding these factors helps us craft the perfect
-          personalized fragrance.
+          personalized fragrance
         </p>
       </div>
 

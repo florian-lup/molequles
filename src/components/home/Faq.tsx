@@ -107,7 +107,7 @@ const Faq = memo(() => {
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
           Get answers to common questions about our AI-powered personalized fragrance creation
-          process and what makes Molequles different.
+          process and what makes Molequles different
         </p>
       </div>
 

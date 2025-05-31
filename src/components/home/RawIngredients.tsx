@@ -3,6 +3,7 @@
 import { memo } from 'react';
 import Image from 'next/image';
 import Section from '@/components/layout/section';
+import { PRODUCT_INFO } from '@/constants';
 
 const RawIngredients = memo(() => {
   return (
@@ -39,7 +40,7 @@ const RawIngredients = memo(() => {
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
           From rare florals to exotic spices, our extensive ingredient library allows us to create
           millions of unique fragrance combinations tailored specifically to your preferences and
-          skin chemistry.
+          skin chemistry
         </p>
       </div>
 
@@ -64,9 +65,9 @@ const RawIngredients = memo(() => {
           <div className="w-1/3 md:w-full text-center p-2 md:border-l-4 border-gray-200 md:pl-6">
             <p
               className="text-xl md:text-2xl font-bold text-black mb-2"
-              aria-label="Over 4000 available ingredients"
+              aria-label={`Over ${PRODUCT_INFO.ingredientCount} available ingredients`}
             >
-              4,000+
+              {PRODUCT_INFO.ingredientCount}
             </p>
             <p className="text-sm md:text-base text-gray-600">Available Ingredients</p>
           </div>

@@ -6,12 +6,9 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Button from '@/components/ui/button';
 import { useWaitlist } from '@/hooks/useWaitlist';
-
-// Interface for navigation menu items
-export interface NavigationItem {
-  readonly name: string;
-  readonly href: string;
-}
+import { scrollToElement } from '@/utils';
+import { COMPANY_INFO } from '@/constants';
+import type { NavigationItem } from '@/types';
 
 const Header = memo(() => {
   // State for mobile menu toggle
@@ -48,13 +45,10 @@ const Header = memo(() => {
 
       // Handle smooth scrolling for anchor links
       if (href.startsWith('#')) {
-        const element = document.getElementById(href.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          // Fall back to home page
-          router.push('/');
-        }
+        const elementId = href.substring(1);
+        // Account for sticky header height
+        const headerOffset = 80;
+        scrollToElement(elementId, headerOffset);
       } else {
         router.push(href);
       }
@@ -64,6 +58,8 @@ const Header = memo(() => {
 
   const handleLogoClick = useCallback(() => {
     closeMenu();
+    // Scroll to top when logo is clicked
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [closeMenu]);
 
   return (
@@ -75,7 +71,7 @@ const Header = memo(() => {
             href="/"
             className="flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-lg"
             onClick={handleLogoClick}
-            aria-label="Molequles home page"
+            aria-label={`${COMPANY_INFO.name} home page`}
           >
             <Image
               src="/logo/molequles_logo.svg"
@@ -85,7 +81,7 @@ const Header = memo(() => {
               className="mr-2"
               priority
             />
-            <span className="text-xl font-bold text-black">Molequles</span>
+            <span className="text-xl font-bold text-black">{COMPANY_INFO.name}</span>
           </Link>
 
           <div className="flex items-center">

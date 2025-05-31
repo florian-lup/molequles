@@ -5,40 +5,55 @@ import Button from '@/components/ui/button';
 import Badge from '@/components/ui/badge';
 import Input from '@/components/ui/input';
 import Section from '@/components/layout/section';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
+import { isValidEmail } from '@/utils';
+import { API_ENDPOINTS } from '@/constants';
 
 /**
  * Panel containing call-to-action message and waitlist form
  */
 const LeadCapturePanel = memo(() => {
   const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const { isSubmitting, error, submitForm } = useFormSubmission();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      setValidationError(null);
 
-      if (!email.trim()) return;
+      if (!email.trim()) {
+        setValidationError('Please enter your email address');
+        return;
+      }
 
-      setIsSubmitting(true);
+      if (!isValidEmail(email)) {
+        setValidationError('Please enter a valid email address');
+        return;
+      }
 
-      try {
-        // TODO: Implement actual form submission logic
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
+      await submitForm(async () => {
+        const response = await fetch(API_ENDPOINTS.newsletter, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to join waitlist');
+        }
+
         setIsSubmitted(true);
         setEmail('');
-      } catch (error) {
-        console.error('Form submission error:', error);
-        // TODO: Add error handling UI
-      } finally {
-        setIsSubmitting(false);
-      }
+      });
     },
-    [email]
+    [email, submitForm]
   );
 
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+    setValidationError(null);
   }, []);
 
   if (isSubmitted) {
@@ -71,7 +86,7 @@ const LeadCapturePanel = memo(() => {
       {/* Paragraph */}
       <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
         Sign up now and get <span className="text-emerald-600 font-semibold">20%</span> off your
-        first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping.
+        first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping
       </p>
 
       {/* Waitlist form */}
@@ -90,16 +105,22 @@ const LeadCapturePanel = memo(() => {
             className="flex-1"
             required
             aria-describedby="email-help"
+            aria-invalid={!!validationError || !!error}
           />
           <Button
             type="submit"
             buttonSize="lg"
             className="w-full sm:w-auto sm:rounded-l-none px-6"
-            disabled={isSubmitting || !email.trim()}
+            disabled={isSubmitting}
           >
             {isSubmitting ? 'Joining...' : 'Join Waitlist'}
           </Button>
         </div>
+        {(validationError || error) && (
+          <p className="text-red-600 text-sm mt-2" role="alert">
+            {validationError || error?.message || 'Something went wrong. Please try again.'}
+          </p>
+        )}
         <p id="email-help" className="sr-only">
           Enter your email to join the waitlist and receive exclusive offers
         </p>
