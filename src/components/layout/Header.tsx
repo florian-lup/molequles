@@ -115,7 +115,12 @@ const Header = memo(() => {
 
             {/* Waitlist call-to-action button - Desktop */}
             <div className="hidden sm:block">
-              <Button onClick={handleWaitlistClick} buttonSize="sm" rightIcon aria-label="Join our waitlist">
+              <Button
+                onClick={handleWaitlistClick}
+                buttonSize="sm"
+                rightIcon
+                aria-label="Join our waitlist"
+              >
                 Join Waitlist
               </Button>
             </div>
@@ -144,7 +149,11 @@ const Header = memo(() => {
             id="mobile-menu"
             className="lg:hidden border-t border-gray-100 py-4 bg-white/95 backdrop-blur-sm"
           >
-            <nav className="flex flex-col space-y-1" role="navigation" aria-label="Mobile navigation">
+            <nav
+              className="flex flex-col space-y-1"
+              role="navigation"
+              aria-label="Mobile navigation"
+            >
               {navigation.map((item) => (
                 <a
                   key={item.name}

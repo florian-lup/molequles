@@ -122,10 +122,11 @@ const Features = memo(() => {
                     key={factor.title}
                     type="button"
                     onClick={() => setActiveFactor(factor.title)}
-                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 touch-manipulation ${index === activeFactorIndex
-                      ? 'bg-emerald-600 scale-110'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                      }`}
+                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 touch-manipulation ${
+                      index === activeFactorIndex
+                        ? 'bg-emerald-600 scale-110'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
                     aria-label={`Go to ${factor.title}`}
                   />
                 ))}
@@ -159,7 +160,9 @@ const Features = memo(() => {
                 >
                   {PRODUCT_INFO.ingredientCount}
                 </p>
-                <p className="text-xs sm:text-sm lg:text-base text-gray-600">Available Ingredients</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">
+                  Available Ingredients
+                </p>
               </div>
               <div className="flex-1 lg:w-full text-center p-2 sm:p-3">
                 <p
@@ -168,7 +171,9 @@ const Features = memo(() => {
                 >
                   Billions
                 </p>
-                <p className="text-xs sm:text-sm lg:text-base text-gray-600">Potential Combinations</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">
+                  Potential Combinations
+                </p>
               </div>
               <div className="flex-1 lg:w-full text-center p-2 sm:p-3">
                 <p
@@ -177,7 +182,9 @@ const Features = memo(() => {
                 >
                   100%
                 </p>
-                <p className="text-xs sm:text-sm lg:text-base text-gray-600">Personalized Formulas</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">
+                  Personalized Formulas
+                </p>
               </div>
             </div>
           </div>

@@ -71,18 +71,25 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
 
       {/* Price display with title - improved mobile typography */}
       <div className="mb-4 sm:mb-5">
-        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-600">{formattedPrice}</span>
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-600">
+          {formattedPrice}
+        </span>
         <span className="text-xs sm:text-sm text-gray-500 ml-1">/{title.toLowerCase()}</span>
       </div>
 
       {/* Tier description - better mobile line height */}
-      <p className="text-sm sm:text-base text-gray-600 font-light mb-4 sm:mb-5 leading-relaxed">{description}</p>
+      <p className="text-sm sm:text-base text-gray-600 font-light mb-4 sm:mb-5 leading-relaxed">
+        {description}
+      </p>
 
       {/* Feature list with checkmarks - grows to fill available space */}
       <ul className="space-y-2 sm:space-y-3 flex-grow" role="list">
         {features.map((feature, index) => (
           <li key={`${title}-feature-${index}`} className="flex items-start gap-2 sm:gap-3">
-            <FiCheck className="text-emerald-600 mt-0.5 sm:mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+            <FiCheck
+              className="text-emerald-600 mt-0.5 sm:mt-1 h-4 w-4 flex-shrink-0"
+              aria-hidden="true"
+            />
             <span className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature}</span>
           </li>
         ))}
@@ -149,8 +156,8 @@ const PricingContent = memo(() => {
             key={tier.id}
             className={`flex ${
               // Offset first and third cards only on large desktop screens
-              (index === 0 || index === 2) ? 'lg:mt-8' : ''
-              }`}
+              index === 0 || index === 2 ? 'lg:mt-8' : ''
+            }`}
           >
             <PricingCard tier={tier} />
           </div>

@@ -34,8 +34,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Styles specific to each button variant (primary/secondary)
     const variantStyles = {
-      primary: 'bg-black text-white hover:bg-gray-800 active:bg-gray-900 shadow-md focus:ring-emerald-500',
-      secondary: 'bg-white text-black border border-gray-200 hover:bg-gray-50 active:bg-gray-100 focus:ring-emerald-500',
+      primary:
+        'bg-black text-white hover:bg-gray-800 active:bg-gray-900 shadow-md focus:ring-emerald-500',
+      secondary:
+        'bg-white text-black border border-gray-200 hover:bg-gray-50 active:bg-gray-100 focus:ring-emerald-500',
     };
 
     // Improved responsive sizing for better mobile experience
@@ -64,9 +66,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading ? 'Loading...' : children}
         {/* Conditionally render right arrow icon with responsive sizing */}
-        {rightIcon && !loading && (
-          <FiArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-        )}
+        {rightIcon && !loading && <FiArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />}
       </button>
     );
   }

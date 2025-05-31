@@ -6,17 +6,17 @@ interface SectionProps {
   readonly className?: string;
   readonly containerClassName?: string;
   readonly maxWidth?:
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | '7xl'
-  | 'full';
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | '6xl'
+    | '7xl'
+    | 'full';
   readonly padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   readonly background?: 'white' | 'gray' | 'transparent';
   readonly children: ReactNode;

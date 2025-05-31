@@ -184,7 +184,11 @@ const Footer = memo(() => {
               Quality craftsmanship meets modern elegance.
             </p>
             {/* Improved mobile social links with better touch targets */}
-            <div className="flex items-center gap-3 sm:gap-4" role="list" aria-label="Social media links">
+            <div
+              className="flex items-center gap-3 sm:gap-4"
+              role="list"
+              aria-label="Social media links"
+            >
               {socialLinks.map((social) => (
                 <a
                   key={social.name}

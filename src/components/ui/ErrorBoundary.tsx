@@ -43,8 +43,8 @@ class ErrorBoundary extends Component<Props, State> {
           <div className="text-center max-w-md">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Oops! Something went wrong</h2>
             <p className="text-gray-600 mb-6">
-              We&apos;re sorry for the inconvenience. Please try refreshing the page or contact support
-              if the problem persists.
+              We&apos;re sorry for the inconvenience. Please try refreshing the page or contact
+              support if the problem persists.
             </p>
             <div className="flex gap-4 justify-center">
               <Button onClick={this.handleReset} variant="primary">

@@ -85,13 +85,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative flex-1">
         {leftIcon && (
-          <div className={cn(
-            'absolute inset-y-0 flex items-center pointer-events-none text-gray-500',
-            iconVerticalPosition[inputSize]
-          )}>
-            <div className={iconSizeStyles[inputSize]}>
-              {leftIcon}
-            </div>
+          <div
+            className={cn(
+              'absolute inset-y-0 flex items-center pointer-events-none text-gray-500',
+              iconVerticalPosition[inputSize]
+            )}
+          >
+            <div className={iconSizeStyles[inputSize]}>{leftIcon}</div>
           </div>
         )}
 
@@ -112,13 +112,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         />
 
         {rightIcon && (
-          <div className={cn(
-            'absolute inset-y-0 flex items-center pointer-events-none text-gray-500',
-            rightIconPosition[inputSize]
-          )}>
-            <div className={iconSizeStyles[inputSize]}>
-              {rightIcon}
-            </div>
+          <div
+            className={cn(
+              'absolute inset-y-0 flex items-center pointer-events-none text-gray-500',
+              rightIconPosition[inputSize]
+            )}
+          >
+            <div className={iconSizeStyles[inputSize]}>{rightIcon}</div>
           </div>
         )}
       </div>

@@ -52,7 +52,7 @@ const HeroSection = memo(() => {
         <div
           className="relative w-full max-w-4xl mx-auto"
           style={{
-            height: 'clamp(300px, 45vh, 600px)' // More responsive height
+            height: 'clamp(300px, 45vh, 600px)', // More responsive height
           }}
         >
           <Image
