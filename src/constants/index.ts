@@ -24,10 +24,10 @@ export const API_ENDPOINTS = {
 // External links
 export const EXTERNAL_LINKS = {
   social: {
-    instagram: 'https://instagram.com/molequles',
-    twitter: 'https://twitter.com/molequles',
-    facebook: 'https://facebook.com/molequles',
-    youtube: 'https://youtube.com/molequles',
+    instagram: 'https://instagram.com/',
+    twitter: 'https://twitter.com/',
+    facebook: 'https://facebook.com/',
+    youtube: 'https://youtube.com/',
   },
 } as const;
 

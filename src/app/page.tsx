@@ -3,13 +3,10 @@ import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/home/HeroSection';
 import { lazy, Suspense } from 'react';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
-import { Metadata } from 'next';
 
 // Lazy load below-the-fold components only
 const ValueProposition = lazy(() => import('@/components/home/ValueProposition'));
-const RawIngredients = lazy(() => import('@/components/home/RawIngredients'));
-const HowItWorks = lazy(() => import('@/components/home/HowItWorks'));
-const SkinChemistry = lazy(() => import('@/components/home/SkinChemistry'));
+const Features = lazy(() => import('@/components/home/Features'));
 const SocialProof = lazy(() => import('@/components/home/SocialProof'));
 const Pricing = lazy(() => import('@/components/home/Pricing'));
 const Faq = lazy(() => import('@/components/home/Faq'));
@@ -43,19 +40,7 @@ export default function Home() {
 
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader />}>
-            <RawIngredients />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader />}>
-            <SkinChemistry />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader />}>
-            <HowItWorks />
+            <Features />
           </Suspense>
         </ErrorBoundary>
 

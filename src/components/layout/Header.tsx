@@ -21,7 +21,7 @@ const Header = memo(() => {
   const navigation: readonly NavigationItem[] = useMemo(
     () => [
       { name: 'Solution', href: '#value-proposition' },
-      { name: 'How It Works', href: '#how-it-works' },
+      { name: 'Features', href: '#features' },
       { name: 'Reviews', href: '#social-proof' },
       { name: 'Pricing', href: '#pricing' },
       { name: 'FAQ', href: '#faq' },

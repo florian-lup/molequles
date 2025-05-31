@@ -37,7 +37,7 @@ const ValuePropositionContent = memo(() => {
       <div className="max-w-4xl mx-auto mb-10">
         <div className="relative inline-block w-full text-center">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
-            Beyond Traditional Perfumery
+            Your skin chemistry makes every scent unique
           </h2>
           {/* Decorative underline */}
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
@@ -45,8 +45,9 @@ const ValuePropositionContent = memo(() => {
 
         {/* Value proposition with highlighting */}
         <p className="text-base md:text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-          Molequles uses AI to analyze your skin and discover unique fragrance blends, crafting
-          personalized perfumes tailored to your chemistry
+          From rare florals to exotic spices, our extensive ingredient library allows us to create
+          millions of unique fragrance combinations tailored specifically to your preferences and
+          skin chemistry
         </p>
       </div>
 
@@ -71,7 +72,7 @@ ValuePropositionContent.displayName = 'ValuePropositionContent';
 // Main section wrapper with ID for navigation targeting
 const ValueProposition = memo(() => {
   return (
-    <Section id="value-proposition" ariaLabel="Value proposition section" maxWidth="3xl" frameStyle="gradient">
+    <Section id="value-proposition" ariaLabel="Value proposition section" maxWidth="4xl" showFrame={false}>
       <ValuePropositionContent />
     </Section>
   );

@@ -28,7 +28,7 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
     <Card
       variant={isPopular ? 'highlight' : 'default'}
       hover={true}
-      className={`relative overflow-hidden ${isPopular || id === 'ingredients' || id === 'premium' ? 'pt-10' : ''}`}
+      className={`relative overflow-hidden h-full flex flex-col ${isPopular || id === 'ingredients' || id === 'premium' ? 'pt-10' : ''}`}
     >
       {/* Starter badge for first card */}
       {id === 'ingredients' && (
@@ -78,8 +78,8 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
       {/* Tier description */}
       <p className="text-sm md:text-base text-gray-600 font-light mb-5">{description}</p>
 
-      {/* Feature list with checkmarks */}
-      <ul className="space-y-3" role="list">
+      {/* Feature list with checkmarks - grows to fill available space */}
+      <ul className="space-y-3 flex-grow" role="list">
         {features.map((feature, index) => (
           <li key={`${title}-feature-${index}`} className="flex items-start gap-2">
             <FiCheck className="text-emerald-600 mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
@@ -143,8 +143,13 @@ const PricingContent = memo(() => {
     <div className="w-full">
       {/* Three-column pricing tier cards */}
       <div className="grid md:grid-cols-3 gap-6">
-        {pricingTiers.map((tier) => (
-          <PricingCard key={tier.id} tier={tier} />
+        {pricingTiers.map((tier, index) => (
+          <div
+            key={tier.id}
+            className={`flex ${(index === 0 || index === 2) ? 'md:mt-8' : ''}`}
+          >
+            <PricingCard tier={tier} />
+          </div>
         ))}
       </div>
     </div>
