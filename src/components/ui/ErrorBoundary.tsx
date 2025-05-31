@@ -41,25 +41,22 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-[400px] flex items-center justify-center p-4">
           <div className="text-center max-w-md">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Oops! Something went wrong
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Oops! Something went wrong</h2>
             <p className="text-gray-600 mb-6">
-              We're sorry for the inconvenience. Please try refreshing the page or contact support if the problem persists.
+              We&apos;re sorry for the inconvenience. Please try refreshing the page or contact support
+              if the problem persists.
             </p>
             <div className="flex gap-4 justify-center">
               <Button onClick={this.handleReset} variant="primary">
                 Try Again
               </Button>
-              <Button onClick={() => window.location.href = '/'} variant="secondary">
+              <Button onClick={() => (window.location.href = '/')} variant="secondary">
                 Go Home
               </Button>
             </div>
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-8 text-left">
-                <summary className="text-sm text-gray-500">
-                  Error details (dev only)
-                </summary>
+                <summary className="text-sm text-gray-500">Error details (dev only)</summary>
                 <pre className="mt-2 text-xs bg-gray-100 p-4 rounded overflow-auto">
                   {this.state.error.stack}
                 </pre>
@@ -74,4 +71,4 @@ class ErrorBoundary extends Component<Props, State> {
   }
 }
 
-export default ErrorBoundary; 
+export default ErrorBoundary;

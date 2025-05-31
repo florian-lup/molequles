@@ -77,4 +77,4 @@ export function useFocusTrap(isActive: boolean = true) {
   }, [isActive]);
 
   return containerRef;
-} 
+}

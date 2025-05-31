@@ -106,7 +106,10 @@ const Footer = memo(() => {
       {
         icon: <FiPhone className="h-4 w-4 text-gray-500 flex-shrink-0 mt-0.5" />,
         content: (
-          <a href={`tel:${COMPANY_INFO.phone.replace(/\s/g, '')}`} className="hover:text-black transition-colors duration-200">
+          <a
+            href={`tel:${COMPANY_INFO.phone.replace(/\s/g, '')}`}
+            className="hover:text-black transition-colors duration-200"
+          >
             {COMPANY_INFO.phone}
           </a>
         ),

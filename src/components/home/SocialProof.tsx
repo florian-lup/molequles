@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useMemo, useEffect, useState } from 'react';
+import { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FiStar, FiUsers, FiTrendingUp, FiAward } from 'react-icons/fi';
 import Card from '@/components/ui/card';
@@ -170,7 +170,14 @@ const SocialProof = memo(() => {
   const duplicatedTestimonials = useMemo(() => [...testimonials, ...testimonials], [testimonials]);
 
   return (
-    <Section id="social-proof" ariaLabel="Social proof section" maxWidth="6xl" padding="md" frameStyle="bold" showFrame={false}>
+    <Section
+      id="social-proof"
+      ariaLabel="Social proof section"
+      maxWidth="6xl"
+      padding="md"
+      frameStyle="bold"
+      showFrame={false}
+    >
       {/* Section heading */}
       <div className="text-center mb-12">
         <div className="relative inline-block">
@@ -198,9 +205,9 @@ const SocialProof = memo(() => {
           animate={{ x: ['0%', '-50%'] }}
           transition={{
             duration: testimonials.length * 4,
-            ease: "linear",
+            ease: 'linear',
             repeat: Infinity,
-            repeatType: "loop",
+            repeatType: 'loop',
           }}
         >
           {duplicatedTestimonials.map((testimonial, index) => (

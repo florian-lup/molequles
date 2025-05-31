@@ -62,7 +62,8 @@ export const IMAGES = {
 // SEO metadata
 export const SEO = {
   title: 'Molequles | AI-Powered Personalized Perfumes',
-  description: 'Molequles leverages AI to create personalized perfumes based on your unique skin chemistry.',
+  description:
+    'Molequles leverages AI to create personalized perfumes based on your unique skin chemistry.',
   keywords: [
     'personalized perfume',
     'AI fragrance',
@@ -77,4 +78,4 @@ export const FEATURES = {
   enableNewsletterSignup: true,
   enableWaitlistModal: true,
   enableSkinAnalysis: false, // Coming soon
-} as const; 
+} as const;

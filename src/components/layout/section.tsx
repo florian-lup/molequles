@@ -6,17 +6,17 @@ interface SectionProps {
   readonly className?: string;
   readonly containerClassName?: string;
   readonly maxWidth?:
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | '7xl'
-  | 'full';
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | '6xl'
+    | '7xl'
+    | 'full';
   readonly padding?: 'sm' | 'md' | 'lg' | 'xl';
   readonly background?: 'white' | 'gray' | 'transparent';
   readonly children: ReactNode;
@@ -55,7 +55,8 @@ const frameStyles = {
   default: 'border-2 border-gray-200 shadow-lg',
   subtle: 'border border-gray-100 shadow-sm',
   bold: 'border-4 border-gray-300 shadow-xl',
-  gradient: 'border-2 border-transparent bg-gradient-to-r from-emerald-200 via-gray-200 to-emerald-200 bg-clip-padding',
+  gradient:
+    'border-2 border-transparent bg-gradient-to-r from-emerald-200 via-gray-200 to-emerald-200 bg-clip-padding',
 } as const;
 
 const Section = memo<SectionProps>(

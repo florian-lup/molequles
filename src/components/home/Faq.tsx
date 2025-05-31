@@ -95,7 +95,13 @@ FaqAccordion.displayName = 'FaqAccordion';
 
 const Faq = memo(() => {
   return (
-    <Section id="faq" ariaLabel="Frequently asked questions section" maxWidth="3xl" padding="md" showFrame={false}>
+    <Section
+      id="faq"
+      ariaLabel="Frequently asked questions section"
+      maxWidth="3xl"
+      padding="md"
+      showFrame={false}
+    >
       {/* Section heading */}
       <div className="mb-12">
         <div className="relative inline-block">

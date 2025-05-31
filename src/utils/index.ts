@@ -26,7 +26,7 @@ export function formatPrice(price: number, currency: string = 'USD'): string {
 /**
  * Debounce function for search inputs and other frequent updates
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   delay: number
 ): (...args: Parameters<T>) => void {
@@ -64,4 +64,4 @@ export function getInitials(name: string): string {
     .join('')
     .toUpperCase()
     .slice(0, 2);
-} 
+}

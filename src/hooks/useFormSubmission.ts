@@ -12,7 +12,7 @@ interface UseFormSubmissionReturn {
   clearError: () => void;
 }
 
-export function useFormSubmission<T = any>(
+export function useFormSubmission<T = unknown>(
   options: UseFormSubmissionOptions<T> = {}
 ): UseFormSubmissionReturn {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,7 +25,7 @@ export function useFormSubmission<T = any>(
 
       try {
         await submitFn();
-        options.onSuccess?.(undefined as any);
+        options.onSuccess?.(undefined as T);
       } catch (err) {
         const error = err instanceof Error ? err : new Error('An error occurred');
         setError(error);
@@ -47,4 +47,4 @@ export function useFormSubmission<T = any>(
     submitForm,
     clearError,
   };
-} 
+}

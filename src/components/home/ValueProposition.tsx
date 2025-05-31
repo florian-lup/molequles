@@ -72,7 +72,12 @@ ValuePropositionContent.displayName = 'ValuePropositionContent';
 // Main section wrapper with ID for navigation targeting
 const ValueProposition = memo(() => {
   return (
-    <Section id="value-proposition" ariaLabel="Value proposition section" maxWidth="4xl" showFrame={false}>
+    <Section
+      id="value-proposition"
+      ariaLabel="Value proposition section"
+      maxWidth="4xl"
+      showFrame={false}
+    >
       <ValuePropositionContent />
     </Section>
   );

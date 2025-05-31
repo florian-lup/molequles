@@ -125,7 +125,8 @@ const PricingContent = memo(() => {
         id: 'premium',
         title: 'Premium Plan',
         price: '$250',
-        description: 'The ultimate fragrance experience with luxury ingredients and premium service.',
+        description:
+          'The ultimate fragrance experience with luxury ingredients and premium service.',
         features: [
           `${PRODUCT_INFO.bottleSize} bottle`,
           `Access to ${PRODUCT_INFO.ingredientCount} ingredients`,
@@ -144,10 +145,7 @@ const PricingContent = memo(() => {
       {/* Three-column pricing tier cards */}
       <div className="grid md:grid-cols-3 gap-6">
         {pricingTiers.map((tier, index) => (
-          <div
-            key={tier.id}
-            className={`flex ${(index === 0 || index === 2) ? 'md:mt-8' : ''}`}
-          >
+          <div key={tier.id} className={`flex ${index === 0 || index === 2 ? 'md:mt-8' : ''}`}>
             <PricingCard tier={tier} />
           </div>
         ))}
@@ -172,7 +170,8 @@ const Pricing = memo(() => {
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
         <p className="text-base md:text-lg text-gray-600 mt-6 leading-relaxed">
-          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond what traditional perfumery can offer
+          Unlock smarter scents, greater skin compatibility, and more consistent performance beyond
+          what traditional perfumery can offer
         </p>
       </div>
 

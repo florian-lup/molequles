@@ -16,23 +16,28 @@ const Features = memo(() => {
     () => [
       {
         title: 'Skin Chemistry',
-        description: 'Your unique biological makeup interacts with fragrance molecules to create a scent that\'s distinctively and exclusively yours.',
+        description:
+          "Your unique biological makeup interacts with fragrance molecules to create a scent that's distinctively and exclusively yours.",
       },
       {
         title: 'Temperature',
-        description: 'The warmth of your skin influences how quickly fragrance notes evolve and project, shaping your scent\'s unique journey throughout the day.',
+        description:
+          "The warmth of your skin influences how quickly fragrance notes evolve and project, shaping your scent's unique journey throughout the day.",
       },
       {
         title: 'Hydration',
-        description: 'The moisture level of your skin helps fragrance molecules adhere and last longer, enhancing the depth and longevity of your personal scent.',
+        description:
+          'The moisture level of your skin helps fragrance molecules adhere and last longer, enhancing the depth and longevity of your personal scent.',
       },
       {
         title: 'pH',
-        description: 'Your skin\'s natural pH subtly alters how certain fragrance notes appear, ensuring the scent develops in a way that\'s distinctly yours.',
+        description:
+          "Your skin's natural pH subtly alters how certain fragrance notes appear, ensuring the scent develops in a way that's distinctly yours.",
       },
       {
         title: 'Sebum',
-        description: 'The natural oils produced by your skin blend with fragrance molecules, amplifying and personalizing your scent\'s signature character.',
+        description:
+          "The natural oils produced by your skin blend with fragrance molecules, amplifying and personalizing your scent's signature character.",
       },
     ],
     []
@@ -61,8 +66,6 @@ const Features = memo(() => {
 
   return (
     <Section id="features" padding="md" maxWidth="4xl" showFrame={false}>
-
-
       {/* Full width card with 3-column grid layout */}
       <Card padding="md">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -79,9 +82,7 @@ const Features = memo(() => {
               {/* Factor description - Fixed height container */}
               <div className="h-[100px] md:h-[80px] mb-8 flex items-start overflow-hidden">
                 {currentFactor && (
-                  <p className="text-base md:text-lg text-gray-600">
-                    {currentFactor.description}
-                  </p>
+                  <p className="text-base md:text-lg text-gray-600">{currentFactor.description}</p>
                 )}
               </div>
 
@@ -121,10 +122,11 @@ const Features = memo(() => {
                     key={factor.title}
                     type="button"
                     onClick={() => setActiveFactor(factor.title)}
-                    className={`w-2 h-2 rounded-full transition-colors ${index === activeFactorIndex
-                      ? 'bg-emerald-600'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                      }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === activeFactorIndex
+                        ? 'bg-emerald-600'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
                     aria-label={`Go to ${factor.title}`}
                   />
                 ))}

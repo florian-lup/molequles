@@ -45,10 +45,10 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 export type BadgeVariant = 'default' | 'success' | 'warning' | 'error';
 
 // Utility types
-export type PropsWithClassName<P = {}> = P & {
+export type PropsWithClassName<P = Record<string, unknown>> = P & {
   className?: string;
 };
 
-export type PropsWithChildren<P = {}> = P & {
+export type PropsWithChildren<P = Record<string, unknown>> = P & {
   children?: React.ReactNode;
-}; 
+};
