@@ -66,15 +66,15 @@ const Features = memo(() => {
 
   return (
     <Section id="features" padding="md" maxWidth="4xl" showFrame={false}>
-      {/* Full width card with 3-column grid layout */}
+      {/* Mobile-first responsive card layout */}
       <Card padding="md">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-          {/* Column 1: Content and navigation */}
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+          {/* Column 1: Content and navigation - better mobile layout */}
+          <div className="lg:col-span-1 order-2 lg:order-1">
             <div className="h-full flex flex-col items-center justify-center text-center">
-              {/* Current factor title */}
+              {/* Current factor title - responsive typography */}
               {currentFactor && (
-                <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black mb-3 sm:mb-4">
                   {currentFactor.title}
                 </h3>
               )}
@@ -86,8 +86,8 @@ const Features = memo(() => {
                 )}
               </div>
 
-              {/* Navigation buttons */}
-              <div className="flex justify-between items-center w-full max-w-xs">
+              {/* Navigation buttons - better mobile touch targets */}
+              <div className="flex justify-between items-center w-full max-w-xs mb-4 sm:mb-6">
                 <button
                   type="button"
                   onClick={handlePrevious}
@@ -115,18 +115,17 @@ const Features = memo(() => {
                 </button>
               </div>
 
-              {/* Factor indicators */}
-              <div className="flex justify-center gap-2 mt-6">
+              {/* Factor indicators - improved mobile touch targets */}
+              <div className="flex justify-center gap-2 sm:gap-3">
                 {skinFactors.map((factor, index) => (
                   <button
                     key={factor.title}
                     type="button"
                     onClick={() => setActiveFactor(factor.title)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === activeFactorIndex
-                        ? 'bg-emerald-600'
-                        : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
+                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 touch-manipulation ${index === activeFactorIndex
+                      ? 'bg-emerald-600 scale-110'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
                     aria-label={`Go to ${factor.title}`}
                   />
                 ))}
@@ -134,15 +133,15 @@ const Features = memo(() => {
             </div>
           </div>
 
-          {/* Column 2: Sample bottle image */}
-          <div className="lg:col-span-1">
-            <div className="h-full flex items-center justify-center">
-              <div className="relative w-full aspect-square max-w-xs">
+          {/* Column 2: Sample bottle image - hidden on mobile/tablets, shown on desktop */}
+          <div className="lg:col-span-1 hidden lg:block lg:order-2">
+            <div className="h-full flex items-center justify-center py-4 lg:py-0">
+              <div className="relative w-full aspect-square max-w-[240px] sm:max-w-xs">
                 <Image
                   src="/images/sample_bottle.png"
                   alt="Perfume bottle showcasing our personalized fragrance creation"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 300px"
+                  sizes="(max-width: 640px) 240px, (max-width: 1024px) 320px, 300px"
                   className="object-contain"
                   priority={false}
                 />
@@ -150,35 +149,35 @@ const Features = memo(() => {
             </div>
           </div>
 
-          {/* Column 3: Statistics */}
-          <div className="lg:col-span-1">
-            <div className="h-full flex flex-col items-center justify-center space-y-6">
-              <div className="w-full text-center p-2">
+          {/* Column 3: Statistics - horizontal on mobile/tablets, vertical on desktop */}
+          <div className="lg:col-span-1 order-1 lg:order-3">
+            <div className="h-full flex flex-row lg:flex-col items-center justify-center gap-4 sm:gap-6">
+              <div className="flex-1 lg:w-full text-center p-2 sm:p-3">
                 <p
-                  className="text-xl md:text-2xl font-bold text-black mb-2"
+                  className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2"
                   aria-label={`Over ${PRODUCT_INFO.ingredientCount} available ingredients`}
                 >
                   {PRODUCT_INFO.ingredientCount}
                 </p>
-                <p className="text-sm md:text-base text-gray-600">Available Ingredients</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">Available Ingredients</p>
               </div>
-              <div className="w-full text-center p-2">
+              <div className="flex-1 lg:w-full text-center p-2 sm:p-3">
                 <p
-                  className="text-xl md:text-2xl font-bold text-black mb-2"
+                  className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2"
                   aria-label="Billions of potential combinations"
                 >
                   Billions
                 </p>
-                <p className="text-sm md:text-base text-gray-600">Potential Combinations</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">Potential Combinations</p>
               </div>
-              <div className="w-full text-center p-2">
+              <div className="flex-1 lg:w-full text-center p-2 sm:p-3">
                 <p
-                  className="text-xl md:text-2xl font-bold text-black mb-2"
+                  className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2"
                   aria-label="100 percent personalized formulas"
                 >
                   100%
                 </p>
-                <p className="text-sm md:text-base text-gray-600">Personalized Formulas</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">Personalized Formulas</p>
               </div>
             </div>
           </div>

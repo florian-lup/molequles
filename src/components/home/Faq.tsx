@@ -54,19 +54,21 @@ const FaqAccordion = memo(() => {
   }, []);
 
   return (
-    <div className="space-y-4" role="region" aria-label="Frequently Asked Questions">
+    <div className="space-y-3 sm:space-y-4" role="region" aria-label="Frequently Asked Questions">
       {faqData.map((faq, index) => (
         <Card key={faq.question} className="overflow-hidden">
           <button
             type="button"
-            className="w-full text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-lg"
+            className="w-full text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-lg p-2 sm:p-0 touch-manipulation"
             onClick={() => toggleFaq(index)}
             aria-expanded={openIndex === index}
             aria-controls={`faq-answer-${index}`}
             id={`faq-question-${index}`}
           >
-            <h3 className="text-base md:text-lg font-semibold text-black pr-4">{faq.question}</h3>
-            <div className="flex-shrink-0" aria-hidden="true">
+            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-black pr-3 sm:pr-4 leading-relaxed">
+              {faq.question}
+            </h3>
+            <div className="flex-shrink-0 p-1" aria-hidden="true">
               {openIndex === index ? (
                 <FiChevronUp className="h-5 w-5 text-emerald-600" />
               ) : (
@@ -77,12 +79,14 @@ const FaqAccordion = memo(() => {
 
           {openIndex === index && (
             <div
-              className="mt-4 pt-4 border-t border-gray-100"
+              className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100"
               id={`faq-answer-${index}`}
               role="region"
               aria-labelledby={`faq-question-${index}`}
             >
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">{faq.answer}</p>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed px-2 sm:px-0">
+                {faq.answer}
+              </p>
             </div>
           )}
         </Card>
@@ -102,14 +106,14 @@ const Faq = memo(() => {
       padding="md"
       showFrame={false}
     >
-      {/* Section heading */}
-      <div className="mb-12">
+      {/* Section heading - improved mobile typography */}
+      <div className="mb-8 sm:mb-10 lg:mb-12">
         <div className="relative inline-block">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent text-left">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent text-left">
             Frequently Asked Questions
           </h2>
-          {/* Decorative underline */}
-          <div className="absolute -bottom-1 left-0 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
+          {/* Decorative underline - responsive sizing */}
+          <div className="absolute -bottom-1 left-0 w-12 sm:w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
       </div>
 

@@ -26,7 +26,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const baseStyles =
-      'w-full border outline-none transition-all duration-200 focus:border-transparent';
+      'w-full border outline-none transition-all duration-200 focus:border-transparent touch-manipulation';
 
     const variantStyles = {
       default:
@@ -38,9 +38,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     };
 
     const sizeStyles = {
-      sm: 'px-3 py-2 text-sm',
-      md: 'px-4 py-3 text-base',
-      lg: 'px-4 py-4 text-base',
+      sm: 'px-3 py-2.5 text-sm min-h-[40px] sm:py-2 sm:text-sm sm:min-h-[36px]',
+      md: 'px-4 py-3.5 text-base min-h-[48px] sm:py-3 sm:text-base sm:min-h-[44px]',
+      lg: 'px-4 py-4 text-base min-h-[52px] sm:py-4 sm:text-base sm:min-h-[48px]',
     };
 
     const roundedStyles = {
@@ -50,29 +50,48 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       none: 'rounded-none',
     };
 
-    const responsiveStyles = {
-      sm: 'sm:py-2 sm:text-sm',
-      md: 'sm:py-3',
-      lg: 'sm:py-4',
-    };
-
-    const responsiveRoundedStyles = {
-      default: '',
-      left: 'sm:rounded-l-lg sm:rounded-r-none',
-      right: 'sm:rounded-r-lg sm:rounded-l-none',
-      none: '',
-    };
-
     const errorStyles = error ? 'border-red-500 focus:ring-red-500' : '';
 
-    const leftPadding = leftIcon ? 'pl-10' : '';
-    const rightPadding = rightIcon ? 'pr-10' : '';
+    const iconSizeStyles = {
+      sm: 'h-4 w-4',
+      md: 'h-5 w-5',
+      lg: 'h-5 w-5',
+    };
+
+    const leftIconPadding = {
+      sm: leftIcon ? 'pl-9' : '',
+      md: leftIcon ? 'pl-11' : '',
+      lg: leftIcon ? 'pl-11' : '',
+    };
+
+    const rightIconPadding = {
+      sm: rightIcon ? 'pr-9' : '',
+      md: rightIcon ? 'pr-11' : '',
+      lg: rightIcon ? 'pr-11' : '',
+    };
+
+    const iconVerticalPosition = {
+      sm: 'left-2.5',
+      md: 'left-3',
+      lg: 'left-3',
+    };
+
+    const rightIconPosition = {
+      sm: 'right-2.5',
+      md: 'right-3',
+      lg: 'right-3',
+    };
 
     return (
       <div className="relative flex-1">
         {leftIcon && (
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500">
-            {leftIcon}
+          <div className={cn(
+            'absolute inset-y-0 flex items-center pointer-events-none text-gray-500',
+            iconVerticalPosition[inputSize]
+          )}>
+            <div className={iconSizeStyles[inputSize]}>
+              {leftIcon}
+            </div>
           </div>
         )}
 
@@ -82,11 +101,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             baseStyles,
             variantStyles[variant],
             sizeStyles[inputSize],
-            responsiveStyles[inputSize],
             roundedStyles[roundedVariant],
-            responsiveRoundedStyles[roundedVariant],
-            leftPadding,
-            rightPadding,
+            leftIconPadding[inputSize],
+            rightIconPadding[inputSize],
             errorStyles,
             className
           )}
@@ -95,8 +112,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         />
 
         {rightIcon && (
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
-            {rightIcon}
+          <div className={cn(
+            'absolute inset-y-0 flex items-center pointer-events-none text-gray-500',
+            rightIconPosition[inputSize]
+          )}>
+            <div className={iconSizeStyles[inputSize]}>
+              {rightIcon}
+            </div>
           </div>
         )}
       </div>

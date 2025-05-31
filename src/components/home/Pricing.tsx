@@ -28,11 +28,11 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
     <Card
       variant={isPopular ? 'highlight' : 'default'}
       hover={true}
-      className={`relative overflow-hidden h-full flex flex-col ${isPopular || id === 'ingredients' || id === 'premium' ? 'pt-10' : ''}`}
+      className={`relative overflow-hidden h-full flex flex-col ${isPopular || id === 'ingredients' || id === 'premium' ? 'pt-8 sm:pt-10' : ''}`}
     >
       {/* Starter badge for first card */}
       {id === 'ingredients' && (
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
           <Badge
             text="Starter"
             textSize="xs"
@@ -45,7 +45,7 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
 
       {/* Premium badge for third card */}
       {id === 'premium' && (
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
           <Badge
             text="Premium"
             textSize="xs"
@@ -58,7 +58,7 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
 
       {/* Popular badge */}
       {isPopular && (
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
           <Badge
             text="Most Popular"
             textSize="xs"
@@ -69,21 +69,21 @@ const PricingCard = memo<PricingCardProps>(({ tier }) => {
         </div>
       )}
 
-      {/* Price display with title */}
-      <div className="mb-5">
-        <span className="text-3xl md:text-4xl font-bold text-emerald-600">{formattedPrice}</span>
-        <span className="text-sm text-gray-500 ml-1">/{title.toLowerCase()}</span>
+      {/* Price display with title - improved mobile typography */}
+      <div className="mb-4 sm:mb-5">
+        <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-emerald-600">{formattedPrice}</span>
+        <span className="text-xs sm:text-sm text-gray-500 ml-1">/{title.toLowerCase()}</span>
       </div>
 
-      {/* Tier description */}
-      <p className="text-sm md:text-base text-gray-600 font-light mb-5">{description}</p>
+      {/* Tier description - better mobile line height */}
+      <p className="text-sm sm:text-base text-gray-600 font-light mb-4 sm:mb-5 leading-relaxed">{description}</p>
 
       {/* Feature list with checkmarks - grows to fill available space */}
-      <ul className="space-y-3 flex-grow" role="list">
+      <ul className="space-y-2 sm:space-y-3 flex-grow" role="list">
         {features.map((feature, index) => (
-          <li key={`${title}-feature-${index}`} className="flex items-start gap-2">
-            <FiCheck className="text-emerald-600 mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
-            <span className="text-sm text-gray-600">{feature}</span>
+          <li key={`${title}-feature-${index}`} className="flex items-start gap-2 sm:gap-3">
+            <FiCheck className="text-emerald-600 mt-0.5 sm:mt-1 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+            <span className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature}</span>
           </li>
         ))}
       </ul>
@@ -141,11 +141,17 @@ const PricingContent = memo(() => {
   );
 
   return (
-    <div className="w-full">
-      {/* Three-column pricing tier cards */}
-      <div className="grid md:grid-cols-3 gap-6">
+    <div className="w-full flex justify-center">
+      {/* Improved mobile-first grid with better responsive breakpoints */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 w-full max-w-sm md:max-w-xl lg:max-w-none">
         {pricingTiers.map((tier, index) => (
-          <div key={tier.id} className={`flex ${index === 0 || index === 2 ? 'md:mt-8' : ''}`}>
+          <div
+            key={tier.id}
+            className={`flex ${
+              // Offset first and third cards only on large desktop screens
+              (index === 0 || index === 2) ? 'lg:mt-8' : ''
+              }`}
+          >
             <PricingCard tier={tier} />
           </div>
         ))}
@@ -160,16 +166,16 @@ PricingContent.displayName = 'PricingContent';
 const Pricing = memo(() => {
   return (
     <Section id="pricing" ariaLabel="Pricing section" maxWidth="6xl" padding="md" showFrame={false}>
-      {/* Section heading */}
-      <div className="max-w-4xl mx-auto mb-10 text-center">
+      {/* Section heading - improved mobile typography */}
+      <div className="max-w-4xl mx-auto mb-8 sm:mb-10 text-center">
         <div className="relative inline-block">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
             Start your journey
           </h2>
           {/* Decorative underline */}
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" />
         </div>
-        <p className="text-base md:text-lg text-gray-600 mt-6 leading-relaxed">
+        <p className="text-sm sm:text-base lg:text-lg text-gray-600 mt-4 sm:mt-6 leading-relaxed px-2 sm:px-4">
           Unlock smarter scents, greater skin compatibility, and more consistent performance beyond
           what traditional perfumery can offer
         </p>

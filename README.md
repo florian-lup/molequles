@@ -1,6 +1,6 @@
-# Molequles - Responsive Landing Page
+# Molequles
 
-A modern, responsive landing page built with Next.js 15, showcasing clean design principles and optimal user experience across all devices.
+A modern, responsive start-up landing page built with Next.js, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 

@@ -58,13 +58,13 @@ const LeadCapturePanel = memo(() => {
 
   if (isSubmitted) {
     return (
-      <div className="w-full text-center mx-auto px-4">
+      <div className="w-full text-center mx-auto px-3 sm:px-4">
         <div className="relative inline-block">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-black leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-black leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
             Thank you for joining!
           </h2>
         </div>
-        <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
           We&apos;ll be in touch soon with your exclusive early access and discount code.
         </p>
       </div>
@@ -72,23 +72,23 @@ const LeadCapturePanel = memo(() => {
   }
 
   return (
-    <div className="w-full text-center mx-auto px-4">
-      {/* Centered headline */}
+    <div className="w-full text-center mx-auto px-3 sm:px-4">
+      {/* Centered headline - improved mobile typography */}
       <div className="relative inline-block">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-black leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 text-black leading-tight bg-gradient-to-r from-gray-900 via-black to-emerald-600 bg-clip-text text-transparent">
           Ready to Find Your Signature Scent?
         </h2>
       </div>
 
-      {/* Paragraph */}
-      <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+      {/* Paragraph - improved mobile spacing and typography */}
+      <p className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
         Sign up now and get <span className="text-emerald-600 font-semibold">20%</span> off your
         first order, plus <span className="text-emerald-600 font-semibold">free</span> shipping
       </p>
 
-      {/* Waitlist form */}
-      <form onSubmit={handleSubmit} className="mb-8 max-w-md mx-auto" noValidate>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
+      {/* Waitlist form - improved mobile layout */}
+      <form onSubmit={handleSubmit} className="mb-6 sm:mb-8 max-w-md mx-auto" noValidate>
+        <div className="flex flex-col gap-3 sm:flex-row sm:gap-0">
           <Input
             type="email"
             id="leadcapture-email"
@@ -107,7 +107,7 @@ const LeadCapturePanel = memo(() => {
           <Button
             type="submit"
             buttonSize="lg"
-            className="w-full sm:w-auto sm:rounded-l-none px-6"
+            className="w-full sm:w-auto sm:rounded-l-none px-6 min-h-[52px]"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Joining...' : 'Join Waitlist'}
@@ -123,8 +123,8 @@ const LeadCapturePanel = memo(() => {
         </p>
       </form>
 
-      {/* Trust badges (moved from SocialProof) */}
-      <div className="flex flex-wrap justify-center gap-4 mt-6">
+      {/* Trust badges - improved mobile layout and spacing */}
+      <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 mt-4 sm:mt-6">
         <Badge
           text="30-Day Money Back Guarantee"
           variant="default"

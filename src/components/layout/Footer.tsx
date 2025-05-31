@@ -37,25 +37,25 @@ const Footer = memo(() => {
       {
         name: 'instagram',
         href: EXTERNAL_LINKS.social.instagram,
-        icon: <FiInstagram className="h-6 w-6" />,
+        icon: <FiInstagram className="h-5 w-5 sm:h-6 sm:w-6" />,
         label: 'Follow us on Instagram',
       },
       {
         name: 'twitter',
         href: EXTERNAL_LINKS.social.twitter,
-        icon: <FiTwitter className="h-6 w-6" />,
+        icon: <FiTwitter className="h-5 w-5 sm:h-6 sm:w-6" />,
         label: 'Follow us on Twitter',
       },
       {
         name: 'facebook',
         href: EXTERNAL_LINKS.social.facebook,
-        icon: <FiFacebook className="h-6 w-6" />,
+        icon: <FiFacebook className="h-5 w-5 sm:h-6 sm:w-6" />,
         label: 'Follow us on Facebook',
       },
       {
         name: 'youtube',
         href: EXTERNAL_LINKS.social.youtube,
-        icon: <FiYoutube className="h-6 w-6" />,
+        icon: <FiYoutube className="h-5 w-5 sm:h-6 sm:w-6" />,
         label: 'Subscribe to our YouTube channel',
       },
     ],
@@ -173,22 +173,23 @@ const Footer = memo(() => {
 
   return (
     <footer className="bg-gray-50 text-black border-t border-gray-200">
-      {/* Main footer content container */}
-      <div className="w-full px-4 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
-          {/* Company Info */}
-          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-lg font-semibold text-black">{COMPANY_INFO.name}</h3>
+      {/* Main footer content container - improved mobile layout */}
+      <div className="w-full px-3 sm:px-6 lg:px-10 py-6 sm:py-8 lg:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {/* Company Info - better mobile spacing */}
+          <div className="space-y-3 sm:space-y-4 sm:col-span-2 lg:col-span-1">
+            <h3 className="text-base sm:text-lg font-semibold text-black">{COMPANY_INFO.name}</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               Discover your signature scent with our curated collection of premium fragrances.
               Quality craftsmanship meets modern elegance.
             </p>
-            <div className="flex space-x-6" role="list" aria-label="Social media links">
+            {/* Improved mobile social links with better touch targets */}
+            <div className="flex items-center gap-3 sm:gap-4" role="list" aria-label="Social media links">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
-                  className="text-gray-500 hover:text-black transition-colors duration-200 p-1"
+                  className="text-gray-500 hover:text-black transition-colors duration-200 p-2 rounded-lg hover:bg-gray-100 touch-manipulation"
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -199,15 +200,15 @@ const Footer = memo(() => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-black">Quick Links</h3>
-            <ul className="space-y-3" role="list">
+          {/* Quick Links - improved mobile layout */}
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-black">Quick Links</h3>
+            <ul className="space-y-2 sm:space-y-3" role="list">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-gray-600 hover:text-black transition-colors duration-200 py-1 block"
+                    className="text-sm text-gray-600 hover:text-black transition-colors duration-200 py-1 block touch-manipulation"
                   >
                     {link.name}
                   </a>
@@ -216,15 +217,15 @@ const Footer = memo(() => {
             </ul>
           </div>
 
-          {/* Customer Service */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-black">Customer Service</h3>
-            <ul className="space-y-3" role="list">
+          {/* Customer Service - improved mobile layout */}
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold text-black">Customer Service</h3>
+            <ul className="space-y-2 sm:space-y-3" role="list">
               {customerServiceLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-gray-600 hover:text-black transition-colors duration-200 py-1 block"
+                    className="text-sm text-gray-600 hover:text-black transition-colors duration-200 py-1 block touch-manipulation"
                   >
                     {link.name}
                   </a>
@@ -233,12 +234,12 @@ const Footer = memo(() => {
             </ul>
           </div>
 
-          {/* Contact & Newsletter */}
-          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-lg font-semibold text-black">Stay Connected</h3>
+          {/* Contact & Newsletter - better mobile layout */}
+          <div className="space-y-4 sm:space-y-5 sm:col-span-2 lg:col-span-1">
+            <h3 className="text-base sm:text-lg font-semibold text-black">Stay Connected</h3>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
+            {/* Contact Info - improved mobile spacing */}
+            <div className="space-y-2 sm:space-y-3">
               {contactInfo.map((contact, index) => (
                 <div
                   key={index}
@@ -251,9 +252,9 @@ const Footer = memo(() => {
               ))}
             </div>
 
-            {/* Newsletter Signup */}
+            {/* Newsletter Signup - improved mobile form */}
             <div className="pt-2">
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-600 mb-3 sm:mb-4">
                 Subscribe for exclusive offers and updates
               </p>
 
@@ -269,7 +270,7 @@ const Footer = memo(() => {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col sm:flex-row gap-2 sm:gap-0"
+                  className="flex flex-col gap-3 sm:flex-row sm:gap-0"
                   noValidate
                 >
                   <Input
@@ -291,7 +292,7 @@ const Footer = memo(() => {
                     type="submit"
                     buttonSize="sm"
                     variant="primary"
-                    className="w-full sm:w-auto sm:rounded-l-none px-4 py-3 sm:py-2 text-sm font-medium"
+                    className="w-full sm:w-auto sm:rounded-l-none px-4 py-3 sm:py-2 text-sm font-medium min-h-[44px] sm:min-h-[38px]"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Subscribing...' : 'Subscribe'}
@@ -313,22 +314,22 @@ const Footer = memo(() => {
         </div>
       </div>
 
-      {/* Bottom footer */}
+      {/* Bottom footer - improved mobile layout */}
       <div className="border-t border-gray-200 bg-white">
-        <div className="w-full px-4 sm:px-6 lg:px-10 py-4 sm:py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
+        <div className="w-full px-3 sm:px-6 lg:px-10 py-3 sm:py-4 lg:py-6">
+          <div className="flex flex-col space-y-3 sm:flex-row sm:justify-between sm:items-center sm:space-y-0 text-center sm:text-left">
             {/* Copyright */}
             <p className="text-xs text-gray-500">
               &copy; {currentYear} {COMPANY_INFO.name}. All rights reserved.
             </p>
 
-            {/* Legal Links */}
-            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-xs">
+            {/* Legal Links - improved mobile spacing */}
+            <div className="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2 text-xs">
               {legalLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-500 hover:text-black transition-colors duration-200 py-1"
+                  className="text-gray-500 hover:text-black transition-colors duration-200 py-1 touch-manipulation"
                 >
                   {link.name}
                 </a>

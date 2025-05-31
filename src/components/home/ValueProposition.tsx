@@ -15,17 +15,17 @@ const benefits: readonly Benefit[] = [
   {
     icon: <GiHeartBeats className="h-6 w-6 text-black" />,
     title: 'Consistent Performance',
-    description: 'Maintains longevity throughout the day',
+    description: 'Delivers all-day fragrance with consistent intensity and character',
   },
   {
     icon: <GiShieldReflect className="h-6 w-6 text-black" />,
     title: 'Reduced Allergy Risks',
-    description: 'Reduces irritation by avoiding sensitive ingredients',
+    description: 'Minimizes irritation and allergy risks by using only skin-friendly ingredients',
   },
   {
     icon: <GiTestTubes className="h-6 w-6 text-black" />,
     title: 'Personalized blends',
-    description: 'Creates a scent uniquely tailored to your skin',
+    description: 'Crafts a signature scent that evolves with your unique skin chemistry',
   },
 ] as const;
 
