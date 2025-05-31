@@ -7,7 +7,6 @@ A modern, responsive landing page built with Next.js 15, showcasing clean design
 - **Fully Responsive Design** - Seamless experience from mobile to desktop
 - **Modern UI/UX** - Clean, minimalist interface with smooth interactions
 - **Performance Optimized** - Built with Next.js for fast loading and SEO
-- **TypeScript** - Type-safe development for maintainable code
 
 ## 🛠️ Tech Stack
 

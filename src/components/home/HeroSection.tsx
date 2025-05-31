@@ -2,7 +2,7 @@
 
 import { memo } from 'react';
 import Image from 'next/image';
-import Badge from '../ui/badge';
+import Badge from '@/components/ui/badge';
 import Section from '@/components/layout/section';
 
 const HeroSection = memo(() => {
